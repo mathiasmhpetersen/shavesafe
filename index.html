@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShaveSafe — Intimitet uden angst</title>
+  <style>
+    :root {
+      --blue: #5079a7;
+      --orange: #f35e24;
+      --orange-dark: #d94a1a;
+      --slate-900: #0f172a;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748b;
+      --slate-400: #94a3b8;
+      --slate-300: #cbd5e1;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50: #f8fafc;
+      --white: #ffffff;
+      --green-50: #f0fdf4;
+      --green-200: #bbf7d0;
+      --green-700: #15803d;
+      --green-900: #14532d;
+      --red-50: #fef2f2;
+      --red-200: #fecaca;
+      --max: 960px;
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      --shadow-soft: 0 4px 14px rgba(15, 23, 42, 0.05);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--slate-900);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, p { margin: 0; }
+    section { width: 100%; }
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .hero {
+      padding: 64px 0 96px;
+      background: linear-gradient(135deg, #f9f7f4 0%, rgba(80, 121, 167, 0.05) 100%);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue);
+      color: var(--white);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .icon-lock {
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    h1 {
+      font-size: 52px;
+      line-height: 1.08;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: 42px;
+      line-height: 1.15;
+      margin-bottom: 48px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-quote {
+      font-size: 24px;
+      color: var(--slate-600);
+      font-style: italic;
+      margin-bottom: 28px;
+    }
+
+    .lead {
+      font-size: 20px;
+      color: var(--slate-700);
+      margin-bottom: 32px;
+    }
+
+    .btn {
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 18px;
+      font-weight: 700;
+      padding: 18px 32px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      background: var(--orange);
+      transform: translateY(-1px);
+    }
+
+    .btn.full { width: 100%; }
+
+    .down {
+      margin-top: 48px;
+      text-align: center;
+      color: var(--slate-400);
+      font-size: 28px;
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section.alt {
+      background: var(--slate-50);
+    }
+
+    .section.blue-fade {
+      background: linear-gradient(135deg, rgba(80, 121, 167, 0.05) 0%, rgba(80, 121, 167, 0.02) 100%);
+    }
+
+    .cards {
+      display: grid;
+      gap: 28px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card h3 {
+      font-size: 24px;
+      margin-bottom: 14px;
+    }
+
+    .card p {
+      color: var(--slate-600);
+      margin-bottom: 12px;
+    }
+
+    .card p:last-child { margin-bottom: 0; }
+
+    .accent-left {
+      border-left: 4px solid var(--blue);
+      background: rgba(80, 121, 167, 0.05);
+      box-shadow: none;
+    }
+
+    .accent-left strong,
+    .blue-text {
+      color: var(--blue);
+    }
+
+    .mechanism-box {
+      background: rgba(80, 121, 167, 0.1);
+      border: 1px solid var(--blue);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .mechanism-box h3 {
+      color: var(--blue);
+      font-size: 18px;
+      margin-bottom: 14px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .bad-box, .good-box {
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .bad-box {
+      background: var(--red-50);
+      border: 1px solid var(--red-200);
+    }
+
+    .good-box {
+      background: rgba(80, 121, 167, 0.15);
+      border: 1px solid var(--blue);
+    }
+
+    .bad-box h4, .good-box h4 {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .list {
+      padding-left: 18px;
+      color: var(--slate-600);
+      margin: 0;
+    }
+
+    .list li { margin-bottom: 8px; }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue);
+      color: var(--white);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 16px;
+    }
+
+    .center { text-align: center; }
+
+    .stars {
+      color: var(--orange);
+      font-size: 20px;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    .testimonial {
+      background: var(--white);
+      border-left: 4px solid var(--blue);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .testimonial p.quote {
+      font-size: 22px;
+      color: var(--slate-700);
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+
+    .testimonial .name {
+      font-weight: 700;
+      color: var(--slate-900);
+    }
+
+    .testimonial .source {
+      color: var(--slate-500);
+      font-size: 14px;
+    }
+
+    .quote-box {
+      background: rgba(80, 121, 167, 0.05);
+      border-radius: var(--radius);
+      padding: 32px;
+    }
+
+    .cta-section {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    .cta-section h2,
+    .cta-section p {
+      color: var(--white);
+    }
+
+    .cta-box {
+      background: var(--white);
+      color: var(--slate-900);
+      border-radius: var(--radius);
+      padding: 48px;
+      box-shadow: var(--shadow);
+      margin-top: 24px;
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+
+    .cta-grid .big {
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--orange);
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+
+    .cta-grid .small {
+      color: var(--slate-600);
+    }
+
+    .product-box {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 28px;
+      text-align: left;
+    }
+
+    .product-box h4 {
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+
+    .check-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 18px 0;
+      color: var(--slate-600);
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .check {
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    .small-note {
+      font-size: 12px;
+      color: var(--slate-500);
+      margin-top: 18px;
+    }
+
+    .muted-note {
+      font-size: 14px;
+      color: var(--slate-600);
+      margin-top: 14px;
+    }
+
+    .form-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .form-card {
+      background: var(--white);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius);
+      padding: 36px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid var(--slate-300);
+      border-radius: 12px;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(80, 121, 167, 0.12);
+    }
+
+    .success {
+      background: var(--green-50);
+      border: 1px solid var(--green-200);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+    }
+
+    .success h3 {
+      font-size: 30px;
+      color: var(--green-900);
+      margin-bottom: 10px;
+    }
+
+    .success p {
+      color: var(--green-700);
+    }
+
+    .success .tiny {
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .faq {
+      display: grid;
+      gap: 14px;
+    }
+
+    .faq-item {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--slate-900);
+    }
+
+    .faq-question:hover {
+      background: var(--slate-100);
+    }
+
+    .faq-symbol {
+      color: var(--orange);
+      font-size: 24px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 24px 20px;
+      background: var(--white);
+      border-top: 1px solid var(--slate-200);
+      color: var(--slate-600);
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    .faq-item.active .faq-question {
+      color: var(--blue);
+    }
+
+    footer {
+      background: var(--slate-900);
+      color: #cbd5e1;
+      padding: 48px 20px;
+      text-align: center;
+    }
+
+    footer .brand {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 900px) {
+      h1 { font-size: 42px; }
+      h2 { font-size: 34px; }
+      .two-col,
+      .cta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding: 48px 0 72px; }
+      .section { padding: 64px 0; }
+      h1 { font-size: 34px; }
+      h2 { font-size: 28px; }
+      .hero-quote { font-size: 20px; }
+      .lead { font-size: 18px; }
+      .card,
+      .testimonial,
+      .quote-box,
+      .cta-box,
+      .form-card,
+      .mechanism-box { padding: 24px; }
+      .btn { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="pill">
+          <span class="icon-lock">🔒</span>
+          Kvinde med røde knopper? Det her er til dig!
+        </div>
+
+        <h1>Jeg tænker på det hver gang jeg tager undertøj på.</h1>
+
+        <p class="hero-quote">
+          "Jeg tør næsten ikke vise det til min mand. Og jeg tør slet ikke til lægen med det, det er for pinligt."
+        </p>
+
+        <p class="lead">
+          Du er ikke alene. Tusindvis af kvinder lever med det samme: røde knopper og indgroede hår i intimområdet. Det er ikke en medicinsk bekymring — det er en identitetskrise, der gentager sig hver uge. Og det er ikke din huds skyld.
+        </p>
+
+        <a class="btn" href="#form-section">Ja, jeg vil have intimitet uden angst</a>
+
+        <div class="down">⌄</div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <h2>Det er ikke bare knopper.</h2>
+
+        <div class="cards">
+          <div class="card">
+            <h3><span style="color:#f35e24">1.</span> Det fysiske problem</h3>
+            <p>Efter barbering får du røde knopper og indgroede hår i intimområdet. Det er ikke nyt. Det er kronisk. Du har prøvet voksbehandling (smertefuldt, stadig knopper), barberprodukter (samme resultat), og overvejet laserhårfjerning (for dyrt, for skamfuldt).</p>
+            <p style="color:#334155">Men det fysiske problem er ikke det værste. Det værste er, hvad det gør ved dit selvværd.</p>
+          </div>
+
+          <div class="card">
+            <h3><span style="color:#f35e24">2.</span> Identitetskrisen</h3>
+            <p>Du tænker på det hver gang du tager undertøj på. Hver gang du skal i bad. Hver gang du skal på stranden. Hver gang du skal have sex.</p>
+            <p>Det er blevet en del af dit selvbillede: "Min krop er forkert. Mit intimområde er forkert. Hvad hvis han tror jeg er uhygiejnisk?" Alle de tanker dræner dig.</p>
+            <p style="color:#334155">Du undgår at blive set. Du undgår intimitet. Du undgår at tale om det — selv med dine nærmeste veninder.</p>
+          </div>
+
+          <div class="card">
+            <h3><span style="color:#f35e24">3.</span> Forholdet bliver påvirket</h3>
+            <p>Du tør næsten ikke vise det til din mand. Du undgår intimitet. Du siger "ikke i dag" eller "hold lyset slukket" oftere end du ønsker. Og hver gang han nærmer sig, tænker du: "Opdager han det? Tror han at jeg er uhygiejnisk?"</p>
+            <p>Han ved ikke helt hvad der foregår. Men han kan mærke, at der er noget du holder fra ham. Det kan skabe en stiltiende spænding og i sidste ende skade forholdet.</p>
+            <p style="color:#334155">Intimitet bliver ikke længere om kærlighed — det bliver om skam. Det er ikke kærligheden der mangler. Det er friheden til at være til stede.</p>
+          </div>
+
+          <div class="card">
+            <h3><span style="color:#f35e24">4.</span> Sundhedsangsten</h3>
+            <p>Du googler "indgroede hår bikini" klokken 23. Du læser Reddit-tråde om infektioner. Du tænker: "Hvad hvis det bliver værre? Hvad hvis jeg skal til lægen med det?"</p>
+            <p style="color:#334155">Tanken på at skulle til lægen med det er næsten værre end problemet selv. Skammen er så stor.</p>
+          </div>
+
+          <div class="card accent-left">
+            <h3><span style="color:#f35e24">5.</span> Tyngden af årene</h3>
+            <p>Det er ikke nyt. Du har lidt af det i mange år. Hvert produkt du har prøvet har lovet guld og grønne skove, men intet virker. Du har accepteret, at sådan er det, og at du nok kommer til at leve med det. At du er anderledes. At din krop er anderledes.</p>
+            <p class="blue-text"><strong>Men det behøver det ikke at være.</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Hvorfor sker det?</h2>
+
+        <div class="mechanism-box">
+          <h3>Root-Cause Shaving™</h3>
+          <p>Al barberingsirritation starter samme sted: bakterier, der trænger ind i mikroskopiske åbninger i huden under selve barberingen. Inden for sekunder trænger bakterier ind i disse åbninger. Dit immunforsvar prøver at bekæmpe det, og resultatet er betændelse, røde knopper og indgroede hår.</p>
+          <p>Ingenting virker, fordi aftershave desinficerer bagefter. Cremer reparerer bagefter.</p>
+          <p class="blue-text"><strong>ShaveSafe er det første barberingssystem, der eliminerer årsagen UNDER barberingen — ikke efter.</strong></p>
+        </div>
+
+        <div class="two-col">
+          <div class="bad-box">
+            <h4>❌ Alt du har prøvet før:</h4>
+            <ul class="list">
+              <li>Voksbehandling: smertefuldt, stadig knopper</li>
+              <li>Barberprodukter: samme resultat</li>
+              <li>Aftershave-cremer: lindrer efter, ikke før</li>
+              <li>Resultat: Bakterierne er allerede inde</li>
+            </ul>
+          </div>
+
+          <div class="good-box">
+            <h4>✅ ShaveSafe gør det anderledes:</h4>
+            <ul class="list">
+              <li>Antibakteriel gel under barbering</li>
+              <li>Forhindrer bakterier i at trænge ind</li>
+              <li>Fjerner årsagen, ikke symptomerne</li>
+              <li>Resultat: Ingen knopper, ingen irritation</li>
+            </ul>
+            <div class="tag">🛡️ BacteriaShield™ — antibakteriel barriere under selve barberingen</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section blue-fade">
+      <div class="container">
+        <h2 class="center">Hvad ændrer sig?</h2>
+
+        <div class="cards">
+          <div class="card">
+            <h3><span style="color:#f35e24">💙</span> Uge 1: Første gang uden knopper</h3>
+            <p>Du barberer dig. Du ser dig selv i spejlet. Og for første gang i år er der ingen røde prikker. Ingen indgroede hår. Bare glat, rolig hud. Du tør næsten ikke tro det.</p>
+          </div>
+
+          <div class="card">
+            <h3><span style="color:#f35e24">💙</span> Uge 2-3: Du tænker mindre på det</h3>
+            <p>Du tager undertøj på uden at inspicere dig selv først. Du går i bad uden at være nervøs. Du tænker ikke på det hele tiden — fordi der ikke er noget at tænke på.</p>
+          </div>
+
+          <div class="card">
+            <h3><span style="color:#f35e24">💙</span> Uge 4: Intimitet bliver normal igen</h3>
+            <p>Du tør vise det til din mand. Du siger ikke "ikke i dag" længere. Du nyder intimitet uden at tænke på skam. For første gang i år er det bare... normalt.</p>
+          </div>
+
+          <div class="card">
+            <h3><span style="color:#f35e24">💙</span> Uge 8+: Du har glemt, at du nogensinde havde problemet</h3>
+            <p>Du tænker ikke længere på dine knopper. Du tænker ikke på barberingen. Du tager undertøj på og går. Det er ikke, fordi det er blevet usynligt — det er, fordi det er væk. Barbering er nu bare noget du gør, ikke noget du tænker over.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="center">Fra mennesker som dig</h2>
+
+        <div class="cards">
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p class="quote">"Efter mange år hvor jeg syntes det var PINLIGT at komme i bikinien pga. røde knopper er det endelig slut. I år har jeg kunne gå i bikini uden at skulle bekymre mig og være pinlig. Dette produkt har bogstavelig talt gjort en forskel i mit liv."</p>
+            <p class="name">Kathe Reimuth</p>
+            <p class="source">ShaveSafe Trustpilot, 5★</p>
+          </div>
+
+          <div class="quote-box">
+            <p style="color:#334155; margin-bottom:12px;">
+              Det handler ikke bare om hud. Det handler om friheden til ikke konstant at tænke over, hvordan du ser ud i de mest sårbare øjeblikke.
+            </p>
+            <p class="blue-text"><strong>Når irritationen forsvinder, forsvinder skammen ofte med den.</strong></p>
+          </div>
+
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p class="quote">"Jeg havde prøvet alt muligt før. Først da jeg fandt noget, der faktisk tog problemet under barberingen, begyndte min hud at falde til ro."</p>
+            <p class="name">Kundeanmeldelse</p>
+            <p class="source">Verificeret oplevelse</p>
+          </div>
+
+          <div class="quote-box">
+            <p style="color:#334155;">
+              For mange starter forandringen ikke med mere selvtillid. Den starter bare med lettelsen over endelig at slippe for irritation, svie og den konstante overvågning af egen krop.
+            </p>
+          </div>
+
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p class="quote">"Jeg har aldrig turdet at barbere mine ben. Alle produkter giver mig normalt rødme og svie. Men endelig fandt jeg et produkt som bare virker!"</p>
+            <p class="name">Tanja</p>
+            <p class="source">ShaveSafe Trustpilot, 5★</p>
+          </div>
+
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p class="quote">"Brugt det til normal barbering samt intim barbering og har aldrig oplevet et produkt som afhjælper enhver form for hudirritation så godt."</p>
+            <p class="name">Caroline</p>
+            <p class="source">ShaveSafe Trustpilot, 5★</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-section">
+      <div class="container center">
+        <h2>Få din intimitet tilbage</h2>
+        <p style="font-size:22px; margin-bottom:36px;">
+          Fra "jeg tænker på det hver gang jeg tager undertøj på" til "jeg tænker slet ikke over det mere"
+        </p>
+
+        <div class="cta-box">
+          <div class="cta-grid">
+            <div>
+              <div class="big">Gratis fragt</div>
+              <div class="small">Direkte til døren</div>
+            </div>
+            <div>
+              <div class="big">79 kr.</div>
+              <div class="small">For din prøvepakke</div>
+            </div>
+            <div>
+              <div class="big">Ingen binding</div>
+              <div class="small">Nogensinde</div>
+            </div>
+          </div>
+
+          <div class="product-box">
+            <h4>Din prøvepakke indeholder:</h4>
+            <ul class="check-list">
+              <li><span class="check">✓</span><span>1 ShaveSafe Razor (5 blade + trimmer)</span></li>
+              <li><span class="check">✓</span><span>50ml patenteret antibakteriel gel</span></li>
+              <li><span class="check">✓</span><span>Gratis fragt</span></li>
+            </ul>
+            <div class="muted-note">🛡️ Root-Cause Shaving™ — fjerner årsagen, ikke bare symptomerne</div>
+          </div>
+
+          <a class="btn full" href="#form-section" id="ctaButton">Ja, jeg vil have min selvtillid tilbage</a>
+
+          <p class="small-note">30 dages pengene-tilbage-garanti. Hvis du ikke er tilfreds, får du dine penge tilbage.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="form-section">
+      <div class="container">
+        <div class="form-wrap">
+          <h2 class="center" style="margin-bottom:12px;">Bestil din prøvepakke</h2>
+          <p class="center" style="color:#475569; margin-bottom:40px;">
+            Leveres inden for 1–3 hverdage · Gratis fragt · Ingen binding · Tilfredshedsgaranti
+          </p>
+
+          <div id="successMessage" class="success" style="display:none;">
+            <h3>Tak for din bestilling!</h3>
+            <p>Din prøvepakke er på vej. Du modtager en bekræftelse på e-mail inden kort tid.</p>
+            <p class="tiny">Intimitet uden angst venter på dig. 💕</p>
+          </div>
+
+          <form id="orderForm" class="form-card">
+            <div class="form-group">
+              <label for="name">Hvad hedder du?</label>
+              <input id="name" name="name" type="text" placeholder="f.eks. Sarah Jensen" required />
+            </div>
+
+            <div class="form-group">
+              <label for="address">Adresse</label>
+              <input id="address" name="address" type="text" placeholder="f.eks. Vesterbrogade 42" required />
+            </div>
+
+            <div class="form-group">
+              <label for="postal">Postnr. og By</label>
+              <input id="postal" name="postal" type="text" placeholder="f.eks. 1620 København V" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" placeholder="din@email.dk" required />
+            </div>
+
+            <button class="btn full" type="submit">Bestil min prøvepakke til 79 kr.</button>
+
+            <p class="small-note center">
+              Vi behandler dine data sikkert. Du modtager en ordrebekræftelse og sporingslink på e-mail. Emballage er diskret.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="center">Hyppigt stillede spørgsmål</h2>
+
+        <div class="faq" id="faq">
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Hvor hurtigt virker det?</span>
+              <span class="faq-symbol">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>De fleste ser resultater inden for 2-3 barberinger. Nogle ser forbedringer allerede efter den første brug. Kathe skrev sin anmeldelse efter at have brugt det i nogle uger — og hun havde lidt af problemet i mange år.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Er der virkelig ingen binding?</span>
+              <span class="faq-symbol">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Nej, ingen binding. Du køber en prøvepakke for 79 kr. Hvis du elsker det, kan du fortsætte. Hvis ikke, stopper du bare. Så simpelt.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Hvad hvis det ikke virker for mig?</span>
+              <span class="faq-symbol">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Vi tilbyder en 30-dages pengene-tilbage-garanti. Hvis du ikke er tilfreds, får du dine penge tilbage — ingen spørgsmål stillet.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Er det sikkert for intimområdet?</span>
+              <span class="faq-symbol">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Ja. ShaveSafe er designet til at være ekstra skånsom. Det har 0% parfume, parabener og farvestoffer. Det er testet på følsom hud. Og tusindvis af kvinder bruger det på intimområdet uden problemer.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Kommer det i diskret emballage?</span>
+              <span class="faq-symbol">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Ja. Vi forstår, at dette er privat. Pakken kommer i neutral, diskret emballage. Ingen vil vide hvad der er indeni.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Hvad gør ShaveSafe anderledes end de produkter jeg har prøvet før?</span>
+              <span class="faq-symbol">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>De fleste produkter behandler symptomerne efter barberingen er sket. ShaveSafe arbejder anderledes: den antibakterielle gel forebygger bakterier i at trænge ind i de mikroskopiske åbninger, der opstår under selve barberingen. Det er Root-Cause Shaving™. Vi fjerner årsagen, ikke konsekvensen.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Kan jeg bruge det i intimområdet?</span>
+              <span class="faq-symbol">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Ja. ShaveSafe er specifikt designet til at være skånsom — 0% parfume, parabener og farvestoffer. Det er testet på følsom hud og bruges af tusindvis af kvinder i intimområdet uden problemer. Det er netop det område, hvor vores kunder oplever den største forskel.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="brand">ShaveSafe — Intimitet uden angst</div>
+    <div>© 2026 ShaveSafe. Alle rettigheder forbeholdt.</div>
+  </footer>
+
+  <script>
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach((item) => {
+      const button = item.querySelector('.faq-question');
+      const symbol = item.querySelector('.faq-symbol');
+
+      button.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+
+        faqItems.forEach((otherItem) => {
+          otherItem.classList.remove('active');
+          const otherSymbol = otherItem.querySelector('.faq-symbol');
+          if (otherSymbol) otherSymbol.textContent = '+';
+        });
+
+        if (!isActive) {
+          item.classList.add('active');
+          if (symbol) symbol.textContent = '−';
+        }
+      });
+    });
+
+    const form = document.getElementById('orderForm');
+    const success = document.getElementById('successMessage');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const data = {
+        name: document.getElementById('name').value,
+        address: document.getElementById('address').value,
+        postal: document.getElementById('postal').value,
+        email: document.getElementById('email').value
+      };
+
+      console.log('Form submitted:', data);
+
+      form.style.display = 'none';
+      success.style.display = 'block';
+
+      setTimeout(() => {
+        form.reset();
+        success.style.display = 'none';
+        form.style.display = 'block';
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
