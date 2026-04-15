@@ -3,857 +3,804 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ShaveSafe — Slip for røde knopper i bikinilinjen</title>
-  <meta name="description" content="ShaveSafe Prøvepakke — det første barberingssystem der adresserer rodårsagen til knopper og indgroede hår. Prøv risikofrit." />
+  <title>ShaveSafe — Patenteret barbering uden knopper</title>
+  <meta name="description" content="ShaveSafe er det eneste barberingssystem med patenteret antibakteriel teknologi der eliminerer årsagen til knopper UNDER barberingen." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <style>
     :root {
+      --navy: #12232E;
+      --navy-soft: #1B3044;
       --blue: #5B80A0;
-      --blue-light: #e8f0f6;
-      --blue-glow: rgba(91,128,160,0.15);
+      --blue-light: #EDF3F7;
+      --blue-pale: #F5F8FA;
+      --teal: #3A8F85;
+      --teal-light: #E8F5F3;
       --orange: #E8602C;
-      --orange-hover: #d44f1e;
-      --black: #000000;
-      --body: #333333;
-      --muted: #777777;
+      --orange-hover: #D24E1C;
+      --gold: #C49A3C;
+      --gold-light: #FBF6EC;
+      --text: #2A2A2A;
+      --text-secondary: #5A5A5A;
+      --text-muted: #8A8A8A;
       --white: #FFFFFF;
-      --off-white: #FAFAF8;
-      --border: #E8E8E8;
-      --max: 800px;
-      --radius: 16px;
+      --off-white: #FAFAFA;
+      --border: #E5E5E5;
+      --max: 1080px;
+      --max-narrow: 680px;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow-card: 0 2px 20px rgba(18,35,46,0.06);
+      --shadow-hover: 0 12px 40px rgba(18,35,46,0.10);
+      --transition: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Lato', sans-serif;
+      font-family: 'Inter', -apple-system, sans-serif;
       font-weight: 400;
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.6;
-      color: var(--body);
+      color: var(--text);
       background: var(--white);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
-    h1, h2, h3 {
-      font-weight: 700;
-      color: var(--black);
-      line-height: 1.15;
+    h1, h2, h3 { line-height: 1.15; }
+
+    h1, h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 400;
+      color: var(--navy);
     }
 
-    .container {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 0 24px;
+    h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      color: var(--navy);
     }
+
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .container-narrow { max-width: var(--max-narrow); margin: 0 auto; padding: 0 24px; }
 
     /* ── ANIMATIONS ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .r { opacity: 0; transform: translateY(32px); transition: opacity 0.7s var(--transition), transform 0.7s var(--transition); }
+    .r.v { opacity: 1; transform: translateY(0); }
+    .rl { opacity: 0; transform: translateX(-32px); transition: opacity 0.7s var(--transition), transform 0.7s var(--transition); }
+    .rl.v { opacity: 1; transform: translateX(0); }
+    .rr { opacity: 0; transform: translateX(32px); transition: opacity 0.7s var(--transition), transform 0.7s var(--transition); }
+    .rr.v { opacity: 1; transform: translateX(0); }
+    .rs { opacity: 0; transform: scale(0.95); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .rs.v { opacity: 1; transform: scale(1); }
+    .d1 { transition-delay: .08s } .d2 { transition-delay: .16s } .d3 { transition-delay: .24s }
+    .d4 { transition-delay: .32s } .d5 { transition-delay: .40s } .d6 { transition-delay: .48s }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--navy);
+      color: rgba(255,255,255,0.85);
+      padding: 10px 0;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
     }
 
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-40px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal-left.visible {
-      opacity: 1;
-      transform: translateX(0);
+    .trust-bar-inner {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
     }
 
-    .reveal-right {
-      opacity: 0;
-      transform: translateX(40px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal-right.visible {
-      opacity: 1;
-      transform: translateX(0);
+    .trust-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
     }
 
-    .reveal-scale {
-      opacity: 0;
-      transform: scale(0.9);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal-scale.visible {
-      opacity: 1;
-      transform: scale(1);
-    }
+    .trust-bar-item svg { width: 14px; height: 14px; flex-shrink: 0; }
 
-    .stagger-1 { transition-delay: 0.1s; }
-    .stagger-2 { transition-delay: 0.2s; }
-    .stagger-3 { transition-delay: 0.3s; }
-    .stagger-4 { transition-delay: 0.4s; }
-    .stagger-5 { transition-delay: 0.5s; }
-    .stagger-6 { transition-delay: 0.6s; }
-
-    /* ── CTA BUTTON ── */
-    .cta-btn {
-      display: inline-block;
+    /* ── CTA ── */
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       background: var(--orange);
       color: var(--white);
-      font-family: 'Lato', sans-serif;
-      font-size: 17px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
       font-weight: 600;
-      padding: 18px 40px;
+      padding: 16px 36px;
       border-radius: 50px;
       text-decoration: none;
       border: none;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 4px 20px rgba(232, 96, 44, 0.3);
+      transition: all 0.3s var(--transition);
+      box-shadow: 0 4px 16px rgba(232,96,44,0.25);
       letter-spacing: 0.01em;
     }
 
-    .cta-btn:hover {
+    .cta:hover {
       background: var(--orange-hover);
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(232, 96, 44, 0.4);
+      box-shadow: 0 8px 28px rgba(232,96,44,0.35);
     }
 
-    .cta-wrap {
-      text-align: center;
-      margin-top: 48px;
+    .cta-secondary {
+      background: transparent;
+      color: var(--navy);
+      border: 1.5px solid var(--navy);
+      box-shadow: none;
+      padding: 14px 32px;
     }
 
-    /* ── WAVE DIVIDERS ── */
-    .wave-divider {
-      width: 100%;
-      line-height: 0;
-      overflow: hidden;
+    .cta-secondary:hover {
+      background: var(--navy);
+      color: var(--white);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-card);
     }
 
-    .wave-divider svg {
-      width: 100%;
-      height: 60px;
-      display: block;
-    }
-
-    .wave-divider.flip svg {
-      transform: scaleY(-1);
-    }
+    .cta-arrow { font-size: 18px; transition: transform 0.2s; }
+    .cta:hover .cta-arrow { transform: translateX(3px); }
 
     /* ── HERO ── */
     .hero {
-      min-height: 90vh;
+      min-height: 85vh;
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
       position: relative;
-      background: linear-gradient(160deg, #f9f7f4 0%, var(--blue-light) 50%, #f4ebe5 100%);
+      background: linear-gradient(165deg, var(--white) 0%, var(--blue-pale) 40%, var(--blue-light) 100%);
       overflow: hidden;
-      padding: 80px 0 40px;
+      padding: 80px 0 60px;
     }
 
-    /* Decorative blobs */
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(91,128,160,0.12) 0%, transparent 70%);
-      top: -100px;
-      right: -150px;
-      animation: float 8s ease-in-out infinite;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      width: 400px;
-      height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(232,96,44,0.08) 0%, transparent 70%);
-      bottom: -80px;
-      left: -120px;
-      animation: float 10s ease-in-out infinite reverse;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0); }
-      33% { transform: translate(15px, -20px); }
-      66% { transform: translate(-10px, 10px); }
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 580px;
-      padding: 0 24px;
-    }
-
-    .hero-eyebrow {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--blue);
-      background: rgba(91,128,160,0.12);
-      padding: 8px 20px;
-      border-radius: 50px;
-      margin-bottom: 28px;
-    }
-
-    .hero h1 {
-      font-size: 34px;
-      font-weight: 300;
-      margin-bottom: 20px;
-      color: var(--black);
-    }
-
-    .hero h1 em {
-      font-style: normal;
-      font-weight: 700;
-    }
-
-    .hero-sub {
-      font-size: 18px;
-      color: var(--body);
-      line-height: 1.7;
-      margin-bottom: 40px;
-      font-weight: 300;
-    }
-
-    .scroll-indicator {
-      margin-top: 60px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .scroll-indicator span {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--muted);
-    }
-
-    .scroll-line {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--muted), transparent);
-      animation: scroll-pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes scroll-pulse {
-      0%, 100% { opacity: 0.3; transform: scaleY(1); }
-      50% { opacity: 1; transform: scaleY(1.2); }
-    }
-
-    /* ── PROBLEM (Sektion 2) ── */
-    .problem {
-      padding: 100px 0;
-      text-align: center;
-      position: relative;
-    }
-
-    .problem h2 {
-      font-size: 28px;
-      font-weight: 300;
-      margin-bottom: 56px;
-    }
-
-    .problem h2 em {
-      font-style: normal;
-      font-weight: 700;
-    }
-
-    .problem-lines {
-      list-style: none;
-      max-width: 460px;
-      margin: 0 auto;
-    }
-
-    .problem-lines li {
-      font-size: 19px;
-      font-weight: 300;
-      color: var(--body);
-      margin-bottom: 24px;
-      position: relative;
-      padding-left: 24px;
-    }
-
-    .problem-lines li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 12px;
-      width: 8px;
-      height: 1px;
-      background: var(--blue);
-    }
-
-    .problem-close {
-      margin-top: 56px;
-      padding: 32px 40px;
-      background: linear-gradient(135deg, var(--blue-light), rgba(91,128,160,0.08));
-      border-radius: var(--radius);
-      font-size: 18px;
-      font-style: italic;
-      font-weight: 300;
-      color: var(--body);
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-    }
-
-    .problem-close::before {
-      content: '"';
-      position: absolute;
-      top: -8px;
-      left: 20px;
-      font-size: 60px;
-      color: var(--blue);
-      opacity: 0.3;
-      font-family: Georgia, serif;
-      line-height: 1;
-    }
-
-    /* ── REFRAME (Sektion 3) ── */
-    .reframe {
-      padding: 100px 0 80px;
-      background: var(--off-white);
-      position: relative;
-    }
-
-    .reframe-content {
+    .hero-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 48px;
       align-items: center;
     }
 
-    .reframe-text h2 {
-      font-size: 26px;
-      margin-bottom: 20px;
-      font-weight: 300;
-      line-height: 1.3;
+    .hero-content { position: relative; z-index: 2; }
+
+    .patent-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold-light);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 24px;
     }
 
-    .reframe-text h2 em {
-      font-style: normal;
-      font-weight: 700;
+    .patent-badge svg { width: 14px; height: 14px; }
+
+    .hero h1 {
+      font-size: 38px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
       color: var(--blue);
     }
 
-    .reframe-text p {
-      font-size: 16px;
-      color: var(--body);
-      font-weight: 300;
+    .hero-body {
+      font-size: 17px;
+      color: var(--text-secondary);
+      margin-bottom: 36px;
+      max-width: 480px;
       line-height: 1.7;
     }
 
-    /* Animated mechanism visual */
-    .mech-visual {
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .hero-proof {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 16px;
-      padding: 40px 20px;
-    }
-
-    .mech-node {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      flex: 1;
-      max-width: 140px;
-    }
-
-    .mech-circle {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 14px;
-      position: relative;
-      transition: transform 0.4s ease;
-    }
-
-    .mech-circle:hover {
-      transform: scale(1.08);
-    }
-
-    .mech-circle.step-1 {
-      background: linear-gradient(135deg, var(--blue-light), rgba(91,128,160,0.2));
-      border: 2px solid var(--blue);
-    }
-
-    .mech-circle.step-2 {
-      background: linear-gradient(135deg, #FFF3ED, rgba(232,96,44,0.15));
-      border: 2px solid var(--orange);
-    }
-
-    .mech-circle.step-3 {
-      background: linear-gradient(135deg, #FDECEC, rgba(220,60,60,0.15));
-      border: 2px solid #D04040;
-    }
-
-    .mech-circle svg {
-      width: 36px;
-      height: 36px;
-    }
-
-    /* Animated pulse ring */
-    .mech-circle::after {
-      content: '';
-      position: absolute;
-      inset: -6px;
-      border-radius: 50%;
-      border: 1px solid currentColor;
-      opacity: 0;
-      animation: ring-pulse 3s ease-in-out infinite;
-    }
-
-    .mech-circle.step-1::after { color: var(--blue); animation-delay: 0s; }
-    .mech-circle.step-2::after { color: var(--orange); animation-delay: 1s; }
-    .mech-circle.step-3::after { color: #D04040; animation-delay: 2s; }
-
-    @keyframes ring-pulse {
-      0%, 100% { opacity: 0; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.15); }
-    }
-
-    .mech-label {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--black);
-      margin-bottom: 4px;
-    }
-
-    .mech-desc {
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.4;
-    }
-
-    .mech-arrow-line {
-      width: 32px;
-      height: 2px;
-      background: linear-gradient(to right, var(--blue), var(--orange));
-      position: relative;
-      flex-shrink: 0;
-      margin-bottom: 36px;
-    }
-
-    .mech-arrow-line::after {
-      content: '';
-      position: absolute;
-      right: -4px;
-      top: -3px;
-      width: 8px;
-      height: 8px;
-      border-top: 2px solid var(--orange);
-      border-right: 2px solid var(--orange);
-      transform: rotate(45deg);
-    }
-
-    /* ── MECHANISM / SOLUTION (Sektion 4) ── */
-    .mechanism {
-      padding: 100px 0;
-      text-align: center;
-    }
-
-    .mechanism h2 {
-      font-size: 26px;
-      font-weight: 300;
-      margin-bottom: 16px;
-    }
-
-    .mechanism h2 em {
-      font-style: normal;
-      font-weight: 700;
-    }
-
-    .mechanism-sub {
-      font-size: 15px;
-      color: var(--muted);
-      margin-bottom: 56px;
-    }
-
-    .solution-grid {
-      display: grid;
-      grid-template-columns: 1fr;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
-    .solution-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 36px 28px;
-      text-align: center;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    .hero-proof-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .hero-proof-item strong { color: var(--navy); font-weight: 600; }
+
+    .hero-visual {
       position: relative;
-      overflow: hidden;
-    }
-
-    .solution-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(to right, var(--blue), rgba(91,128,160,0.3));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.5s ease;
-    }
-
-    .solution-card:hover {
-      border-color: var(--blue);
-      box-shadow: 0 12px 40px var(--blue-glow);
-      transform: translateY(-4px);
-    }
-
-    .solution-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .solution-icon {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 20px;
-      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, var(--blue-light), rgba(91,128,160,0.15));
     }
 
-    .solution-icon svg {
-      width: 28px;
-      height: 28px;
-    }
-
-    .solution-card h3 {
-      font-size: 17px;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .solution-card p {
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--body);
-      line-height: 1.6;
-    }
-
-    /* ── SOCIAL PROOF (Sektion 5) ── */
-    .social-proof {
-      padding: 100px 0;
-      background: linear-gradient(160deg, var(--off-white) 0%, var(--blue-light) 100%);
-    }
-
-    .social-proof h2 {
-      font-size: 26px;
-      font-weight: 300;
-      text-align: center;
-      margin-bottom: 56px;
-    }
-
-    .social-proof h2 em {
-      font-style: normal;
-      font-weight: 700;
-    }
-
-    .testimonials-scroll {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
-    .t-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 32px 28px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-      transition: all 0.4s ease;
-      position: relative;
-    }
-
-    .t-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
-    }
-
-    .t-stars {
-      display: flex;
-      gap: 3px;
-      margin-bottom: 16px;
-    }
-
-    .t-star {
-      width: 18px;
-      height: 18px;
-    }
-
-    .t-card blockquote {
-      font-size: 16px;
-      font-style: italic;
-      font-weight: 300;
-      color: var(--body);
-      line-height: 1.6;
-      margin-bottom: 16px;
-      border: none;
-    }
-
-    .t-name {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--black);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .t-name::before {
-      content: '';
-      width: 20px;
-      height: 2px;
-      background: var(--blue);
-    }
-
-    .tp-logo {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 13px;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-    }
-
-    .tp-logo strong {
-      color: #00B67A;
-      font-weight: 700;
-    }
-
-    /* ── PRODUCT (Sektion 6) ── */
-    .product {
-      padding: 100px 0;
-      text-align: center;
-    }
-
-    .product h2 {
-      font-size: 26px;
-      font-weight: 300;
-      margin-bottom: 8px;
-    }
-
-    .product h2 em {
-      font-style: normal;
-      font-weight: 700;
-    }
-
-    .product-sub {
-      font-size: 15px;
-      color: var(--muted);
-      margin-bottom: 48px;
-    }
-
-    .product-hero {
-      max-width: 420px;
-      margin: 0 auto 40px;
-      aspect-ratio: 1;
-      background: linear-gradient(135deg, var(--off-white), var(--blue-light));
+    .hero-product-ring {
+      width: 340px;
+      height: 340px;
       border-radius: 50%;
+      background: linear-gradient(135deg, var(--white), var(--blue-light));
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
-    }
-
-    .product-hero::after {
-      content: '';
-      position: absolute;
-      inset: -12px;
-      border-radius: 50%;
-      border: 1px dashed rgba(91,128,160,0.25);
-      animation: spin 30s linear infinite;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .product-placeholder {
-      color: var(--muted);
-      font-size: 14px;
-      padding: 40px;
-      text-align: center;
-    }
-
-    .product-badges {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      max-width: 500px;
       margin: 0 auto;
     }
 
-    .p-badge {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      text-align: left;
-      padding: 20px;
-      background: var(--off-white);
+    .hero-product-ring::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1px solid rgba(91,128,160,0.2);
+    }
+
+    .hero-product-ring::after {
+      content: '';
+      position: absolute;
+      inset: -24px;
+      border-radius: 50%;
+      border: 1px dashed rgba(91,128,160,0.1);
+      animation: spin 40s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .hero-placeholder {
+      color: var(--text-muted);
+      font-size: 13px;
+      text-align: center;
+      padding: 40px;
+    }
+
+    /* Floating stat badges around product */
+    .float-badge {
+      position: absolute;
+      background: var(--white);
       border-radius: var(--radius);
+      padding: 12px 16px;
+      box-shadow: var(--shadow-card);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--navy);
+      animation: float-slow 4s ease-in-out infinite;
+      z-index: 3;
+    }
+
+    .float-badge span { display: block; font-size: 10px; font-weight: 400; color: var(--text-muted); margin-top: 2px; }
+
+    .float-badge.fb-1 { top: 10%; right: -10%; animation-delay: 0s; }
+    .float-badge.fb-2 { bottom: 15%; left: -5%; animation-delay: 1.5s; }
+    .float-badge.fb-3 { top: 5%; left: 0%; animation-delay: 0.8s; }
+
+    @keyframes float-slow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* ── SECTION SPACING ── */
+    .section { padding: 100px 0; }
+    .section-sm { padding: 72px 0; }
+
+    /* ── PROBLEM ── */
+    .problem { background: var(--white); }
+
+    .problem-intro {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 64px;
+    }
+
+    .problem-intro h2 { font-size: 32px; margin-bottom: 16px; }
+    .problem-intro p { font-size: 16px; color: var(--text-secondary); }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .problem-card {
+      background: var(--off-white);
       border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      transition: all 0.35s var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .problem-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .problem-card:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    .problem-card:hover::before { transform: scaleX(1); }
+
+    .problem-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--blue-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .problem-icon svg { width: 22px; height: 22px; }
+
+    .problem-card h3 { font-size: 15px; margin-bottom: 6px; }
+    .problem-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.55; }
+
+    .problem-card.full {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+      border-color: transparent;
+      color: var(--white);
+      text-align: center;
+      padding: 40px 32px;
+    }
+
+    .problem-card.full h3 { color: var(--white); font-size: 17px; }
+    .problem-card.full p { color: rgba(255,255,255,0.7); max-width: 420px; margin: 0 auto; }
+    .problem-card.full::before { display: none; }
+    .problem-card.full:hover { transform: none; box-shadow: none; }
+
+    /* ── SCIENCE / MECHANISM ── */
+    .science {
+      background: var(--navy);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .science::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(91,128,160,0.15) 0%, transparent 70%);
+      top: -200px;
+      right: -200px;
+    }
+
+    .science-header {
+      text-align: center;
+      margin-bottom: 72px;
+      position: relative;
+    }
+
+    .science-header h2 {
+      font-size: 32px;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .science-header h2 em { color: var(--blue); font-style: italic; }
+
+    .science-header p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    /* 3-step mechanism */
+    .mechanism-flow {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: 800px;
+      margin: 0 auto 64px;
+      position: relative;
+    }
+
+    .mech-step {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 20px;
+      align-items: start;
+      position: relative;
+    }
+
+    .mech-num {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 600;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .mech-num.n1 { background: rgba(91,128,160,0.2); color: var(--blue); }
+    .mech-num.n2 { background: rgba(232,96,44,0.2); color: var(--orange); }
+    .mech-num.n3 { background: rgba(58,143,133,0.2); color: var(--teal); }
+
+    /* Animated ring */
+    .mech-num::after {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      border: 1.5px solid currentColor;
+      opacity: 0;
+      animation: pulse-ring 3s ease-in-out infinite;
+    }
+
+    .mech-num.n1::after { animation-delay: 0s; }
+    .mech-num.n2::after { animation-delay: 1s; }
+    .mech-num.n3::after { animation-delay: 2s; }
+
+    @keyframes pulse-ring {
+      0%, 100% { opacity: 0; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.12); }
+    }
+
+    .mech-text h3 {
+      color: var(--white);
+      font-size: 18px;
+      margin-bottom: 6px;
+      margin-top: 4px;
+    }
+
+    .mech-text p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+
+    /* Connecting line between steps */
+    .mech-connector {
+      width: 1px;
+      height: 24px;
+      background: linear-gradient(to bottom, rgba(91,128,160,0.4), rgba(232,96,44,0.4));
+      margin-left: 36px;
+    }
+
+    /* Patent callout */
+    .patent-callout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: rgba(196,154,60,0.12);
+      border: 1px solid rgba(196,154,60,0.3);
+      border-radius: 50px;
+      padding: 14px 28px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .patent-callout svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+    .patent-callout span {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── COMPARISON ── */
+    .comparison { background: var(--off-white); }
+
+    .comparison h2 {
+      font-size: 30px;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .comparison h2 em { font-style: italic; color: var(--blue); }
+
+    .compare-table {
+      max-width: 640px;
+      margin: 0 auto;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .compare-row {
+      display: grid;
+      grid-template-columns: 1fr 100px 100px;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    .compare-row:last-child { border-bottom: none; }
+
+    .compare-row.head {
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .compare-cell {
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+    }
+
+    .compare-cell:not(:first-child) {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .compare-label { color: var(--text-secondary); }
+
+    .compare-check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .compare-check.yes {
+      background: var(--teal-light);
+      color: var(--teal);
+    }
+
+    .compare-check.no {
+      background: #FEF2F2;
+      color: #D04040;
+    }
+
+    .compare-check svg { width: 14px; height: 14px; }
+
+    /* ── SOCIAL PROOF ── */
+    .proof { background: var(--white); }
+
+    .proof-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .proof-header h2 { font-size: 30px; margin-bottom: 8px; }
+    .proof-header h2 em { font-style: italic; color: var(--blue); }
+
+    .proof-header .tp-score {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .proof-header .tp-score strong { color: #00B67A; }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .proof-card {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
       transition: all 0.3s ease;
     }
 
-    .p-badge:hover {
+    .proof-card:hover {
       border-color: var(--blue);
-      background: var(--blue-light);
+      box-shadow: var(--shadow-card);
+      transform: translateY(-2px);
     }
 
-    .p-badge-icon {
+    .proof-stars {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 14px;
+    }
+
+    .proof-stars svg { width: 16px; height: 16px; }
+
+    .proof-card blockquote {
+      font-size: 15px;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 14px;
+      border: none;
+    }
+
+    .proof-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    /* ── PRODUCT ── */
+    .product { background: var(--blue-pale); }
+
+    .product-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .product-visual {
+      display: flex;
+      justify-content: center;
+    }
+
+    .product-circle {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--white), var(--blue-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .product-circle::after {
+      content: '';
+      position: absolute;
+      inset: -16px;
+      border-radius: 50%;
+      border: 1px dashed rgba(91,128,160,0.15);
+      animation: spin 50s linear infinite;
+    }
+
+    .product-ph {
+      color: var(--text-muted);
+      font-size: 13px;
+      text-align: center;
+      padding: 32px;
+    }
+
+    .product-info h2 { font-size: 28px; margin-bottom: 12px; }
+    .product-info h2 em { font-style: italic; color: var(--blue); }
+
+    .product-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+      line-height: 1.65;
+    }
+
+    .product-specs {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .spec-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      transition: border-color 0.2s;
+    }
+
+    .spec-row:hover { border-color: var(--blue); }
+
+    .spec-icon {
       width: 36px;
       height: 36px;
-      border-radius: 50%;
-      background: var(--blue);
+      border-radius: 8px;
+      background: var(--blue-light);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
 
-    .p-badge-icon svg {
-      width: 18px;
-      height: 18px;
-    }
+    .spec-icon svg { width: 18px; height: 18px; }
 
-    .p-badge-text {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--black);
-    }
+    .spec-text { font-size: 14px; font-weight: 500; color: var(--navy); }
+    .spec-sub { font-size: 12px; color: var(--text-muted); margin-top: 1px; }
 
-    .p-badge-desc {
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--muted);
-      margin-top: 2px;
-    }
-
-    .product-qualifier {
-      font-size: 14px;
-      color: var(--muted);
-      font-style: italic;
-      margin-top: 28px;
-    }
-
-    /* ── FEATURE BAR (Sektion 7) ── */
+    /* ── FEATURE BAR ── */
     .feature-bar {
-      background: var(--blue);
-      color: var(--white);
-      padding: 32px 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .feature-bar::before {
-      content: '';
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.05);
-      top: -150px;
-      right: -50px;
+      background: var(--navy);
+      padding: 36px 0;
     }
 
     .fb-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      gap: 24px;
       text-align: center;
+      color: var(--white);
     }
 
     .fb-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
-    .fb-icon-wrap {
-      width: 44px;
-      height: 44px;
+    .fb-icon {
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.08);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
-      transition: transform 0.3s ease;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
-    .fb-item:hover .fb-icon-wrap {
-      transform: scale(1.15);
+    .fb-item:hover .fb-icon {
+      background: rgba(255,255,255,0.14);
+      transform: scale(1.08);
     }
+
+    .fb-icon svg { width: 22px; height: 22px; }
 
     .fb-label {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      opacity: 0.85;
     }
 
-    /* ── OBJECTIONS (Sektion 8) ── */
-    .objections {
-      padding: 100px 0;
-    }
+    /* ── FAQ ── */
+    .faq-section { background: var(--white); }
 
-    .objections h2 {
-      font-size: 26px;
-      font-weight: 300;
+    .faq-section h2 {
+      font-size: 28px;
       text-align: center;
       margin-bottom: 48px;
     }
 
-    .objections h2 em {
-      font-style: normal;
-      font-weight: 700;
-    }
-
-    .accordion {
+    .faq-list {
       max-width: 600px;
       margin: 0 auto;
     }
 
-    .acc-item {
-      border-bottom: 1px solid var(--border);
-    }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
 
-    .acc-item:first-child {
-      border-top: 1px solid var(--border);
-    }
-
-    .acc-btn {
+    .faq-btn {
       width: 100%;
       background: transparent;
       border: none;
@@ -861,198 +808,167 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 22px 4px;
-      font-family: 'Lato', sans-serif;
-      font-size: 16px;
+      padding: 20px 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
       font-weight: 600;
-      color: var(--black);
+      color: var(--navy);
       text-align: left;
+      gap: 16px;
       transition: color 0.2s;
     }
 
-    .acc-btn:hover { color: var(--blue); }
+    .faq-btn:hover { color: var(--blue); }
 
-    .acc-plus {
+    .faq-plus {
       width: 28px;
       height: 28px;
       border-radius: 50%;
       border: 1.5px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
       flex-shrink: 0;
-      transition: all 0.3s ease;
       position: relative;
+      transition: all 0.3s ease;
     }
 
-    .acc-plus::before,
-    .acc-plus::after {
+    .faq-plus::before, .faq-plus::after {
       content: '';
       position: absolute;
-      background: var(--body);
-      transition: transform 0.3s ease;
+      background: var(--text-secondary);
+      top: 50%; left: 50%;
+      transition: all 0.3s ease;
     }
 
-    .acc-plus::before {
-      width: 12px;
-      height: 1.5px;
-    }
+    .faq-plus::before { width: 12px; height: 1.5px; transform: translate(-50%, -50%); }
+    .faq-plus::after { width: 1.5px; height: 12px; transform: translate(-50%, -50%); }
 
-    .acc-plus::after {
-      width: 1.5px;
-      height: 12px;
-    }
+    .faq-item.open .faq-plus { border-color: var(--blue); background: var(--blue-light); }
+    .faq-item.open .faq-plus::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
 
-    .acc-item.open .acc-plus {
-      border-color: var(--blue);
-      background: var(--blue-light);
-    }
-
-    .acc-item.open .acc-plus::after {
-      transform: rotate(90deg);
-      opacity: 0;
-    }
-
-    .acc-body {
+    .faq-body {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: max-height 0.4s var(--transition);
     }
 
-    .acc-body-inner {
-      padding: 0 4px 24px;
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--body);
+    .faq-body-inner {
+      padding: 0 0 20px;
+      font-size: 14px;
+      color: var(--text-secondary);
       line-height: 1.7;
     }
 
-    /* ── FINAL CTA (Sektion 9) ── */
-    .final-cta {
+    /* ── FINAL CTA ── */
+    .final {
       padding: 100px 0;
       text-align: center;
-      background: linear-gradient(160deg, var(--off-white) 0%, var(--blue-light) 50%, #f4ebe5 100%);
+      background: linear-gradient(165deg, var(--blue-pale) 0%, var(--blue-light) 50%, var(--white) 100%);
       position: relative;
       overflow: hidden;
     }
 
-    .final-cta::before {
+    .final::before {
       content: '';
       position: absolute;
       width: 500px;
       height: 500px;
       border-radius: 50%;
-      background: radial-gradient(circle, var(--blue-glow) 0%, transparent 70%);
-      top: -200px;
-      left: -200px;
-      animation: float 12s ease-in-out infinite;
+      background: radial-gradient(circle, rgba(91,128,160,0.1) 0%, transparent 70%);
+      bottom: -200px;
+      right: -100px;
     }
 
-    .final-cta h2 {
-      font-size: 30px;
-      font-weight: 300;
-      margin-bottom: 20px;
-      position: relative;
-    }
+    .final h2 { font-size: 34px; margin-bottom: 16px; position: relative; }
+    .final h2 em { font-style: italic; color: var(--blue); }
 
-    .final-cta h2 em {
-      font-style: normal;
-      font-weight: 700;
-    }
-
-    .final-cta-text {
-      max-width: 420px;
-      margin: 0 auto 40px;
-      font-size: 17px;
-      font-weight: 300;
-      color: var(--body);
+    .final-body {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 400px;
+      margin: 0 auto 36px;
       line-height: 1.7;
       position: relative;
     }
 
-    .trust-row {
+    .final-trust {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px 32px;
+      gap: 16px 28px;
       margin-top: 32px;
       position: relative;
     }
 
-    .trust-item {
+    .final-trust span {
+      font-size: 13px;
+      color: var(--text-muted);
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      color: var(--body);
-      font-weight: 400;
+      gap: 6px;
     }
 
-    .trust-dot {
-      width: 6px;
-      height: 6px;
+    .final-trust .dot {
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: var(--blue);
-      flex-shrink: 0;
     }
 
     /* ── STICKY MOBILE CTA ── */
-    .sticky-cta {
+    .sticky {
       display: none;
       position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
       z-index: 100;
       background: var(--orange);
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
-      backdrop-filter: blur(10px);
+      box-shadow: 0 -2px 16px rgba(0,0,0,0.1);
     }
 
-    .sticky-cta a {
+    .sticky a {
       display: block;
-      padding: 16px;
+      padding: 15px;
       text-align: center;
       color: var(--white);
-      font-family: 'Lato', sans-serif;
-      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
       font-weight: 600;
       text-decoration: none;
       letter-spacing: 0.02em;
     }
 
-    .sticky-cta.visible { display: block; }
+    .sticky.show { display: block; }
 
     /* ── FOOTER ── */
     footer {
-      background: #111111;
+      background: var(--navy);
       color: rgba(255,255,255,0.5);
-      padding: 56px 24px;
+      padding: 48px 24px;
       text-align: center;
     }
 
     .footer-brand {
-      font-size: 18px;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
       font-weight: 700;
       color: var(--white);
-      margin-bottom: 6px;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
     }
 
-    .footer-tagline {
-      font-size: 13px;
-      font-weight: 300;
-      margin-bottom: 28px;
-      letter-spacing: 0.08em;
+    .footer-tag {
+      font-size: 12px;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
+      margin-bottom: 24px;
+      color: rgba(255,255,255,0.3);
     }
 
     .footer-links {
       display: flex;
       justify-content: center;
-      gap: 28px;
+      gap: 24px;
       flex-wrap: wrap;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
     .footer-links a {
@@ -1064,491 +980,530 @@
 
     .footer-links a:hover { color: var(--white); }
 
-    .footer-copy {
-      font-size: 11px;
-      color: rgba(255,255,255,0.3);
-    }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.25); }
 
-    /* ── DESKTOP ── */
+    /* ── RESPONSIVE ── */
     @media (min-width: 768px) {
-      .hero h1 { font-size: 42px; }
+      .hero h1 { font-size: 46px; }
 
-      .reframe-content {
+      .hero-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 64px;
+        gap: 48px;
       }
 
-      .solution-grid {
-        grid-template-columns: repeat(3, 1fr);
+      .problem-grid { grid-template-columns: 1fr 1fr; }
+
+      .mechanism-flow {
+        gap: 0;
       }
 
-      .testimonials-scroll {
-        grid-template-columns: 1fr 1fr;
-      }
+      .mech-connector { margin-left: 36px; }
 
-      .t-card:nth-child(5) {
+      .proof-grid { grid-template-columns: 1fr 1fr; }
+
+      .proof-card:nth-child(5) {
         grid-column: 1 / -1;
-        max-width: 400px;
+        max-width: 380px;
         margin: 0 auto;
       }
 
-      .fb-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
+      .product-layout { grid-template-columns: 1fr 1fr; }
 
-      .product-badges {
-        grid-template-columns: 1fr 1fr;
-      }
+      .fb-grid { grid-template-columns: repeat(4, 1fr); }
 
-      .sticky-cta { display: none !important; }
+      .sticky { display: none !important; }
+    }
 
-      .final-cta h2 { font-size: 34px; }
+    @media (min-width: 1024px) {
+      .hero h1 { font-size: 50px; }
+      .proof-grid { grid-template-columns: repeat(3, 1fr); }
+      .proof-card:nth-child(4) { grid-column: auto; }
+      .proof-card:nth-child(5) { grid-column: auto; max-width: none; }
     }
 
     @media (max-width: 767px) {
-      body { padding-bottom: 52px; }
-      .cta-btn { width: 100%; text-align: center; padding: 16px 24px; }
-
-      .mech-visual {
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      .mech-arrow-line {
-        width: 2px;
-        height: 24px;
-        margin-bottom: 0;
-        background: linear-gradient(to bottom, var(--blue), var(--orange));
-      }
-
-      .mech-arrow-line::after {
-        right: -3px;
-        top: auto;
-        bottom: -4px;
-        transform: rotate(135deg);
-      }
-
-      .product-badges {
-        grid-template-columns: 1fr;
-      }
-
-      .product-hero {
-        max-width: 280px;
-      }
+      body { padding-bottom: 50px; }
+      .section { padding: 72px 0; }
+      .cta { width: 100%; justify-content: center; }
+      .cta-secondary { width: auto; }
+      .hero { min-height: auto; padding: 60px 0 48px; }
+      .hero-visual { order: -1; }
+      .hero-product-ring { width: 240px; height: 240px; }
+      .float-badge { display: none; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .compare-row { grid-template-columns: 1fr 80px 80px; }
+      .compare-cell { padding: 12px; font-size: 13px; }
+      .product-circle { width: 240px; height: 240px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ═══════════════════════════════ -->
-  <!-- HERO                            -->
-  <!-- ═══════════════════════════════ -->
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-bar-item">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M7 1L2 4v4c0 3.5 5 5 5 5s5-1.5 5-5V4L7 1z" stroke="white" stroke-width="1.2" fill="none"/><path d="M5 7l1.5 1.5L9 5.5" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Patenteret formel
+      </div>
+      <div class="trust-bar-item">
+        <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="white" stroke-width="1.2"/><path d="M4.5 7l1.8 1.8L9.5 5.5" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Klinisk testet
+      </div>
+      <div class="trust-bar-item">
+        <svg viewBox="0 0 14 14" fill="none"><rect x="2" y="3" width="10" height="8" rx="1.5" stroke="white" stroke-width="1.2"/><path d="M2 6h10" stroke="white" stroke-width="1.2"/></svg>
+        Fri fragt over 499 DKK
+      </div>
+      <div class="trust-bar-item">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M7 2l1.5 3h3.2l-2.6 2 1 3L7 8.2 3.9 10l1-3-2.6-2h3.2L7 2z" stroke="white" stroke-width="1.2" fill="none"/></svg>
+        4.6★ på Trustpilot
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ -->
+  <!-- HERO                        -->
+  <!-- ═══════════════════════════ -->
   <section class="hero" id="top">
-    <div class="hero-inner">
-      <div class="hero-eyebrow reveal stagger-1">ShaveSafe for kvinder</div>
-      <h1 class="reveal stagger-2">Der er ting, du <em>aldrig fortæller nogen.</em> Det her er én af dem.</h1>
-      <p class="hero-sub reveal stagger-3">
-        Røde knopper i bikinilinjen. Du har levet med dem i årevis. Du har aldrig talt med nogen om det.
-      </p>
-      <div class="reveal stagger-4">
-        <a href="https://shavesafe.dk" class="cta-btn">Prøv ShaveSafe — Risikofrit</a>
-      </div>
-      <div class="scroll-indicator reveal stagger-5">
-        <span>Scroll</span>
-        <div class="scroll-line"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════ -->
-  <!-- PROBLEM                         -->
-  <!-- ═══════════════════════════════ -->
-  <section class="problem">
     <div class="container">
-      <h2 class="reveal">Du <em>kender</em> det godt.</h2>
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="patent-badge r d1">
+            <svg viewBox="0 0 14 14" fill="none"><path d="M7 1L2 4v4c0 3.5 5 5 5 5s5-1.5 5-5V4L7 1z" stroke="currentColor" stroke-width="1.5"/></svg>
+            Patenteret teknologi
+          </div>
 
-      <ul class="problem-lines">
-        <li class="reveal stagger-1">Du barberer dig. Det ser fint ud i badet.</li>
-        <li class="reveal stagger-2">12 timer senere: røde knopper. Kløe. Indgroede hår.</li>
-        <li class="reveal stagger-3">Du tjekker spejlet før du tager undertøj på.</li>
-        <li class="reveal stagger-4">Du tænker på det, når lyset er tændt i soveværelset.</li>
-        <li class="reveal stagger-5">Du tænker på det, når sommeren nærmer sig.</li>
-        <li class="reveal stagger-6">Og du har aldrig talt med nogen om det.</li>
-      </ul>
+          <h1 class="r d2">Barbering uden<br><em>knopper.</em> Punkt.</h1>
 
-      <div class="problem-close reveal">
-        Du troede, det var din hud. At du bare var sart. At det var noget, du måtte leve med.
-      </div>
-    </div>
-  </section>
+          <p class="hero-body r d3">
+            Det eneste barberingssystem med patenteret antibakteriel teknologi der eliminerer årsagen til irritation <strong>under</strong> barberingen — ikke efter.
+          </p>
 
-  <!-- ═══════════════════════════════ -->
-  <!-- REFRAME                         -->
-  <!-- ═══════════════════════════════ -->
-  <section class="reframe">
-    <div class="container">
-      <div class="reframe-content">
-        <div class="reframe-text reveal-left">
-          <h2>Dit problem er ikke din hud. Det er <em>hvad der sker under barberingen.</em></h2>
-          <p>Hver gang du barberer dig, opstår tusindvis af usynlige mikroåbninger. Inden for sekunder trænger bakterier ind. Det er det der skaber knopper — ikke sart hud, ikke forkert teknik.</p>
+          <div class="hero-ctas r d4">
+            <a href="https://shavesafe.dk" class="cta">Prøv risikofrit <span class="cta-arrow">→</span></a>
+            <a href="#science" class="cta cta-secondary">Se videnskaben</a>
+          </div>
+
+          <div class="hero-proof r d5">
+            <span class="hero-proof-item">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
+              <strong>4.6</strong> Trustpilot
+            </span>
+            <span class="hero-proof-item">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L2 4v4c0 3.5 5 5 5 5s5-1.5 5-5V4L7 1z" stroke="#C49A3C" stroke-width="1.2"/></svg>
+              Dansk patent
+            </span>
+            <span class="hero-proof-item">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5" stroke="#5B80A0" stroke-width="1.2"/><path d="M5 7l1.5 1.5L9.5 5" stroke="#5B80A0" stroke-width="1.2" stroke-linecap="round"/></svg>
+              0% parfume
+            </span>
+          </div>
         </div>
 
-        <div class="mech-visual reveal-right">
-          <div class="mech-node">
-            <div class="mech-circle step-1">
-              <svg viewBox="0 0 36 36" fill="none">
-                <rect x="8" y="13" width="20" height="7" rx="2" stroke="#5B80A0" stroke-width="2"/>
-                <line x1="14" y1="20" x2="14" y2="28" stroke="#5B80A0" stroke-width="1.5" stroke-dasharray="3 2"/>
-                <line x1="18" y1="20" x2="18" y2="30" stroke="#5B80A0" stroke-width="1.5" stroke-dasharray="3 2"/>
-                <line x1="22" y1="20" x2="22" y2="27" stroke="#5B80A0" stroke-width="1.5" stroke-dasharray="3 2"/>
-              </svg>
-            </div>
-            <div class="mech-label">Mikroåbninger</div>
-            <div class="mech-desc">Bladet skaber usynlige åbninger</div>
-          </div>
-
-          <div class="mech-arrow-line"></div>
-
-          <div class="mech-node">
-            <div class="mech-circle step-2">
-              <svg viewBox="0 0 36 36" fill="none">
-                <circle cx="12" cy="14" r="3" stroke="#E8602C" stroke-width="1.5"/>
-                <circle cx="24" cy="12" r="2.5" stroke="#E8602C" stroke-width="1.5"/>
-                <circle cx="18" cy="22" r="3.5" stroke="#E8602C" stroke-width="1.5"/>
-                <circle cx="26" cy="24" r="2" stroke="#E8602C" stroke-width="1.5"/>
-              </svg>
-            </div>
-            <div class="mech-label">Bakterier</div>
-            <div class="mech-desc">Trænger ind på sekunder</div>
-          </div>
-
-          <div class="mech-arrow-line"></div>
-
-          <div class="mech-node">
-            <div class="mech-circle step-3">
-              <svg viewBox="0 0 36 36" fill="none">
-                <circle cx="12" cy="16" r="4" fill="#FDECEC" stroke="#D04040" stroke-width="1.5"/>
-                <circle cx="22" cy="14" r="3" fill="#FDECEC" stroke="#D04040" stroke-width="1.5"/>
-                <circle cx="17" cy="24" r="3.5" fill="#FDECEC" stroke="#D04040" stroke-width="1.5"/>
-              </svg>
-            </div>
-            <div class="mech-label">Inflammation</div>
-            <div class="mech-desc">Knopper, rødme, indgroede hår</div>
+        <div class="hero-visual r d3">
+          <div class="hero-product-ring">
+            <div class="hero-placeholder">PLACEHOLDER:<br>ShaveSafe Prøvepakke</div>
+            <div class="float-badge fb-3">🔬 Klinisk testet<span>Nordisk mærkning</span></div>
+            <div class="float-badge fb-1">🛡️ Patenteret<span>Antibakteriel gel</span></div>
+            <div class="float-badge fb-2">⭐ 4.6 / 5<span>Trustpilot</span></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════ -->
-  <!-- MECHANISM                       -->
-  <!-- ═══════════════════════════════ -->
-  <section class="mechanism">
+  <!-- ═══════════════════════════ -->
+  <!-- PROBLEM                     -->
+  <!-- ═══════════════════════════ -->
+  <section class="section problem">
     <div class="container">
-      <h2 class="reveal">Derfor virker <em>ShaveSafe</em></h2>
-      <p class="mechanism-sub reveal stagger-1">Når intet andet har gjort det.</p>
-
-      <div class="solution-grid">
-        <div class="solution-card reveal stagger-1">
-          <div class="solution-icon">
-            <svg viewBox="0 0 28 28" fill="none">
-              <path d="M14 4C14 4 7 11 7 15C7 18.9 10.1 22 14 22C17.9 22 21 18.9 21 15C21 11 14 4 14 4Z" fill="#D6E4EF" stroke="#5B80A0" stroke-width="1.5"/>
-              <circle cx="14" cy="15" r="8" stroke="#5B80A0" stroke-width="1.5" fill="none"/>
-            </svg>
-          </div>
-          <h3>Antibakteriel barrière</h3>
-          <p>Neutraliserer bakterier i det øjeblik, mikroåbningerne opstår — før de når at skabe inflammation.</p>
-        </div>
-
-        <div class="solution-card reveal stagger-2">
-          <div class="solution-icon">
-            <svg viewBox="0 0 28 28" fill="none">
-              <rect x="8" y="5" width="12" height="18" rx="3" stroke="#5B80A0" stroke-width="1.5"/>
-              <circle cx="14" cy="14" r="5" stroke="#5B80A0" stroke-width="1" stroke-dasharray="3 2"/>
-            </svg>
-          </div>
-          <h3>Transparent formel</h3>
-          <p>Fuld synlighed. Bladet forbliver rent. Færre strøg, mindre skade.</p>
-        </div>
-
-        <div class="solution-card reveal stagger-3">
-          <div class="solution-icon">
-            <svg viewBox="0 0 28 28" fill="none">
-              <circle cx="14" cy="14" r="10" stroke="#5B80A0" stroke-width="1.5"/>
-              <path d="M9 14L12 17L19 10" stroke="#5B80A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h3>0% irritanter</h3>
-          <p>Ingen parfume. Ingen parabener. Nordisk sikkerhedsmærkning. Sikker overalt.</p>
-        </div>
+      <div class="problem-intro r">
+        <h2>Du kender det.</h2>
+        <p>Du barberer dig. Det ser fint ud. 12 timer senere: knopper, kløe, indgroede hår. Igen.</p>
       </div>
 
-      <div class="cta-wrap reveal">
-        <a href="https://shavesafe.dk" class="cta-btn">Prøv ShaveSafe — Risikofrit</a>
+      <div class="problem-grid">
+        <div class="problem-card r d1">
+          <div class="problem-icon">
+            <svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#5B80A0" stroke-width="1.5"/><path d="M11 7v4M11 14v.5" stroke="#5B80A0" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Røde knopper efter barbering</h3>
+          <p>Det er kronisk. Ikke dramatisk nok til lægen, men vedvarende nok til at forme din hverdag.</p>
+        </div>
+
+        <div class="problem-card r d2">
+          <div class="problem-icon">
+            <svg viewBox="0 0 22 22" fill="none"><path d="M11 4C7 4 4 7 4 11s3 7 7 7 7-3 7-7" stroke="#5B80A0" stroke-width="1.5" stroke-linecap="round"/><path d="M14 8l4-4M18 4h-3.5M18 4v3.5" stroke="#5B80A0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Alt du har prøvet fejler</h3>
+          <p>Voks. Aftershave. Dyrere blade. Cremer. Intet løser det — fordi intet adresserer årsagen.</p>
+        </div>
+
+        <div class="problem-card r d3">
+          <div class="problem-icon">
+            <svg viewBox="0 0 22 22" fill="none"><path d="M8 14s1.5 2 3 2 3-2 3-2" stroke="#5B80A0" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="9" r="1" fill="#5B80A0"/><circle cx="14" cy="9" r="1" fill="#5B80A0"/><circle cx="11" cy="11" r="8" stroke="#5B80A0" stroke-width="1.5"/></svg>
+          </div>
+          <h3>Usikkerheden vokser</h3>
+          <p>Du tænker på det når du tager undertøj på. Når sommeren nærmer sig. I de øjeblikke, hvor du burde føle dig tryg.</p>
+        </div>
+
+        <div class="problem-card r d4">
+          <div class="problem-icon">
+            <svg viewBox="0 0 22 22" fill="none"><rect x="4" y="4" width="14" height="14" rx="3" stroke="#5B80A0" stroke-width="1.5"/><path d="M8 11h6M11 8v6" stroke="#5B80A0" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Sundhedsangst</h3>
+          <p>Du googler "indgroede hår bikini" klokken 23. Du frygter infektion. Tanken om lægebesøg stopper dig.</p>
+        </div>
+
+        <div class="problem-card full r d5">
+          <h3>Det er ikke din huds skyld.</h3>
+          <p>Problemet var aldrig sart hud. Det var hvad der skete under barberingen. Og ingen har fortalt dig det — før nu.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════ -->
-  <!-- SOCIAL PROOF                    -->
-  <!-- ═══════════════════════════════ -->
-  <section class="social-proof">
+  <!-- ═══════════════════════════ -->
+  <!-- SCIENCE / MECHANISM         -->
+  <!-- ═══════════════════════════ -->
+  <section class="section science" id="science">
     <div class="container">
-      <h2 class="reveal">De <em>troede heller ikke</em> på det.</h2>
+      <div class="science-header r">
+        <h2>Videnskaben bag <em>ShaveSafe</em></h2>
+        <p>Det eneste system der eliminerer årsagen under barberingen — ikke efter.</p>
+      </div>
 
-      <div class="testimonials-scroll">
-        <div class="t-card reveal stagger-1">
-          <div class="t-stars">
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
+      <div class="mechanism-flow">
+        <div class="mech-step r d1">
+          <div class="mech-num n1">1</div>
+          <div class="mech-text">
+            <h3>Mikroåbninger opstår</h3>
+            <p>Hver gang du barberer dig, skaber bladet tusindvis af usynlige åbninger i huden. Det er uundgåeligt — uanset blad eller teknik.</p>
+          </div>
+        </div>
+
+        <div class="mech-connector r d2"></div>
+
+        <div class="mech-step r d3">
+          <div class="mech-num n2">2</div>
+          <div class="mech-text">
+            <h3>Bakterier trænger ind</h3>
+            <p>Inden for sekunder koloniserer bakterier disse åbninger. Dit immunforsvar reagerer med inflammation. Resultatet: knopper, rødme, indgroede hår.</p>
+          </div>
+        </div>
+
+        <div class="mech-connector r d4"></div>
+
+        <div class="mech-step r d5">
+          <div class="mech-num n3">3</div>
+          <div class="mech-text">
+            <h3>ShaveSafe blokerer det</h3>
+            <p>Vores patenterede antibakterielle gel danner en barrière under barberingen. Den neutraliserer bakterier i det øjeblik, åbningerne opstår — før inflammation starter.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="patent-callout r">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M10 2L4 5.5v5c0 4.5 6 6.5 6 6.5s6-2 6-6.5v-5L10 2z" stroke="#C49A3C" stroke-width="1.5"/><path d="M7 10.5l2 2L13 8" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Patenteret BacteriaShield™-teknologi · Eneste på markedet</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ -->
+  <!-- COMPARISON                  -->
+  <!-- ═══════════════════════════ -->
+  <section class="section comparison">
+    <div class="container">
+      <h2 class="r">Hvorfor <em>intet andet</em> virker</h2>
+
+      <div class="compare-table r d1">
+        <div class="compare-row head">
+          <div class="compare-cell"></div>
+          <div class="compare-cell">Andre</div>
+          <div class="compare-cell">ShaveSafe</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell compare-label">Beskytter under barberingen</div>
+          <div class="compare-cell"><span class="compare-check no"><svg viewBox="0 0 14 14" fill="none"><path d="M4 4l6 6M10 4l-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></div>
+          <div class="compare-cell"><span class="compare-check yes"><svg viewBox="0 0 14 14" fill="none"><path d="M3.5 7l2.5 2.5L10.5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell compare-label">Antibakteriel formel</div>
+          <div class="compare-cell"><span class="compare-check no"><svg viewBox="0 0 14 14" fill="none"><path d="M4 4l6 6M10 4l-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></div>
+          <div class="compare-cell"><span class="compare-check yes"><svg viewBox="0 0 14 14" fill="none"><path d="M3.5 7l2.5 2.5L10.5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell compare-label">Adresserer rodårsagen</div>
+          <div class="compare-cell"><span class="compare-check no"><svg viewBox="0 0 14 14" fill="none"><path d="M4 4l6 6M10 4l-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></div>
+          <div class="compare-cell"><span class="compare-check yes"><svg viewBox="0 0 14 14" fill="none"><path d="M3.5 7l2.5 2.5L10.5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell compare-label">Patenteret teknologi</div>
+          <div class="compare-cell"><span class="compare-check no"><svg viewBox="0 0 14 14" fill="none"><path d="M4 4l6 6M10 4l-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></div>
+          <div class="compare-cell"><span class="compare-check yes"><svg viewBox="0 0 14 14" fill="none"><path d="M3.5 7l2.5 2.5L10.5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell compare-label">0% parfume & parabener</div>
+          <div class="compare-cell"><span class="compare-check no"><svg viewBox="0 0 14 14" fill="none"><path d="M4 4l6 6M10 4l-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></div>
+          <div class="compare-cell"><span class="compare-check yes"><svg viewBox="0 0 14 14" fill="none"><path d="M3.5 7l2.5 2.5L10.5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell compare-label">Transparent gel (fuld synlighed)</div>
+          <div class="compare-cell"><span class="compare-check no"><svg viewBox="0 0 14 14" fill="none"><path d="M4 4l6 6M10 4l-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></div>
+          <div class="compare-cell"><span class="compare-check yes"><svg viewBox="0 0 14 14" fill="none"><path d="M3.5 7l2.5 2.5L10.5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ -->
+  <!-- SOCIAL PROOF                -->
+  <!-- ═══════════════════════════ -->
+  <section class="section proof">
+    <div class="container">
+      <div class="proof-header r">
+        <h2>Resultater der <em>taler</em></h2>
+        <p class="tp-score">Bedømt <strong>4.6 ud af 5</strong> på Trustpilot</p>
+      </div>
+
+      <div class="proof-grid">
+        <div class="proof-card r d1">
+          <div class="proof-stars">
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
           </div>
           <blockquote>"Efter mange år hvor jeg syntes det var PINLIGT at komme i bikinien pga. røde knopper er det endelig slut."</blockquote>
-          <div class="t-name">Kathe Reimuth</div>
+          <div class="proof-name">Kathe Reimuth</div>
         </div>
 
-        <div class="t-card reveal stagger-2">
-          <div class="t-stars">
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
+        <div class="proof-card r d2">
+          <div class="proof-stars">
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
           </div>
-          <blockquote>"I år har jeg kunne gå i bikini uden at bekymre mig og være pinlig. Dette produkt har bogstavelig talt gjort en forskel i mit liv."</blockquote>
-          <div class="t-name">Anonym</div>
+          <blockquote>"I år har jeg kunne gå i bikini uden at bekymre mig. Dette produkt har bogstavelig talt gjort en forskel i mit liv."</blockquote>
+          <div class="proof-name">Anonym</div>
         </div>
 
-        <div class="t-card reveal stagger-3">
-          <div class="t-stars">
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
+        <div class="proof-card r d3">
+          <div class="proof-stars">
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
           </div>
           <blockquote>"Har prøvet stort set alle produkter på markedet. Et mirakelprodukt!"</blockquote>
-          <div class="t-name">Anonym</div>
+          <div class="proof-name">Anonym</div>
         </div>
 
-        <div class="t-card reveal stagger-4">
-          <div class="t-stars">
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
+        <div class="proof-card r d4">
+          <div class="proof-stars">
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
           </div>
           <blockquote>"Troede ikke at det kunne lade sig gøre."</blockquote>
-          <div class="t-name">Linda Lützen</div>
+          <div class="proof-name">Linda Lützen</div>
         </div>
 
-        <div class="t-card reveal stagger-5">
-          <div class="t-stars">
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
-            <svg class="t-star" viewBox="0 0 20 20"><polygon points="10,1 12.5,7.5 19.5,7.5 14,12 16,19 10,15 4,19 6,12 0.5,7.5 7.5,7.5" fill="#00B67A"/></svg>
+        <div class="proof-card r d5">
+          <div class="proof-stars">
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
+            <svg viewBox="0 0 16 16"><polygon points="8,1 10,6 15.5,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 0.5,6 6,6" fill="#00B67A"/></svg>
           </div>
-          <blockquote>"Har i mange år været plaget af knopper, kløe og stikken. Jeg har prøvet mange tips og produkter, uden virkning."</blockquote>
-          <div class="t-name">Pia Kristiansen</div>
+          <blockquote>"Har i mange år været plaget af knopper, kløe og stikken. Prøvet mange produkter, uden virkning."</blockquote>
+          <div class="proof-name">Pia Kristiansen</div>
         </div>
       </div>
 
-      <div class="tp-logo reveal">Anmeldelser fra <strong>Trustpilot</strong></div>
-
-      <div class="cta-wrap reveal">
-        <a href="https://shavesafe.dk" class="cta-btn">Prøv ShaveSafe — Risikofrit</a>
+      <div class="cta-wrap r">
+        <a href="https://shavesafe.dk" class="cta">Prøv risikofrit <span class="cta-arrow">→</span></a>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════ -->
-  <!-- PRODUCT                         -->
-  <!-- ═══════════════════════════════ -->
-  <section class="product">
+  <!-- ═══════════════════════════ -->
+  <!-- PRODUCT                     -->
+  <!-- ═══════════════════════════ -->
+  <section class="section product">
     <div class="container">
-      <h2 class="reveal"><em>Ét system.</em> Det virker bare.</h2>
-      <p class="product-sub reveal stagger-1">Alt du behøver — designet til at arbejde sammen.</p>
-
-      <div class="product-hero reveal-scale">
-        <div class="product-placeholder">PLACEHOLDER:<br>Produktbillede af ShaveSafe Prøvepakke</div>
-      </div>
-
-      <div class="product-badges">
-        <div class="p-badge reveal stagger-1">
-          <div class="p-badge-icon">
-            <svg viewBox="0 0 18 18" fill="none"><rect x="3" y="2" width="12" height="14" rx="2" stroke="white" stroke-width="1.5"/><line x1="6" y1="7" x2="12" y2="7" stroke="white" stroke-width="1"/><line x1="6" y1="10" x2="12" y2="10" stroke="white" stroke-width="1"/></svg>
-          </div>
-          <div>
-            <div class="p-badge-text">5 blade i svensk stål</div>
-            <div class="p-badge-desc">Skærer rent med færre strøg</div>
+      <div class="product-layout">
+        <div class="product-visual rs">
+          <div class="product-circle">
+            <div class="product-ph">PLACEHOLDER:<br>Prøvepakke produktbillede</div>
           </div>
         </div>
 
-        <div class="p-badge reveal stagger-2">
-          <div class="p-badge-icon">
-            <svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="6" stroke="white" stroke-width="1.5"/><path d="M9 5V9L12 11" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div class="product-info">
+          <h2 class="r">Prøvepakken. <em>Alt du behøver.</em></h2>
+          <p class="product-desc r d1">Ét system designet til at arbejde sammen. Ingen 12-trins rutine.</p>
+
+          <div class="product-specs">
+            <div class="spec-row r d1">
+              <div class="spec-icon">
+                <svg viewBox="0 0 18 18" fill="none"><rect x="5" y="2" width="8" height="14" rx="2" stroke="#5B80A0" stroke-width="1.3"/><line x1="7" y1="6" x2="11" y2="6" stroke="#5B80A0" stroke-width="1"/><line x1="7" y1="9" x2="11" y2="9" stroke="#5B80A0" stroke-width="1"/><line x1="7" y1="12" x2="11" y2="12" stroke="#5B80A0" stroke-width="1"/></svg>
+              </div>
+              <div>
+                <div class="spec-text">5 blade i svensk stål</div>
+                <div class="spec-sub">Skærer rent med færre strøg + præcisionstrimmer</div>
+              </div>
+            </div>
+
+            <div class="spec-row r d2">
+              <div class="spec-icon">
+                <svg viewBox="0 0 18 18" fill="none"><path d="M9 3C9 3 4 8 4 11C4 13.8 6.2 16 9 16C11.8 16 14 13.8 14 11C14 8 9 3 9 3Z" stroke="#5B80A0" stroke-width="1.3"/><path d="M7 11l1.5 1.5L12 9" stroke="#5B80A0" stroke-width="1" stroke-linecap="round"/></svg>
+              </div>
+              <div>
+                <div class="spec-text">Patenteret antibakteriel gel</div>
+                <div class="spec-sub">Transparent, parfumefri, klinisk testet</div>
+              </div>
+            </div>
+
+            <div class="spec-row r d3">
+              <div class="spec-icon">
+                <svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="6" stroke="#5B80A0" stroke-width="1.3"/><path d="M6 9l2 2L12 7" stroke="#5B80A0" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <div class="spec-text">Sikker til hele kroppen</div>
+                <div class="spec-sub">Inklusiv ekstern intimbarbering</div>
+              </div>
+            </div>
           </div>
-          <div>
-            <div class="p-badge-text">Præcisionstrimmer</div>
-            <div class="p-badge-desc">Til konturer og kanter</div>
+
+          <div class="r d4">
+            <a href="https://shavesafe.dk" class="cta">Prøv risikofrit <span class="cta-arrow">→</span></a>
           </div>
         </div>
-
-        <div class="p-badge reveal stagger-3">
-          <div class="p-badge-icon">
-            <svg viewBox="0 0 18 18" fill="none"><path d="M9 3C9 3 4 8 4 11C4 13.8 6.2 16 9 16C11.8 16 14 13.8 14 11C14 8 9 3 9 3Z" stroke="white" stroke-width="1.5"/></svg>
-          </div>
-          <div>
-            <div class="p-badge-text">Antibakteriel gel</div>
-            <div class="p-badge-desc">Transparent og parfumefri</div>
-          </div>
-        </div>
-
-        <div class="p-badge reveal stagger-4">
-          <div class="p-badge-icon">
-            <svg viewBox="0 0 18 18" fill="none"><path d="M9 2L11 7H16L12 10.5L13.5 16L9 12.5L4.5 16L6 10.5L2 7H7L9 2Z" stroke="white" stroke-width="1.5" fill="none"/></svg>
-          </div>
-          <div>
-            <div class="p-badge-text">Klinisk testet</div>
-            <div class="p-badge-desc">Nordisk sikkerhedsmærkning</div>
-          </div>
-        </div>
-      </div>
-
-      <p class="product-qualifier reveal">Sikker til hele kroppen — inklusiv de mest følsomme områder.</p>
-
-      <div class="cta-wrap reveal">
-        <a href="https://shavesafe.dk" class="cta-btn">Prøv ShaveSafe — Risikofrit</a>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════ -->
-  <!-- FEATURE BAR                     -->
-  <!-- ═══════════════════════════════ -->
+  <!-- FEATURE BAR -->
   <section class="feature-bar">
     <div class="container">
       <div class="fb-grid">
         <div class="fb-item">
-          <div class="fb-icon-wrap">🔬</div>
+          <div class="fb-icon">
+            <svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="8" r="4" stroke="white" stroke-width="1.5"/><rect x="6" y="5" width="10" height="6" rx="2" stroke="white" stroke-width="1.5"/><line x1="9" y1="11" x2="9" y2="17" stroke="white" stroke-width="1" stroke-dasharray="2 2"/><line x1="13" y1="11" x2="13" y2="15" stroke="white" stroke-width="1" stroke-dasharray="2 2"/></svg>
+          </div>
           <span class="fb-label">Klinisk testet</span>
         </div>
         <div class="fb-item">
-          <div class="fb-icon-wrap">🚫</div>
+          <div class="fb-icon">
+            <svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="7" stroke="white" stroke-width="1.5"/><line x1="8" y1="8" x2="14" y2="14" stroke="white" stroke-width="1.5" stroke-linecap="round"/><line x1="14" y1="8" x2="8" y2="14" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
           <span class="fb-label">0% parfume & parabener</span>
         </div>
         <div class="fb-item">
-          <div class="fb-icon-wrap">🇸🇪</div>
+          <div class="fb-icon">
+            <svg viewBox="0 0 22 22" fill="none"><path d="M11 3L5 6.5v5c0 4.5 6 6.5 6 6.5s6-2 6-6.5v-5L11 3z" stroke="white" stroke-width="1.5"/></svg>
+          </div>
           <span class="fb-label">Svensk stål</span>
         </div>
         <div class="fb-item">
-          <div class="fb-icon-wrap">📦</div>
+          <div class="fb-icon">
+            <svg viewBox="0 0 22 22" fill="none"><rect x="4" y="6" width="14" height="10" rx="2" stroke="white" stroke-width="1.5"/><path d="M4 9h14" stroke="white" stroke-width="1.5"/></svg>
+          </div>
           <span class="fb-label">Prøv risikofrit</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════ -->
-  <!-- OBJECTIONS                      -->
-  <!-- ═══════════════════════════════ -->
-  <section class="objections">
+  <!-- ═══════════════════════════ -->
+  <!-- FAQ                         -->
+  <!-- ═══════════════════════════ -->
+  <section class="section faq-section">
     <div class="container">
-      <h2 class="reveal">Du tænker <em>sikkert...</em></h2>
+      <h2 class="r">Spørgsmål & svar</h2>
 
-      <div class="accordion reveal stagger-1">
-        <div class="acc-item">
-          <button class="acc-btn" type="button" aria-expanded="false">
+      <div class="faq-list r d1">
+        <div class="faq-item">
+          <button class="faq-btn" type="button" aria-expanded="false">
             <span>"Intet virker for mig."</span>
-            <span class="acc-plus"></span>
+            <span class="faq-plus"></span>
           </button>
-          <div class="acc-body">
-            <div class="acc-body-inner">Alt du har brugt indtil nu behandlede symptomerne. ShaveSafe adresserer rodårsagen: bakterier der trænger ind under barberingen. Det er derfor, det virker denne gang.</div>
-          </div>
+          <div class="faq-body"><div class="faq-body-inner">Alt du har brugt behandlede symptomerne. ShaveSafe adresserer rodårsagen med patenteret antibakteriel teknologi der virker under barberingen. Det er derfor, det virker denne gang.</div></div>
         </div>
 
-        <div class="acc-item">
-          <button class="acc-btn" type="button" aria-expanded="false">
+        <div class="faq-item">
+          <button class="faq-btn" type="button" aria-expanded="false">
             <span>"Er det hårdt for min hud?"</span>
-            <span class="acc-plus"></span>
+            <span class="faq-plus"></span>
           </button>
-          <div class="acc-body">
-            <div class="acc-body-inner">Tværtimod. 0% parfume, parabener og farvestoffer. Klinisk testet. Tusindvis af kvinder bruger den til intimbarbering hver uge.</div>
-          </div>
+          <div class="faq-body"><div class="faq-body-inner">Tværtimod. 0% parfume, parabener og farvestoffer. Klinisk testet med nordisk sikkerhedsmærkning. Tusindvis af kvinder bruger den til intimbarbering.</div></div>
         </div>
 
-        <div class="acc-item">
-          <button class="acc-btn" type="button" aria-expanded="false">
+        <div class="faq-item">
+          <button class="faq-btn" type="button" aria-expanded="false">
             <span>"Kan jeg bruge den dernede?"</span>
-            <span class="acc-plus"></span>
+            <span class="faq-plus"></span>
           </button>
-          <div class="acc-body">
-            <div class="acc-body-inner">Ja. Designet til hele kroppen — inklusiv ekstern intimbarbering. Det er netop der, de fleste kunder oplever den største forskel.</div>
-          </div>
+          <div class="faq-body"><div class="faq-body-inner">Ja. Designet til hele kroppen — inklusiv ekstern intimbarbering. Det er netop der, de fleste kunder oplever den største forskel.</div></div>
         </div>
 
-        <div class="acc-item">
-          <button class="acc-btn" type="button" aria-expanded="false">
-            <span>"Hvad hvis den ikke virker for mig?"</span>
-            <span class="acc-plus"></span>
+        <div class="faq-item">
+          <button class="faq-btn" type="button" aria-expanded="false">
+            <span>"Hvad hvis det ikke virker?"</span>
+            <span class="faq-plus"></span>
           </button>
-          <div class="acc-body">
-            <div class="acc-body-inner">Giv den 3-4 barberinger. Virker den ikke? Pengene retur. Ingen spørgsmål.</div>
-          </div>
+          <div class="faq-body"><div class="faq-body-inner">Giv den 3-4 barberinger. Virker den ikke? Pengene retur. Ingen spørgsmål.</div></div>
         </div>
 
-        <div class="acc-item">
-          <button class="acc-btn" type="button" aria-expanded="false">
+        <div class="faq-item">
+          <button class="faq-btn" type="button" aria-expanded="false">
             <span>"Hvorfor dyrere end barberskum?"</span>
-            <span class="acc-plus"></span>
+            <span class="faq-plus"></span>
           </button>
-          <div class="acc-body">
-            <div class="acc-body-inner">Fordi det ikke er barberskum. Det er et forebyggelsessystem. Koster mindre end én mislykket voksbehandling.</div>
-          </div>
+          <div class="faq-body"><div class="faq-body-inner">Fordi det ikke er barberskum. Det er et patenteret forebyggelsessystem. Koster mindre end én mislykket voksbehandling.</div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════ -->
-  <!-- FINAL CTA                       -->
-  <!-- ═══════════════════════════════ -->
-  <section class="final-cta">
+  <!-- ═══════════════════════════ -->
+  <!-- FINAL CTA                   -->
+  <!-- ═══════════════════════════ -->
+  <section class="final">
     <div class="container">
-      <h2 class="reveal">Se <em>forskellen</em> selv.</h2>
+      <h2 class="r">Se <em>forskellen</em> selv.</h2>
+      <p class="final-body r d1">Prøv det i 7-14 dage. Virker det ikke? Pengene retur. Ingen binding. Ingen spørgsmål.</p>
 
-      <div class="final-cta-text reveal stagger-1">
-        <p>Du behøver ikke tro på det. Du behøver bare prøve det.</p>
-        <p>Virker det ikke? Pengene retur. Ingen abonnement. Ingen spørgsmål.</p>
+      <div class="r d2">
+        <a href="https://shavesafe.dk" class="cta">Start din test nu <span class="cta-arrow">→</span></a>
       </div>
 
-      <div class="reveal stagger-2">
-        <a href="https://shavesafe.dk" class="cta-btn">Start din test nu</a>
-      </div>
-
-      <div class="trust-row reveal stagger-3">
-        <span class="trust-item"><span class="trust-dot"></span>Fri fragt over 499 DKK</span>
-        <span class="trust-item"><span class="trust-dot"></span>Ingen binding</span>
-        <span class="trust-item"><span class="trust-dot"></span>Pengene retur-garanti</span>
-        <span class="trust-item"><span class="trust-dot"></span>Klinisk testet</span>
+      <div class="final-trust r d3">
+        <span><span class="dot"></span>Fri fragt over 499 DKK</span>
+        <span><span class="dot"></span>Ingen abonnement</span>
+        <span><span class="dot"></span>Pengene retur-garanti</span>
+        <span><span class="dot"></span>Patenteret formel</span>
       </div>
     </div>
   </section>
 
   <!-- STICKY MOBILE CTA -->
-  <div class="sticky-cta" id="stickyCta">
-    <a href="https://shavesafe.dk">Prøv ShaveSafe — Risikofrit</a>
+  <div class="sticky" id="stickyCta">
+    <a href="https://shavesafe.dk">Prøv ShaveSafe — Risikofrit →</a>
   </div>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-brand">ShaveSafe</div>
-    <div class="footer-tagline">Enkel · Glat · Sikker</div>
+    <div class="footer-tag">Enkel · Glat · Sikker</div>
     <nav class="footer-links">
       <a href="https://shavesafe.dk">Om ShaveSafe</a>
       <a href="https://shavesafe.dk">Kontakt</a>
@@ -1559,56 +1514,33 @@
   </footer>
 
   <script>
-    // ── Scroll reveal animations ──
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    // Scroll reveal
+    var io = new IntersectionObserver(function(e) {
+      e.forEach(function(x) { if (x.isIntersecting) x.target.classList.add('v'); });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.r,.rl,.rr,.rs').forEach(function(el) { io.observe(el); });
 
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
-      observer.observe(el);
-    });
-
-    // ── Accordion ──
-    document.querySelectorAll('.acc-btn').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        var item = this.closest('.acc-item');
-        var wasOpen = item.classList.contains('open');
-        var body = item.querySelector('.acc-body');
-
-        document.querySelectorAll('.acc-item').forEach(function(el) {
-          el.classList.remove('open');
-          el.querySelector('.acc-btn').setAttribute('aria-expanded', 'false');
-          el.querySelector('.acc-body').style.maxHeight = null;
+    // FAQ accordion
+    document.querySelectorAll('.faq-btn').forEach(function(b) {
+      b.addEventListener('click', function() {
+        var item = this.closest('.faq-item'), open = item.classList.contains('open'), body = item.querySelector('.faq-body');
+        document.querySelectorAll('.faq-item').forEach(function(el) {
+          el.classList.remove('open'); el.querySelector('.faq-btn').setAttribute('aria-expanded','false');
+          el.querySelector('.faq-body').style.maxHeight = null;
         });
-
-        if (!wasOpen) {
-          item.classList.add('open');
-          this.setAttribute('aria-expanded', 'true');
-          body.style.maxHeight = body.scrollHeight + 'px';
-        }
+        if (!open) { item.classList.add('open'); this.setAttribute('aria-expanded','true'); body.style.maxHeight = body.scrollHeight + 'px'; }
       });
     });
 
-    // ── Sticky mobile CTA ──
-    var stickyCta = document.getElementById('stickyCta');
-    var heroEl = document.getElementById('top');
-
-    function checkSticky() {
-      if (window.innerWidth > 767) { stickyCta.classList.remove('visible'); return; }
-      if (heroEl.getBoundingClientRect().bottom < 0) {
-        stickyCta.classList.add('visible');
-      } else {
-        stickyCta.classList.remove('visible');
-      }
+    // Sticky mobile CTA
+    var sticky = document.getElementById('stickyCta'), hero = document.getElementById('top');
+    function chk() {
+      if (window.innerWidth > 767) { sticky.classList.remove('show'); return; }
+      sticky.classList.toggle('show', hero.getBoundingClientRect().bottom < 0);
     }
-
-    window.addEventListener('scroll', checkSticky, { passive: true });
-    window.addEventListener('resize', checkSticky);
-    checkSticky();
+    window.addEventListener('scroll', chk, { passive: true });
+    window.addEventListener('resize', chk);
+    chk();
   </script>
 
 </body>
