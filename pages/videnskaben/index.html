@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ShaveSafe &mdash; Barberingen, der behandler &aring;rsagen</title>
-  <meta name="description" content="ShaveSafe er det eneste produkt i Danmark med patenteret Silver Citoderm&trade; teknologi. Eliminerer bakterier under barberingen. Klinisk dokumenteret. Udviklet med hudl&aelig;ger." />
+  <meta name="description" content="ShaveSafe er det eneste barberings&shy;produkt i Danmark med patenteret Chlorhexidine-formel. Eliminerer bakterier under barberingen. Klinisk dokumenteret. Udviklet med hudl&aelig;ger." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -928,6 +928,74 @@
     body { padding-bottom: 72px; }
     @media (min-width: 768px) { body { padding-bottom: 0; } }
 
+    /* ── TRUST BADGES ── */
+    .trust-badges {
+      background: var(--off-white);
+      padding: 56px 24px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .trust-badges-grid {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+    .trust-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .trust-badge-icon {
+      width: 72px;
+      height: 72px;
+      border: 2px solid var(--charcoal);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--charcoal);
+      position: relative;
+    }
+    .trust-badge-icon svg {
+      width: 28px;
+      height: 28px;
+      fill: none;
+      stroke: var(--charcoal);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .trust-badge-icon .badge-ring-text {
+      position: absolute;
+      font-size: 7px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+    .trust-badge-icon .badge-ring-top { top: -2px; }
+    .trust-badge-icon .badge-ring-bottom { bottom: -2px; }
+    .trust-badge h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--charcoal);
+      line-height: 1.5;
+      max-width: 200px;
+    }
+    @media (max-width: 767px) {
+      .trust-badges-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px 16px;
+      }
+    }
+
     /* ── ANIMATIONS ── */
     .reveal {
       opacity: 0;
@@ -960,7 +1028,7 @@
     <div class="hero-content">
       <div class="hero-eyebrow">Klinisk dokumenteret &middot; Udviklet med hudl&aelig;ger</div>
       <h1>Barberingen,<br/>der behandler<br/><em>&aring;rsagen.</em></h1>
-      <p class="hero-desc">Ikke endnu en rutine. Ikke endnu en creme. ShaveSafe er det eneste produkt i Danmark bygget p&aring; <strong>Silver Citoderm&trade;</strong> &mdash; en patenteret antibakteriel formel der eliminerer de bakterier, der for&aring;rsager knopper, kl&oslash;e og indgroede h&aring;r &mdash; under selve barberingen.</p>
+      <p class="hero-desc">Ikke endnu en rutine. Ikke endnu en creme. ShaveSafe er det eneste produkt i Danmark bygget p&aring; en <strong>patenteret Chlorhexidine-formel</strong> &mdash; en antibakteriel barbergel der eliminerer de bakterier, der for&aring;rsager knopper, kl&oslash;e og indgroede h&aring;r &mdash; under selve barberingen.</p>
 
       <div class="hero-stats">
         <div>
@@ -1019,14 +1087,14 @@
     </div>
   </section>
 
-  <!-- 6. MECHANISM — SILVER CITODERM -->
+  <!-- 6. MECHANISM — CHLORHEXIDINE FORMULA -->
   <section class="section mechanism-section">
     <div class="split reverse reveal">
       <div class="split-text">
         <div class="section-eyebrow">Vores patenterede formel</div>
-        <h2>Silver Citoderm&trade; &mdash;<br/>bygget af l&aelig;ger,<br/>dokumenteret af videnskaben.</h2>
-        <p>ShaveSafe er det eneste produkt i Danmark, der indeholder Silver Citoderm&trade; &mdash; en patenteret aktiv ingrediens udviklet i samarbejde med danske dermatologer.</p>
-        <p>Formlen kombinerer ionisk s&oslash;lv med en molekyl&aelig;r scaffolding-struktur, der danner et usynligt antibakterielt skjold p&aring; huden under selve barberingen.</p>
+        <h2>Chlorhexidine Digluconate &mdash;<br/>bygget af l&aelig;ger,<br/>dokumenteret af videnskaben.</h2>
+        <p>ShaveSafe er det eneste barberings&shy;produkt i Danmark med en patenteret formel baseret p&aring; Chlorhexidine Digluconate &mdash; en medicinsk antibakteriel aktiv ingrediens udviklet i samarbejde med danske dermatologer.</p>
+        <p>Formlen danner et usynligt antibakterielt skjold p&aring; huden under selve barberingen, s&aring; bakterier ikke kan tr&aelig;nge ind i de mikroskopiske snit bladet efterlader.</p>
         <div class="check-list">
           <div class="check-item">
             <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
@@ -1039,7 +1107,7 @@
             <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
               <div class="check-title">Underst&oslash;tter hudens heling</div>
-              <div class="check-desc">Scaffolding-struktur accelererer naturlig reparation</div>
+              <div class="check-desc">Chlorhexidine beskytter mikrosnit mens huden reparerer sig selv</div>
             </div>
           </div>
           <div class="check-item">
@@ -1076,6 +1144,36 @@
       </div>
     </div>
   </section>
+
+  <!-- 7b. TRUST BADGES -->
+  <div class="trust-badges reveal">
+    <div class="trust-badges-grid">
+      <div class="trust-badge">
+        <div class="trust-badge-icon">
+          <span style="font-size:18px;font-weight:700;">0%</span>
+        </div>
+        <h4>Alle ShaveSafe produkter er uden parfume, parabener og farvestoffer.</h4>
+      </div>
+      <div class="trust-badge">
+        <div class="trust-badge-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L9 9H2l6 4.5L5.5 21 12 16.5 18.5 21 16 13.5 22 9h-7z"/></svg>
+        </div>
+        <h4>ShaveSafes skum og gel er patenteret for deres unikke formular, der forebygger knopper, kl&oslash;e og indgroede h&aring;r.</h4>
+      </div>
+      <div class="trust-badge">
+        <div class="trust-badge-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h4>ShaveSafe blev nomineret til Danish Grooming Awards og har vundet &ldquo;bedst i test&rdquo; i iForm.</h4>
+      </div>
+      <div class="trust-badge">
+        <div class="trust-badge-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="none"/><path d="M8 12l2-4c1 2 3 3 5 3" fill="none"/></svg>
+        </div>
+        <h4>ShaveSafes cremer er med mere end 80% &oslash;kologisk indhold.</h4>
+      </div>
+    </div>
+  </div>
 
   <!-- 8. DOCTOR ENDORSEMENT -->
   <section class="section doctor-section">
@@ -1159,7 +1257,7 @@
           <img src="../../img/gel-product-cutout.png" alt="ShaveSafe barbergel 50 ml" />
         </div>
         <h3>Patenteret barbergel (50 ml)</h3>
-        <p>Silver Citoderm&trade; formel &mdash; eliminerer bakterier under barberingen. Tynd konsistens tilstopper ikke skraberhovedet.</p>
+        <p>Patenteret Chlorhexidine-formel &mdash; eliminerer bakterier under barberingen. Tynd konsistens tilstopper ikke skraberhovedet.</p>
       </div>
     </div>
 
@@ -1193,7 +1291,7 @@
         </div>
         <div class="how-num">01</div>
         <h3>P&aring;f&oslash;r gel'en</h3>
-        <p>Den patenterede Silver Citoderm&trade;-gel danner et antibakterielt skjold p&aring; huden, inden bladet r&oslash;rer dig. 30 sekunder.</p>
+        <p>Den patenterede Chlorhexidine-gel danner et antibakterielt skjold p&aring; huden, inden bladet r&oslash;rer dig. 30 sekunder.</p>
       </div>
       <div class="how-card reveal reveal-d1">
         <div class="how-card-img">
@@ -1342,7 +1440,7 @@
         <p>ShaveSafe startede ikke i et laboratorium. Det startede i et badev&aelig;relse &mdash; med Nana, vores grundl&aelig;gger, der var tr&aelig;t af at v&aelig;re den kvinde, der altid sagde nej til bikini.</p>
         <p>Efter 15 &aring;r med indgroede h&aring;r, knopper og &ldquo;sensitive skin&rdquo; produkter der ikke virkede, besluttede Nana at finde ud af hvorfor. Hun gravede ned i forskning, samarbejdede med danske dermatologer, og opdagede hvad ingen af de store brands talte om:</p>
         <p><strong>Det er bakterier, ikke huden.</strong></p>
-        <p>Sammen med et team af formulatorer udviklede hun det f&oslash;rste produkt med Silver Citoderm&trade; &mdash; en patenteret antibakteriel teknologi, klinisk testet og fremstillet i Danmark.</p>
+        <p>Sammen med et team af formulatorer udviklede hun det f&oslash;rste barberings&shy;produkt med en patenteret Chlorhexidine-formel &mdash; en antibakteriel teknologi, klinisk testet og fremstillet i Danmark.</p>
         <p style="font-size:14px;color:var(--muted);">I dag svarer Nana stadig personligt p&aring; beskeder fra kunder.</p>
       </div>
     </div>
@@ -1373,8 +1471,8 @@
       <h2 class="reveal">Dine sp&oslash;rgsm&aring;l, besvaret.</h2>
       <div style="margin-top:40px;" class="reveal">
         <div class="faq-item">
-          <button class="faq-q">Hvad er Silver Citoderm&trade; helt pr&aelig;cist?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-          <div class="faq-a">Silver Citoderm&trade; er en patenteret aktiv ingrediens best&aring;ende af ionisk s&oslash;lv bundet til en scaffolding-polymerstruktur. N&aring;r det p&aring;f&oslash;res huden danner det et mikro-tyndt antibakterielt skjold der dr&aelig;ber 99,9% af de bakterier (prim&aelig;rt S. aureus, S. epidermidis, og P. acnes), der for&aring;rsager razor bumps og folliculitis. Formlen er udviklet i samarbejde med danske dermatologer, produceret i Danmark, og klinisk testet.</div>
+          <button class="faq-q">Hvad g&oslash;r ShaveSafes formel s&aelig;rlig?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="faq-a">ShaveSafes patenterede barbergel indeholder Chlorhexidine Digluconate (0,80%) &mdash; en medicinsk antibakteriel aktiv ingrediens. N&aring;r gel'en p&aring;f&oslash;res huden danner den et mikro-tyndt antibakterielt skjold der dr&aelig;ber 99,9% af de bakterier (prim&aelig;rt S. aureus, S. epidermidis, og P. acnes), der for&aring;rsager razor bumps og folliculitis. Formlen er udviklet i samarbejde med danske dermatologer, produceret i Danmark, og klinisk testet.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q">Er det sikkert at bruge i bikinilinjen?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
@@ -1386,7 +1484,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-q">Hvad er inkluderet i pr&oslash;vepakken?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-          <div class="faq-a">En ergonomisk ShaveSafe-skraber i krom, et barberhoved med 5 knivskarpe blade i svensk st&aring;l plus pr&aelig;cisionstrimmer, og 50 ml patenteret barbergel med Silver Citoderm&trade;.</div>
+          <div class="faq-a">En ergonomisk ShaveSafe-skraber i krom, et barberhoved med 5 knivskarpe blade i svensk st&aring;l plus pr&aelig;cisionstrimmer, og 50 ml patenteret barbergel med Chlorhexidine Digluconate.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q">Er det et abonnement?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
