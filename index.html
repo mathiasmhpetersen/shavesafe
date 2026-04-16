@@ -1818,12 +1818,73 @@
       return 'Baseret p\u00e5 dine svar: ' + parts.join(', ') + '. Det er pr\u00e6cis den profil, ShaveSafe blev udviklet til.';
     }
 
+    // Shopify variant IDs for the prøvepakke
+    const VARIANT_MAN = 44871391084790;
+    const VARIANT_WOMAN = 44871391183094;
+
+    function getVariantId() {
+      var q1 = quizState.answers[0];
+      if (q1 && (q1.indexOf('mand') !== -1)) return VARIANT_MAN;
+      return VARIANT_WOMAN;
+    }
+
+    function getSubscriptionInterval() {
+      // Map frequency answer to subscription interval in months
+      var freq = quizState.answers[2] || '';
+      if (freq.indexOf('Hver dag') !== -1) return 1;
+      if (freq.indexOf('3\u20135') !== -1) return 1;
+      if (freq.indexOf('1\u20132') !== -1) return 2;
+      return 2; // default: every 2 months
+    }
+
+    function getFrequencyLabel() {
+      var interval = getSubscriptionInterval();
+      return interval === 1 ? 'Hver m\u00e5ned' : 'Hver anden m\u00e5ned';
+    }
+
+    function addToCartAndCheckout() {
+      var variantId = getVariantId();
+      var interval = getSubscriptionInterval();
+      var avatar = getAvatar();
+
+      pushEvent('quiz_cta_clicked', {primary_avatar: avatar, subscription_interval: interval});
+      try { sessionStorage.removeItem(SS_KEY); } catch(e) {}
+
+      // Clear cart first, then add prøvepakke with subscription properties
+      fetch('https://shavesafe.dk/cart/clear.js', {method:'POST',headers:{'Content-Type':'application/json'}})
+        .then(function() {
+          return fetch('https://shavesafe.dk/cart/add.js', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              items: [{
+                id: variantId,
+                quantity: 1,
+                properties: {
+                  shipping_interval_frequency: String(interval),
+                  shipping_interval_unit_type: 'month'
+                }
+              }]
+            })
+          });
+        })
+        .then(function(r) { return r.json(); })
+        .then(function() {
+          window.location.href = 'https://shavesafe.dk/checkout';
+        })
+        .catch(function() {
+          // Fallback: redirect to collection page
+          window.location.href = CHECKOUT_URL;
+        });
+    }
+
     function renderResult() {
       document.getElementById('quizPct').textContent = '100%';
       document.getElementById('quizFill').style.width = '100%';
 
       const avatar = getAvatar();
       const a = AVATARS[avatar];
+      const freqLabel = getFrequencyLabel();
       const starSvg = '<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
 
       pushEvent('quiz_completed', {primary_avatar: avatar, avatar_scores: {...quizState.scores}, answers: quizState.answers});
@@ -1843,6 +1904,7 @@
       // Product card
       html += '<div class="quiz-result-product">';
       html += '<h3>Din pr\u00f8vepakke</h3>';
+      html += '<div style="font-size:13px;color:var(--accent);font-weight:600;margin-bottom:16px;">Levering: ' + freqLabel + '</div>';
       html += '<div class="product-items">';
       html += '<div class="product-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Patenteret barbergel</strong> (50 ml)</span></div>';
       html += '<div class="product-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Ergonomisk skraber</strong> i krom</span></div>';
@@ -1851,10 +1913,10 @@
       html += '<div style="margin:20px 0 4px;"><span style="font-size:16px;color:var(--muted);text-decoration:line-through;">185 kr</span></div>';
       html += '<div style="font-family:Playfair Display,serif;font-size:40px;font-weight:700;color:var(--black);">79 kr</div>';
       html += '<div style="font-size:12px;color:var(--muted);margin-bottom:20px;">inkl. gratis fragt</div>';
-      html += '<a href="https://shavesafe.dk/collections/provepakke" class="cta-btn" style="width:100%;" onclick="pushEvent(\'quiz_cta_clicked\',{primary_avatar:\'' + avatar + '\'});try{sessionStorage.removeItem(SS_KEY)}catch(e){}">';
-      html += 'Bestil min pr\u00f8vepakke \u2014 79 kr';
+      html += '<button class="cta-btn" style="width:100%;border:none;" onclick="addToCartAndCheckout()">';
+      html += 'G\u00e5 til betaling';
       html += '<svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;stroke-width:2.5;fill:none;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
-      html += '</a>';
+      html += '</button>';
       html += '<div class="quiz-result-trust">Gratis fragt \u00b7 Klinisk testet \u00b7 0% parfume \u00b7 4.8/5 p\u00e5 49 anmeldelser</div>';
       html += '<div class="quiz-result-note">Abonnement \u00b7 Opsig n\u00e5r som helst \u00b7 Ingen binding</div>';
       html += '</div></div>';
