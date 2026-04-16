@@ -448,6 +448,32 @@
     }
     .ba-caption strong { color: var(--black); font-style: normal; }
 
+    /* ── BA GALLERY ── */
+    .ba-gallery {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 24px 0 8px;
+      max-width: 1000px;
+      margin: 0 auto;
+      scrollbar-width: none;
+    }
+    .ba-gallery::-webkit-scrollbar { display: none; }
+    .ba-gallery-item {
+      flex: 0 0 300px;
+      scroll-snap-align: start;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .ba-gallery-item img { width: 100%; display: block; }
+    @media (min-width: 900px) {
+      .ba-gallery { overflow: visible; flex-wrap: wrap; justify-content: center; }
+      .ba-gallery-item { flex: 0 0 calc(33.333% - 11px); }
+    }
+
     /* ── HOW IT WORKS ── */
     .how-section {
       padding: 88px 24px;
@@ -574,6 +600,15 @@
       padding: 40px 32px;
       text-align: center;
       box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    .product-hero-img {
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+    .product-hero-img img {
+      width: 100%;
+      display: block;
     }
     .product-box h2 {
       font-size: 28px;
@@ -881,7 +916,7 @@
   <section class="section">
     <div class="split reveal">
       <div class="split-img">
-        <img src="../../img/razor-closeup.jpg" alt="ShaveSafe skraber n&aelig;rbillede" />
+        <img src="../../img/ba-legs-bumps.jpg" alt="F&oslash;r og efter &mdash; ben med knopper" />
       </div>
       <div class="split-text">
         <div class="section-eyebrow">Hvorfor f&aring;r du knopper?</div>
@@ -916,7 +951,7 @@
         </div>
       </div>
       <div class="stats-img reveal">
-        <img src="../../img/razor-closeup.jpg" alt="ShaveSafe produkt" />
+        <img src="../../img/smooth-legs-mirror.png" alt="Kvinde viser glatte ben" />
       </div>
     </div>
   </section>
@@ -924,8 +959,8 @@
   <!-- DERMATOLOGIST APPROVED -->
   <section class="section" style="background:var(--white);">
     <div class="split reverse reveal">
-      <div class="split-img" style="aspect-ratio:3/4;background:linear-gradient(160deg, #d0d0d0 0%, #e8e8e8 50%, #d4d4d4 100%);display:flex;align-items:center;justify-content:center;">
-        <svg viewBox="0 0 24 24" style="width:80px;height:80px;stroke:#aaa;stroke-width:1;fill:none;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <div class="split-img" style="aspect-ratio:3/4;">
+        <img src="../../img/dermatologist.jpg" alt="Dermatolog" />
       </div>
       <div class="split-text">
         <div class="section-eyebrow">Dermatolog-godkendt</div>
@@ -951,9 +986,8 @@
           <span style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--body);font-weight:500;"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:var(--green);stroke-width:2.5;fill:none;"><polyline points="20 6 9 17 4 12"/></svg> Klinisk testet</span>
         </div>
       </div>
-      <div class="split-img" style="aspect-ratio:1;background:linear-gradient(145deg, #c0c0c0 0%, #e0e0e0 30%, #a8a8a8 60%, #d0d0d0 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;">
-        <svg viewBox="0 0 24 24" style="width:64px;height:64px;stroke:#888;stroke-width:1;fill:none;"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"/><line x1="8.5" y1="2" x2="15.5" y2="2"/></svg>
-        <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#666;">Silver Citoderm&trade;</span>
+      <div class="split-img" style="aspect-ratio:1;">
+        <img src="../../img/gel-lifestyle.jpg" alt="ShaveSafe barbergel" />
       </div>
     </div>
   </section>
@@ -968,6 +1002,17 @@
         <img src="../../img/before-after.jpg" alt="F&oslash;r og efter ShaveSafe &mdash; bikinilinjen" />
       </div>
       <p class="ba-caption"><strong>Nana, 28</strong> &mdash; F&oslash;r: 10. april &middot; Efter: 24. maj</p>
+    </div>
+    <div class="ba-gallery">
+      <div class="ba-gallery-item reveal">
+        <img src="../../img/ba-legs-dated.jpg" alt="F&oslash;r og efter &mdash; ben" />
+      </div>
+      <div class="ba-gallery-item reveal reveal-delay-1">
+        <img src="../../img/ba-bikini-mirror.jpg" alt="F&oslash;r og efter &mdash; bikinilinje" />
+      </div>
+      <div class="ba-gallery-item reveal reveal-delay-2">
+        <img src="../../img/ba-bikini-front.jpg" alt="F&oslash;r og efter &mdash; bikinilinje" />
+      </div>
     </div>
   </section>
 
@@ -1051,6 +1096,9 @@
   <!-- PRODUCT BOX -->
   <section class="product-section">
     <div class="product-box reveal">
+      <div class="product-hero-img">
+        <img src="../../img/product-set.jpg" alt="ShaveSafe skraber og gel" />
+      </div>
       <div class="section-eyebrow">Komplet s&aelig;t</div>
       <h2>Pr&oslash;vepakken</h2>
       <p class="product-sub">Alt du beh&oslash;ver for at opleve forskellen.</p>
