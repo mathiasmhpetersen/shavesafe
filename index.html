@@ -1026,23 +1026,6 @@
     .quiz-next:disabled { opacity: 0.4; cursor: default; }
     .quiz-next:disabled:hover { background: var(--accent); }
 
-    .quiz-skip {
-      display: block;
-      text-align: right;
-      margin-top: 16px;
-      font-size: 13px;
-      color: var(--muted);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-      padding: 0;
-      transition: color 0.2s;
-    }
-    .quiz-skip:hover { color: var(--body); }
-
     /* ── QUIZ RESULT ── */
     .quiz-result { animation: quizFadeIn 0.5s ease; }
     .quiz-result-match {
@@ -1571,19 +1554,19 @@
       },
       {
         id: 'frequency', type: 'single',
-        q: 'Hvor ofte barberer du dig?',
+        q: 'Hvor ofte vil du gerne kunne barbere dig \u2014 helt uden knopper?',
         options: [
-          { text: 'Hver dag eller n\u00e6sten hver dag', weights: {skaeg:3}, intensity: 4 },
-          { text: '3\u20135 gange om ugen', weights: {jordbaer:2,bikini:1}, intensity: 3 },
-          { text: '1\u20132 gange om ugen', weights: {jordbaer:1,bikini:1}, intensity: 2 },
-          { text: 'Kun f\u00f8r vigtige begivenheder', weights: {bikini:2}, intensity: 1 }
+          { text: 'Hver dag \u2014 jeg vil have frihed til at barbere n\u00e5r jeg vil', weights: {skaeg:3}, intensity: 4 },
+          { text: '3\u20135 gange om ugen \u2014 det passer til min hverdag', weights: {jordbaer:2,bikini:1}, intensity: 3 },
+          { text: '1\u20132 gange om ugen \u2014 n\u00e5r jeg har brug for det', weights: {jordbaer:1,bikini:1}, intensity: 2 },
+          { text: 'Kun f\u00f8r specielle lejligheder', weights: {bikini:2}, intensity: 1 }
         ],
         insightDynamic: function(sel) {
           const m = {
-            'Hver dag eller n\u00e6sten hver dag': 'S\u00e5 ved du pr\u00e6cis, hvor meget kl\u00f8e og irritation en uge koster dig. ShaveSafe er lavet til daglig brug.',
-            '3\u20135 gange om ugen': 'Det er den mest almindelige rytme \u2014 og pr\u00e6cis den, vores formel er optimeret til.',
-            '1\u20132 gange om ugen': 'Selv ved lav frekvens bygger bakterierne sig op mellem barberinger. Derfor virker gel\u2019en fra f\u00f8rste brug.',
-            'Kun f\u00f8r vigtige begivenheder': 'Du skal kun bruge ShaveSafe, n\u00e5r du barberer. Pr\u00f8vepakken holder l\u00e6nge.'
+            'Hver dag \u2014 jeg vil have frihed til at barbere n\u00e5r jeg vil': 'Det er pr\u00e6cis den frihed, 94% af vores kunder oplever. Gel\u2019en er designet til daglig brug uden at huden bygger op med irritation.',
+            '3\u20135 gange om ugen \u2014 det passer til min hverdag': 'Det er den mest almindelige rytme \u2014 mange af vores kunder starter her og ender med at barbere oftere, fordi de endelig kan g\u00f8re det uden konsekvenser.',
+            '1\u20132 gange om ugen \u2014 n\u00e5r jeg har brug for det': 'Mange starter her \u2014 og opdager hurtigt, at de kan barbere oftere, fordi knopperne simpelthen ikke kommer.',
+            'Kun f\u00f8r specielle lejligheder': 'De fleste der starter s\u00e5dan ender med at barbere oftere. N\u00e5r straffen forsvinder, f\u00f8les det som en helt ny frihed.'
           };
           return m[sel[0]] || '';
         }
@@ -1713,12 +1696,6 @@
       if (quizTriggerEl) { quizTriggerEl.focus(); quizTriggerEl = null; }
     }
 
-    function skipQuiz() {
-      pushEvent('quiz_skipped', {step_abandoned: quizState.step});
-      closeQuiz();
-      window.location.href = CHECKOUT_URL;
-    }
-
     // Intercept all CTA buttons with data-quiz-trigger
     document.addEventListener('click', function(e) {
       var trigger = e.target.closest('[data-quiz-trigger]');
@@ -1762,9 +1739,7 @@
       if (quizState.step > 0) html += '<button class="quiz-back" onclick="goBack()">\u2190 Tilbage</button>';
       var isLast = quizState.step === QUESTIONS.length - 1;
       html += '<button class="quiz-next" id="qNext" onclick="goNext()" disabled>' + (isLast ? 'Se min personlige match \u2192' : 'Forts\u00e6t') + '</button>';
-      html += '</div>';
-      html += '<button class="quiz-skip" onclick="skipQuiz()">Spring over \u2014 g\u00e5 til bestilling</button>';
-      html += '</div>';
+      html += '</div></div>';
 
       body.innerHTML = html;
       if (prev) { updateInsight(); document.getElementById('qNext').disabled = false; }
