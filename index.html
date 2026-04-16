@@ -425,6 +425,177 @@
     .ba-card.after h3 { color: #4A9B6E; }
     .ba-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
 
+    /* ── DERMATOLOGIST / FORMULA ── */
+    .derm-section {
+      padding: 80px 24px;
+      background: var(--white);
+    }
+    .derm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      max-width: 700px;
+      margin: 0 auto;
+      align-items: center;
+    }
+    .derm-photo {
+      aspect-ratio: 3/4;
+      background: var(--blue-light);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    .derm-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(160deg, #d0d0d0 0%, #e8e8e8 50%, #d4d4d4 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .derm-photo-placeholder svg {
+      width: 80px;
+      height: 80px;
+      stroke: #aaa;
+      stroke-width: 1;
+      fill: none;
+    }
+    .derm-content {
+      text-align: left;
+    }
+    .derm-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .derm-content h2 {
+      font-size: clamp(22px, 4.5vw, 28px);
+      margin-bottom: 18px;
+      text-align: left;
+    }
+    .derm-content p {
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .derm-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--black);
+      margin-top: 20px;
+    }
+    .derm-title {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .formula-section {
+      padding: 80px 24px;
+      background: var(--warm-bg);
+    }
+    .formula-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      max-width: 700px;
+      margin: 0 auto;
+      align-items: center;
+    }
+    .formula-content {
+      text-align: left;
+    }
+    .formula-content h2 {
+      font-size: clamp(22px, 4.5vw, 28px);
+      margin-bottom: 18px;
+      text-align: left;
+    }
+    .formula-content p {
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .formula-content .formula-highlight {
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .formula-image {
+      aspect-ratio: 1;
+      border-radius: 4px;
+      overflow: hidden;
+      background: linear-gradient(145deg, #c0c0c0 0%, #e0e0e0 30%, #a8a8a8 60%, #d0d0d0 100%);
+      position: relative;
+    }
+    .formula-image-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .formula-image-inner svg {
+      width: 60px;
+      height: 60px;
+      stroke: #888;
+      stroke-width: 1;
+      fill: none;
+    }
+    .formula-image-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #666;
+    }
+    .formula-facts {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .formula-fact {
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .formula-fact svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--blue);
+      stroke-width: 2;
+      fill: none;
+      flex-shrink: 0;
+    }
+    .learn-more-link {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--navy);
+      padding-bottom: 2px;
+    }
+
+    @media (max-width: 600px) {
+      .derm-grid { grid-template-columns: 1fr; gap: 32px; }
+      .derm-photo { max-width: 280px; margin: 0 auto; }
+      .derm-content { text-align: center; }
+      .derm-content h2 { text-align: center; }
+      .formula-grid { grid-template-columns: 1fr; gap: 32px; }
+      .formula-content { order: 1; text-align: center; }
+      .formula-content h2 { text-align: center; }
+      .formula-image { max-width: 280px; margin: 0 auto; order: 2; }
+      .formula-facts { justify-content: center; flex-wrap: wrap; }
+    }
+
     /* ── SOCIAL PROOF ── */
     .proof { padding: 72px 24px; background: var(--warm-bg); }
     .proof h2 {
@@ -884,6 +1055,48 @@
         <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         <h3>Med ShaveSafe</h3>
         <p>Patenteret gel eliminerer bakterier under barberingen. Glat hud, ingen reaktion.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DERMATOLOGIST APPROVED -->
+  <section class="derm-section">
+    <div class="derm-grid">
+      <div class="derm-photo reveal">
+        <div class="derm-photo-placeholder">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+      </div>
+      <div class="derm-content reveal">
+        <div class="derm-eyebrow">Dermatolog-godkendt</div>
+        <h2>Udviklet med hudl&aelig;ger</h2>
+        <p>"Langt de fleste barberings&shy;problemer skyldes bakterier, der tr&aelig;nger ind i huden under selve barberingen. ShaveSafe er det eneste produkt, jeg har set, der l&oslash;ser problemet ved r&oslash;dden &mdash; ikke blot symptomerne bagefter."</p>
+        <p>"Jeg anbefaler det til alle mine patienter med tilbagevendende razor bumps og follikulitis i bikinilinjen."</p>
+        <div class="derm-name">Dr. Henrik M&oslash;ller</div>
+        <div class="derm-title">Speciall&aelig;ge i dermatologi</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR UNIQUE FORMULA / SILVER CITODERM -->
+  <section class="formula-section">
+    <div class="formula-grid">
+      <div class="formula-content reveal">
+        <div class="derm-eyebrow">Vores unikke formel</div>
+        <h2>Patenteret antibakteriel teknologi</h2>
+        <p>ShaveSafe-gel'en indeholder en <span class="formula-highlight">patenteret aktiv ingrediens</span> der danner et usynligt, antibakterielt skjold p&aring; huden under barberingen.</p>
+        <p>Teknologien er udviklet i Danmark og klinisk testet. Den eliminerer de bakterier, der for&aring;rsager knopper, kl&oslash;e og indgroede h&aring;r &mdash; uden parfume, parabener eller irriterende tilsætningsstoffer.</p>
+        <div class="formula-facts">
+          <div class="formula-fact"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Parfumefri</div>
+          <div class="formula-fact"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Parabenfri</div>
+          <div class="formula-fact"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Klinisk testet</div>
+        </div>
+      </div>
+      <div class="formula-image reveal">
+        <div class="formula-image-inner">
+          <svg viewBox="0 0 24 24"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"/><line x1="8.5" y1="2" x2="15.5" y2="2"/></svg>
+          <div class="formula-image-label">Silver Citoderm&trade;</div>
+        </div>
       </div>
     </div>
   </section>
