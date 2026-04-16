@@ -286,7 +286,7 @@
     }
     .icon-item { text-align: center; }
     .icon-item img {
-      width: 40px; height: 40px;
+      width: 64px; height: 64px;
       margin: 0 auto 10px;
       object-fit: contain;
     }
@@ -363,59 +363,52 @@
 
     /* ── STATS ── */
     .stats-section {
-      padding: 80px 24px;
-      background: var(--black);
-      color: var(--white);
-      position: relative;
-      overflow: hidden;
-    }
-    .stats-section::before {
-      content: '';
-      position: absolute;
-      top: -50%; left: -50%;
-      width: 200%; height: 200%;
-      background: radial-gradient(ellipse at 30% 50%, rgba(232,96,44,0.06), transparent 60%);
-      pointer-events: none;
-    }
-    .stats-inner {
-      max-width: var(--max);
-      margin: 0 auto;
-      position: relative;
-    }
-    .stats-section .section-eyebrow { color: var(--gold); }
-    .stats-section h2 {
-      color: var(--white);
-      font-size: clamp(24px, 4vw, 36px);
-      font-weight: 400;
-      margin-bottom: 48px;
-      max-width: 500px;
+      padding: 88px 24px;
+      background: var(--light);
     }
     .stats-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 32px;
+      gap: 40px;
+      align-items: center;
+      max-width: var(--max);
+      margin: 0 auto;
     }
-    @media (min-width: 640px) {
-      .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 48px; }
+    @media (min-width: 768px) {
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 64px; }
     }
-    .stat { text-align: left; }
+    .stats-numbers {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .stat {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
     .stat-num {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(52px, 8vw, 72px);
+      font-size: 48px;
       font-weight: 700;
-      color: var(--white);
+      color: var(--black);
       line-height: 1;
-      margin-bottom: 8px;
+      flex-shrink: 0;
     }
     .stat-label {
       font-size: 14px;
-      color: rgba(255,255,255,0.55);
+      color: var(--body);
       line-height: 1.5;
     }
-    .stats-source {
-      margin-top: 40px;
-      font-size: 11px;
-      color: rgba(255,255,255,0.3);
+    .stats-img {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: var(--cream);
+    }
+    .stats-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
     }
 
     /* ── BEFORE / AFTER ── */
@@ -820,7 +813,7 @@
     <div class="hero-content">
       <div class="hero-eyebrow">ShaveSafe Pr&oslash;vepakke</div>
       <h1><em>Barbering uden<br/>knopper, kl&oslash;e og<br/>indgroede h&aring;r.</em></h1>
-      <p class="hero-desc">Den patenterede gel eliminerer bakterier <strong>under</strong> barberingen &mdash; s&aring; din hud slipper for at reagere bagefter.</p>
+      <p class="hero-desc">Danmarks eneste gel der eliminerer bakterier <strong>under</strong> barberingen &mdash; s&aring; din hud slipper for at reagere bagefter.</p>
 
       <div class="hero-social-proof">
         <div class="avatars">
@@ -902,24 +895,28 @@
 
   <!-- STATS -->
   <section class="stats-section">
-    <div class="stats-inner">
-      <div class="section-eyebrow reveal">Klinisk dokumenteret</div>
-      <h2 class="reveal">Resultater fra f&oslash;rste barbering.</h2>
-      <div class="stats-grid">
-        <div class="stat reveal">
-          <div class="stat-num">94%</div>
-          <div class="stat-label">oplever f&aelig;rre knopper efter 1&ndash;2 barberinger</div>
-        </div>
-        <div class="stat reveal reveal-delay-1">
-          <div class="stat-num">92%</div>
-          <div class="stat-label">ville anbefale ShaveSafe til en veninde</div>
-        </div>
-        <div class="stat reveal reveal-delay-2">
-          <div class="stat-num">89%</div>
-          <div class="stat-label">f&oslash;ler sig mere selvsikre efter brug</div>
+    <div class="stats-grid">
+      <div>
+        <div class="section-eyebrow reveal">Klinisk dokumenteret</div>
+        <h2 class="reveal" style="font-size:clamp(24px,4vw,36px);font-weight:400;margin-bottom:28px;">Resultater du kan m&aelig;rke fra f&oslash;rste barbering.</h2>
+        <div class="stats-numbers reveal">
+          <div class="stat">
+            <span class="stat-num">94%</span>
+            <span class="stat-label">oplever f&aelig;rre knopper efter blot 1&ndash;2 barberinger</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">92%</span>
+            <span class="stat-label">ville anbefale ShaveSafe til en veninde</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">89%</span>
+            <span class="stat-label">f&oslash;ler sig mere selvsikre efter brug</span>
+          </div>
         </div>
       </div>
-      <div class="stats-source reveal">Baseret p&aring; kundeunders&oslash;gelse blandt ShaveSafe-brugere, 2025</div>
+      <div class="stats-img reveal">
+        <img src="img/razor-closeup.jpg" alt="ShaveSafe produkt" />
+      </div>
     </div>
   </section>
 
