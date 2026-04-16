@@ -1026,6 +1026,23 @@
     .quiz-next:disabled { opacity: 0.4; cursor: default; }
     .quiz-next:disabled:hover { background: var(--accent); }
 
+    .quiz-skip {
+      display: block;
+      text-align: right;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 0;
+      transition: color 0.2s;
+    }
+    .quiz-skip:hover { color: var(--body); }
+
     /* ── QUIZ RESULT ── */
     .quiz-result { animation: quizFadeIn 0.5s ease; }
     .quiz-result-match {
@@ -1172,7 +1189,7 @@
         <span class="tag">Spar 57%</span>
       </div>
 
-      <a href="https://shavesafe.dk/collections/provepakke" class="cta-btn">
+      <a href="https://shavesafe.dk/collections/provepakke" class="cta-btn" data-quiz-trigger="hero">
         Bestil pr&oslash;vepakken
         <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
@@ -1394,7 +1411,7 @@
       <div class="section-eyebrow" style="text-align:center;">Ikke sikker endnu?</div>
       <h2 style="font-size:clamp(22px,4vw,30px);font-weight:400;margin-bottom:12px;">Find ud af om ShaveSafe er noget for dig</h2>
       <p style="font-size:14px;color:var(--body);margin-bottom:28px;">Tag vores 45-sekunders test og f&aring; en personlig vurdering baseret p&aring; din hud, dine vaner og dine udfordringer.</p>
-      <button class="cta-btn" onclick="openQuiz()" style="background:var(--black);box-shadow:none;">
+      <button class="cta-btn" onclick="openQuiz('mid_page_quiz')" style="background:var(--black);box-shadow:none;">
         Tag testen
         <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;stroke-width:2.5;fill:none;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </button>
@@ -1427,7 +1444,7 @@
         <span class="product-price-og">185 kr</span>
       </div>
       <div class="product-shipping">inkl. gratis fragt</div>
-      <a href="https://shavesafe.dk/collections/provepakke" class="cta-btn" style="width:100%;">
+      <a href="https://shavesafe.dk/collections/provepakke" class="cta-btn" style="width:100%;" data-quiz-trigger="mid_page">
         Bestil pr&oslash;vepakken
         <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
@@ -1448,7 +1465,7 @@
 
   <!-- QUIZ BANNER -->
   <div style="padding:0 24px 0;background:var(--light);">
-    <div class="quiz-banner reveal" onclick="openQuiz()">
+    <div class="quiz-banner reveal" onclick="openQuiz('quiz_banner')" tabindex="0" role="button">
       <span class="quiz-banner-text">Usikker p&aring; om det er noget for dig?</span>
       <span class="quiz-banner-cta">Tag 45-sek testen &rarr;</span>
     </div>
@@ -1487,7 +1504,7 @@
   <section class="final-cta">
     <h2 class="reveal"><em>Klar til barbering<br/>uden knopper?</em></h2>
     <p class="reveal">Komplet pr&oslash;vepakke for kun 79 kr. Gratis fragt.</p>
-    <a href="https://shavesafe.dk/collections/provepakke" class="cta-btn-white reveal">Bestil pr&oslash;vepakken</a>
+    <a href="https://shavesafe.dk/collections/provepakke" class="cta-btn-white reveal" data-quiz-trigger="final_cta">Bestil pr&oslash;vepakken</a>
   </section>
 
   <footer>
@@ -1501,11 +1518,11 @@
       <div class="sticky-name">ShaveSafe Pr&oslash;vepakke</div>
       <div class="sticky-price">79 kr &middot; Gratis fragt</div>
     </div>
-    <a href="https://shavesafe.dk/collections/provepakke" class="cta-btn">K&oslash;b nu</a>
+    <a href="https://shavesafe.dk/collections/provepakke" class="cta-btn" data-quiz-trigger="sticky_bar">K&oslash;b nu</a>
   </div>
 
   <!-- QUIZ OVERLAY -->
-  <div class="quiz-overlay" id="quizOverlay">
+  <div class="quiz-overlay" id="quizOverlay" role="dialog" aria-modal="true" aria-label="ShaveSafe personlig quiz">
     <div class="quiz-header">
       <div class="quiz-header-top">
         <img src="img/logo-black.avif" alt="ShaveSafe" class="quiz-header-logo" />
@@ -1640,21 +1657,82 @@
     };
 
     let quizState = { step: 0, answers: [], scores: {jordbaer:0,bikini:0,skaeg:0,skeptiker:0,familie:0}, intensity: 0 };
+    let quizTriggerEl = null;
+    let quizTriggerLocation = 'hero';
+    const CHECKOUT_URL = 'https://shavesafe.dk/collections/provepakke';
+    const SS_KEY = 'ss_quiz_state';
 
-    function openQuiz() {
-      document.getElementById('quizOverlay').classList.add('open');
-      document.body.classList.add('quiz-open');
-      if (quizState.step === 0 && quizState.answers.length === 0) {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({event:'quiz_start'});
+    // Restore session state
+    try {
+      const saved = sessionStorage.getItem(SS_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed && typeof parsed.step === 'number') {
+          quizState.step = parsed.step;
+          quizState.answers = parsed.answers || [];
+          quizState.scores = parsed.scores || {jordbaer:0,bikini:0,skaeg:0,skeptiker:0,familie:0};
+          quizState.intensity = parsed.intensity || 0;
+        }
       }
-      renderStep();
+    } catch(e) {}
+
+    function saveQuizState() {
+      try {
+        sessionStorage.setItem(SS_KEY, JSON.stringify({
+          step: quizState.step,
+          answers: quizState.answers,
+          scores: quizState.scores,
+          intensity: quizState.intensity
+        }));
+      } catch(e) {}
     }
+
+    function pushEvent(event, data) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(Object.assign({event: event}, data || {}));
+    }
+
+    function openQuiz(triggerLocation) {
+      quizTriggerLocation = triggerLocation || 'hero';
+      const overlay = document.getElementById('quizOverlay');
+      overlay.classList.add('open');
+      document.body.classList.add('quiz-open');
+      pushEvent('quiz_opened', {trigger_location: quizTriggerLocation});
+      renderStep();
+      // Focus trap: focus the close button
+      setTimeout(function() {
+        var close = overlay.querySelector('.quiz-close');
+        if (close) close.focus();
+      }, 100);
+    }
+
     function closeQuiz() {
+      saveQuizState();
       document.getElementById('quizOverlay').classList.remove('open');
       document.body.classList.remove('quiz-open');
+      if (quizTriggerEl) { quizTriggerEl.focus(); quizTriggerEl = null; }
     }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeQuiz(); });
+
+    function skipQuiz() {
+      pushEvent('quiz_skipped', {step_abandoned: quizState.step});
+      closeQuiz();
+      window.location.href = CHECKOUT_URL;
+    }
+
+    // Intercept all CTA buttons with data-quiz-trigger
+    document.addEventListener('click', function(e) {
+      var trigger = e.target.closest('[data-quiz-trigger]');
+      if (!trigger) return;
+      e.preventDefault();
+      quizTriggerEl = trigger;
+      openQuiz(trigger.getAttribute('data-quiz-trigger'));
+    });
+
+    // Close on ESC or backdrop click
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeQuiz(); });
+    document.getElementById('quizOverlay').addEventListener('click', function(e) {
+      if (e.target === this) closeQuiz();
+    });
 
     function renderStep() {
       const pct = Math.round((quizState.step / QUESTIONS.length) * 100);
@@ -1682,8 +1760,11 @@
       html += '<div id="qInsight"></div>';
       html += '<div class="quiz-nav">';
       if (quizState.step > 0) html += '<button class="quiz-back" onclick="goBack()">\u2190 Tilbage</button>';
-      html += '<button class="quiz-next" id="qNext" onclick="goNext()" disabled>Forts\u00e6t</button>';
-      html += '</div></div>';
+      var isLast = quizState.step === QUESTIONS.length - 1;
+      html += '<button class="quiz-next" id="qNext" onclick="goNext()" disabled>' + (isLast ? 'Se min personlige match \u2192' : 'Forts\u00e6t') + '</button>';
+      html += '</div>';
+      html += '<button class="quiz-skip" onclick="skipQuiz()">Spring over \u2014 g\u00e5 til bestilling</button>';
+      html += '</div>';
 
       body.innerHTML = html;
       if (prev) { updateInsight(); document.getElementById('qNext').disabled = false; }
@@ -1736,10 +1817,10 @@
         if (opt && opt.intensity) quizState.intensity = opt.intensity;
       });
 
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({event:'quiz_question_answered', question: q.id, scores: {...quizState.scores}});
+      pushEvent('quiz_question_answered', {question_id: q.id, answer_ids: sel, step: quizState.step});
 
       quizState.step++;
+      saveQuizState();
       renderStep();
     }
 
@@ -1770,8 +1851,7 @@
       const a = AVATARS[avatar];
       const starSvg = '<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
 
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({event:'quiz_complete', avatar: avatar, intensity: quizState.intensity, answers: quizState.answers});
+      pushEvent('quiz_completed', {primary_avatar: avatar, avatar_scores: {...quizState.scores}, answers: quizState.answers});
 
       let html = '<div class="quiz-result">';
       html += '<div class="quiz-result-match"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Match 100% komplet</div>';
@@ -1796,7 +1876,7 @@
       html += '<div style="margin:20px 0 4px;"><span style="font-size:16px;color:var(--muted);text-decoration:line-through;">185 kr</span></div>';
       html += '<div style="font-family:Playfair Display,serif;font-size:40px;font-weight:700;color:var(--black);">79 kr</div>';
       html += '<div style="font-size:12px;color:var(--muted);margin-bottom:20px;">inkl. gratis fragt</div>';
-      html += '<a href="https://shavesafe.dk/collections/provepakke" class="cta-btn" style="width:100%;" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:\'quiz_cta_clicked\',avatar:\'' + avatar + '\'});">';
+      html += '<a href="https://shavesafe.dk/collections/provepakke" class="cta-btn" style="width:100%;" onclick="pushEvent(\'quiz_cta_clicked\',{primary_avatar:\'' + avatar + '\'});try{sessionStorage.removeItem(SS_KEY)}catch(e){}">';
       html += 'Bestil min pr\u00f8vepakke \u2014 79 kr';
       html += '<svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;stroke-width:2.5;fill:none;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
       html += '</a>';
