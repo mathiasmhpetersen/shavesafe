@@ -10,19 +10,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --black: #111;
-      --body: #555;
-      --muted: #999;
-      --light: #f7f7f5;
-      --border: #e5e5e5;
+      --black: #0a0a0a;
+      --body: #4a4a4a;
+      --muted: #8a8a8a;
+      --light: #f8f7f5;
+      --cream: #f2f0eb;
+      --border: #e8e6e1;
       --white: #fff;
       --gold: #C9A84C;
       --green: #2e7d32;
       --accent: #E8602C;
       --accent-hover: #d44f1e;
+      --accent-glow: rgba(232, 96, 44, 0.15);
       --max: 1100px;
-      --narrow: 680px;
-      --radius: 8px;
+      --narrow: 640px;
+      --radius: 10px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -33,31 +35,36 @@
       color: var(--body);
       background: var(--white);
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
     img { max-width: 100%; height: auto; display: block; }
     h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--black); }
     .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
-    .narrow { max-width: var(--narrow); margin: 0 auto; }
 
     /* ── ANNOUNCEMENT ── */
     .announcement {
       background: var(--black);
-      color: rgba(255,255,255,0.85);
+      color: rgba(255,255,255,0.9);
       text-align: center;
-      padding: 10px 16px;
-      font-size: 12px;
+      padding: 11px 16px;
+      font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     /* ── HEADER ── */
     .header {
-      padding: 14px 24px;
+      padding: 16px 24px;
       display: flex;
       justify-content: center;
       border-bottom: 1px solid var(--border);
+      background: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 50;
     }
-    .header img { height: 22px; }
+    .header img { height: 20px; }
 
     /* ── HERO ── */
     .hero {
@@ -67,13 +74,16 @@
       margin: 0 auto;
     }
     @media (min-width: 768px) {
-      .hero { grid-template-columns: 1fr 1fr; min-height: 600px; }
+      .hero { grid-template-columns: 1.1fr 0.9fr; min-height: 620px; }
     }
     .hero-img {
-      background: var(--light);
-      min-height: 400px;
       position: relative;
       overflow: hidden;
+      min-height: 56vh;
+      background: var(--cream);
+    }
+    @media (min-width: 768px) {
+      .hero-img { min-height: auto; }
     }
     .hero-img img {
       width: 100%;
@@ -82,90 +92,153 @@
       position: absolute;
       top: 0; left: 0;
     }
+    .hero-img::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 120px;
+      background: linear-gradient(to top, rgba(255,255,255,0.4), transparent);
+      pointer-events: none;
+    }
+    @media (min-width: 768px) {
+      .hero-img::after { display: none; }
+    }
+    .hero-badge {
+      position: absolute;
+      top: 20px; left: 20px;
+      background: var(--white);
+      border-radius: 50px;
+      padding: 6px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--black);
+      letter-spacing: 0.02em;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .hero-badge svg { width: 13px; height: 13px; fill: var(--gold); }
     .hero-content {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 48px 32px;
+      padding: 40px 28px 48px;
     }
     @media (min-width: 768px) {
-      .hero-content { padding: 64px 48px; }
+      .hero-content { padding: 56px 52px; }
     }
     .hero-eyebrow {
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
+      letter-spacing: 0.14em;
+      color: var(--accent);
       font-weight: 600;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
     .hero h1 {
-      font-size: clamp(28px, 5vw, 42px);
+      font-size: clamp(28px, 5.5vw, 44px);
       font-weight: 400;
-      line-height: 1.15;
-      margin-bottom: 16px;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      letter-spacing: -0.01em;
     }
     .hero h1 em { font-style: italic; }
     .hero-desc {
       font-size: 15px;
       line-height: 1.7;
-      margin-bottom: 24px;
-      max-width: 420px;
+      margin-bottom: 20px;
+      max-width: 400px;
     }
+    .hero-desc strong { color: var(--black); }
+    .hero-social-proof {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 0;
+      margin-bottom: 20px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-social-proof .avatars {
+      display: flex;
+    }
+    .hero-social-proof .avatar {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 2px solid var(--white);
+      margin-left: -8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--body);
+    }
+    .hero-social-proof .avatar:first-child { margin-left: 0; }
+    .hero-social-proof .proof-text {
+      font-size: 12px;
+      color: var(--body);
+      line-height: 1.4;
+    }
+    .hero-social-proof .proof-text strong { color: var(--black); }
     .hero-price {
       display: flex;
       align-items: baseline;
       gap: 10px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
     .hero-price .price {
       font-family: 'Playfair Display', serif;
-      font-size: 32px;
+      font-size: 34px;
       font-weight: 700;
       color: var(--black);
+    }
+    .hero-price .price-original {
+      font-size: 16px;
+      color: var(--muted);
+      text-decoration: line-through;
     }
     .hero-price .tag {
       font-size: 11px;
       font-weight: 600;
       color: var(--green);
       background: #e8f5e9;
-      padding: 3px 8px;
-      border-radius: 4px;
+      padding: 3px 10px;
+      border-radius: 50px;
     }
     .cta-btn {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       background: var(--accent);
       color: var(--white);
       font-size: 15px;
       font-weight: 600;
-      padding: 16px 40px;
+      padding: 17px 40px;
       border-radius: 50px;
       text-decoration: none;
       text-align: center;
-      transition: all 0.2s;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       border: none;
       cursor: pointer;
+      box-shadow: 0 4px 16px var(--accent-glow);
     }
-    .cta-btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .cta-btn:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 24px var(--accent-glow); }
+    .cta-btn svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2.5; fill: none; }
     .hero-meta {
-      margin-top: 20px;
+      margin-top: 16px;
       font-size: 12px;
       color: var(--muted);
       line-height: 1.6;
     }
-    .hero-stars {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 16px;
-    }
-    .hero-stars svg { width: 15px; height: 15px; fill: var(--gold); }
-    .hero-stars span { font-size: 13px; color: var(--muted); }
 
     /* ── PRESS BAR ── */
     .press-bar {
-      padding: 32px 24px;
-      border-top: 1px solid var(--border);
+      padding: 28px 24px;
       border-bottom: 1px solid var(--border);
       background: var(--white);
     }
@@ -173,77 +246,78 @@
       text-align: center;
       font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.16em;
       color: var(--muted);
-      margin-bottom: 20px;
-      font-weight: 600;
+      margin-bottom: 18px;
+      font-weight: 500;
     }
     .press-logos {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 28px;
+      gap: 24px;
       flex-wrap: wrap;
-      max-width: 800px;
+      max-width: 750px;
       margin: 0 auto;
     }
     .press-logos img {
-      height: 20px;
-      opacity: 0.45;
+      height: 18px;
+      opacity: 0.35;
       filter: grayscale(100%);
       transition: opacity 0.3s;
     }
-    .press-logos img:hover { opacity: 0.8; }
+    .press-logos img:hover { opacity: 0.7; }
 
     /* ── ICON BAR ── */
     .icon-bar {
-      padding: 40px 24px;
+      padding: 44px 24px;
       background: var(--light);
+      border-bottom: 1px solid var(--border);
     }
     .icon-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      max-width: 700px;
+      gap: 20px;
+      max-width: 660px;
       margin: 0 auto;
     }
     @media (min-width: 640px) {
       .icon-grid { grid-template-columns: repeat(4, 1fr); }
     }
-    .icon-item {
-      text-align: center;
-    }
+    .icon-item { text-align: center; }
     .icon-item img {
-      width: 44px;
-      height: 44px;
+      width: 40px; height: 40px;
       margin: 0 auto 10px;
       object-fit: contain;
     }
     .icon-item p {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       color: var(--black);
-      line-height: 1.4;
+      line-height: 1.35;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
     /* ── SECTION SHARED ── */
-    .section { padding: 80px 24px; }
+    .section { padding: 88px 24px; }
     .section-eyebrow {
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
+      letter-spacing: 0.14em;
+      color: var(--accent);
       font-weight: 600;
       margin-bottom: 12px;
     }
     .section h2 {
-      font-size: clamp(24px, 4vw, 36px);
+      font-size: clamp(26px, 4.5vw, 40px);
       font-weight: 400;
-      line-height: 1.2;
+      line-height: 1.15;
       margin-bottom: 20px;
+      letter-spacing: -0.01em;
     }
 
-    /* ── SPLIT SECTION (image + text) ── */
+    /* ── SPLIT SECTION ── */
     .split {
       display: grid;
       grid-template-columns: 1fr;
@@ -253,7 +327,7 @@
       margin: 0 auto;
     }
     @media (min-width: 768px) {
-      .split { grid-template-columns: 1fr 1fr; gap: 64px; }
+      .split { grid-template-columns: 1fr 1fr; gap: 72px; }
       .split.reverse .split-img { order: 2; }
       .split.reverse .split-text { order: 1; }
     }
@@ -261,11 +335,10 @@
       border-radius: var(--radius);
       overflow: hidden;
       aspect-ratio: 4/3;
-      background: var(--light);
+      background: var(--cream);
     }
     .split-img img {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: cover;
     }
     .split-text p {
@@ -273,67 +346,88 @@
       line-height: 1.8;
       margin-bottom: 16px;
     }
+    .callout-box {
+      background: var(--light);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 18px 20px;
+      margin-top: 8px;
+    }
+    .callout-box p {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--black);
+      margin: 0;
+      line-height: 1.6;
+    }
 
     /* ── STATS ── */
     .stats-section {
       padding: 80px 24px;
-      background: var(--light);
+      background: var(--black);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .stats-section::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(ellipse at 30% 50%, rgba(232,96,44,0.06), transparent 60%);
+      pointer-events: none;
+    }
+    .stats-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      position: relative;
+    }
+    .stats-section .section-eyebrow { color: var(--gold); }
+    .stats-section h2 {
+      color: var(--white);
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 400;
+      margin-bottom: 48px;
+      max-width: 500px;
     }
     .stats-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 40px;
-      align-items: center;
-      max-width: var(--max);
-      margin: 0 auto;
+      gap: 32px;
     }
-    @media (min-width: 768px) {
-      .stats-grid { grid-template-columns: 1fr 1fr; gap: 64px; }
+    @media (min-width: 640px) {
+      .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 48px; }
     }
-    .stats-numbers {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
-    .stat {
-      display: flex;
-      align-items: baseline;
-      gap: 16px;
-    }
+    .stat { text-align: left; }
     .stat-num {
       font-family: 'Playfair Display', serif;
-      font-size: 48px;
+      font-size: clamp(52px, 8vw, 72px);
       font-weight: 700;
-      color: var(--black);
+      color: var(--white);
       line-height: 1;
-      flex-shrink: 0;
+      margin-bottom: 8px;
     }
     .stat-label {
       font-size: 14px;
-      color: var(--body);
+      color: rgba(255,255,255,0.55);
       line-height: 1.5;
     }
-    .stats-img {
-      border-radius: var(--radius);
-      overflow: hidden;
-      aspect-ratio: 3/4;
-      background: var(--border);
-    }
-    .stats-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .stats-source {
+      margin-top: 40px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
     }
 
     /* ── BEFORE / AFTER ── */
     .ba-section {
-      padding: 80px 24px;
+      padding: 88px 24px;
+      background: var(--white);
     }
     .ba-section h2 {
       text-align: center;
-      font-size: clamp(24px, 4vw, 36px);
+      font-size: clamp(26px, 4.5vw, 40px);
       font-weight: 400;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
     .ba-sub {
       text-align: center;
@@ -341,32 +435,48 @@
       font-size: 14px;
       margin-bottom: 40px;
     }
-    .ba-image {
-      max-width: 700px;
+    .ba-wrapper {
+      max-width: 640px;
       margin: 0 auto;
+      position: relative;
+    }
+    .ba-image {
       border-radius: var(--radius);
       overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
     }
-    .ba-image img {
-      width: 100%;
-      display: block;
+    .ba-image img { width: 100%; display: block; }
+    .ba-caption {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
     }
+    .ba-caption strong { color: var(--black); font-style: normal; }
 
     /* ── HOW IT WORKS ── */
     .how-section {
-      padding: 80px 24px;
+      padding: 88px 24px;
       background: var(--light);
     }
     .how-inner { max-width: var(--narrow); margin: 0 auto; }
-    .how-steps { display: flex; flex-direction: column; gap: 36px; }
-    .how-step { display: flex; gap: 20px; align-items: flex-start; }
+    .how-steps { display: flex; flex-direction: column; gap: 0; }
+    .how-step {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .how-step:last-child { border-bottom: none; }
     .how-num {
-      width: 40px; height: 40px;
+      width: 44px; height: 44px;
       border-radius: 50%;
-      border: 2px solid var(--black);
-      color: var(--black);
+      background: var(--black);
+      color: var(--white);
       font-family: 'Playfair Display', serif;
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -378,189 +488,278 @@
       font-weight: 600;
       margin-bottom: 4px;
       font-family: 'Inter', sans-serif;
+      color: var(--black);
     }
-    .how-text p { font-size: 14px; color: var(--body); }
+    .how-text p { font-size: 14px; color: var(--body); line-height: 1.65; }
 
     /* ── REVIEWS ── */
-    .reviews-section { padding: 80px 24px; }
-    .reviews-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+    .reviews-section { padding: 88px 24px; overflow: hidden; }
+    .reviews-header { text-align: center; margin-bottom: 44px; }
     .reviews-header h2 {
-      font-size: clamp(24px, 4vw, 36px);
+      font-size: clamp(26px, 4.5vw, 40px);
       font-weight: 400;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .reviews-rating {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
     .reviews-big {
       font-family: 'Playfair Display', serif;
-      font-size: 48px;
+      font-size: 28px;
       font-weight: 700;
       color: var(--black);
     }
-    .reviews-stars {
+    .reviews-stars { display: flex; gap: 2px; }
+    .reviews-stars svg { width: 16px; height: 16px; fill: var(--gold); }
+    .reviews-count { font-size: 13px; color: var(--muted); margin-top: 6px; }
+
+    .reviews-scroll {
       display: flex;
-      justify-content: center;
-      gap: 3px;
-      margin: 8px 0;
-    }
-    .reviews-stars svg { width: 18px; height: 18px; fill: var(--gold); }
-    .reviews-count { font-size: 13px; color: var(--muted); }
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: 1fr;
       gap: 16px;
-      max-width: 900px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 4px 0 20px;
+      max-width: 1000px;
       margin: 0 auto;
+      scrollbar-width: none;
     }
-    @media (min-width: 640px) { .reviews-grid { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 900px) { .reviews-grid { grid-template-columns: 1fr 1fr 1fr; } }
+    .reviews-scroll::-webkit-scrollbar { display: none; }
+    @media (min-width: 900px) {
+      .reviews-scroll { overflow: visible; flex-wrap: wrap; justify-content: center; }
+    }
+
     .review-card {
-      background: var(--light);
+      background: var(--white);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 24px;
+      flex: 0 0 300px;
+      scroll-snap-align: start;
+    }
+    @media (min-width: 900px) {
+      .review-card { flex: 0 0 calc(33.333% - 11px); }
     }
     .review-top {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
     .review-avatar {
       width: 36px; height: 36px;
       border-radius: 50%;
-      background: var(--border);
+      background: var(--cream);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 600;
-      font-size: 14px;
-      color: var(--black);
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--body);
     }
     .review-name { font-size: 13px; font-weight: 600; color: var(--black); }
-    .review-verified { font-size: 11px; color: var(--green); }
-    .review-card-stars { display: flex; gap: 1px; margin-bottom: 10px; }
+    .review-verified { font-size: 11px; color: var(--green); display: flex; align-items: center; gap: 3px; }
+    .review-verified svg { width: 11px; height: 11px; stroke: var(--green); stroke-width: 2.5; fill: none; }
+    .review-card-stars { display: flex; gap: 1px; margin-bottom: 12px; }
     .review-card-stars svg { width: 12px; height: 12px; fill: var(--gold); }
-    .review-text { font-size: 13px; line-height: 1.65; color: var(--body); }
+    .review-text { font-size: 14px; line-height: 1.65; color: var(--body); }
     .review-text strong { color: var(--black); }
 
     /* ── PRODUCT BOX ── */
     .product-section {
-      padding: 80px 24px;
+      padding: 88px 24px;
       background: var(--light);
     }
     .product-box {
-      max-width: 500px;
+      max-width: 480px;
       margin: 0 auto;
       background: var(--white);
-      border-radius: 12px;
-      padding: 36px 28px;
+      border-radius: 16px;
+      padding: 40px 32px;
       text-align: center;
-      border: 1px solid var(--border);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
     }
     .product-box h2 {
-      font-size: 26px;
-      margin-bottom: 6px;
+      font-size: 28px;
+      margin-bottom: 4px;
     }
     .product-sub {
       color: var(--muted);
       font-size: 14px;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
     .product-items {
       text-align: left;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
     .product-item {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
-      padding: 10px 0;
+      gap: 12px;
+      padding: 12px 0;
       border-bottom: 1px solid var(--border);
       font-size: 14px;
+      line-height: 1.5;
     }
     .product-item:last-child { border-bottom: none; }
     .product-item svg {
-      width: 16px; height: 16px;
+      width: 18px; height: 18px;
       stroke: var(--green);
       stroke-width: 2.5;
       fill: none;
       flex-shrink: 0;
-      margin-top: 2px;
+      margin-top: 1px;
+    }
+    .product-price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0 4px;
     }
     .product-price {
       font-family: 'Playfair Display', serif;
-      font-size: 36px;
+      font-size: 40px;
       font-weight: 700;
       color: var(--black);
-      margin: 16px 0 4px;
+    }
+    .product-price-og {
+      font-size: 18px;
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+    .product-shipping {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 20px;
     }
     .product-note {
       font-size: 12px;
       color: var(--muted);
-      margin-top: 12px;
-      line-height: 1.5;
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── GUARANTEE ── */
+    .guarantee-section {
+      padding: 64px 24px;
+      text-align: center;
+      background: var(--white);
+    }
+    .guarantee-inner {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .guarantee-icon {
+      width: 48px; height: 48px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: #e8f5e9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .guarantee-icon svg {
+      width: 24px; height: 24px;
+      stroke: var(--green);
+      stroke-width: 2;
+      fill: none;
+    }
+    .guarantee-section h3 {
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+    .guarantee-section p {
+      font-size: 14px;
+      color: var(--body);
+      line-height: 1.7;
     }
 
     /* ── FAQ ── */
-    .faq-section { padding: 80px 24px; }
+    .faq-section { padding: 88px 24px; background: var(--light); }
     .faq-inner { max-width: var(--narrow); margin: 0 auto; }
     .faq-section h2 {
       text-align: center;
-      font-size: clamp(24px, 4vw, 32px);
+      font-size: clamp(24px, 4vw, 34px);
       font-weight: 400;
-      margin-bottom: 36px;
+      margin-bottom: 40px;
     }
     .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
     .faq-q {
       width: 100%; background: none; border: none;
-      padding: 18px 0; font-size: 14px; font-weight: 600;
+      padding: 20px 0; font-size: 14px; font-weight: 600;
       color: var(--black); text-align: left; cursor: pointer;
       display: flex; justify-content: space-between; align-items: center;
-      font-family: inherit; gap: 12px;
+      font-family: inherit; gap: 16px;
+      transition: color 0.2s;
     }
-    .faq-q svg { width: 16px; height: 16px; stroke: var(--muted); stroke-width: 2; fill: none; flex-shrink: 0; transition: transform 0.3s; }
+    .faq-q:hover { color: var(--accent); }
+    .faq-q svg { width: 18px; height: 18px; stroke: var(--muted); stroke-width: 1.5; fill: none; flex-shrink: 0; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     .faq-q.open svg { transform: rotate(45deg); }
-    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; font-size: 14px; line-height: 1.7; color: var(--body); }
-    .faq-a.open { max-height: 200px; padding-bottom: 18px; }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 14px; line-height: 1.75; color: var(--body);
+    }
+    .faq-a.open { max-height: 200px; padding-bottom: 20px; }
 
     /* ── FINAL CTA ── */
     .final-cta {
       background: var(--black);
       color: var(--white);
-      padding: 80px 24px;
+      padding: 96px 24px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(ellipse at 50% 80%, rgba(232,96,44,0.08), transparent 50%);
+      pointer-events: none;
     }
     .final-cta h2 {
       color: var(--white);
-      font-size: clamp(24px, 5vw, 38px);
+      font-size: clamp(28px, 5vw, 44px);
       font-weight: 400;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+      position: relative;
     }
     .final-cta p {
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.5);
       font-size: 15px;
-      margin-bottom: 28px;
-      max-width: 440px;
+      margin-bottom: 32px;
+      max-width: 400px;
       margin-left: auto;
       margin-right: auto;
+      position: relative;
     }
     .cta-btn-white {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       background: var(--white);
       color: var(--black);
       font-size: 15px;
       font-weight: 600;
-      padding: 16px 44px;
+      padding: 17px 48px;
       border-radius: 50px;
       text-decoration: none;
-      transition: opacity 0.2s;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
     }
-    .cta-btn-white:hover { opacity: 0.9; }
+    .cta-btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255,255,255,0.15); }
 
     footer {
       border-top: 1px solid var(--border);
-      padding: 24px;
+      padding: 32px 24px;
       text-align: center;
       font-size: 11px;
       color: var(--muted);
@@ -573,9 +772,9 @@
       bottom: 0; left: 0; right: 0;
       background: var(--white);
       border-top: 1px solid var(--border);
-      padding: 12px 16px;
+      padding: 10px 16px;
       z-index: 100;
-      box-shadow: 0 -2px 12px rgba(0,0,0,0.06);
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
       align-items: center;
       gap: 12px;
     }
@@ -583,11 +782,22 @@
     .sticky-bar .sticky-info { flex: 1; }
     .sticky-bar .sticky-name { font-size: 13px; font-weight: 600; color: var(--black); }
     .sticky-bar .sticky-price { font-size: 12px; color: var(--muted); }
-    .sticky-bar .cta-btn { padding: 12px 24px; font-size: 13px; flex-shrink: 0; }
+    .sticky-bar .cta-btn { padding: 12px 24px; font-size: 13px; flex-shrink: 0; box-shadow: none; }
 
     /* ── ANIMATIONS ── */
-    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
     .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* safe area for sticky bar */
+    body { padding-bottom: 80px; }
+    @media (min-width: 768px) { body { padding-bottom: 0; } }
   </style>
 </head>
 <body>
@@ -598,36 +808,45 @@
     <img src="img/logo-black.avif" alt="ShaveSafe" />
   </header>
 
-  <!-- ═══ HERO ═══ -->
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-img">
       <img src="img/nana-hero.jpg" alt="Kvinde med ShaveSafe pakke" />
+      <div class="hero-badge">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        4.8 / 5 stjerner
+      </div>
     </div>
     <div class="hero-content">
       <div class="hero-eyebrow">ShaveSafe Pr&oslash;vepakke</div>
-      <h1><em>Barbering uden knopper, kl&oslash;e og indgroede h&aring;r.</em></h1>
-      <p class="hero-desc">Den patenterede barbergel der eliminerer bakterier <strong>under</strong> barberingen &mdash; ikke efter. F&aring; komplet s&aelig;t med skraber, blade og gel.</p>
+      <h1><em>Barbering uden<br/>knopper, kl&oslash;e og<br/>indgroede h&aring;r.</em></h1>
+      <p class="hero-desc">Den patenterede gel eliminerer bakterier <strong>under</strong> barberingen &mdash; s&aring; din hud slipper for at reagere bagefter.</p>
 
-      <div class="hero-stars">
-        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <span>4.8 / 5 &mdash; 49 anmeldelser</span>
+      <div class="hero-social-proof">
+        <div class="avatars">
+          <div class="avatar">M</div>
+          <div class="avatar">L</div>
+          <div class="avatar">K</div>
+          <div class="avatar">S</div>
+        </div>
+        <div class="proof-text"><strong>94% oplever f&aelig;rre knopper</strong><br/>efter blot 1&ndash;2 barberinger</div>
       </div>
 
       <div class="hero-price">
         <span class="price">79 kr</span>
+        <span class="price-original">185 kr</span>
         <span class="tag">Spar 57%</span>
       </div>
 
-      <a href="https://shavesafe.dk/collections/provepakke" class="cta-btn">Bestil pr&oslash;vepakken &rarr;</a>
-      <p class="hero-meta">Inkl. skraber, blad &amp; 50 ml gel &middot; Gratis fragt<br/>K&oslash;bes som abonnement &middot; Opsig n&aring;r som helst</p>
+      <a href="https://shavesafe.dk/collections/provepakke" class="cta-btn">
+        Bestil pr&oslash;vepakken
+        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <p class="hero-meta">Skraber + blad + 50 ml gel &middot; Gratis fragt &middot; Opsig n&aring;r som helst</p>
     </div>
   </section>
 
-  <!-- ═══ PRESS LOGOS ═══ -->
+  <!-- PRESS LOGOS -->
   <div class="press-bar">
     <div class="press-label">Set i danske medier</div>
     <div class="press-logos">
@@ -642,29 +861,29 @@
     </div>
   </div>
 
-  <!-- ═══ ICON BAR ═══ -->
-  <div class="icon-bar reveal">
+  <!-- ICON BAR -->
+  <div class="icon-bar">
     <div class="icon-grid">
-      <div class="icon-item">
+      <div class="icon-item reveal">
         <img src="img/icon-1.avif" alt="Patenteret" />
         <p>Patenteret<br/>barbergel</p>
       </div>
-      <div class="icon-item">
+      <div class="icon-item reveal reveal-delay-1">
         <img src="img/icon-2.avif" alt="Klinisk testet" />
         <p>Klinisk<br/>testet</p>
       </div>
-      <div class="icon-item">
+      <div class="icon-item reveal reveal-delay-2">
         <img src="img/icon-3.avif" alt="Parfumefri" />
         <p>Parfumefri &amp;<br/>parabenfri</p>
       </div>
-      <div class="icon-item">
+      <div class="icon-item reveal reveal-delay-3">
         <img src="img/icon-4.avif" alt="Dansk" />
         <p>Dansk<br/>udviklet</p>
       </div>
     </div>
   </div>
 
-  <!-- ═══ THE PROBLEM / MECHANISM ═══ -->
+  <!-- THE PROBLEM / MECHANISM -->
   <section class="section">
     <div class="split reveal">
       <div class="split-img">
@@ -673,54 +892,55 @@
       <div class="split-text">
         <div class="section-eyebrow">Hvorfor f&aring;r du knopper?</div>
         <h2>Det er ikke din hud.<br/>Det er bakterier.</h2>
-        <p>Hver gang du barberer, laver bladet mikroskopiske snit i huden. Bakterier tr&aelig;nger ind inden for sekunder. Din krop reagerer med inflammation &mdash; r&oslash;dme, knopper, kl&oslash;e.</p>
-        <p>Alle andre produkter arbejder <strong>efter</strong> barberingen. ShaveSafe er det eneste produkt med patenteret gel der eliminerer bakterier <strong>under</strong> selve barberingen.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ STATS ═══ -->
-  <section class="stats-section">
-    <div class="stats-grid">
-      <div>
-        <div class="section-eyebrow reveal">Klinisk dokumenteret</div>
-        <h2 class="reveal" style="font-size:clamp(24px,4vw,36px);font-weight:400;margin-bottom:24px;">Resultater du kan m&aelig;rke fra f&oslash;rste barbering.</h2>
-        <div class="stats-numbers reveal">
-          <div class="stat">
-            <span class="stat-num">94%</span>
-            <span class="stat-label">oplever f&aelig;rre knopper efter blot 1-2 barberinger</span>
-          </div>
-          <div class="stat">
-            <span class="stat-num">92%</span>
-            <span class="stat-label">ville anbefale ShaveSafe til en veninde</span>
-          </div>
-          <div class="stat">
-            <span class="stat-num">89%</span>
-            <span class="stat-label">siger de f&oslash;ler sig mere selvsikre</span>
-          </div>
+        <p>Bladet laver mikroskopiske snit. Bakterier tr&aelig;nger ind inden for sekunder. Din krop reagerer med r&oslash;dme, knopper og kl&oslash;e.</p>
+        <div class="callout-box">
+          <p>ShaveSafe er det eneste produkt der eliminerer bakterier <strong>under</strong> selve barberingen &mdash; ikke efter.</p>
         </div>
       </div>
-      <div class="stats-img reveal">
-        <img src="img/razor-closeup.jpg" alt="ShaveSafe produkt" style="object-position: center;" />
-      </div>
     </div>
   </section>
 
-  <!-- ═══ BEFORE / AFTER ═══ -->
+  <!-- STATS -->
+  <section class="stats-section">
+    <div class="stats-inner">
+      <div class="section-eyebrow reveal">Klinisk dokumenteret</div>
+      <h2 class="reveal">Resultater fra f&oslash;rste barbering.</h2>
+      <div class="stats-grid">
+        <div class="stat reveal">
+          <div class="stat-num">94%</div>
+          <div class="stat-label">oplever f&aelig;rre knopper efter 1&ndash;2 barberinger</div>
+        </div>
+        <div class="stat reveal reveal-delay-1">
+          <div class="stat-num">92%</div>
+          <div class="stat-label">ville anbefale ShaveSafe til en veninde</div>
+        </div>
+        <div class="stat reveal reveal-delay-2">
+          <div class="stat-num">89%</div>
+          <div class="stat-label">f&oslash;ler sig mere selvsikre efter brug</div>
+        </div>
+      </div>
+      <div class="stats-source reveal">Baseret p&aring; kundeunders&oslash;gelse blandt ShaveSafe-brugere, 2025</div>
+    </div>
+  </section>
+
+  <!-- BEFORE / AFTER -->
   <section class="ba-section">
     <div class="section-eyebrow reveal" style="text-align:center;">Rigtige resultater</div>
-    <h2 class="reveal">Kundefotos: F&oslash;r &amp; efter</h2>
-    <p class="ba-sub reveal">Reelle resultater fra rigtige kunder der bruger ShaveSafe.</p>
-    <div class="ba-image reveal">
-      <img src="img/before-after.jpg" alt="F&oslash;r og efter ShaveSafe &mdash; bikinilinjen" />
+    <h2 class="reveal">F&oslash;r &amp; efter ShaveSafe</h2>
+    <p class="ba-sub reveal">Reelle billeder fra rigtige kunder.</p>
+    <div class="ba-wrapper reveal">
+      <div class="ba-image">
+        <img src="img/before-after.jpg" alt="F&oslash;r og efter ShaveSafe &mdash; bikinilinjen" />
+      </div>
+      <p class="ba-caption"><strong>Nana, 28</strong> &mdash; F&oslash;r: 10. april &middot; Efter: 24. maj</p>
     </div>
   </section>
 
-  <!-- ═══ HOW IT WORKS ═══ -->
+  <!-- HOW IT WORKS -->
   <section class="how-section">
     <div class="how-inner">
       <div class="section-eyebrow reveal" style="text-align:center;">S&aring;dan virker det</div>
-      <h2 class="reveal" style="text-align:center;font-size:clamp(24px,4vw,32px);font-weight:400;margin-bottom:40px;">3 trin. 5 minutter. Ingen knopper.</h2>
+      <h2 class="reveal" style="text-align:center;font-size:clamp(24px,4vw,34px);font-weight:400;margin-bottom:40px;">3 trin. 5 minutter.</h2>
       <div class="how-steps">
         <div class="how-step reveal">
           <div class="how-num">1</div>
@@ -729,94 +949,74 @@
             <p>Den patenterede gel danner et antibakterielt lag p&aring; huden, inden bladet r&oslash;rer dig.</p>
           </div>
         </div>
-        <div class="how-step reveal">
+        <div class="how-step reveal reveal-delay-1">
           <div class="how-num">2</div>
           <div class="how-text">
             <h3>Barber som normalt</h3>
-            <p>Brug den medf&oslash;lgende skraber med 5 knivskarpe blade i svensk st&aring;l. Gel'en beskytter hvert mikrosnit.</p>
+            <p>Brug skraberen med 5+1 blade i svensk st&aring;l. Gel'en beskytter hvert mikrosnit.</p>
           </div>
         </div>
-        <div class="how-step reveal">
+        <div class="how-step reveal reveal-delay-2">
           <div class="how-num">3</div>
           <div class="how-text">
-            <h3>F&aelig;rdig &mdash; ingen straf bagefter</h3>
-            <p>Ingen bakterier, ingen inflammation. Glat hud, ogs&aring; dagen efter.</p>
+            <h3>F&aelig;rdig</h3>
+            <p>Ingen bakterier, ingen inflammation. Glat hud &mdash; ogs&aring; dagen efter.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ REVIEWS ═══ -->
+  <!-- REVIEWS -->
   <section class="reviews-section">
     <div class="reviews-header reveal">
       <div class="section-eyebrow">Kundeanmeldelser</div>
-      <div class="reviews-big">4.8</div>
-      <div class="reviews-stars">
-        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <h2>Det siger vores kunder</h2>
+      <div class="reviews-rating">
+        <span class="reviews-big">4.8</span>
+        <div class="reviews-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
       </div>
       <div class="reviews-count">Baseret p&aring; 49 anmeldelser</div>
     </div>
 
-    <div class="reviews-grid">
+    <div class="reviews-scroll">
       <div class="review-card reveal">
         <div class="review-top">
           <div class="review-avatar">M</div>
-          <div><div class="review-name">Maria S.</div><div class="review-verified">&#10003; Verificeret k&oslash;b</div></div>
+          <div><div class="review-name">Maria S.</div><div class="review-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Verificeret k&oslash;b</div></div>
         </div>
         <div class="review-card-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <p class="review-text">K&aelig;mpet med knopper i bikinilinjen i over 10 &aring;r. Pr&oslash;vet alt. <strong>ShaveSafe er det f&oslash;rste der faktisk virker.</strong></p>
+        <p class="review-text">K&aelig;mpet med knopper i bikinilinjen i over 10 &aring;r. <strong>ShaveSafe er det f&oslash;rste der faktisk virker.</strong></p>
       </div>
-      <div class="review-card reveal">
+      <div class="review-card reveal reveal-delay-1">
         <div class="review-top">
           <div class="review-avatar">L</div>
-          <div><div class="review-name">Louise K.</div><div class="review-verified">&#10003; Verificeret k&oslash;b</div></div>
+          <div><div class="review-name">Louise K.</div><div class="review-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Verificeret k&oslash;b</div></div>
         </div>
         <div class="review-card-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
         <p class="review-text"><strong>I &aring;r har jeg kunnet g&aring; i bikini uden at bekymre mig.</strong> Det lyder som en lille ting, men for mig er det k&aelig;mpestort.</p>
       </div>
-      <div class="review-card reveal">
-        <div class="review-top">
-          <div class="review-avatar">K</div>
-          <div><div class="review-name">Katrine J.</div><div class="review-verified">&#10003; Verificeret k&oslash;b</div></div>
-        </div>
-        <div class="review-card-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <p class="review-text">Min hud var den tredje person i mit forhold. <strong>Nu t&aelig;nker jeg slet ikke p&aring; det mere.</strong></p>
-      </div>
-      <div class="review-card reveal">
+      <div class="review-card reveal reveal-delay-2">
         <div class="review-top">
           <div class="review-avatar">S</div>
-          <div><div class="review-name">Sofie A.</div><div class="review-verified">&#10003; Verificeret k&oslash;b</div></div>
+          <div><div class="review-name">Sofie A.</div><div class="review-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Verificeret k&oslash;b</div></div>
         </div>
         <div class="review-card-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <p class="review-text">Skeptisk i starten. <strong>Efter 2 barberinger var knopperne v&aelig;k. Helt v&aelig;k.</strong></p>
-      </div>
-      <div class="review-card reveal">
-        <div class="review-top">
-          <div class="review-avatar">A</div>
-          <div><div class="review-name">Anne M.</div><div class="review-verified">&#10003; Verificeret k&oslash;b</div></div>
-        </div>
-        <div class="review-card-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <p class="review-text">Troede det var noget galt med min hud. <strong>F&oslash;ler mig som en ny kvinde.</strong></p>
-      </div>
-      <div class="review-card reveal">
-        <div class="review-top">
-          <div class="review-avatar">C</div>
-          <div><div class="review-name">Camilla H.</div><div class="review-verified">&#10003; Verificeret k&oslash;b</div></div>
-        </div>
-        <div class="review-card-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <p class="review-text">Min veninde anbefalede det. <strong>Virker fra f&oslash;rste barbering.</strong></p>
+        <p class="review-text">Skeptisk i starten. <strong>Efter 2 barberinger var knopperne v&aelig;k.</strong> Helt v&aelig;k.</p>
       </div>
     </div>
   </section>
 
-  <!-- ═══ PRODUCT BOX ═══ -->
+  <!-- PRODUCT BOX -->
   <section class="product-section">
     <div class="product-box reveal">
+      <div class="section-eyebrow">Komplet s&aelig;t</div>
       <h2>Pr&oslash;vepakken</h2>
       <p class="product-sub">Alt du beh&oslash;ver for at opleve forskellen.</p>
       <div class="product-items">
@@ -830,18 +1030,34 @@
         </div>
         <div class="product-item">
           <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          <span><strong>5+1 blade</strong> &mdash; knivskarpe blade i svensk st&aring;l + pr&aelig;cisionstrimmer</span>
+          <span><strong>5+1 blade</strong> &mdash; i svensk st&aring;l + pr&aelig;cisionstrimmer</span>
         </div>
       </div>
-      <div class="product-price">79 kr</div>
-      <span style="font-size:13px;color:var(--muted);">inkl. gratis fragt</span>
-      <br/><br/>
-      <a href="https://shavesafe.dk/collections/provepakke" class="cta-btn" style="width:100%;">Bestil pr&oslash;vepakken &rarr;</a>
-      <p class="product-note">K&oslash;bes som abonnement &middot; Opsig n&aring;r som helst &middot; Ingen binding</p>
+      <div class="product-price-row">
+        <span class="product-price">79 kr</span>
+        <span class="product-price-og">185 kr</span>
+      </div>
+      <div class="product-shipping">inkl. gratis fragt</div>
+      <a href="https://shavesafe.dk/collections/provepakke" class="cta-btn" style="width:100%;">
+        Bestil pr&oslash;vepakken
+        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <p class="product-note">Abonnement &middot; Opsig n&aring;r som helst &middot; Ingen binding</p>
     </div>
   </section>
 
-  <!-- ═══ FAQ ═══ -->
+  <!-- GUARANTEE -->
+  <section class="guarantee-section reveal">
+    <div class="guarantee-inner">
+      <div class="guarantee-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Risikofrit at pr&oslash;ve</h3>
+      <p>K&oslash;b pr&oslash;vepakken og oplev forskellen selv. Ingen binding, ingen skjulte gebyrer. Du kan opsige dit abonnement n&aring;r som helst med &eacute;t klik.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
   <section class="faq-section">
     <div class="faq-inner">
       <h2 class="reveal">Ofte stillede sp&oslash;rgsm&aring;l</h2>
@@ -864,21 +1080,21 @@
         </div>
         <div class="faq-item">
           <button class="faq-q">Hvor hurtigt ser jeg resultat?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-          <div class="faq-a">De fleste oplever markant forbedring allerede efter 1-2 barberinger.</div>
+          <div class="faq-a">De fleste oplever markant forbedring allerede efter 1&ndash;2 barberinger.</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ FINAL CTA ═══ -->
+  <!-- FINAL CTA -->
   <section class="final-cta">
     <h2 class="reveal"><em>Klar til barbering<br/>uden knopper?</em></h2>
-    <p class="reveal">Komplet pr&oslash;vepakke med skraber, blade og patenteret gel for kun 79 kr.</p>
-    <a href="https://shavesafe.dk/collections/provepakke" class="cta-btn-white reveal">Bestil pr&oslash;vepakken &rarr;</a>
+    <p class="reveal">Komplet pr&oslash;vepakke for kun 79 kr. Gratis fragt.</p>
+    <a href="https://shavesafe.dk/collections/provepakke" class="cta-btn-white reveal">Bestil pr&oslash;vepakken</a>
   </section>
 
   <footer>
-    <img src="img/logo-black.avif" alt="ShaveSafe" style="height:16px;margin:0 auto 10px;opacity:0.4;" />
+    <img src="img/logo-black.avif" alt="ShaveSafe" style="height:16px;margin:0 auto 12px;opacity:0.35;" />
     <p>&copy; 2026 ShaveSafe &middot; Dansk patent &middot; Alle rettigheder forbeholdes</p>
   </footer>
 
@@ -892,11 +1108,15 @@
   </div>
 
   <script>
+    // Reveal on scroll
     const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.1 });
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
+    // FAQ accordion
     document.querySelectorAll('.faq-q').forEach(btn => {
       btn.addEventListener('click', () => {
         const a = btn.nextElementSibling;
@@ -907,6 +1127,7 @@
       });
     });
 
+    // Sticky mobile bar
     const stickyBar = document.querySelector('.sticky-bar');
     const hero = document.querySelector('.hero');
     if (stickyBar && hero) {
