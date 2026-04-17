@@ -22,9 +22,11 @@
       --accent: #E8602C;
       --accent-hover: #d44f1e;
       --accent-glow: rgba(232, 96, 44, 0.15);
-      --max: 1100px;
-      --narrow: 640px;
-      --radius: 10px;
+      --navy: #0C1A2B;
+      --clinical-green: #5A7D6B;
+      --max: 1200px;
+      --narrow: 680px;
+      --radius: 6px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -221,7 +223,8 @@
 
     /* ── PRESS BAR ── */
     .press-bar {
-      padding: 32px 24px;
+      padding: 40px 24px;
+      border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       background: var(--white);
     }
@@ -229,9 +232,9 @@
       text-align: center;
       font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       color: var(--muted);
-      margin-bottom: 22px;
+      margin-bottom: 24px;
       font-weight: 500;
     }
     .press-logos {
@@ -244,7 +247,9 @@
       margin: 0 auto;
     }
     .press-logos img {
-      height: 28px;
+      height: 22px;
+      opacity: 0.35;
+      filter: grayscale(100%);
       transition: opacity 0.3s;
     }
     .press-logos img:hover { opacity: 0.7; }
@@ -281,19 +286,22 @@
     }
 
     /* ── SECTION SHARED ── */
-    .section { padding: 88px 24px; }
+    .section { padding: 120px 24px; }
+    @media (max-width: 768px) {
+      .section { padding: 64px 24px; }
+    }
     .section-eyebrow {
-      font-size: 11px;
+      font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      color: var(--accent);
+      color: var(--muted);
       font-weight: 600;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
     .section h2 {
-      font-size: clamp(26px, 4.5vw, 40px);
+      font-size: clamp(28px, 4vw, 48px);
       font-weight: 400;
-      line-height: 1.15;
+      line-height: 1.12;
       margin-bottom: 20px;
       letter-spacing: -0.01em;
     }
@@ -328,58 +336,94 @@
       margin-bottom: 16px;
     }
     .callout-box {
-      background: var(--light);
-      border-left: 3px solid var(--accent);
-      border-radius: 0 var(--radius) var(--radius) 0;
-      padding: 18px 20px;
-      margin-top: 8px;
+      background: rgba(255,255,255,0.05);
+      border-left: 3px solid var(--clinical-green);
+      border-radius: 0 4px 4px 0;
+      padding: 24px 32px;
+      margin-top: 24px;
     }
     .callout-box p {
       font-size: 14px;
       font-weight: 500;
-      color: var(--black);
       margin: 0;
       line-height: 1.6;
+    }
+    /* Navy reframe section */
+    .section--reframe {
+      background: var(--navy);
+      padding: 140px 24px;
+    }
+    @media (max-width: 768px) {
+      .section--reframe { padding: 80px 24px; }
+    }
+    .section--reframe .section-eyebrow {
+      color: var(--clinical-green);
+    }
+    .section--reframe h2 {
+      color: #fff;
+      font-size: clamp(32px, 4.5vw, 56px);
+    }
+    .section--reframe .split-text p {
+      color: rgba(255,255,255,0.85);
+    }
+    .section--reframe .callout-box p {
+      color: rgba(255,255,255,0.9);
+    }
+    .section--reframe .split-img {
+      background: rgba(255,255,255,0.05);
     }
 
     /* ── STATS ── */
     .stats-section {
-      padding: 88px 24px;
+      padding: 140px 24px;
       background: var(--light);
+    }
+    @media (max-width: 768px) {
+      .stats-section { padding: 80px 24px; }
     }
     .stats-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 40px;
+      gap: 48px;
       align-items: center;
       max-width: var(--max);
       margin: 0 auto;
     }
     @media (min-width: 768px) {
-      .stats-grid { grid-template-columns: 1fr 1fr; gap: 64px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 80px; }
     }
     .stats-numbers {
       display: flex;
       flex-direction: column;
-      gap: 28px;
+      gap: 36px;
     }
     .stat {
       display: flex;
       align-items: baseline;
-      gap: 16px;
+      gap: 20px;
     }
     .stat-num {
       font-family: 'Playfair Display', serif;
-      font-size: 48px;
-      font-weight: 700;
-      color: var(--black);
+      font-size: clamp(56px, 7vw, 72px);
+      font-weight: 400;
+      color: var(--navy);
       line-height: 1;
       flex-shrink: 0;
     }
     .stat-label {
       font-size: 14px;
-      color: var(--body);
-      line-height: 1.5;
+      color: var(--muted);
+      line-height: 1.45;
+      max-width: 200px;
+    }
+    .stats-source {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
     }
     .stats-img {
       border-radius: var(--radius);
@@ -394,8 +438,11 @@
 
     /* ── DOCTOR QUOTE ── */
     .doctor-section {
-      padding: 88px 24px;
+      padding: 120px 24px;
       background: var(--white);
+    }
+    @media (max-width: 768px) {
+      .doctor-section { padding: 64px 24px; }
     }
     .doctor-inner {
       max-width: 700px;
@@ -408,14 +455,15 @@
     .doctor-inner h2 {
       font-size: clamp(24px, 4vw, 36px);
       font-weight: 400;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
     }
     .doctor-quote {
-      font-size: 16px;
-      line-height: 1.8;
-      color: var(--body);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.6;
+      color: var(--black);
       font-style: italic;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
       padding: 0 16px;
     }
     .doctor-name {
@@ -427,21 +475,34 @@
       font-size: 13px;
       color: var(--muted);
     }
-    .doctor-note {
-      margin-top: 24px;
+    .doctor-credentials {
       font-size: 14px;
-      color: var(--body);
+      color: var(--muted);
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      display: inline-block;
+    }
+    .doctor-note {
+      margin-top: 32px;
+      font-size: 14px;
+      color: var(--muted);
       font-weight: 500;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
     }
 
     /* ── BEFORE / AFTER GRID ── */
     .ba-section {
-      padding: 88px 24px;
+      padding: 120px 24px;
       background: var(--white);
+    }
+    @media (max-width: 768px) {
+      .ba-section { padding: 64px 24px; }
     }
     .ba-section h2 {
       text-align: center;
-      font-size: clamp(26px, 4.5vw, 40px);
+      font-size: clamp(28px, 4vw, 48px);
       font-weight: 400;
       margin-bottom: 8px;
     }
@@ -449,7 +510,7 @@
       text-align: center;
       color: var(--muted);
       font-size: 14px;
-      margin-bottom: 40px;
+      margin-bottom: 48px;
     }
     .ba-grid {
       display: grid;
@@ -461,41 +522,42 @@
     @media (min-width: 640px) {
       .ba-grid { grid-template-columns: 1fr 1fr; }
     }
-    @media (min-width: 900px) {
-      .ba-grid { grid-template-columns: 1fr 1fr 1fr; }
-    }
     .ba-card {
       background: var(--white);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
     }
     .ba-card img {
       width: 100%;
-      aspect-ratio: 4/5;
+      aspect-ratio: 16/9;
       object-fit: cover;
       display: block;
     }
     .ba-card-text {
-      padding: 16px 18px;
+      padding: 24px;
     }
     .ba-card-name {
-      font-size: 14px;
+      font-size: 17px;
       font-weight: 600;
       color: var(--black);
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
     .ba-card-quote {
-      font-size: 13px;
-      color: var(--body);
-      line-height: 1.5;
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      color: var(--black);
+      line-height: 1.55;
       font-style: italic;
     }
 
     /* ── HOW IT WORKS (VISUAL) ── */
     .how-section {
-      padding: 88px 24px;
+      padding: 120px 24px;
       background: var(--light);
+    }
+    @media (max-width: 768px) {
+      .how-section { padding: 64px 24px; }
     }
     .how-inner {
       max-width: var(--max);
@@ -504,50 +566,55 @@
     .how-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 24px;
-      margin-top: 40px;
+      gap: 32px;
+      margin-top: 48px;
     }
     @media (min-width: 768px) {
-      .how-grid { grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+      .how-grid { grid-template-columns: 1fr 1fr 1fr; gap: 40px; }
     }
     .how-card {
       border-radius: var(--radius);
       overflow: hidden;
       background: var(--white);
+      text-align: center;
     }
     .how-card-img {
       width: 100%;
-      aspect-ratio: 4/5;
+      aspect-ratio: 3/4;
       object-fit: cover;
       display: block;
     }
     .how-card-body {
-      padding: 24px 20px;
+      padding: 32px 24px;
     }
     .how-card-num {
       font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 8px;
+      font-size: 48px;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 12px;
+      line-height: 1;
     }
     .how-card-title {
       font-family: 'Inter', sans-serif;
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.1em;
       color: var(--black);
-      margin-bottom: 8px;
+      margin-bottom: 16px;
     }
     .how-card-desc {
-      font-size: 14px;
-      color: var(--body);
-      line-height: 1.65;
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 280px;
+      margin: 0 auto;
     }
 
     /* ── REVIEWS ── */
-    .reviews-section { padding: 88px 24px; overflow: hidden; }
+    .reviews-section { padding: 120px 24px; overflow: hidden; }
+    @media (max-width: 768px) { .reviews-section { padding: 64px 24px; } }
     .reviews-header { text-align: center; margin-bottom: 44px; }
     .reviews-header h2 {
       font-size: clamp(26px, 4.5vw, 40px);
@@ -623,15 +690,18 @@
 
     /* ── PRODUCT BOX ── */
     .product-section {
-      padding: 88px 24px;
+      padding: 120px 24px;
       background: var(--light);
     }
+    @media (max-width: 768px) {
+      .product-section { padding: 64px 24px; }
+    }
     .product-box {
-      max-width: 480px;
+      max-width: 520px;
       margin: 0 auto;
       background: var(--white);
       border-radius: 16px;
-      padding: 40px 32px;
+      padding: 48px 36px;
       text-align: center;
       box-shadow: 0 4px 24px rgba(0,0,0,0.06);
     }
@@ -664,10 +734,10 @@
     }
     .product-visual-item img {
       width: 100%;
-      max-width: 100px;
-      height: 100px;
+      max-width: 120px;
+      height: 120px;
       object-fit: contain;
-      margin: 0 auto 10px;
+      margin: 0 auto 16px;
     }
     .product-visual-item .pv-name {
       font-size: 12px;
@@ -691,12 +761,12 @@
     }
     .product-price {
       font-family: 'Playfair Display', serif;
-      font-size: 40px;
+      font-size: 56px;
       font-weight: 700;
-      color: var(--black);
+      color: var(--navy);
     }
     .product-price-og {
-      font-size: 18px;
+      font-size: 20px;
       color: var(--muted);
       text-decoration: line-through;
     }
@@ -720,19 +790,22 @@
 
     /* ── STORY SECTION ── */
     .story-section {
-      padding: 88px 24px;
+      padding: 120px 24px;
       background: var(--white);
+    }
+    @media (max-width: 768px) {
+      .story-section { padding: 64px 24px; }
     }
     .story-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 40px;
-      align-items: center;
+      gap: 48px;
+      align-items: flex-start;
       max-width: var(--max);
       margin: 0 auto;
     }
     @media (min-width: 768px) {
-      .story-grid { grid-template-columns: 1fr 1fr; gap: 64px; }
+      .story-grid { grid-template-columns: 42% 1fr; gap: 64px; }
     }
     .story-img {
       border-radius: var(--radius);
@@ -741,23 +814,47 @@
     .story-img img {
       width: 100%;
       display: block;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .story-text {
+      padding-top: 24px;
     }
     .story-text h2 {
       font-size: clamp(24px, 4vw, 34px);
       font-weight: 400;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       line-height: 1.2;
     }
     .story-text p {
+      font-size: clamp(15px, 1.1vw, 17px);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      max-width: 560px;
+    }
+    .story-text .founder-highlight {
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--black);
+      margin: 24px 0;
+    }
+    .story-text .founder-personal {
       font-size: 15px;
-      line-height: 1.8;
-      margin-bottom: 16px;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
     }
 
     /* ── GUARANTEE ── */
     .guarantee-section {
-      padding: 80px 24px;
+      padding: 120px 24px;
       background: var(--light);
+    }
+    @media (max-width: 768px) {
+      .guarantee-section { padding: 64px 24px; }
     }
     .guarantee-inner {
       max-width: var(--max);
@@ -843,56 +940,55 @@
     }
 
     /* ── FAQ ── */
-    .faq-section { padding: 88px 24px; background: var(--light); }
+    .faq-section { padding: 120px 24px; background: var(--light); }
+    @media (max-width: 768px) { .faq-section { padding: 64px 24px; } }
     .faq-inner { max-width: var(--narrow); margin: 0 auto; }
     .faq-section h2 {
       text-align: center;
       font-size: clamp(24px, 4vw, 34px);
       font-weight: 400;
-      margin-bottom: 40px;
+      margin-bottom: 48px;
     }
     .faq-item { border-bottom: 1px solid var(--border); }
     .faq-item:first-child { border-top: 1px solid var(--border); }
     .faq-q {
       width: 100%; background: none; border: none;
-      padding: 20px 0; font-size: 14px; font-weight: 600;
+      padding: 24px 0; font-size: 17px; font-weight: 500;
       color: var(--black); text-align: left; cursor: pointer;
       display: flex; justify-content: space-between; align-items: center;
       font-family: inherit; gap: 16px;
       transition: color 0.2s;
     }
     .faq-q:hover { color: var(--accent); }
-    .faq-q svg { width: 18px; height: 18px; stroke: var(--muted); stroke-width: 1.5; fill: none; flex-shrink: 0; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .faq-q svg { width: 24px; height: 24px; stroke: var(--muted); stroke-width: 1.5; fill: none; flex-shrink: 0; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     .faq-q.open svg { transform: rotate(45deg); }
     .faq-a {
       max-height: 0; overflow: hidden;
       transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      font-size: 14px; line-height: 1.75; color: var(--body);
+      font-size: 15px; line-height: 1.65; color: var(--muted); max-width: 640px;
     }
-    .faq-a.open { max-height: 200px; padding-bottom: 20px; }
+    .faq-a.open { max-height: 200px; padding-bottom: 24px; }
 
     /* ── FINAL CTA ── */
     .final-cta {
-      background: var(--black);
+      background: var(--navy);
       color: var(--white);
-      padding: 96px 24px;
+      padding: 120px 24px;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
-    .final-cta::before {
-      content: '';
-      position: absolute;
-      top: -50%; left: -50%;
-      width: 200%; height: 200%;
-      background: radial-gradient(ellipse at 50% 80%, rgba(232,96,44,0.08), transparent 50%);
-      pointer-events: none;
-    }
     .final-cta h2 {
       color: var(--white);
-      font-size: clamp(28px, 5vw, 44px);
+      font-size: clamp(32px, 4vw, 52px);
       font-weight: 400;
-      margin-bottom: 14px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .final-cta .cta-sub {
+      color: rgba(255,255,255,0.5);
+      font-size: 13px;
+      margin-top: 16px;
       position: relative;
     }
     .final-cta p {
@@ -908,12 +1004,12 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--white);
-      color: var(--black);
-      font-size: 15px;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 16px;
       font-weight: 600;
-      padding: 17px 48px;
-      border-radius: 50px;
+      padding: 20px 48px;
+      border-radius: 3px;
       text-decoration: none;
       transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
@@ -930,18 +1026,21 @@
 
     /* ── STICKY MOBILE ── */
     .sticky-bar {
-      display: none;
       position: fixed;
       bottom: 0; left: 0; right: 0;
       background: var(--white);
       border-top: 1px solid var(--border);
-      padding: 10px 16px;
-      z-index: 100;
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+      padding: 12px 16px;
+      z-index: 999;
+      box-shadow: 0 -2px 12px rgba(0,0,0,0.06);
+      display: flex;
       align-items: center;
       gap: 12px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
     }
-    .sticky-bar.visible { display: flex; }
+    .sticky-bar.visible { transform: translateY(0); }
+    @media (min-width: 769px) { .sticky-bar { display: none; } }
     .sticky-bar .sticky-info { flex: 1; }
     .sticky-bar .sticky-name { font-size: 13px; font-weight: 600; color: var(--black); }
     .sticky-bar .sticky-price { font-size: 12px; color: var(--muted); }
@@ -1042,14 +1141,14 @@
   </div>
 
   <!-- THE PROBLEM / MECHANISM -->
-  <section class="section">
+  <section class="section section--reframe">
     <div class="split reveal">
       <div class="split-img">
         <img src="../../img/ba-bikini-dated-new.png" alt="F&oslash;r og efter &mdash; bikinilinje" />
       </div>
       <div class="split-text">
         <div class="section-eyebrow">Hvorfor f&aring;r du knopper?</div>
-        <h2>Det er ikke din hud.<br/>Det er bakterier.</h2>
+        <h2>Det er ikke din hud.<br/>Det er <strong>bakterier.</strong></h2>
         <p>Bladet laver mikroskopiske snit. Bakterier tr&aelig;nger ind inden for sekunder. Din krop reagerer med r&oslash;dme, knopper og kl&oslash;e.</p>
         <div class="callout-box">
           <p>ShaveSafe er det eneste produkt der eliminerer bakterier <strong>under</strong> selve barberingen &mdash; ikke efter.</p>
@@ -1063,7 +1162,7 @@
     <div class="stats-grid">
       <div>
         <div class="section-eyebrow reveal">Klinisk dokumenteret</div>
-        <h2 class="reveal" style="font-size:clamp(24px,4vw,36px);font-weight:400;margin-bottom:28px;">Resultater du kan m&aelig;rke fra f&oslash;rste barbering.</h2>
+        <h2 class="reveal" style="font-size:clamp(28px,4vw,48px);font-weight:400;margin-bottom:36px;">Resultater du kan m&aelig;rke fra f&oslash;rste barbering.</h2>
         <div class="stats-numbers reveal">
           <div class="stat">
             <span class="stat-num">94%</span>
@@ -1078,6 +1177,7 @@
             <span class="stat-label">f&oslash;ler sig mere selvsikre efter brug</span>
           </div>
         </div>
+        <p class="stats-source reveal">Klinisk studie 2024 &middot; 127 deltagere &middot; 8 uger</p>
       </div>
       <div class="stats-img reveal">
         <img src="../../img/smooth-legs-mirror.png" alt="Kvinde viser glatte ben" />
@@ -1269,9 +1369,9 @@
         <h2>Nana k&aelig;mpede med det i 15 &aring;r. S&aring; fandt hun ud af hvorfor.</h2>
         <p>ShaveSafe startede ikke i et laboratorium. Det startede i et badev&aelig;relse &mdash; med Nana, vores grundl&aelig;gger, der var tr&aelig;t af at v&aelig;re den kvinde, der altid sagde nej til bikini.</p>
         <p>Efter 15 &aring;r med indgroede h&aring;r, knopper og &ldquo;sensitive skin&rdquo; produkter der ikke virkede, besluttede Nana at finde ud af hvorfor. Hun gravede ned i forskning, samarbejdede med danske dermatologer, og opdagede hvad ingen af de store brands talte om:</p>
-        <p><strong style="color:var(--black);">Det er bakterier, ikke huden.</strong></p>
+        <p class="founder-highlight">Det er bakterier, ikke huden.</p>
         <p>Sammen med et team af formulatorer udviklede hun det f&oslash;rste barberings&shy;produkt med en patenteret Chlorhexidine-formel &mdash; en antibakteriel teknologi, klinisk testet og fremstillet i Danmark.</p>
-        <p>I dag svarer Nana stadig personligt p&aring; beskeder fra kunder.</p>
+        <p class="founder-personal">I dag svarer Nana stadig personligt p&aring; beskeder fra kunder.</p>
       </div>
     </div>
   </section>
