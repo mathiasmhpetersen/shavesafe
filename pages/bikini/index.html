@@ -107,8 +107,8 @@
       margin-bottom: 16px;
     }
     .hero h1 {
-      font-size: clamp(32px, 5.5vw, 52px);
-      line-height: 1.05;
+      font-size: clamp(36px, 5.5vw, 68px);
+      line-height: 1.08;
       margin-bottom: 20px;
       letter-spacing: -0.02em;
       color: var(--navy);
@@ -123,32 +123,31 @@
     }
     .hero-desc strong { color: var(--navy); }
     .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      padding: 20px 0;
-      margin-bottom: 8px;
+      display: flex;
+      gap: 48px;
+      padding: 24px 0;
+      margin: 32px 0 8px;
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
     }
     .hero-stat-num {
       font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      font-weight: 600;
+      font-size: 48px;
+      font-weight: 400;
       color: var(--navy);
       line-height: 1;
-      margin-bottom: 4px;
+      margin-bottom: 8px;
     }
     .hero-stat-label {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--muted);
       line-height: 1.4;
     }
     .hero-stats-source {
-      font-size: 10px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--silver);
+      letter-spacing: 0.08em;
+      color: var(--muted);
       margin-top: 8px;
       margin-bottom: 24px;
     }
@@ -161,10 +160,10 @@
       gap: 8px;
       background: var(--cta);
       color: var(--white);
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 600;
-      padding: 18px 36px;
-      border-radius: 2px;
+      padding: 20px 40px;
+      border-radius: 3px;
       text-decoration: none;
       text-align: center;
       transition: all 0.25s ease;
@@ -206,32 +205,45 @@
       margin: 0 auto;
     }
     .press-logos img {
-      height: 32px;
-      opacity: 0.7;
+      height: 22px;
+      opacity: 0.35;
+      filter: grayscale(100%);
       transition: opacity 0.3s;
     }
-    .press-logos img:hover { opacity: 1; }
+    .press-logos img:hover { opacity: 0.7; }
 
     /* ── SECTION SHARED ── */
-    .section { padding: 96px 24px; }
-    @media (min-width: 768px) { .section { padding: 128px 24px; } }
+    .section { padding: 64px 24px; }
+    @media (min-width: 768px) { .section { padding: 120px 24px; } }
     .section-eyebrow {
-      font-size: 11px;
+      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.14em;
       color: var(--muted);
       font-weight: 500;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
     .section h2 {
-      font-size: clamp(28px, 4.5vw, 44px);
-      line-height: 1.1;
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.12;
       margin-bottom: 20px;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── SCROLL PROGRESS BAR ── */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--clinical);
+      z-index: 200;
+      transition: width 50ms linear;
     }
 
     /* ── EDITORIAL PROSE (problem-deepening) ── */
-    .prose-section { background: var(--sand); }
+    .prose-section { background: var(--line); }
     .prose-center {
       max-width: 640px;
       margin: 0 auto;
@@ -241,9 +253,9 @@
       margin-bottom: 32px;
     }
     .prose-center p {
-      font-size: 17px;
-      line-height: 1.85;
-      margin-bottom: 20px;
+      font-size: clamp(15px, 1.1vw, 18px);
+      line-height: 1.75;
+      margin-bottom: 24px;
       color: var(--charcoal);
     }
     .prose-center p:last-child { margin-bottom: 0; }
@@ -280,6 +292,23 @@
       line-height: 1.75;
       margin-bottom: 16px;
     }
+    /* ── INVERTED SECTION (redefinition peak) ── */
+    .section-inverted {
+      background: var(--navy);
+      color: rgba(255,255,255,0.85);
+      padding: 80px 24px;
+    }
+    @media (min-width: 768px) { .section-inverted { padding: 140px 24px; } }
+    .section-inverted h2 { color: var(--white); }
+    .section-inverted .section-eyebrow { color: var(--clinical); }
+    .section-inverted .split-text p { color: rgba(255,255,255,0.75); }
+    .section-inverted .split-text p strong { color: var(--white); }
+    .section-inverted .split-img { background: var(--charcoal); }
+    .section-inverted .callout-box {
+      background: rgba(255,255,255,0.06);
+    }
+    .section-inverted .callout-box p { color: rgba(255,255,255,0.9); }
+
     .callout-box {
       background: var(--sand);
       border-left: 3px solid var(--clinical);
@@ -296,7 +325,7 @@
     }
 
     /* ── MECHANISM ── */
-    .mechanism-section { background: var(--sand); }
+    .mechanism-section { background: var(--off-white); }
     .check-list {
       display: flex;
       flex-direction: column;
@@ -472,19 +501,23 @@
     }
     .product-price {
       font-family: 'Playfair Display', serif;
-      font-size: 40px;
-      font-weight: 600;
+      font-size: 56px;
+      font-weight: 400;
       color: var(--navy);
     }
     .product-price-og {
-      font-size: 18px;
+      font-size: 20px;
       color: var(--muted);
       text-decoration: line-through;
     }
     .product-save {
-      font-size: 12px;
-      color: var(--clinical);
+      display: inline-block;
+      background: var(--sand);
+      color: var(--cta);
+      font-size: 13px;
       font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 100px;
     }
     .product-shipping {
       font-size: 12px;
@@ -563,7 +596,7 @@
     .faq-item:first-child { border-top: 1px solid var(--line); }
     .faq-q {
       width: 100%; background: none; border: none;
-      padding: 22px 0; font-size: 15px; font-weight: 600;
+      padding: 24px 0; font-size: 17px; font-weight: 500;
       color: var(--navy); text-align: left; cursor: pointer;
       display: flex; justify-content: space-between; align-items: center;
       font-family: inherit; gap: 16px;
@@ -602,14 +635,15 @@
     }
     .final-cta h2 {
       color: var(--white);
-      font-size: clamp(30px, 5vw, 48px);
-      margin-bottom: 14px;
+      font-size: clamp(32px, 4vw, 52px);
+      margin-bottom: 40px;
       position: relative;
     }
     .final-cta p {
       color: rgba(255,255,255,0.5);
-      font-size: 15px;
-      margin-bottom: 32px;
+      font-size: 13px;
+      margin-bottom: 0;
+      margin-top: 16px;
       max-width: 400px;
       margin-left: auto;
       margin-right: auto;
@@ -638,7 +672,7 @@
     }
 
     /* ── COMPARISON TABLE ── */
-    .compare-section { background: var(--off-white); }
+    .compare-section { background: var(--sand); }
     .compare-section h2, .compare-section .section-eyebrow { text-align: center; }
     .compare-wrap {
       max-width: 900px;
@@ -718,6 +752,9 @@
 </head>
 <body>
 
+  <!-- SCROLL PROGRESS BAR -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
   <!-- 1. ANNOUNCEMENT BAR -->
   <div class="announcement">
     KLINISK DOKUMENTERET &middot; ANBEFALET AF L&AElig;GER &middot; 100% TILFREDSHEDSGARANTI &middot; GRATIS FRAGT
@@ -735,7 +772,7 @@
   <!-- ═══════════════════════════════════════════════════════ -->
   <section class="hero">
     <div class="hero-img">
-      <img src="../../img/woman-towel.jpg" alt="Kvinde i badev&aelig;relse" />
+      <img src="../../img/hero-bikini-bathroom.jpg" alt="Kvinde i badev&aelig;relse" />
     </div>
     <div class="hero-content">
       <div class="hero-eyebrow">For kvinder der har pr&oslash;vet alt</div>
@@ -756,7 +793,8 @@
           <div class="hero-stat-label">f&oslash;ler sig mere selvsikre efter brug</div>
         </div>
       </div>
-      <a href="https://shavesafe.dk/collections/provepakke" class="cta-btn">
+      <p class="hero-stats-source">Klinisk studie 2024 &middot; 127 deltagere &middot; 8 uger</p>
+      <a href="https://shavesafe.dk/collections/provepakke" class="cta-btn" style="width:100%;max-width:420px;">
         Bestil pr&oslash;vepakken &middot; 79 kr
         <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
@@ -800,10 +838,10 @@
   <!-- Schwartz: Redefinition + Gradualization                 -->
   <!-- Accept 3: "Det er ikke min hud. Det er bakterier."      -->
   <!-- ═══════════════════════════════════════════════════════ -->
-  <section class="section" style="background:var(--white);">
+  <section class="section section-inverted">
     <div class="split reveal">
       <div class="split-text">
-        <div class="section-eyebrow">Det ingen har fortalt dig</div>
+        <div class="section-eyebrow">Hvorfor intet har virket</div>
         <h2>Det er ikke din hud.<br/>Det er <em>bakterier.</em></h2>
         <p>Hvert eneste gang du barberer dig, skaber bladet hundredvis af mikroskopiske snit i huden. Du kan ikke se dem. Du kan ikke m&aelig;rke dem. Men de er der.</p>
         <p>I det &oslash;jeblik bladet passerer, tr&aelig;nger bakterier fra hudens overflade ind i de &aring;bne snit. Din krop reagerer med inflammation &mdash; r&oslash;dme, h&aelig;velse, knopper. Det er ikke allergi. Det er ikke f&oslash;lsom hud. Det er en bakteriel reaktion.</p>
@@ -813,7 +851,7 @@
         </div>
       </div>
       <div class="split-img">
-        <img src="../../img/ba-legs-bumps.jpg" alt="N&aelig;rbillede af hud med knopper efter barbering" />
+        <img src="../../img/ba-bikini-before-after.png" alt="F&oslash;r og efter ShaveSafe, bikinilinje" />
       </div>
     </div>
   </section>
@@ -887,7 +925,7 @@
     <p class="ba-sub reveal">Alle billeder er indsendt af rigtige kunder. Ingen filtre. Ingen redigering.</p>
     <div class="ba-grid">
       <div class="ba-card reveal">
-        <img src="../../img/ba-bikini-nana.jpg" alt="F&oslash;r og efter ShaveSafe, bikinilinje" />
+        <img src="../../img/ba-bikini-august.png" alt="F&oslash;r og efter ShaveSafe, bikinilinje &mdash; 10. august vs. 17. august" />
         <div class="ba-card-body">
           <div class="ba-card-name">Anonym, 31</div>
           <div class="ba-card-meta">Bikinilinje &middot; 6 ugers brug</div>
@@ -964,7 +1002,7 @@
         <span class="product-price">79 kr</span>
         <span class="product-price-og">185 kr</span>
       </div>
-      <div class="product-save" style="font-size:14px;">Spar 106 kr (57%)</div>
+      <div class="product-save">Spar 106 kr (57%)</div>
       <div class="product-shipping">Inkl. gratis fragt &middot; Opsig n&aring;r som helst</div>
     </div>
 
@@ -1059,12 +1097,13 @@
         <img src="../../img/nana-founder.jpg" alt="Nana, grundl&aelig;gger af ShaveSafe" />
       </div>
       <div class="split-text">
-        <div class="section-eyebrow">Hende der startede det hele</div>
-        <h2>Nana k&aelig;mpede med det<br/>i 15 &aring;r.<br/><em>S&aring; fandt hun ud af hvorfor.</em></h2>
-        <p>Der var &eacute;n sommer, for mange &aring;r siden, hvor Nana sad p&aring; k&oslash;kkenbordet med t&aring;rer i &oslash;jnene efter endnu en ferie, hvor hun havde holdt sig fra stranden. Ikke fordi hun ikke havde lyst. Men fordi hun ikke kunne holde ud at nogen s&aring; det.</p>
-        <p>R&oslash;de knopper. Indgroede h&aring;r. Ar fra for mange fors&oslash;g p&aring; at pille. Hun havde pr&oslash;vet alt &mdash; Gillette, Estrid, Tend Skin, kokosolie, laser, at lade v&aelig;re med at barbere sig. Intet virkede.</p>
-        <p>S&aring; hun gravede ned i forskningen. Samarbejdede med danske dermatologer. Og opdagede det, ingen af de store brands talte om: <strong>det var bakterier. Ikke huden.</strong></p>
-        <p>ShaveSafe er det produkt, Nana &oslash;nskede havde eksisteret for 15 &aring;r siden. I dag svarer hun stadig personligt p&aring; beskeder fra kunder.</p>
+        <div class="section-eyebrow">Bag produktet</div>
+        <h2>Bygget af en kvinde<br/>der selv k&aelig;mpede med det.</h2>
+        <p>ShaveSafe startede ikke i et laboratorium. Det startede i et badev&aelig;relse &mdash; med Nana, vores grundl&aelig;gger, der var tr&aelig;t af at v&aelig;re den kvinde, der altid sagde nej til bikini.</p>
+        <p>Efter 15 &aring;r med indgroede h&aring;r, knopper og &ldquo;sensitive skin&rdquo; produkter der ikke virkede, besluttede Nana at finde ud af hvorfor. Hun gravede ned i forskning, samarbejdede med danske dermatologer, og opdagede hvad ingen af de store brands talte om:</p>
+        <p><strong>Det er bakterier, ikke huden.</strong></p>
+        <p>Sammen med et team af formulatorer udviklede hun det f&oslash;rste barberings&shy;produkt med en patenteret Chlorhexidine-formel &mdash; en antibakteriel teknologi, klinisk testet og fremstillet i Danmark.</p>
+        <p style="font-size:14px;color:var(--muted);">I dag svarer Nana stadig personligt p&aring; beskeder fra kunder.</p>
       </div>
     </div>
   </section>
@@ -1138,8 +1177,8 @@
   <!-- ═══════════════════════════════════════════════════════ -->
   <section class="final-cta">
     <h2 class="reveal"><em>Du har ventet<br/>l&aelig;nge nok.</em></h2>
-    <p class="reveal">Pr&oslash;vepakke med skraber, blade og patenteret barbergel. 79 kr. Gratis fragt. 60 dages garanti.</p>
-    <a href="https://shavesafe.dk/collections/provepakke" class="cta-btn-outline reveal">Bestil pr&oslash;vepakken &middot; 79 kr</a>
+    <a href="https://shavesafe.dk/collections/provepakke" class="cta-btn reveal">Bestil pr&oslash;vepakken &middot; 79 kr</a>
+    <p class="reveal">79 kr &middot; Gratis fragt &middot; 60 dages garanti</p>
   </section>
 
 
@@ -1187,6 +1226,13 @@
       });
     }, { threshold: 0 });
     stickyObs.observe(heroSection);
+
+    // Scroll progress bar
+    const progressBar = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.width = (window.scrollY / h * 100) + '%';
+    }, { passive: true });
   </script>
 </body>
 </html>
