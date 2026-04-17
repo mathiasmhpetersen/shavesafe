@@ -530,55 +530,58 @@
 
     /* ── GUARANTEE ── */
     .guarantee-section {
-      padding: 80px 24px;
-      text-align: center;
+      padding: 120px 24px;
       background: var(--off-white);
     }
-    .guarantee-inner { max-width: 520px; margin: 0 auto; }
-    .guarantee-icon {
-      width: 56px; height: 56px;
-      margin: 0 auto 20px;
+    @media (max-width: 768px) {
+      .guarantee-section { padding: 64px 24px; }
+    }
+    .guarantee-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    @media (min-width: 768px) {
+      .guarantee-inner { grid-template-columns: auto 1fr; gap: 56px; }
+    }
+    .guarantee-badge {
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
-      background: rgba(90,125,107,0.1);
+      border: 3px solid #6b9bd2;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      margin: 0 auto;
     }
-    .guarantee-icon svg {
-      width: 28px; height: 28px;
-      stroke: var(--clinical);
-      stroke-width: 1.5;
-      fill: none;
+    .guarantee-badge-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      font-weight: 700;
+      color: #6b9bd2;
+      line-height: 1;
     }
-    .guarantee-section h3 {
+    .guarantee-badge-sub {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #6b9bd2;
+      margin-top: 4px;
+    }
+    .guarantee-content h3 {
       font-size: 28px;
+      font-weight: 700;
       margin-bottom: 14px;
     }
-    .guarantee-section p {
+    .guarantee-content p {
       font-size: 15px;
       color: var(--charcoal);
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-    .guarantee-points {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px 28px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--navy);
-    }
-    .guarantee-points span {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .guarantee-points svg {
-      width: 14px; height: 14px;
-      stroke: var(--clinical);
-      stroke-width: 2.5;
-      fill: none;
+      line-height: 1.75;
     }
 
     /* ── FAQ ── */
@@ -1112,19 +1115,15 @@
   <!-- Schwartz: Verification + risiko-fjernelse               -->
   <!-- Accept 7 (del 2): "Jeg kan pr&oslash;ve det risikofrit."-->
   <!-- ═══════════════════════════════════════════════════════ -->
-  <section class="guarantee-section reveal">
-    <div class="guarantee-inner">
-      <div class="guarantee-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+  <section class="guarantee-section">
+    <div class="guarantee-inner reveal">
+      <div class="guarantee-badge">
+        <span class="guarantee-badge-text">100%</span>
+        <span class="guarantee-badge-sub">tilfredshedsgaranti</span>
       </div>
-      <div class="section-eyebrow" style="text-align:center;">100% tilfredshedsgaranti</div>
-      <h3>Vi ved du har brugt penge p&aring;<br/>15 produkter der ikke virkede.</h3>
-      <p>Derfor giver vi dig 60 dage. Pr&oslash;v ShaveSafe i 60 dage. Hvis du stadig har knopper efter 3 ugers brug, kan du pr&oslash;ve vores sensitive-variant gratis &mdash; eller f&aring; dine penge tilbage. Hele bel&oslash;bet. Ingen sp&oslash;rgsm&aring;l.</p>
-      <div class="guarantee-points">
-        <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 60 dages pengene-tilbage</span>
-        <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Ingen binding</span>
-        <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Opsig n&aring;r som helst</span>
-        <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Gratis fragt</span>
+      <div class="guarantee-content">
+        <h3>100% tilfredshedsgaranti</h3>
+        <p>Vi p&aring; ShaveSafe lover dig at du slipper af med dine knopper! Med vores tilfredshedsgaranti har du intet andet at miste end de irriterende knopper! Viser det sig, at du stadig har knopper og/eller indgroede h&aring;r efter 3 ugers brug, kan du pr&oslash;ve ShaveSafe til sensitiv hud gratis eller f&aring; dine penge tilbage.</p>
       </div>
     </div>
   </section>
