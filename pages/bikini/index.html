@@ -230,8 +230,20 @@
       letter-spacing: -0.02em;
     }
 
+    /* ── SCROLL PROGRESS BAR ── */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--clinical);
+      z-index: 200;
+      transition: width 50ms linear;
+    }
+
     /* ── EDITORIAL PROSE (problem-deepening) ── */
-    .prose-section { background: var(--sand); }
+    .prose-section { background: var(--line); }
     .prose-center {
       max-width: 640px;
       margin: 0 auto;
@@ -280,6 +292,21 @@
       line-height: 1.75;
       margin-bottom: 16px;
     }
+    /* ── INVERTED SECTION (redefinition peak) ── */
+    .section-inverted {
+      background: var(--navy);
+      color: rgba(255,255,255,0.85);
+    }
+    .section-inverted h2 { color: var(--white); }
+    .section-inverted .section-eyebrow { color: var(--clinical); }
+    .section-inverted .split-text p { color: rgba(255,255,255,0.75); }
+    .section-inverted .split-text p strong { color: var(--white); }
+    .section-inverted .split-img { background: var(--charcoal); }
+    .section-inverted .callout-box {
+      background: rgba(255,255,255,0.06);
+    }
+    .section-inverted .callout-box p { color: rgba(255,255,255,0.9); }
+
     .callout-box {
       background: var(--sand);
       border-left: 3px solid var(--clinical);
@@ -296,7 +323,7 @@
     }
 
     /* ── MECHANISM ── */
-    .mechanism-section { background: var(--sand); }
+    .mechanism-section { background: var(--off-white); }
     .check-list {
       display: flex;
       flex-direction: column;
@@ -638,7 +665,7 @@
     }
 
     /* ── COMPARISON TABLE ── */
-    .compare-section { background: var(--off-white); }
+    .compare-section { background: var(--sand); }
     .compare-section h2, .compare-section .section-eyebrow { text-align: center; }
     .compare-wrap {
       max-width: 900px;
@@ -717,6 +744,9 @@
   </style>
 </head>
 <body>
+
+  <!-- SCROLL PROGRESS BAR -->
+  <div class="scroll-progress" id="scrollProgress"></div>
 
   <!-- 1. ANNOUNCEMENT BAR -->
   <div class="announcement">
@@ -800,10 +830,10 @@
   <!-- Schwartz: Redefinition + Gradualization                 -->
   <!-- Accept 3: "Det er ikke min hud. Det er bakterier."      -->
   <!-- ═══════════════════════════════════════════════════════ -->
-  <section class="section" style="background:var(--white);">
+  <section class="section section-inverted">
     <div class="split reveal">
       <div class="split-text">
-        <div class="section-eyebrow">Det ingen har fortalt dig</div>
+        <div class="section-eyebrow">Hvorfor intet har virket</div>
         <h2>Det er ikke din hud.<br/>Det er <em>bakterier.</em></h2>
         <p>Hvert eneste gang du barberer dig, skaber bladet hundredvis af mikroskopiske snit i huden. Du kan ikke se dem. Du kan ikke m&aelig;rke dem. Men de er der.</p>
         <p>I det &oslash;jeblik bladet passerer, tr&aelig;nger bakterier fra hudens overflade ind i de &aring;bne snit. Din krop reagerer med inflammation &mdash; r&oslash;dme, h&aelig;velse, knopper. Det er ikke allergi. Det er ikke f&oslash;lsom hud. Det er en bakteriel reaktion.</p>
@@ -813,7 +843,7 @@
         </div>
       </div>
       <div class="split-img">
-        <img src="../../img/ba-legs-bumps.jpg" alt="N&aelig;rbillede af hud med knopper efter barbering" />
+        <img src="../../img/ba-bikini-before-after.png" alt="F&oslash;r og efter ShaveSafe, bikinilinje" />
       </div>
     </div>
   </section>
@@ -1139,7 +1169,7 @@
   <section class="final-cta">
     <h2 class="reveal"><em>Du har ventet<br/>l&aelig;nge nok.</em></h2>
     <p class="reveal">Pr&oslash;vepakke med skraber, blade og patenteret barbergel. 79 kr. Gratis fragt. 60 dages garanti.</p>
-    <a href="https://shavesafe.dk/collections/provepakke" class="cta-btn-outline reveal">Bestil pr&oslash;vepakken &middot; 79 kr</a>
+    <a href="https://shavesafe.dk/collections/provepakke" class="cta-btn reveal">Bestil pr&oslash;vepakken &middot; 79 kr</a>
   </section>
 
 
@@ -1187,6 +1217,13 @@
       });
     }, { threshold: 0 });
     stickyObs.observe(heroSection);
+
+    // Scroll progress bar
+    const progressBar = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.width = (window.scrollY / h * 100) + '%';
+    }, { passive: true });
   </script>
 </body>
 </html>
