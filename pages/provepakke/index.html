@@ -161,23 +161,6 @@
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
-    .hero-social-proof .avatars {
-      display: flex;
-    }
-    .hero-social-proof .avatar {
-      width: 28px; height: 28px;
-      border-radius: 50%;
-      background: var(--cream);
-      border: 2px solid var(--white);
-      margin-left: -8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--body);
-    }
-    .hero-social-proof .avatar:first-child { margin-left: 0; }
     .hero-social-proof .proof-text {
       font-size: 12px;
       color: var(--body);
@@ -238,7 +221,7 @@
 
     /* ── PRESS BAR ── */
     .press-bar {
-      padding: 28px 24px;
+      padding: 32px 24px;
       border-bottom: 1px solid var(--border);
       background: var(--white);
     }
@@ -248,22 +231,20 @@
       text-transform: uppercase;
       letter-spacing: 0.16em;
       color: var(--muted);
-      margin-bottom: 18px;
+      margin-bottom: 22px;
       font-weight: 500;
     }
     .press-logos {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 24px;
+      gap: 32px;
       flex-wrap: wrap;
-      max-width: 750px;
+      max-width: 850px;
       margin: 0 auto;
     }
     .press-logos img {
-      height: 18px;
-      opacity: 0.35;
-      filter: grayscale(100%);
+      height: 28px;
       transition: opacity 0.3s;
     }
     .press-logos img:hover { opacity: 0.7; }
@@ -411,7 +392,49 @@
       object-fit: cover;
     }
 
-    /* ── BEFORE / AFTER ── */
+    /* ── DOCTOR QUOTE ── */
+    .doctor-section {
+      padding: 88px 24px;
+      background: var(--white);
+    }
+    .doctor-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .doctor-inner .section-eyebrow {
+      margin-bottom: 16px;
+    }
+    .doctor-inner h2 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 400;
+      margin-bottom: 28px;
+    }
+    .doctor-quote {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--body);
+      font-style: italic;
+      margin-bottom: 24px;
+      padding: 0 16px;
+    }
+    .doctor-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--black);
+    }
+    .doctor-title {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .doctor-note {
+      margin-top: 24px;
+      font-size: 14px;
+      color: var(--body);
+      font-weight: 500;
+    }
+
+    /* ── BEFORE / AFTER GRID ── */
     .ba-section {
       padding: 88px 24px;
       background: var(--white);
@@ -428,88 +451,100 @@
       font-size: 14px;
       margin-bottom: 40px;
     }
-    .ba-wrapper {
-      max-width: 640px;
-      margin: 0 auto;
-      position: relative;
-    }
-    .ba-image {
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
-    }
-    .ba-image img { width: 100%; display: block; }
-    .ba-caption {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 13px;
-      color: var(--muted);
-      font-style: italic;
-    }
-    .ba-caption strong { color: var(--black); font-style: normal; }
-
-    /* ── BA GALLERY ── */
-    .ba-gallery {
-      display: flex;
-      gap: 16px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      padding: 24px 0 8px;
+    .ba-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
       max-width: 1000px;
       margin: 0 auto;
-      scrollbar-width: none;
     }
-    .ba-gallery::-webkit-scrollbar { display: none; }
-    .ba-gallery-item {
-      flex: 0 0 300px;
-      scroll-snap-align: start;
+    @media (min-width: 640px) {
+      .ba-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 900px) {
+      .ba-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    .ba-card {
+      background: var(--white);
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: 0 4px 20px rgba(0,0,0,0.06);
     }
-    .ba-gallery-item img { width: 100%; display: block; }
-    @media (min-width: 900px) {
-      .ba-gallery { overflow: visible; flex-wrap: wrap; justify-content: center; }
-      .ba-gallery-item { flex: 0 0 calc(33.333% - 11px); }
+    .ba-card img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      display: block;
+    }
+    .ba-card-text {
+      padding: 16px 18px;
+    }
+    .ba-card-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+    .ba-card-quote {
+      font-size: 13px;
+      color: var(--body);
+      line-height: 1.5;
+      font-style: italic;
     }
 
-    /* ── HOW IT WORKS ── */
+    /* ── HOW IT WORKS (VISUAL) ── */
     .how-section {
       padding: 88px 24px;
       background: var(--light);
     }
-    .how-inner { max-width: var(--narrow); margin: 0 auto; }
-    .how-steps { display: flex; flex-direction: column; gap: 0; }
-    .how-step {
-      display: flex;
+    .how-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .how-grid {
+      display: grid;
+      grid-template-columns: 1fr;
       gap: 24px;
-      align-items: flex-start;
-      padding: 32px 0;
-      border-bottom: 1px solid var(--border);
+      margin-top: 40px;
     }
-    .how-step:last-child { border-bottom: none; }
-    .how-num {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      background: var(--black);
-      color: var(--white);
+    @media (min-width: 768px) {
+      .how-grid { grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+    }
+    .how-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--white);
+    }
+    .how-card-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      display: block;
+    }
+    .how-card-body {
+      padding: 24px 20px;
+    }
+    .how-card-num {
       font-family: 'Playfair Display', serif;
-      font-size: 17px;
+      font-size: 28px;
       font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+      color: var(--accent);
+      margin-bottom: 8px;
     }
-    .how-text h3 {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 4px;
+    .how-card-title {
       font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
       color: var(--black);
+      margin-bottom: 8px;
     }
-    .how-text p { font-size: 14px; color: var(--body); line-height: 1.65; }
+    .how-card-desc {
+      font-size: 14px;
+      color: var(--body);
+      line-height: 1.65;
+    }
 
     /* ── REVIEWS ── */
     .reviews-section { padding: 88px 24px; overflow: hidden; }
@@ -533,7 +568,6 @@
     }
     .reviews-stars { display: flex; gap: 2px; }
     .reviews-stars svg { width: 16px; height: 16px; fill: var(--gold); }
-    .reviews-count { font-size: 13px; color: var(--muted); margin-top: 6px; }
 
     .reviews-scroll {
       display: flex;
@@ -619,27 +653,34 @@
       font-size: 14px;
       margin-bottom: 28px;
     }
-    .product-items {
-      text-align: left;
+    .product-items-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
       margin-bottom: 24px;
     }
-    .product-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 14px;
-      line-height: 1.5;
+    .product-visual-item {
+      text-align: center;
     }
-    .product-item:last-child { border-bottom: none; }
-    .product-item svg {
-      width: 18px; height: 18px;
-      stroke: var(--green);
-      stroke-width: 2.5;
-      fill: none;
-      flex-shrink: 0;
-      margin-top: 1px;
+    .product-visual-item img {
+      width: 100%;
+      max-width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin: 0 auto 10px;
+    }
+    .product-visual-item .pv-name {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+    .product-visual-item .pv-desc {
+      font-size: 11px;
+      color: var(--body);
+      line-height: 1.4;
     }
     .product-price-row {
       display: flex;
@@ -664,6 +705,12 @@
       color: var(--muted);
       margin-bottom: 20px;
     }
+    .product-savings {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
     .product-note {
       font-size: 12px;
       color: var(--muted);
@@ -671,40 +718,128 @@
       line-height: 1.6;
     }
 
-    /* ── GUARANTEE ── */
-    .guarantee-section {
-      padding: 64px 24px;
-      text-align: center;
+    /* ── STORY SECTION ── */
+    .story-section {
+      padding: 88px 24px;
       background: var(--white);
     }
-    .guarantee-inner {
-      max-width: 480px;
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+      max-width: var(--max);
       margin: 0 auto;
     }
-    .guarantee-icon {
-      width: 48px; height: 48px;
-      margin: 0 auto 20px;
+    @media (min-width: 768px) {
+      .story-grid { grid-template-columns: 1fr 1fr; gap: 64px; }
+    }
+    .story-img {
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .story-img img {
+      width: 100%;
+      display: block;
+    }
+    .story-text h2 {
+      font-size: clamp(24px, 4vw, 34px);
+      font-weight: 400;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .story-text p {
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    /* ── GUARANTEE ── */
+    .guarantee-section {
+      padding: 80px 24px;
+      background: var(--light);
+    }
+    .guarantee-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    @media (min-width: 768px) {
+      .guarantee-inner { grid-template-columns: auto 1fr; gap: 56px; }
+    }
+    .guarantee-badge {
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
-      background: #e8f5e9;
+      border: 3px solid #6b9bd2;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      margin: 0 auto;
+      position: relative;
     }
-    .guarantee-icon svg {
-      width: 24px; height: 24px;
-      stroke: var(--green);
-      stroke-width: 2;
-      fill: none;
+    .guarantee-badge-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      font-weight: 700;
+      color: #6b9bd2;
+      line-height: 1;
     }
-    .guarantee-section h3 {
-      font-size: 20px;
-      font-weight: 400;
-      margin-bottom: 10px;
+    .guarantee-badge-sub {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #6b9bd2;
+      margin-top: 4px;
     }
-    .guarantee-section p {
-      font-size: 14px;
+    .guarantee-content h3 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .guarantee-content p {
+      font-size: 15px;
       color: var(--body);
-      line-height: 1.7;
+      line-height: 1.75;
+    }
+
+    /* ── SOCIAL PROOF BADGES ── */
+    .social-proof-section {
+      padding: 64px 24px;
+      background: var(--white);
+    }
+    .social-proof-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .social-proof-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 24px;
+    }
+    .social-proof-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 24px;
+      background: var(--light);
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--black);
+    }
+    .social-proof-item svg {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
     }
 
     /* ── FAQ ── */
@@ -852,12 +987,6 @@
       <p class="hero-desc">Danmarks eneste gel der eliminerer bakterier <strong>under</strong> barberingen &mdash; s&aring; din hud slipper for at reagere bagefter.</p>
 
       <div class="hero-social-proof">
-        <div class="avatars">
-          <div class="avatar">M</div>
-          <div class="avatar">L</div>
-          <div class="avatar">K</div>
-          <div class="avatar">S</div>
-        </div>
         <div class="proof-text"><strong>94% oplever f&aelig;rre knopper</strong><br/>efter blot 1&ndash;2 barberinger</div>
       </div>
 
@@ -916,7 +1045,7 @@
   <section class="section">
     <div class="split reveal">
       <div class="split-img">
-        <img src="../../img/ba-legs-bumps.jpg" alt="F&oslash;r og efter &mdash; ben med knopper" />
+        <img src="../../img/ba-bikini-dated-new.png" alt="F&oslash;r og efter &mdash; bikinilinje" />
       </div>
       <div class="split-text">
         <div class="section-eyebrow">Hvorfor f&aring;r du knopper?</div>
@@ -956,23 +1085,19 @@
     </div>
   </section>
 
-  <!-- DERMATOLOGIST APPROVED -->
-  <section class="section" style="background:var(--white);">
-    <div class="split reverse reveal">
-      <div class="split-img" style="aspect-ratio:3/4;">
-        <img src="../../img/dermatologist.jpg" alt="Dermatolog" />
-      </div>
-      <div class="split-text">
-        <div class="section-eyebrow">Dermatolog-godkendt</div>
-        <h2>Udviklet med hudl&aelig;ger</h2>
-        <p>&ldquo;Langt de fleste barberings&shy;problemer skyldes bakterier, der tr&aelig;nger ind i huden under selve barberingen. ShaveSafe er det eneste produkt, jeg har set, der l&oslash;ser problemet ved r&oslash;dden &mdash; ikke blot symptomerne bagefter.&rdquo;</p>
-        <p>&ldquo;Jeg anbefaler det til alle mine patienter med tilbagevendende razor bumps og follikulitis i bikinilinjen.&rdquo;</p>
-        <p style="margin-top:20px;margin-bottom:0;"><strong style="color:var(--black);font-size:14px;">Dr. Henrik M&oslash;ller</strong><br/><span style="font-size:13px;color:var(--muted);">Speciall&aelig;ge i dermatologi</span></p>
-      </div>
+  <!-- DOCTOR QUOTE -->
+  <section class="doctor-section">
+    <div class="doctor-inner reveal">
+      <div class="section-eyebrow">Anbefalet af l&aelig;ger</div>
+      <h2>Hvad siger en l&aelig;ge?</h2>
+      <p class="doctor-quote">&ldquo;Problemet med barberingsknopper og indgroede h&aring;r skyldes bakterier p&aring; huden og h&aring;rs&aelig;kkene. Ofte opst&aring;r det efter barbering, hvor bladet p&aring; skraberen ikke har v&aelig;ret rigtig rent. Nybarberede damebi&shy;kini-snit og nybarberede armhuler er mest udsatte.&rdquo;</p>
+      <p class="doctor-name">Lise-Lotte Hergel</p>
+      <p class="doctor-title">Praktiserende l&aelig;ge</p>
+      <p class="doctor-note">Du kender m&aring;ske allerede ShaveSafe fra Matas eller dit apotek.</p>
     </div>
   </section>
 
-  <!-- UNIQUE FORMULA / SILVER CITODERM -->
+  <!-- UNIQUE FORMULA -->
   <section class="section" style="background:var(--light);">
     <div class="split reveal">
       <div class="split-text">
@@ -997,50 +1122,67 @@
     <div class="section-eyebrow reveal" style="text-align:center;">Rigtige resultater</div>
     <h2 class="reveal">F&oslash;r &amp; efter ShaveSafe</h2>
     <p class="ba-sub reveal">Reelle billeder fra rigtige kunder.</p>
-    <div class="ba-wrapper reveal">
-      <div class="ba-image">
-        <img src="../../img/before-after.jpg" alt="F&oslash;r og efter ShaveSafe &mdash; bikinilinjen" />
+    <div class="ba-grid">
+      <div class="ba-card reveal">
+        <img src="../../img/ba-bikini-dated-v1.png" alt="F&oslash;r og efter &mdash; bikinilinje" />
+        <div class="ba-card-text">
+          <p class="ba-card-name">Nana, 28</p>
+          <p class="ba-card-quote">&ldquo;Jeg turde ikke have bikini p&aring;. Nu kan jeg endelig g&aring; p&aring; stranden uden at t&aelig;nke over det.&rdquo;</p>
+        </div>
       </div>
-      <p class="ba-caption"><strong>Nana, 28</strong> &mdash; F&oslash;r: 10. april &middot; Efter: 24. maj</p>
-    </div>
-    <div class="ba-gallery">
-      <div class="ba-gallery-item reveal">
-        <img src="../../img/ba-legs-dated.jpg" alt="F&oslash;r og efter &mdash; ben" />
+      <div class="ba-card reveal reveal-delay-1">
+        <img src="../../img/ba-belly-dated.jpg" alt="F&oslash;r og efter &mdash; mave" />
+        <div class="ba-card-text">
+          <p class="ba-card-name">Louise, 24</p>
+          <p class="ba-card-quote">&ldquo;Mine knopper er v&aelig;k efter bare to uger med ShaveSafe. Fantastisk resultat!&rdquo;</p>
+        </div>
       </div>
-      <div class="ba-gallery-item reveal reveal-delay-1">
-        <img src="../../img/ba-bikini-mirror.jpg" alt="F&oslash;r og efter &mdash; bikinilinje" />
+      <div class="ba-card reveal reveal-delay-2">
+        <img src="../../img/ba-legs-bumps-new.jpg" alt="F&oslash;r og efter &mdash; ben" />
+        <div class="ba-card-text">
+          <p class="ba-card-name">Maria, 31</p>
+          <p class="ba-card-quote">&ldquo;Har k&aelig;mpet med knopper p&aring; benene i &aring;revis. ShaveSafe l&oslash;ste det p&aring; en uge.&rdquo;</p>
+        </div>
       </div>
-      <div class="ba-gallery-item reveal reveal-delay-2">
-        <img src="../../img/ba-bikini-front.jpg" alt="F&oslash;r og efter &mdash; bikinilinje" />
+      <div class="ba-card reveal">
+        <img src="../../img/before-after-side.jpg" alt="F&oslash;r og efter &mdash; bikinilinje" />
+        <div class="ba-card-text">
+          <p class="ba-card-name">Sofie, 26</p>
+          <p class="ba-card-quote">&ldquo;Resultatet taler for sig selv. Jeg ville &oslash;nske jeg havde fundet ShaveSafe for &aring;r siden.&rdquo;</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
+  <!-- HOW IT WORKS (VISUAL) -->
   <section class="how-section">
     <div class="how-inner">
       <div class="section-eyebrow reveal" style="text-align:center;">S&aring;dan virker det</div>
-      <h2 class="reveal" style="text-align:center;font-size:clamp(24px,4vw,34px);font-weight:400;margin-bottom:40px;">3 trin. 5 minutter.</h2>
-      <div class="how-steps">
-        <div class="how-step reveal">
-          <div class="how-num">1</div>
-          <div class="how-text">
-            <h3>P&aring;f&oslash;r gel'en</h3>
-            <p>Den patenterede gel danner et antibakterielt lag p&aring; huden, inden bladet r&oslash;rer dig.</p>
+      <h2 class="reveal" style="text-align:center;font-size:clamp(24px,4vw,34px);font-weight:400;">Tre trin. Fem minutter.</h2>
+      <p class="reveal" style="text-align:center;color:var(--muted);font-size:14px;margin-bottom:0;">Ingen rutiner, ingen indviklede protokoller. Bare barbering der virker.</p>
+      <div class="how-grid">
+        <div class="how-card reveal">
+          <img class="how-card-img" src="../../img/lifestyle-gel-hands.jpg" alt="P&aring;f&oslash;r gel'en" />
+          <div class="how-card-body">
+            <div class="how-card-num">01</div>
+            <div class="how-card-title">P&aring;f&oslash;r gel'en</div>
+            <p class="how-card-desc">Den patenterede Chlorhexidine-gel danner et antibakterielt skjold p&aring; huden, inden bladet r&oslash;rer dig. 30 sekunder.</p>
           </div>
         </div>
-        <div class="how-step reveal reveal-delay-1">
-          <div class="how-num">2</div>
-          <div class="how-text">
-            <h3>Barber som normalt</h3>
-            <p>Brug skraberen med 5+1 blade i svensk st&aring;l. Gel'en beskytter hvert mikrosnit.</p>
+        <div class="how-card reveal reveal-delay-1">
+          <img class="how-card-img" src="../../img/lifestyle-shaving-legs.jpg" alt="Barber som normalt" />
+          <div class="how-card-body">
+            <div class="how-card-num">02</div>
+            <div class="how-card-title">Barber som normalt</div>
+            <p class="how-card-desc">Brug skraberen med 5+1 blade i svensk st&aring;l. Gel'en beskytter hvert mikrosnit &mdash; s&aring; bakterier ikke kan tr&aelig;nge ind. 2&ndash;3 minutter.</p>
           </div>
         </div>
-        <div class="how-step reveal reveal-delay-2">
-          <div class="how-num">3</div>
-          <div class="how-text">
-            <h3>F&aelig;rdig</h3>
-            <p>Ingen bakterier, ingen inflammation. Glat hud &mdash; ogs&aring; dagen efter.</p>
+        <div class="how-card reveal reveal-delay-2">
+          <img class="how-card-img" src="../../img/lifestyle-mirror-towel.jpg" alt="Skyl og f&aelig;rdig" />
+          <div class="how-card-body">
+            <div class="how-card-num">03</div>
+            <div class="how-card-title">Skyl og f&aelig;rdig</div>
+            <p class="how-card-desc">Ingen bakterier, ingen inflammation. Glat hud &mdash; ogs&aring; dagen efter. Ingen aftershave, ingen lotion n&oslash;dvendig.</p>
           </div>
         </div>
       </div>
@@ -1062,33 +1204,56 @@
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
       </div>
-      <div class="reviews-count">Baseret p&aring; 49 anmeldelser</div>
     </div>
 
     <div class="reviews-scroll">
       <div class="review-card reveal">
         <div class="review-top">
-          <div class="review-avatar">M</div>
-          <div><div class="review-name">Maria S.</div><div class="review-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Verificeret k&oslash;b</div></div>
+          <div class="review-avatar">B</div>
+          <div><div class="review-name">Britt</div><div class="review-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Verificeret k&oslash;b</div></div>
         </div>
         <div class="review-card-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <p class="review-text">K&aelig;mpet med knopper i bikinilinjen i over 10 &aring;r. <strong>ShaveSafe er det f&oslash;rste der faktisk virker.</strong></p>
+        <p class="review-text"><strong>L&aelig;kkert produkt, god kvalitet</strong> og vigtigst af alt virker det som lovet.</p>
       </div>
       <div class="review-card reveal reveal-delay-1">
         <div class="review-top">
-          <div class="review-avatar">L</div>
-          <div><div class="review-name">Louise K.</div><div class="review-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Verificeret k&oslash;b</div></div>
+          <div class="review-avatar">H</div>
+          <div><div class="review-name">Hans Christian R.</div><div class="review-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Verificeret k&oslash;b</div></div>
         </div>
         <div class="review-card-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <p class="review-text"><strong>I &aring;r har jeg kunnet g&aring; i bikini uden at bekymre mig.</strong> Det lyder som en lille ting, men for mig er det k&aelig;mpestort.</p>
+        <p class="review-text"><strong>En lille gigant.</strong> Klingerne er lavet af svensk st&aring;l og har en patenteret hudpleje&shy;overbygning. Det giver en totalt behagelig barbering.</p>
       </div>
       <div class="review-card reveal reveal-delay-2">
         <div class="review-top">
           <div class="review-avatar">S</div>
-          <div><div class="review-name">Sofie A.</div><div class="review-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Verificeret k&oslash;b</div></div>
+          <div><div class="review-name">S&oslash;ren M.</div><div class="review-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Verificeret k&oslash;b</div></div>
         </div>
         <div class="review-card-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <p class="review-text">Skeptisk i starten. <strong>Efter 2 barberinger var knopperne v&aelig;k.</strong> Helt v&aelig;k.</p>
+        <p class="review-text"><strong>Gode produkter til en fornuftig pris,</strong> god service og hurtig levering.</p>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-top">
+          <div class="review-avatar">A</div>
+          <div><div class="review-name">Anne Louise A.</div><div class="review-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Verificeret k&oslash;b</div></div>
+        </div>
+        <div class="review-card-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <p class="review-text"><strong>Altid hurtig levering</strong> og altid gode produkter.</p>
+      </div>
+      <div class="review-card reveal reveal-delay-1">
+        <div class="review-top">
+          <div class="review-avatar">T</div>
+          <div><div class="review-name">Terese C.</div><div class="review-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Verificeret k&oslash;b</div></div>
+        </div>
+        <div class="review-card-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <p class="review-text"><strong>Gode produkter</strong> og hurtig levering.</p>
+      </div>
+      <div class="review-card reveal reveal-delay-2">
+        <div class="review-top">
+          <div class="review-avatar">B</div>
+          <div><div class="review-name">Bo K.</div><div class="review-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Verificeret k&oslash;b</div></div>
+        </div>
+        <div class="review-card-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <p class="review-text"><strong>Rigtig gode produkter</strong> &mdash; kan p&aring; det varmeste anbefales.</p>
       </div>
     </div>
   </section>
@@ -1102,24 +1267,30 @@
       <div class="section-eyebrow">Komplet s&aelig;t</div>
       <h2>Pr&oslash;vepakken</h2>
       <p class="product-sub">Alt du beh&oslash;ver for at opleve forskellen.</p>
-      <div class="product-items">
-        <div class="product-item">
-          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          <span><strong>Patenteret barbergel</strong> (50 ml) &mdash; eliminerer bakterier under barberingen</span>
+
+      <div class="product-items-visual">
+        <div class="product-visual-item">
+          <img src="../../img/razor-handle-product.png" alt="Ergonomisk skraber" />
+          <div class="pv-name">Ergonomisk skraber</div>
+          <div class="pv-desc">I krom med ergonomisk greb &mdash; designet til pr&aelig;cision i bikinilinjen.</div>
         </div>
-        <div class="product-item">
-          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          <span><strong>Ergonomisk skraber</strong> &mdash; i krom med ergonomisk greb</span>
+        <div class="product-visual-item">
+          <img src="../../img/blade-closeup-numbered.jpg" alt="5+1 blade" />
+          <div class="pv-name">5+1 blade</div>
+          <div class="pv-desc">Svensk st&aring;l, skarpere end standard. Pr&aelig;cisionstrimmer p&aring; bagsiden.</div>
         </div>
-        <div class="product-item">
-          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          <span><strong>5+1 blade</strong> &mdash; i svensk st&aring;l + pr&aelig;cisionstrimmer</span>
+        <div class="product-visual-item">
+          <img src="../../img/gel-product-50ml.png" alt="Patenteret barbergel" />
+          <div class="pv-name">Barbergel (50 ml)</div>
+          <div class="pv-desc">Patenteret Chlorhexidine-formel &mdash; eliminerer bakterier under barberingen.</div>
         </div>
       </div>
+
       <div class="product-price-row">
         <span class="product-price">79 kr</span>
         <span class="product-price-og">185 kr</span>
       </div>
+      <div class="product-savings">For&aring;rstilbud &mdash; Spar 106 kr (57%)</div>
       <div class="product-shipping">inkl. gratis fragt</div>
       <a href="https://shavesafe.dk/collections/provepakke" class="cta-btn" style="width:100%;">
         Bestil pr&oslash;vepakken
@@ -1129,14 +1300,59 @@
     </div>
   </section>
 
-  <!-- GUARANTEE -->
-  <section class="guarantee-section reveal">
-    <div class="guarantee-inner">
-      <div class="guarantee-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+  <!-- STORY SECTION -->
+  <section class="story-section">
+    <div class="story-grid reveal">
+      <div class="story-img">
+        <img src="../../img/nana-founder.jpg" alt="Nana med ShaveSafe" />
       </div>
-      <h3>Risikofrit at pr&oslash;ve</h3>
-      <p>K&oslash;b pr&oslash;vepakken og oplev forskellen selv. Ingen binding, ingen skjulte gebyrer. Du kan opsige dit abonnement n&aring;r som helst med &eacute;t klik.</p>
+      <div class="story-text">
+        <div class="section-eyebrow">Vores historie</div>
+        <h2>Nana k&aelig;mpede med det i 5 &aring;r, s&aring; fandt hun ud af hvorfor.</h2>
+        <p>Det var en konstant. For mange &aring; pleje. Knopper, r&oslash;dme og irritation efter hver barbering. Nana havde pr&oslash;vet alt. S&aring; m&oslash;dte hun holdet bag ShaveSafe &mdash; og fandt endelig en l&oslash;sning der faktisk virkede.</p>
+        <p>Nana indgik et samarbejde med ShaveSafe. Nu deler hun sin historie s&aring; andre kvinder kan slippe for de samme problemer.</p>
+        <p>I dag er ShaveSafe tilg&aelig;ngeligt i <strong style="color:var(--black);">Matas</strong> og p&aring; <strong style="color:var(--black);">apoteker</strong> over hele Danmark &mdash; s&aring; du ikke beh&oslash;ver s&oslash;ge l&aelig;ngere.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUARANTEE -->
+  <section class="guarantee-section">
+    <div class="guarantee-inner reveal">
+      <div class="guarantee-badge">
+        <span class="guarantee-badge-text">100%</span>
+        <span class="guarantee-badge-sub">tilfredshedsgaranti</span>
+      </div>
+      <div class="guarantee-content">
+        <h3>100% tilfredshedsgaranti</h3>
+        <p>Vi p&aring; ShaveSafe lover dig at du slipper af med dine knopper! Med vores tilfredshedsgaranti har du intet andet at miste end de irriterende knopper! Viser det sig, at du stadig har knopper og/eller indgroede h&aring;r efter 3 ugers brug, kan du pr&oslash;ve ShaveSafe til sensitiv hud gratis eller f&aring; dine penge tilbage.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF BADGES -->
+  <section class="social-proof-section">
+    <div class="social-proof-inner reveal">
+      <div class="section-eyebrow">Anerkendt kvalitet</div>
+      <h2 style="font-size:clamp(22px,3.5vw,32px);font-weight:400;margin-bottom:8px;">Danskerne stoler p&aring; ShaveSafe</h2>
+      <div class="social-proof-items">
+        <div class="social-proof-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+          Nomineret til Danish Grooming Awards
+        </div>
+        <div class="social-proof-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Vinder af &ldquo;Bedst i test&rdquo; i iForm
+        </div>
+        <div class="social-proof-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Forhandles i Matas og p&aring; apoteker
+        </div>
+        <div class="social-proof-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Dansk patent &middot; Klinisk testet
+        </div>
+      </div>
     </div>
   </section>
 
