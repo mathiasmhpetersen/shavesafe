@@ -1,0 +1,21 @@
+{
+  "generated_at": null,
+  "source": "judge.me",
+  "shop": "shavesafe.dk",
+  "total_fetched": 0,
+  "total_kept": 0,
+  "filter": "Del 4C — 5★, ≥25 ord, nævner kropsområde/tidsramme/fejlet alternativ, ekskl. leverings-only, skeptikere pinned",
+  "_note": "SAMPLE / EMPTY. No real reviews are committed here yet — running fetch-reviews.js against the live Judge.me feed populates `reviews`. Until then the page uses its static fallback (press quote + video card). NEVER hand-author entries in `reviews`; every entry must carry a real `source_id`. The `example_shape` below documents the expected entry format only and is NOT rendered by app.js.",
+  "reviews": [],
+  "example_shape": {
+    "source": "judge.me",
+    "source_id": "<real Judge.me review id>",
+    "rating": 5,
+    "body": "<verbatim review text, ≥25 words, mentions e.g. bikini/ben/hals or uge/dage/år or prøvet/laser/voks>",
+    "name": "Fornavn E.",
+    "date": "2026-05-12",
+    "product": "Gel | Skraber | Bikini Repair",
+    "verified": true,
+    "pinned": false
+  }
+}
