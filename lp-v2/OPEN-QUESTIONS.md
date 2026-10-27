@@ -1,9 +1,16 @@
 # ShaveSafe LP v2 — OPEN-QUESTIONS.md
 
-Offer stack now follows Mathias's final rules (27 Oct 2026): prøvepakke stays
-79 kr, all stacking is on the refill, tiers = refill interval, same 189 kr refill
-on both. The page renders with these numbers; remaining unknowns are flagged
-`TODO-PLAN-ID` / `TODO-SHOT` / `TODO-STOCK` (visible with `?debug=1`).
+Page is now built to **Del 0 FINAL** — an IM8-PDP + 8-hours fusion, 18 sections in
+the specified order (announcement bar → PDP hero w/ carousel + Kvinde/Mand selector +
+buy box → clinical strip → spec accordion → creator-video row → quality row → mechanism
+→ doctor "rooted in science" → før/efter → patent+garanti → comparison → trusted-by dark
+grid → reviews wall → origin → science journal → FAQ → final offer + sticky). The old
+ShaveSafe layout was dropped per instruction.
+
+Offer stack follows Mathias's final rules (27 Oct 2026): prøvepakke stays 79 kr, all
+stacking is on the refill, tiers = refill interval, same 189 kr refill on both. The page
+renders with these numbers; remaining unknowns are flagged `TODO-PLAN-ID` / `TODO-SHOT` /
+`TODO-STOCK` / `TODO-UGC` / `TODO-PATENT-NO` / `TODO-STUDY` / `TODO-INCI` (visible with `?debug=1`).
 
 ---
 
@@ -66,6 +73,11 @@ stays on all incl. the one-time tier.
 | Live reviews | Judge.me token to run `reviews-sync/fetch-reviews.js` (no reviews invented) | reviews-sync/ |
 | B/A photo consent | written consent on file per real pair | CLAIMS #18 |
 | Competitor-guarantee check | dated proof for "eneste med penge-tilbage-garanti" | CLAIMS #2 |
+| Creator/UGC videos | 6 vertical 9:16 clips (native, phone-shot, subtitle-burned) for the "Det siger dem der har prøvet alt" row; currently still-image placeholders | `TODO-UGC`; format ref /refs/creator-emma-ranum.mp4 |
+| Trusted-by portraits | square portraits + proof pills for Lise-Lotte Hergel, Nana + 2–3 real long-term customers; **consent on file**, no stock faces | §13 `TODO-portræt` |
+| Male offer visual + male repair SKU | Kvinde/Mand swaps the hero image and the future gift (Bikini cream → male repair from /collections/til-ham, else gel 50 ml); needs a real male offer visual and the male SKU | §3 gender toggle, `TODO-SHOT` |
+| "Siden 2011" founding year | used verbatim per brief; confirm the year is correct | PDP social line / CLAIMS #16 |
+| Science-journal read-times | 3 real articles linked (shavesafe.dk/blogs/articles, dates verified); the "X min" read-times are estimates | §16 |
 
 ---
 

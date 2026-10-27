@@ -23,7 +23,7 @@
   <!-- End Meta Pixel Code -->
 
   <title>ShaveSafe — Barbering uden knopper, kløe og indgroede hår</title>
-  <meta name="description" content="Det eneste patenterede produkt i Danmark mod røde knopper og indgroede hår — og det eneste med penge-tilbage-garanti, hvis det ikke virker. Patenteret barbergel der eliminerer bakterier under barberingen. Fra 79 kr." />
+  <meta name="description" content="Det eneste patenterede produkt i Danmark mod røde knopper og indgroede hår — og det eneste med penge-tilbage-garanti, hvis det ikke virker. Prøvepakke 79 kr, gratis velkomstgave." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,641 +32,71 @@
 </head>
 <body>
 
-  <!-- ══ 1 · TRUST BAR ══ -->
-  <div class="trust-bar">
-    <div class="trust-bar-inner">
-      <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Altid gratis fragt</span>
-      <span class="tb-hide-sm"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Patenteret</span>
-      <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Klinisk testet</span>
-      <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 100.000+ danskere</span>
-    </div>
-  </div>
+  <!-- ══ 1 · ANNOUNCEMENT BAR ══ -->
+  <div class="announce">Velkomsttilbud — prøvepakke 79 kr · Gratis velkomstgave · Knop-fri garanti</div>
 
+  <!-- NAV -->
   <header class="header">
     <img src="../img/logo-black.avif" alt="ShaveSafe" />
   </header>
 
-  <!-- ══ 2 · HERO + OFFER STACK ══ -->
-  <section class="hero">
-    <div class="hero-top">
-      <div class="hero-img" data-todo>
-        <span class="todo-shot">TODO-SHOT #1 — offer hero (tier packshot)</span>
-        <img src="../img/nana-hero.jpg" alt="ShaveSafe prøvepakke" />
-        <div class="hero-badge">
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          4.8 / 5
-        </div>
-      </div>
-      <div class="hero-content">
-        <div class="hero-eyebrow">ShaveSafe</div>
-        <h1><em>Barbering uden knopper, kløe og indgroede hår.</em></h1>
-        <p class="hero-claim">Patenteret gel der eliminerer bakterier <strong>under</strong> barberingen — så din hud slipper for at reagere bagefter. <strong>94&nbsp;%</strong> oplever færre knopper efter 1–2 barberinger.</p>
-        <div class="hero-rating">
-          <span class="stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          </span>
-          <span class="r-text"><strong>4.8/5</strong> · 277 anmeldelser</span>
-        </div>
-
-        <!-- OFFER STACK (hero instance) -->
-        <div class="offer" data-offer="hero">
-
-          <!-- ORDER 1 (shared): the prøvepakke. Nothing is added to it — stacking is on the refill. -->
-          <div class="order1">
-            <div class="order1-head">
-              <span class="order1-today">I dag: 79 kr</span>
-              <span class="order1-sub">Du betaler for gelen. Skraberen og bladet er med gratis.</span>
-            </div>
-            <div class="gift-strip">
-              <div class="gift-line"><span class="gl-name">Barbergel 50 ml</span><span class="gl-price pay">79 kr</span></div>
-              <div class="gift-line"><span class="gl-name">Skraber</span><span class="gl-price free"><s>99 kr</s> gratis</span></div>
-              <div class="gift-line"><span class="gl-name">Barberblad (5+1)</span><span class="gl-price free">gratis</span></div>
-            </div>
-          </div>
-
-          <div class="offer-head">
-            <span class="oh-title">Vælg hvor ofte du får refill</span>
-            <span class="oh-note">Abonnement · opsig med ét klik</span>
-          </div>
-
-          <!-- Tier cards A/B = refill interval. data-tier drives selection; data-url / data-url-upgrade feed the CTA. -->
-          <div class="tier-cards">
-
-            <!-- TIER A · hver 12. uge · BEDSTE VÆRDI -->
-            <label class="tier-card selected" data-tier="A"
-                   data-url="https://shavesafe.dk/collections/provepakke?tier=12uger"
-                   data-url-upgrade="https://shavesafe.dk/collections/provepakke?tier=12uger&refillnow=1" data-todo>
-              <span class="tier-pill best">Bedste værdi</span>
-              <span class="todo-badge">TODO-PLAN-ID</span>
-              <div class="tier-row1">
-                <span class="tier-radio" aria-hidden="true"></span>
-                <div class="tier-main">
-                  <div class="tier-name">Hver 12. uge</div>
-                  <div class="tier-contents">Refill: 100 ml gel + 4 blade</div>
-                </div>
-                <div class="tier-price-wrap">
-                  <div class="tier-price">189<span class="unit"> kr</span></div>
-                  <div class="tier-billed">hver 12. uge · ca. 63 kr/md</div>
-                  <div class="tier-pershave tip">ca. 8 kr / barbering
-                    <span class="tip-pop">189 kr (100 ml gel + 4 blade) ÷ (4 blade × ca. 6 barberinger) ≈ 8 kr pr. barbering. Bekræftes før live.</span>
-                  </div>
-                </div>
-              </div>
-              <div class="tier-gift">
-                <div class="tier-gift-head">Gratis velkomstgave <span class="tg-meta">· 78 kr værdi · 2 dele</span></div>
-                <div class="tier-gift-items">
-                  <div class="tier-gift-item"><img class="tg-thumb" src="../img/razor-handle-cutout.png" alt="Razor Holder Silver" data-todo /><span class="gi-name">Razor Holder Silver</span><span class="g-val">29 kr</span></div>
-                  <div class="tier-gift-item"><img class="tg-thumb" src="../img/gel-product-cutout.png" alt="Travel Case" data-todo /><span class="gi-name">Travel Case</span><span class="g-val">49 kr</span></div>
-                </div>
-                <div class="tier-gift-ship">Sendes med din 1. refill</div>
-              </div>
-              <details class="tier-future">
-                <summary>Fremtidige gaver</summary>
-                <div class="tier-future-body">
-                  <!-- TODO-STOCK: Bikini Line Repair Cream var udsolgt 2026-10-27 → subscription-app falder tilbage til gel 50 ml. Mandeflow: byt til repair-produkt fra /collections/til-ham. -->
-                  <div class="tf-row"><img class="tf-thumb" src="../img/gel-product-50ml.png" alt="Bikini Line Repair Cream" data-todo /><span class="tf-when">Levering 3</span><span class="tf-name">Bikini Line Repair Cream 50 ml</span><span class="tf-val">229 kr</span></div>
-                  <div class="tf-stock">Så længe lager haves — ellers gel 50 ml.</div>
-                </div>
-              </details>
-              <ul class="tier-check">
-                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Altid gratis fragt</li>
-                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 90 dages knop-fri garanti</li>
-                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Opsig med ét klik · ingen binding</li>
-              </ul>
-              <div class="tier-sub-note">Du betaler kun <strong>79 kr for prøvepakken nu</strong>. Refill starter ved næste levering, derefter hver 12. uge.</div>
-            </label>
-
-            <!-- TIER B · hver 4. uge · MEST POPULÆR -->
-            <label class="tier-card" data-tier="B"
-                   data-url="https://shavesafe.dk/collections/provepakke?tier=4uger"
-                   data-url-upgrade="https://shavesafe.dk/collections/provepakke?tier=4uger&refillnow=1" data-todo>
-              <span class="tier-pill popular">Mest populær</span>
-              <span class="todo-badge">TODO-PLAN-ID</span>
-              <div class="tier-row1">
-                <span class="tier-radio" aria-hidden="true"></span>
-                <div class="tier-main">
-                  <div class="tier-name">Hver 4. uge</div>
-                  <div class="tier-contents">Refill: 100 ml gel + 4 blade</div>
-                </div>
-                <div class="tier-price-wrap">
-                  <div class="tier-price">189<span class="unit"> kr</span></div>
-                  <div class="tier-billed">hver 4. uge · ca. 189 kr/md</div>
-                  <div class="tier-pershave tip">ca. 8 kr / barbering
-                    <span class="tip-pop">189 kr (100 ml gel + 4 blade) ÷ (4 blade × ca. 6 barberinger) ≈ 8 kr pr. barbering. Bekræftes før live.</span>
-                  </div>
-                </div>
-              </div>
-              <div class="tier-gift">
-                <div class="tier-gift-head">Gratis velkomstgave <span class="tg-meta">· 29 kr værdi</span></div>
-                <div class="tier-gift-items">
-                  <div class="tier-gift-item"><img class="tg-thumb" src="../img/razor-handle-cutout.png" alt="Razor Holder Silver" data-todo /><span class="gi-name">Razor Holder Silver</span><span class="g-val">29 kr</span></div>
-                </div>
-                <div class="tier-gift-ship">Sendes med din 1. refill</div>
-              </div>
-              <details class="tier-future">
-                <summary>Fremtidige gaver</summary>
-                <div class="tier-future-body">
-                  <!-- TODO-STOCK: Bikini Line Repair Cream udsolgt 2026-10-27 → fallback gel 50 ml. Mandeflow: /collections/til-ham. -->
-                  <div class="tf-row"><img class="tf-thumb" src="../img/gel-product-cutout.png" alt="Travel Case" data-todo /><span class="tf-when">Levering 3</span><span class="tf-name">Travel Case</span><span class="tf-val">49 kr</span></div>
-                  <div class="tf-row"><img class="tf-thumb" src="../img/gel-product-50ml.png" alt="Bikini Line Repair Cream" data-todo /><span class="tf-when">Levering 6</span><span class="tf-name">Bikini Line Repair Cream 50 ml</span><span class="tf-val">229 kr</span></div>
-                  <div class="tf-stock">Så længe lager haves — ellers gel 50 ml.</div>
-                </div>
-              </details>
-              <ul class="tier-check">
-                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Altid gratis fragt</li>
-                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 30 dages knop-fri garanti</li>
-                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Opsig med ét klik · ingen binding</li>
-              </ul>
-              <div class="tier-sub-note">Du betaler kun <strong>79 kr for prøvepakken nu</strong>. Refill starter ved næste levering, derefter hver 4. uge.</div>
-            </label>
-
-          </div>
-
-          <!-- Single cart upgrade — NOT pre-selected -->
-          <label class="upgrade" data-todo>
-            <input type="checkbox" class="upgrade-cb" />
-            <span class="upgrade-box" aria-hidden="true"></span>
-            <span class="upgrade-text">
-              <strong>Spring prøven over — tag første refill med nu</strong>
-              <span class="upgrade-sub">50 ml rækker ca. 3 uger. De fleste opgraderer efter første barbering. I dag: 79 + 189 = 268 kr, og velkomstgaven sendes med det samme.</span>
-            </span>
-            <span class="upgrade-price">+189 kr</span>
-          </label>
-
-          <a class="cta-btn" data-cta href="https://shavesafe.dk/collections/provepakke?tier=12uger">
-            Vælg min pakke
-            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-          <p class="cta-reassure"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Ingen binding · opsig med ét klik · pengene tilbage hvis knopperne ikke forsvinder</p>
-
-          <div class="onetime-link">
-            <!-- TODO-PLAN-ID: one-time product URL (no selling plan) -->
-            <a href="https://shavesafe.dk/collections/provepakke?tier=engangskoeb">Eller køb prøvepakken uden abonnement til 204 kr →</a>
-            <p class="onetime-note">Uden velkomstgave og uden knop-fri garanti · skraberen betales · standard fragt.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ 3 · PROOF STRIP ══ -->
-  <div class="proof-strip">
-    <div class="proof-label">Set i danske medier</div>
-    <div class="proof-logos">
-      <img src="../img/berlingske-logo.avif" alt="Berlingske" />
-      <img src="../img/borsen-logo.avif" alt="Børsen" />
-      <img src="../img/dr-dk-logo.webp" alt="DR" />
-      <img src="../img/elle-logo.avif" alt="Elle" />
-      <img src="../img/eurowoman-logo.avif" alt="Eurowoman" />
-      <img src="../img/ekstra-bladet-logo.avif" alt="Ekstra Bladet" />
-      <img src="../img/iform-logo.avif" alt="iForm" />
-      <img src="../img/loevens-hule-logo.avif" alt="Løvens Hule" />
-    </div>
-    <div class="proof-badges">
-      <span><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> Forhandles i Matas og på apoteker</span>
-      <span><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Vinder af Bedst i test (iForm)</span>
-      <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Set i Løvens Hule</span>
+  <!-- ══ 2 · TRUST MICRO-BAR ══ -->
+  <div class="microbar">
+    <div class="microbar-inner">
+      <span><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Knop-fri garanti</span>
+      <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Gratis fragt på abonnement</span>
+      <span><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Dansk patent</span>
     </div>
   </div>
 
-  <!-- ══ 4 · QUALITY ROW (8hours pattern) ══ -->
-  <section class="quality">
-    <div class="quality-head reveal">
-      <h2>Vi går ikke på kompromis</h2>
-    </div>
-    <div class="quality-grid">
-      <div class="quality-item reveal">
-        <svg class="q-icon" viewBox="0 0 24 24"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4-3.9-3.8 5.4-.8z"/></svg>
-        <h3>Dansk patent</h3>
-        <p>Det eneste barberprodukt i Danmark med patent på effekten mod røde knopper og indgroede hår.</p>
+  <!-- ══ 3 · PDP HERO ══ -->
+  <section class="pdp">
+    <!-- LEFT: image carousel -->
+    <div class="pdp-media">
+      <div class="car-main" data-todo>
+        <span class="todo-shot">TODO-SHOT #1 — offer visual (tekst baked in)</span>
+        <img id="carMain" src="../img/product-set.jpg" alt="Prøvepakken — barbering uden knopper. Velkomstgave 78 kr inkluderet." />
       </div>
-      <div class="quality-item reveal reveal-d1">
-        <svg class="q-icon" viewBox="0 0 24 24"><path d="M9 2h6M10 2v6l-5 9a3 3 0 002.7 4.3h8.6A3 3 0 0019 17l-5-9V2"/></svg>
-        <h3>Klinisk testet 2024</h3>
-        <p>127 deltagere over 8 uger. Dokumenteret effekt — ikke et løfte.</p>
-      </div>
-      <div class="quality-item reveal reveal-d2">
-        <svg class="q-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="5" y1="5" x2="19" y2="19"/></svg>
-        <h3>0 % tilsætning</h3>
-        <p>Ingen parfume, parabener eller farvestoffer. Skånsom mod selv den mest sensitive hud.</p>
-      </div>
-      <div class="quality-item reveal reveal-d3">
-        <svg class="q-icon" viewBox="0 0 24 24"><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/><circle cx="12" cy="12" r="9"/></svg>
-        <h3>Fremstillet i Danmark</h3>
-        <p>Udviklet og produceret her — sammen med danske dermatologer.</p>
+      <div class="car-thumbs" id="carThumbs">
+        <button class="car-thumb active" data-src="../img/product-set.jpg" data-todo><span class="todo-shot">#1</span><img src="../img/product-set.jpg" alt="Prøvepakken" /></button>
+        <button class="car-thumb" data-src="../img/ba-bikini-dated-v1.png" data-todo><span class="todo-shot">#7</span><img src="../img/ba-bikini-dated-v1.png" alt="Før og efter" /></button>
+        <button class="car-thumb" data-src="../img/smooth-legs-mirror.png"><img src="../img/smooth-legs-mirror.png" alt="Kliniske tal" /></button>
+        <button class="car-thumb" data-src="../img/gel-squeeze.jpg" data-todo><span class="todo-shot">#5</span><img src="../img/gel-squeeze.jpg" alt="Gel-tekstur" /></button>
+        <button class="car-thumb" data-src="../img/gel-product-cutout.png" data-todo><span class="todo-shot">#3</span><img src="../img/gel-product-cutout.png" alt="Ingredienspanel" /></button>
       </div>
     </div>
-  </section>
 
-  <!-- ══ 5 · MECHANISM ══ -->
-  <section class="mechanism">
-    <div class="mechanism-inner">
-      <div class="section-eyebrow reveal">Hvorfor får du knopper?</div>
-      <h2 class="reveal">Det er ikke din hud.<br/>Det er <strong>bakterier.</strong></h2>
-      <p class="mechanism-lead reveal">Vi er ikke det pæneste produkt på hylden. Vi er det eneste i Danmark med patent på effekten mod røde knopper og indgroede hår — og det eneste der giver dig <strong>pengene tilbage, hvis det ikke virker.</strong></p>
-
-      <div class="mech-anim reveal" id="mechAnim">
-        <div class="mech-stage">
-          <div class="mech-blade" id="mechBlade"></div>
-          <div class="mech-skin">
-            <div class="mech-cut"></div><div class="mech-cut c2"></div><div class="mech-cut c3"></div>
-          </div>
-          <div class="mech-shield" id="mechShield"></div>
-          <div class="mech-bact" style="left:30%;bottom:46px"></div>
-          <div class="mech-bact" style="left:55%;bottom:46px"></div>
-          <div class="mech-bact" style="left:72%;bottom:46px"></div>
-        </div>
-        <div class="mech-frames">
-          <button data-frame="0" class="active">1 · Bladet skærer</button>
-          <button data-frame="1">2 · Bakterier trænger ind</button>
-          <button data-frame="2">3 · Gel-skjoldet stopper dem</button>
-        </div>
-        <p class="mech-caption" id="mechCaption">Bladet laver mikroskopiske snit i huden.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ 6 · WHY OTHERS FAIL ══ -->
-  <section class="fail-section">
-    <div class="fail-inner">
-      <h2 class="reveal">Du har prøvet det hele. Her er hvorfor det ikke virkede.</h2>
-      <div class="fail-list">
-        <div class="fail-item reveal">
-          <span class="fi-x"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-          <p class="fi-text"><strong>Fugtighedscreme</strong> lindrer huden <em>bagefter</em> — men bakterierne er allerede trængt ind under barberingen.</p>
-        </div>
-        <div class="fail-item reveal reveal-d1">
-          <span class="fi-x"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-          <p class="fi-text"><strong>Aftershave</strong> desinficerer <em>bagefter</em> — for sent, og svider på åben hud.</p>
-        </div>
-        <div class="fail-item reveal reveal-d2">
-          <span class="fi-x"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-          <p class="fi-text"><strong>Scrub og peeling</strong> laver nye rifter — og giver bakterierne endnu flere veje ind.</p>
-        </div>
-        <div class="fail-item reveal reveal-d3">
-          <span class="fi-x"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
-          <p class="fi-text"><strong>Laser</strong> fjerner håret — men ikke årsagen til betændelsen, og koster tusindvis af kroner.</p>
-        </div>
-      </div>
-      <p class="fail-foot reveal">Hver barbering uden beskyttelse er en ny runde betændelse — og de mørke mærker bliver sværere at få væk. ShaveSafe fjerner årsagen, mens du barberer.</p>
-    </div>
-  </section>
-
-  <!-- ══ 7 · BEFORE / AFTER SLIDERS ══ -->
-  <section class="ba-section">
-    <div class="ba-head reveal">
-      <div class="section-eyebrow">Reelle resultater</div>
-      <h2>Før &amp; efter</h2>
-      <p>Reelle billeder. Ingen filter. Nana svarer selv, hvis du vil se flere.</p>
-    </div>
-    <div class="ba-grid">
-      <div class="ba-card reveal" data-todo>
-        <span class="todo-shot">TODO-SHOT #7 — bikinilinje, dateret</span>
-        <div class="ba-slider">
-          <span class="ba-tag before">Før · dag 0</span>
-          <span class="ba-tag after">Efter · uge 4</span>
-          <img class="ba-before" src="../img/ba-bikini-dated-v1.png" alt="Før — bikinilinje" />
-          <img class="ba-after" src="../img/ba-bikini-clean.png" alt="Efter — bikinilinje" />
-          <div class="ba-divider"></div>
-          <div class="ba-handle"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(0,0)"/></svg></div>
-        </div>
-        <div class="ba-card-text">
-          <div class="ba-card-name">Nana, 28 · bikinilinje</div>
-          <div class="ba-card-meta">Verificeret · 4 uger</div>
-          <p class="ba-card-quote">“Jeg turde ikke have bikini på. Nu tænker jeg ikke over det.”</p>
-        </div>
-      </div>
-      <div class="ba-card reveal reveal-d1" data-todo>
-        <span class="todo-shot">TODO-SHOT #7 — ben, dateret</span>
-        <div class="ba-slider">
-          <span class="ba-tag before">Før · dag 0</span>
-          <span class="ba-tag after">Efter · uge 3</span>
-          <img class="ba-before" src="../img/ba-legs-bumps-new.jpg" alt="Før — ben" />
-          <img class="ba-after" src="../img/smooth-legs-mirror.png" alt="Efter — ben" />
-          <div class="ba-divider"></div>
-          <div class="ba-handle"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-        </div>
-        <div class="ba-card-text">
-          <div class="ba-card-name">Maria, 31 · ben</div>
-          <div class="ba-card-meta">Verificeret · 3 uger</div>
-          <p class="ba-card-quote">“Har kæmpet med knopper på benene i årevis. Væk på en uge.”</p>
-        </div>
-      </div>
-      <div class="ba-card reveal reveal-d2" data-todo>
-        <span class="todo-shot">TODO-SHOT #7 — hals (mand), dateret</span>
-        <div class="ba-slider">
-          <span class="ba-tag before">Før · dag 0</span>
-          <span class="ba-tag after">Efter · uge 4</span>
-          <img class="ba-before" src="../img/before-after-side.jpg" alt="Før — hals" />
-          <img class="ba-after" src="../img/before-after.jpg" alt="Efter — hals" />
-          <div class="ba-divider"></div>
-          <div class="ba-handle"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-        </div>
-        <div class="ba-card-text">
-          <div class="ba-card-name">Thomas, 34 · hals</div>
-          <div class="ba-card-meta">Verificeret · 4 uger</div>
-          <p class="ba-card-quote">“Skægpest hver eneste dag. Første gang i ti år uden røde knopper.”</p>
-        </div>
-      </div>
-      <div class="ba-card reveal reveal-d3" data-todo>
-        <span class="todo-shot">TODO-SHOT #7 — armhule, dateret</span>
-        <div class="ba-slider">
-          <span class="ba-tag before">Før · dag 0</span>
-          <span class="ba-tag after">Efter · uge 3</span>
-          <img class="ba-before" src="../img/ba-belly-dated.jpg" alt="Før — armhule" />
-          <img class="ba-after" src="../img/ba-bikini-studio.png" alt="Efter — armhule" />
-          <div class="ba-divider"></div>
-          <div class="ba-handle"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-        </div>
-        <div class="ba-card-text">
-          <div class="ba-card-name">Louise, 24 · armhule</div>
-          <div class="ba-card-meta">Verificeret · 3 uger</div>
-          <p class="ba-card-quote">“Mine knopper er væk efter to uger. Jeg havde næsten opgivet.”</p>
-        </div>
-      </div>
-    </div>
-    <p class="ba-note">Billeder gengivet med skriftligt samtykke. Resultater varierer fra person til person.</p>
-  </section>
-
-  <!-- ══ 8 · INGREDIENTS ══ -->
-  <section class="ingredients">
-    <div class="ing-inner">
-      <h2 class="reveal">Hvad er der i gelen — og hvorfor</h2>
-      <p class="ing-sub reveal">Fire ingredienser. Intet fyld. <!-- TODO-INCI: bekræft fuld INCI-liste mod gelens etiket på shavesafe.dk --></p>
-      <table class="ing-table reveal">
-        <thead>
-          <tr><th>Ingrediens</th><th>Hvad den gør</th><th>Hvorfor den er her</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td data-l="Ingrediens">Chlorhexidin<br/><span style="font-weight:400;color:var(--muted);font-size:12px">(patenteret formel)</span></td>
-            <td data-l="Hvad den gør">Holder hud og blad rene for bakterier gennem hele barberingen</td>
-            <td data-l="Hvorfor">Årsagen til knopper er bakterier i mikrosnit — ikke huden</td>
-          </tr>
-          <tr>
-            <td data-l="Ingrediens">Aloe vera</td>
-            <td data-l="Hvad den gør">Beroliger og køler huden</td>
-            <td data-l="Hvorfor">Så gelen ikke selv tilfører irritation</td>
-          </tr>
-          <tr>
-            <td data-l="Ingrediens">E-vitamin</td>
-            <td data-l="Hvad den gør">Antioxidant der understøtter hudbarrieren</td>
-            <td data-l="Hvorfor">Hud der lige er barberet, er hud der er åben</td>
-          </tr>
-          <tr>
-            <td data-l="Ingrediens">Transparent gel-base</td>
-            <td data-l="Hvad den gør">Du ser hvor du barberer; tilstopper ikke bladet</td>
-            <td data-l="Hvorfor">Færre strøg = færre mikrosnit</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="ing-check-grid reveal">
-        <div class="ing-check-col yes">
-          <h3>✓ Indeholder</h3>
-          <ul>
-            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Patenteret antibakteriel formel</li>
-            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Aloe vera &amp; E-vitamin</li>
-            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Transparent, let gel-base</li>
-          </ul>
-        </div>
-        <div class="ing-check-col no">
-          <h3>✗ Indeholder ikke</h3>
-          <ul>
-            <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Parfume</li>
-            <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Parabener</li>
-            <li><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Farvestoffer</li>
-            <!-- TODO-INCI: verificér at gelen er alkohol- og menthol-fri før disse tilføjes -->
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ 9 · EVIDENCE: STATS + VIDEO + DOCTOR ══ -->
-  <section class="evidence">
-    <div class="evidence-inner">
-      <div class="stats-grid">
-        <div>
-          <div class="section-eyebrow reveal">Klinisk dokumenteret</div>
-          <h2 class="reveal" style="font-size:clamp(28px,4vw,46px);margin-bottom:34px;">Resultater du kan mærke fra første barbering.</h2>
-          <div class="stats-numbers reveal">
-            <div class="stat"><span class="stat-num">94 %</span><span class="stat-label">oplever færre knopper efter blot 1–2 barberinger</span></div>
-            <div class="stat"><span class="stat-num">92 %</span><span class="stat-label">ville anbefale ShaveSafe til en veninde</span></div>
-            <div class="stat"><span class="stat-num">89 %</span><span class="stat-label">føler sig mere selvsikre efter brug</span></div>
-          </div>
-          <p class="stats-source reveal">Klinisk studie 2024 · 127 deltagere · 8 uger · <a href="#" style="color:inherit;text-decoration:underline"><!-- TODO-STUDY: link til studie-resumé -->se studiet</a></p>
-        </div>
-        <div class="video-slot reveal">
-          <div class="video-frame" data-todo>
-            <span class="todo-shot">TODO-SHOT #8 — ekspert/founder-video 60–90 s</span>
-            <img src="../img/dermatologist-portrait.jpg" alt="Ekspert fortæller om ShaveSafe" />
-            <div class="video-play">
-              <span class="vp-btn"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
-              <span class="vp-label">Se: hvorfor virker det? · 90 sek</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="doctor reveal">
-        <div class="section-eyebrow" style="text-align:center">Hvad siger en læge?</div>
-        <p class="doctor-quote">“Problemet med barberingsknopper og indgroede hår skyldes bakterier på huden og hårsækkene. Ofte opstår det efter barbering, hvor bladet på skraberen ikke har været rigtig rent. Nybarberede damebikini-snit og nybarberede armhuler er mest udsatte.”</p>
-        <p class="doctor-name">Lise-Lotte Hergel</p>
-        <p class="doctor-title">Praktiserende læge</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ 10 · PATENT + GUARANTEE CARDS ══ -->
-  <section class="pg-section">
-    <div class="pg-grid">
-      <div class="pg-card reveal" data-todo>
-        <span class="todo-badge">TODO-PATENT-NO</span>
-        <div class="patent-seal">
-          <span class="ps-top">Dansk patent</span>
-          <span class="ps-no">DK ●●●●●●</span>
-          <span class="ps-year">2024</span>
-        </div>
-        <h3>Det eneste patenterede i Danmark</h3>
-        <p>ShaveSafe er det eneste produkt i Danmark med patent på effekten mod røde knopper og indgroede hår. Patentet beskytter den antibakterielle mekanisme — ikke bare en opskrift.</p>
-      </div>
-      <div class="pg-card reveal reveal-d1">
-        <div class="guar-seal">
-          <span class="gs-num">90</span>
-          <span class="gs-sub">dages<br/>garanti</span>
-        </div>
-        <h3>De eneste i Danmark der tør</h3>
-        <p>Knop-fri garanti. Har du stadig knopper eller indgroede hår efter 3 ugers brug, får du pengene tilbage eller en sensitiv-variant gratis — fordi vi fjerner årsagen under barberingen, ikke symptomet bagefter.</p>
-        <p class="pg-kicker">Vi er de eneste i Danmark der giver dig pengene tilbage, hvis det ikke virker.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ 11 · COMPARISON TABLE ══ -->
-  <section class="compare">
-    <div class="compare-inner">
-      <h2 class="reveal">Hvorfor ShaveSafe</h2>
-      <div class="compare-wrap reveal">
-        <table class="compare-table">
-          <thead>
-            <tr>
-              <th></th>
-              <th class="col-us">
-                <img class="ch-thumb" src="../img/gel-product-cutout.png" alt="ShaveSafe" data-todo />
-                <span class="ch-name">ShaveSafe</span>
-              </th>
-              <th>
-                <img class="ch-thumb" src="../img/razor-handle-cutout.png" alt="Typisk abonnement" style="filter:grayscale(1);opacity:.6" />
-                <span class="ch-name">Typisk DTC-skraber&shy;abonnement</span>
-              </th>
-              <th>
-                <img class="ch-thumb" src="../img/razor-closeup.jpg" alt="Supermarked" style="filter:grayscale(1);opacity:.6" />
-                <span class="ch-name">Skum + engangs&shy;skraber</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Patenteret mekanisme mod røde knopper og indgroede hår</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
-            <tr><td>Fjerner bakterier under barberingen (ikke efter)</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
-            <tr><td>Klinisk testet (2024, 127 deltagere)</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
-            <tr><td>Penge-tilbage-garanti hvis knopperne ikke forsvinder</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
-            <tr><td>0 % parfume / parabener / farvestoffer</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
-            <tr><td>Svensk stål, 5+1 blade</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="yes"><svg viewBox="0 0 24 24" style="stroke:#9a9488"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
-            <tr><td>Udviklet og produceret i Danmark</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
-            <tr><td>Forhandles i Matas og på apoteker</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="yes"><svg viewBox="0 0 24 24" style="stroke:#9a9488"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
-            <tr><td>Opsig med ét klik</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="compare-foot">Sammenligning af produktkategorier generelt. <!-- NAMED_COMPETITORS=false. Navngivne konkurrenter kræver kildehenvisning pr. række (DK: sammenlignende reklame kun på verificerbare, faktuelle forhold). --></p>
-    </div>
-  </section>
-
-  <!-- ══ 12 · TIMELINE ══ -->
-  <section class="timeline">
-    <div class="timeline-inner">
-      <h2 class="reveal">Hvad sker der hvornår</h2>
-      <div class="timeline-track">
-        <div class="tl-step reveal"><div class="tl-when">Dag 1</div><p class="tl-text">Første barbering uden svie. Gelen lægger et antibakterielt skjold, mens du barberer.</p></div>
-        <div class="tl-step reveal reveal-d1"><div class="tl-when">Uge 1</div><p class="tl-text">Mindre rødme og kløe. De fleste mærker forskel allerede efter 1–2 barberinger.</p></div>
-        <div class="tl-step warn reveal reveal-d2"><div class="tl-when">Uge 2–3</div><p class="tl-text">Eksisterende indgroede hår arbejder sig ud — det kan se værre ud, før det bliver bedre. Det er normalt.</p></div>
-        <div class="tl-step reveal reveal-d3"><div class="tl-when">Uge 4</div><p class="tl-text">Rolig, jævn hud. Ingen nye knopper, fordi årsagen fjernes ved hver barbering.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ 13 · THREE STEPS (keep) ══ -->
-  <section class="how-section">
-    <div class="how-inner">
-      <div class="section-eyebrow reveal">Sådan virker det</div>
-      <h2 class="reveal">Tre trin. Fem minutter.</h2>
-      <p class="how-sub reveal">Ingen rutiner, ingen indviklede protokoller. Bare barbering der virker.</p>
-      <div class="how-grid">
-        <div class="how-card reveal">
-          <img class="how-card-img" src="../img/lifestyle-gel-hands.jpg" alt="Påfør gelen" />
-          <div class="how-card-body">
-            <div class="how-card-num">01</div>
-            <div class="how-card-title">Påfør gelen</div>
-            <p class="how-card-desc">Den patenterede gel danner et antibakterielt skjold på huden, inden bladet rører dig. 30 sekunder.</p>
-          </div>
-        </div>
-        <div class="how-card reveal reveal-d1">
-          <img class="how-card-img" src="../img/lifestyle-shaving-legs.jpg" alt="Barber som normalt" />
-          <div class="how-card-body">
-            <div class="how-card-num">02</div>
-            <div class="how-card-title">Barber som normalt</div>
-            <p class="how-card-desc">Brug skraberen med 5+1 blade i svensk stål. Gelen beskytter hvert mikrosnit. 2–3 minutter.</p>
-          </div>
-        </div>
-        <div class="how-card reveal reveal-d2">
-          <img class="how-card-img" src="../img/lifestyle-mirror-towel.jpg" alt="Skyl og færdig" />
-          <div class="how-card-body">
-            <div class="how-card-num">03</div>
-            <div class="how-card-title">Skyl og færdig</div>
-            <p class="how-card-desc">Ingen bakterier, ingen inflammation. Glat hud — også dagen efter.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ 14 · REVIEWS (filtered feed) ══ -->
-  <section class="reviews-section">
-    <div class="reviews-header reveal">
-      <div class="section-eyebrow">Det siger dem der har prøvet alt</div>
-      <h2>Fra skeptiker til stamkunde</h2>
-      <div class="reviews-rating">
-        <span class="reviews-big">4.8</span>
-        <div class="reviews-stars">
+    <!-- RIGHT: buy box -->
+    <div class="pdp-buy">
+      <div class="pdp-rating">
+        <span class="stars">
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <span class="reviews-count">· 277 anmeldelser</span>
+        </span>
+        <span class="r-text"><strong>4.8 / 5</strong> · 277 anmeldelser</span>
       </div>
-    </div>
-
-    <!-- Cards rendered by app.js from the filtered reviews feed (reviews-sync/reviews.json).
-         Static fallback markup below is used if JS is disabled. No invented reviews:
-         live cards must come from the real Judge.me feed (see reviews-sync/). -->
-    <div class="reviews-grid" id="reviewsGrid">
-      <div class="review-card press reveal">
-        <p class="review-text">“Nybarberede damebikini-snit og nybarberede armhuler er mest udsatte for bakterier — derfor giver det mening at ramme årsagen under barberingen.”</p>
-        <p class="rp-source">— Lise-Lotte Hergel, praktiserende læge</p>
-      </div>
-      <div class="review-card video reveal reveal-d1" data-todo>
-        <span class="todo-shot">TODO — video-testimonial (9:16)</span>
-        <img src="../img/nana-founder.jpg" alt="Video-anmeldelse" />
-        <span class="rv-play"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
-        <div class="rv-overlay"><span class="rv-name">Sofie, 26</span><span class="rv-quote">“Sidste forsøg — og det der virkede.”</span></div>
-      </div>
-    </div>
-
-    <div class="reviews-all">
-      <a href="https://shavesafe.dk/#reviews" target="_blank" rel="noopener">Se alle 277 anmeldelser på Judge.me →</a>
-    </div>
-  </section>
-
-  <!-- ══ 15 · STORY (8hours staccato) ══ -->
-  <section class="story-section">
-    <div class="story-grid reveal">
-      <div class="story-img">
-        <img src="../img/nana-founder.jpg" alt="Nana, grundlægger af ShaveSafe" />
-      </div>
-      <div class="story-text">
-        <div class="section-eyebrow">Hende der startede det hele</div>
-        <p class="story-staccato"><span>15 år med knopper.</span><span>Alt afprøvet.</span><span>Så fandt hun årsagen.</span></p>
-        <p>ShaveSafe startede ikke i et laboratorium. Det startede i et badeværelse — med Nana, vores grundlægger, der var træt af at være den kvinde, der altid sagde nej til bikini.</p>
-        <p>Efter 15 år med indgroede hår, knopper og “sensitive skin”-produkter der ikke virkede, gravede hun ned i forskningen sammen med danske dermatologer og opdagede, hvad ingen af de store brands talte om: <strong>det er bakterier, ikke huden.</strong></p>
-        <p>Sammen med et team af formulatorer udviklede hun det første barberingsprodukt med en patenteret, antibakteriel formel — klinisk testet og fremstillet i Danmark.</p>
-        <p class="story-personal">I dag svarer Nana stadig personligt på beskeder fra kunder.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ 16 · OFFER REPEAT (Prøvepakken) ══ -->
-  <section class="offer-repeat">
-    <div class="offer-repeat-inner">
-      <div class="section-eyebrow">Komplet sæt</div>
-      <h2>Prøvepakken</h2>
-      <p class="or-sub">Alt du behøver for at opleve forskellen — fra 79 kr i dag.</p>
-
-      <div class="offer-contents">
-        <div class="oc-item" data-todo><span class="todo-shot">TODO-SHOT #2</span><img src="../img/razor-handle-product.png" alt="Skraber" /><div class="oc-name">Ergonomisk skraber</div><div class="oc-desc">Krom, ergonomisk greb — præcision i bikinilinjen.</div></div>
-        <div class="oc-item" data-todo><span class="todo-shot">TODO-SHOT #2</span><img src="../img/blade-closeup-numbered.jpg" alt="5+1 blade" /><div class="oc-name">5+1 blade</div><div class="oc-desc">Svensk stål. Præcisionstrimmer på bagsiden.</div></div>
-        <div class="oc-item" data-todo><span class="todo-shot">TODO-SHOT #2</span><img src="../img/gel-product-50ml.png" alt="Barbergel 50 ml" /><div class="oc-name">Barbergel (50 ml)</div><div class="oc-desc">Patenteret formel — fjerner bakterier under barberingen.</div></div>
+      <p class="pdp-social">Mere end 100.000 tilfredse kunder · Siden 2011</p>
+      <div class="pdp-eyebrow">Patenteret barbergel</div>
+      <h1 class="pdp-h1">Barbering uden knopper, kløe og indgroede hår</h1>
+      <p class="pdp-sub">Patenteret gel der holder hud og blad rene for bakterier under barberingen — så din hud slipper for at reagere bagefter.</p>
+      <div class="pill-checks">
+        <span>Patenteret</span><span>Klinisk testet</span><span>Knop-fri garanti</span>
       </div>
 
-      <!-- OFFER STACK (repeat instance) -->
-      <div class="offer" data-offer="repeat">
+      <!-- Kvinde / Mand selector (swaps imagery + gift logic) -->
+      <div class="gender-select" id="genderSelect">
+        <span class="gs-label">Vælg:</span>
+        <button class="gs-opt active" data-gender="K">Kvinde</button>
+        <button class="gs-opt" data-gender="M">Mand</button>
+      </div>
 
+      <!-- OFFER STACK (Del 2 FINAL) -->
+      <div class="offer" data-offer="hero">
+
+        <!-- Order 1: the prøvepakke, shown as the gift stack it already is -->
         <div class="order1">
           <div class="order1-head">
             <span class="order1-today">I dag: 79 kr</span>
@@ -686,7 +116,7 @@
 
         <div class="tier-cards">
 
-          <!-- TIER A (repeat) · hver 12. uge -->
+          <!-- TIER A · hver 12. uge · BEDSTE VÆRDI -->
           <label class="tier-card selected" data-tier="A"
                  data-url="https://shavesafe.dk/collections/provepakke?tier=12uger"
                  data-url-upgrade="https://shavesafe.dk/collections/provepakke?tier=12uger&refillnow=1" data-todo>
@@ -701,7 +131,9 @@
               <div class="tier-price-wrap">
                 <div class="tier-price">189<span class="unit"> kr</span></div>
                 <div class="tier-billed">hver 12. uge · ca. 63 kr/md</div>
-                <div class="tier-pershave">ca. 8 kr / barbering</div>
+                <div class="tier-pershave tip">ca. 8 kr / barbering
+                  <span class="tip-pop">189 kr (100 ml gel + 4 blade) ÷ (4 blade × ca. 6 barberinger) ≈ 8 kr pr. barbering. Bekræftes før live.</span>
+                </div>
               </div>
             </div>
             <div class="tier-gift">
@@ -715,7 +147,8 @@
             <details class="tier-future">
               <summary>Fremtidige gaver</summary>
               <div class="tier-future-body">
-                <div class="tf-row"><img class="tf-thumb" src="../img/gel-product-50ml.png" alt="Bikini Line Repair Cream" data-todo /><span class="tf-when">Levering 3</span><span class="tf-name">Bikini Line Repair Cream 50 ml</span><span class="tf-val">229 kr</span></div>
+                <!-- TODO-STOCK: Bikini Line Repair Cream udsolgt 2026-10-27 → fallback gel 50 ml. Mandeflow: /collections/til-ham. -->
+                <div class="tf-row"><img class="tf-thumb" src="../img/gel-product-50ml.png" alt="Fremtidig gave" data-todo /><span class="tf-when">Levering 3</span><span class="tf-name" data-gift-f="Bikini Line Repair Cream 50 ml" data-gift-m="Repair til ham 50 ml">Bikini Line Repair Cream 50 ml</span><span class="tf-val">229 kr</span></div>
                 <div class="tf-stock">Så længe lager haves — ellers gel 50 ml.</div>
               </div>
             </details>
@@ -724,10 +157,10 @@
               <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 90 dages knop-fri garanti</li>
               <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Opsig med ét klik · ingen binding</li>
             </ul>
-            <div class="tier-sub-note">Du betaler kun <strong>79 kr for prøvepakken nu</strong>. Refill starter ved næste levering, derefter hver 12. uge.</div>
+            <div class="tier-sub-note">Du betaler kun <strong>79 kr for prøvepakken nu</strong>. Næste levering om 14 dage, derefter hver 12. uge.</div>
           </label>
 
-          <!-- TIER B (repeat) · hver 4. uge -->
+          <!-- TIER B · hver 4. uge · MEST POPULÆR -->
           <label class="tier-card" data-tier="B"
                  data-url="https://shavesafe.dk/collections/provepakke?tier=4uger"
                  data-url-upgrade="https://shavesafe.dk/collections/provepakke?tier=4uger&refillnow=1" data-todo>
@@ -742,7 +175,9 @@
               <div class="tier-price-wrap">
                 <div class="tier-price">189<span class="unit"> kr</span></div>
                 <div class="tier-billed">hver 4. uge · ca. 189 kr/md</div>
-                <div class="tier-pershave">ca. 8 kr / barbering</div>
+                <div class="tier-pershave tip">ca. 8 kr / barbering
+                  <span class="tip-pop">189 kr (100 ml gel + 4 blade) ÷ (4 blade × ca. 6 barberinger) ≈ 8 kr pr. barbering. Bekræftes før live.</span>
+                </div>
               </div>
             </div>
             <div class="tier-gift">
@@ -755,8 +190,9 @@
             <details class="tier-future">
               <summary>Fremtidige gaver</summary>
               <div class="tier-future-body">
+                <!-- TODO-STOCK: Bikini Line Repair Cream udsolgt 2026-10-27 → fallback gel 50 ml. Mandeflow: /collections/til-ham. -->
                 <div class="tf-row"><img class="tf-thumb" src="../img/gel-product-cutout.png" alt="Travel Case" data-todo /><span class="tf-when">Levering 3</span><span class="tf-name">Travel Case</span><span class="tf-val">49 kr</span></div>
-                <div class="tf-row"><img class="tf-thumb" src="../img/gel-product-50ml.png" alt="Bikini Line Repair Cream" data-todo /><span class="tf-when">Levering 6</span><span class="tf-name">Bikini Line Repair Cream 50 ml</span><span class="tf-val">229 kr</span></div>
+                <div class="tf-row"><img class="tf-thumb" src="../img/gel-product-50ml.png" alt="Fremtidig gave" data-todo /><span class="tf-when">Levering 6</span><span class="tf-name" data-gift-f="Bikini Line Repair Cream 50 ml" data-gift-m="Repair til ham 50 ml">Bikini Line Repair Cream 50 ml</span><span class="tf-val">229 kr</span></div>
                 <div class="tf-stock">Så længe lager haves — ellers gel 50 ml.</div>
               </div>
             </details>
@@ -765,31 +201,379 @@
               <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 30 dages knop-fri garanti</li>
               <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Opsig med ét klik · ingen binding</li>
             </ul>
-            <div class="tier-sub-note">Du betaler kun <strong>79 kr for prøvepakken nu</strong>. Refill starter ved næste levering, derefter hver 4. uge.</div>
+            <div class="tier-sub-note">Du betaler kun <strong>79 kr for prøvepakken nu</strong>. Næste levering om 14 dage, derefter hver 4. uge.</div>
           </label>
 
         </div>
 
+        <!-- Single cart upgrade — NOT pre-selected -->
         <label class="upgrade" data-todo>
           <input type="checkbox" class="upgrade-cb" />
           <span class="upgrade-box" aria-hidden="true"></span>
           <span class="upgrade-text">
             <strong>Spring prøven over — tag første refill med nu</strong>
-            <span class="upgrade-sub">50 ml rækker ca. 3 uger. De fleste opgraderer efter første barbering. Velkomstgaven sendes med det samme.</span>
+            <span class="upgrade-sub">50 ml rækker ca. 3 uger. De fleste opgraderer efter første barbering. I dag: 79 + 189 = 268 kr, og velkomstgaven sendes med det samme.</span>
           </span>
           <span class="upgrade-price">+189 kr</span>
         </label>
 
         <a class="cta-btn" data-cta href="https://shavesafe.dk/collections/provepakke?tier=12uger">
-          Vælg min pakke
+          <span class="cta-label">Læg i kurv — 79 kr</span>
           <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
         <p class="cta-reassure"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Ingen binding · opsig med ét klik · pengene tilbage hvis knopperne ikke forsvinder</p>
+
         <div class="onetime-link">
-          <a href="https://shavesafe.dk/collections/provepakke?tier=engangskoeb">Eller køb prøvepakken uden abonnement til 204 kr →</a>
+          <!-- TODO-PLAN-ID: one-time product URL (no selling plan) -->
+          <a href="https://shavesafe.dk/collections/provepakke?tier=engangskoeb" data-onetime>Eller køb prøvepakken uden abonnement til 204 kr →</a>
           <p class="onetime-note">Uden velkomstgave og uden knop-fri garanti · skraberen betales · standard fragt.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ══ 4 · CLINICAL NUMBERS STRIP ══ -->
+  <section class="clinic-strip">
+    <div class="clinic-inner">
+      <div class="clinic-num reveal"><span class="cn-big">94 %</span><span class="cn-lbl">oplever færre knopper efter 1–2 barberinger</span></div>
+      <div class="clinic-num reveal reveal-d1"><span class="cn-big">92 %</span><span class="cn-lbl">ville anbefale ShaveSafe</span></div>
+      <div class="clinic-num reveal reveal-d2"><span class="cn-big">89 %</span><span class="cn-lbl">føler sig mere selvsikre</span></div>
+      <p class="clinic-src reveal reveal-d3">Klinisk studie 2024 · 127 deltagere · 8 uger</p>
+    </div>
+  </section>
+
+  <!-- ══ 5 · ACCORDION BLOCK ══ -->
+  <section class="acc-section">
+    <div class="acc-inner">
+      <div class="acc-item open">
+        <button class="acc-q">Ingredienser<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="acc-a">
+          <!-- TODO-INCI: bekræft fuld INCI-liste mod gelens etiket på shavesafe.dk -->
+          <table class="ing-table">
+            <thead><tr><th>Ingrediens</th><th>Hvad den gør</th><th>Hvorfor den er her</th></tr></thead>
+            <tbody>
+              <tr><td data-l="Ingrediens">Chlorhexidin <span style="font-weight:400;color:var(--muted);font-size:12px">(patenteret formel)</span></td><td data-l="Hvad den gør">Holder hud og blad rene for bakterier gennem hele barberingen</td><td data-l="Hvorfor">Årsagen til knopper er bakterier i mikrosnit — ikke huden</td></tr>
+              <tr><td data-l="Ingrediens">Aloe vera</td><td data-l="Hvad den gør">Beroliger og køler huden</td><td data-l="Hvorfor">Så gelen ikke selv tilfører irritation</td></tr>
+              <tr><td data-l="Ingrediens">E-vitamin</td><td data-l="Hvad den gør">Antioxidant der understøtter hudbarrieren</td><td data-l="Hvorfor">Hud der lige er barberet, er hud der er åben</td></tr>
+              <tr><td data-l="Ingrediens">Transparent gel-base</td><td data-l="Hvad den gør">Du ser hvor du barberer; tilstopper ikke bladet</td><td data-l="Hvorfor">Færre strøg = færre mikrosnit</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q">Klinisk testet<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="acc-a">
+          <p>Klinisk studie fra 2024 med 127 deltagere over 8 uger: <strong>94 %</strong> oplevede færre knopper efter 1–2 barberinger, <strong>92 %</strong> ville anbefale ShaveSafe, og <strong>89 %</strong> følte sig mere selvsikre. <a href="#"><!-- TODO-STUDY -->Se studie-resuméet →</a></p>
+        </div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q">Sådan bruger du det<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="acc-a">
+          <ol class="acc-steps">
+            <li><strong>Påfør gelen.</strong> Den patenterede gel danner et antibakterielt skjold på huden, inden bladet rører dig. 30 sekunder.</li>
+            <li><strong>Barber som normalt.</strong> Skraberen med 5+1 blade i svensk stål. Gelen beskytter hvert mikrosnit. 2–3 minutter.</li>
+            <li><strong>Skyl og færdig.</strong> Ingen bakterier, ingen inflammation. Glat hud — også dagen efter.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q">Hvad det indeholder — og hvad det ikke gør<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="acc-a">
+          <div class="inout">
+            <div class="inout-col yes">
+              <h4>✓ Indeholder</h4>
+              <ul>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Patenteret Chlorhexidin-formel</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Aloe vera</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> E-vitamin</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Transparent gel-base</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Svensk stål 5+1 blade</li>
+              </ul>
+            </div>
+            <div class="inout-col no">
+              <h4>✗ Indeholder ikke</h4>
+              <div class="no-pills">
+                <span>Parfume</span><span>Parabener</span><span>Farvestoffer</span>
+                <!-- TODO-INCI: tilføj Alkohol · Menthol · Mikroplast når de er verificeret fri på etiketten; fjern enhver der ikke er sand -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-q">Hvad sker der — uge for uge<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="acc-a">
+          <div class="timeline-track">
+            <div class="tl-step"><div class="tl-when">Dag 1</div><p class="tl-text">Første barbering uden svie. Gelen lægger et antibakterielt skjold, mens du barberer.</p></div>
+            <div class="tl-step"><div class="tl-when">Uge 1</div><p class="tl-text">Mindre rødme og kløe. De fleste mærker forskel efter 1–2 barberinger.</p></div>
+            <div class="tl-step warn"><div class="tl-when">Uge 2–3</div><p class="tl-text">Eksisterende indgroede hår arbejder sig ud — det kan se værre ud, før det bliver bedre. Det er normalt.</p></div>
+            <div class="tl-step"><div class="tl-when">Uge 4</div><p class="tl-text">Rolig, jævn hud. Ingen nye knopper, fordi årsagen fjernes ved hver barbering.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 6 · CREATOR VIDEOS ══ -->
+  <section class="creators">
+    <div class="creators-head reveal">
+      <div class="section-eyebrow">Ægte videoer</div>
+      <h2>Det siger dem der har prøvet alt</h2>
+    </div>
+    <div class="creators-row" id="creatorsRow">
+      <!-- TODO-SHOT: ShaveSafe creator/UGC 9:16 (native, phone-shot, subtitle-burned). Format ref: /refs/creator-emma-ranum.mp4 -->
+      <button class="creator-card reveal" data-todo><span class="todo-shot">TODO-UGC</span><img src="../img/woman-mirror-towel.jpg" alt="Creator-video" /><span class="cc-play"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg></span><span class="cc-cap">“Troede ikke på det — bikinilinjen er ren nu.”</span></button>
+      <button class="creator-card reveal" data-todo><span class="todo-shot">TODO-UGC</span><img src="../img/smooth-legs-mirror.png" alt="Creator-video" /><span class="cc-play"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg></span><span class="cc-cap">“Benene efter 3 uger. Ingen knopper.”</span></button>
+      <button class="creator-card reveal reveal-d1" data-todo><span class="todo-shot">TODO-UGC</span><img src="../img/woman-towel.jpg" alt="Creator-video" /><span class="cc-play"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg></span><span class="cc-cap">“Sidste forsøg efter 10 år. Det virkede.”</span></button>
+      <button class="creator-card reveal reveal-d1" data-todo><span class="todo-shot">TODO-UGC</span><img src="../img/lifestyle-mirror-towel.jpg" alt="Creator-video" /><span class="cc-play"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg></span><span class="cc-cap">“Skægpest i halsen — væk på 2 uger.”</span></button>
+      <button class="creator-card reveal reveal-d2" data-todo><span class="todo-shot">TODO-UGC</span><img src="../img/woman-shaving.jpg" alt="Creator-video" /><span class="cc-play"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg></span><span class="cc-cap">“Armhulerne tålte endelig en barbering.”</span></button>
+      <button class="creator-card reveal reveal-d2" data-todo><span class="todo-shot">TODO-UGC</span><img src="../img/nana-hero.jpg" alt="Creator-video" /><span class="cc-play"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg></span><span class="cc-cap">“Jeg tør have bikini på igen.”</span></button>
+    </div>
+  </section>
+
+  <!-- ══ 7 · "VI SÆTTER BARREN HØJT" ══ -->
+  <section class="quality">
+    <div class="quality-head reveal">
+      <div class="section-eyebrow">Ikke alle barberprodukter er ens</div>
+      <h2>Vi sætter barren højt</h2>
+    </div>
+    <div class="quality-grid">
+      <div class="quality-item reveal">
+        <svg class="q-icon" viewBox="0 0 24 24"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4-3.9-3.8 5.4-.8z"/></svg>
+        <h3>Dansk patent</h3>
+        <p>Det eneste barberprodukt i Danmark med patent på effekten mod røde knopper og indgroede hår.</p>
+      </div>
+      <div class="quality-item reveal reveal-d1">
+        <svg class="q-icon" viewBox="0 0 24 24"><path d="M9 2h6M10 2v6l-5 9a3 3 0 002.7 4.3h8.6A3 3 0 0019 17l-5-9V2"/></svg>
+        <h3>Klinisk testet 2024</h3>
+        <p>127 deltagere over 8 uger. Dokumenteret effekt — ikke et løfte.</p>
+      </div>
+      <div class="quality-item reveal reveal-d2">
+        <svg class="q-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="5" y1="5" x2="19" y2="19"/></svg>
+        <h3>0 % tilsætning</h3>
+        <p>Ingen parfume, parabener eller farvestoffer. Skånsom mod selv den mest sensitive hud.</p>
+      </div>
+      <div class="quality-item reveal reveal-d3">
+        <svg class="q-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>
+        <h3>Fremstillet i Danmark</h3>
+        <p>Udviklet og produceret her — sammen med danske dermatologer.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 8 · MECHANISM ══ -->
+  <section class="mechanism">
+    <div class="mechanism-inner">
+      <div class="section-eyebrow reveal">Hvorfor får du knopper?</div>
+      <h2 class="reveal">Det er ikke din hud.<br/>Det er <strong>bakterier.</strong></h2>
+      <p class="mechanism-lead reveal">Vi er ikke det pæneste produkt på hylden. Vi er det eneste i Danmark med patent på effekten mod røde knopper og indgroede hår — og det eneste der giver dig <strong>pengene tilbage, hvis det ikke virker.</strong></p>
+      <div class="mech-anim reveal" id="mechAnim">
+        <div class="mech-stage">
+          <div class="mech-blade" id="mechBlade"></div>
+          <div class="mech-skin"><div class="mech-cut"></div><div class="mech-cut c2"></div><div class="mech-cut c3"></div></div>
+          <div class="mech-shield" id="mechShield"></div>
+          <div class="mech-bact" style="left:30%;bottom:46px"></div>
+          <div class="mech-bact" style="left:55%;bottom:46px"></div>
+          <div class="mech-bact" style="left:72%;bottom:46px"></div>
+        </div>
+        <div class="mech-frames">
+          <button data-frame="0" class="active">1 · Bladet skærer</button>
+          <button data-frame="1">2 · Bakterier trænger ind</button>
+          <button data-frame="2">3 · Gel-skjoldet stopper dem</button>
+        </div>
+        <p class="mech-caption" id="mechCaption">Bladet laver mikroskopiske snit i huden.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 9 · ANBEFALET AF LÆGER (Rooted in science) ══ -->
+  <section class="rooted">
+    <div class="rooted-grid">
+      <div class="rooted-text reveal">
+        <div class="section-eyebrow">Anbefalet af læger</div>
+        <h2>Hvad siger en læge?</h2>
+        <p class="rooted-quote">“Problemet med barberingsknopper og indgroede hår skyldes bakterier på huden og hårsækkene. Ofte opstår det efter barbering, hvor bladet på skraberen ikke har været rigtig rent. Nybarberede damebikini-snit og nybarberede armhuler er mest udsatte.”</p>
+        <p class="rooted-name">Lise-Lotte Hergel</p>
+        <p class="rooted-role">Praktiserende læge</p>
+        <a class="rooted-link" href="#advisors">Mød vores videnskabelige rådgivere →</a>
+      </div>
+      <div class="rooted-media reveal reveal-d1">
+        <div class="video-frame" data-todo>
+          <span class="todo-shot">TODO-SHOT #8 — ekspert/founder-video 16:9</span>
+          <img src="../img/dermatologist-portrait.jpg" alt="Videoslot — ekspert" />
+          <div class="video-play"><span class="vp-btn"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg></span><span class="vp-label">Se: hvorfor virker det?</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 10 · BEFORE / AFTER ══ -->
+  <section class="ba-section">
+    <div class="ba-head reveal">
+      <div class="section-eyebrow">Reelle resultater</div>
+      <h2>Før &amp; efter</h2>
+      <p>Reelle billeder. Ingen filter. Nana svarer selv, hvis du vil se flere.</p>
+    </div>
+    <div class="ba-grid">
+      <div class="ba-card reveal" data-todo>
+        <span class="todo-shot">TODO-SHOT #7 — bikinilinje</span>
+        <div class="ba-slider"><span class="ba-tag before">Før · dag 0</span><span class="ba-tag after">Efter · uge 4</span><img class="ba-before" src="../img/ba-bikini-dated-v1.png" alt="Før — bikinilinje" /><img class="ba-after" src="../img/ba-bikini-clean.png" alt="Efter — bikinilinje" /><div class="ba-divider"></div><div class="ba-handle"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div></div>
+        <div class="ba-card-text"><div class="ba-card-name">Nana, 28 · bikinilinje</div><div class="ba-card-meta">Verificeret · 4 uger</div><p class="ba-card-quote">“Jeg turde ikke have bikini på. Nu tænker jeg ikke over det.”</p></div>
+      </div>
+      <div class="ba-card reveal reveal-d1" data-todo>
+        <span class="todo-shot">TODO-SHOT #7 — ben</span>
+        <div class="ba-slider"><span class="ba-tag before">Før · dag 0</span><span class="ba-tag after">Efter · uge 3</span><img class="ba-before" src="../img/ba-legs-bumps-new.jpg" alt="Før — ben" /><img class="ba-after" src="../img/smooth-legs-mirror.png" alt="Efter — ben" /><div class="ba-divider"></div><div class="ba-handle"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div></div>
+        <div class="ba-card-text"><div class="ba-card-name">Maria, 31 · ben</div><div class="ba-card-meta">Verificeret · 3 uger</div><p class="ba-card-quote">“Har kæmpet med knopper på benene i årevis. Væk på en uge.”</p></div>
+      </div>
+      <div class="ba-card reveal reveal-d2" data-todo>
+        <span class="todo-shot">TODO-SHOT #7 — hals (mand)</span>
+        <div class="ba-slider"><span class="ba-tag before">Før · dag 0</span><span class="ba-tag after">Efter · uge 4</span><img class="ba-before" src="../img/before-after-side.jpg" alt="Før — hals" /><img class="ba-after" src="../img/before-after.jpg" alt="Efter — hals" /><div class="ba-divider"></div><div class="ba-handle"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div></div>
+        <div class="ba-card-text"><div class="ba-card-name">Thomas, 34 · hals</div><div class="ba-card-meta">Verificeret · 4 uger</div><p class="ba-card-quote">“Skægpest hver dag. Første gang i ti år uden røde knopper.”</p></div>
+      </div>
+      <div class="ba-card reveal reveal-d3" data-todo>
+        <span class="todo-shot">TODO-SHOT #7 — skægpest (mand)</span>
+        <div class="ba-slider"><span class="ba-tag before">Før · dag 0</span><span class="ba-tag after">Efter · uge 3</span><img class="ba-before" src="../img/ba-belly-dated.jpg" alt="Før — skægpest" /><img class="ba-after" src="../img/ba-bikini-studio.png" alt="Efter — skægpest" /><div class="ba-divider"></div><div class="ba-handle"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div></div>
+        <div class="ba-card-text"><div class="ba-card-name">Martin, 29 · skægpest</div><div class="ba-card-meta">Verificeret · 3 uger</div><p class="ba-card-quote">“Nakke og hals var ét stort udslæt. Nu er det roligt.”</p></div>
+      </div>
+    </div>
+    <p class="ba-note">Billeder gengivet med skriftligt samtykke. Resultater varierer fra person til person.</p>
+  </section>
+
+  <!-- ══ 11 · DE ENESTE DER TØR — PATENT + GARANTI ══ -->
+  <section class="pg-section">
+    <div class="pg-head reveal"><h2>De eneste i Danmark der tør</h2></div>
+    <div class="pg-grid">
+      <div class="pg-card reveal" data-todo>
+        <span class="todo-badge">TODO-PATENT-NO</span>
+        <div class="patent-seal"><span class="ps-top">Dansk patent</span><span class="ps-no">DK ●●●●●●</span><span class="ps-year">2024</span></div>
+        <h3>Det eneste patenterede i Danmark</h3>
+        <p>ShaveSafe er det eneste produkt i Danmark med patent på effekten mod røde knopper og indgroede hår. Patentet beskytter den antibakterielle mekanisme — ikke bare en opskrift.</p>
+      </div>
+      <div class="pg-card reveal reveal-d1">
+        <div class="guar-seal"><span class="gs-num">90</span><span class="gs-sub">dages<br/>garanti</span></div>
+        <h3>Knop-fri garanti</h3>
+        <p>Har du stadig knopper eller indgroede hår efter 3 ugers brug, får du pengene tilbage eller en sensitiv-variant gratis — fordi vi fjerner årsagen under barberingen, ikke symptomet bagefter.</p>
+        <p class="pg-kicker">Vi er de eneste i Danmark der giver dig pengene tilbage, hvis det ikke virker.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 12 · COMPARISON TABLE ══ -->
+  <section class="compare">
+    <div class="compare-inner">
+      <h2 class="reveal">Hvorfor ShaveSafe</h2>
+      <div class="compare-wrap reveal">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="col-us"><img class="ch-thumb" src="../img/gel-product-cutout.png" alt="ShaveSafe" data-todo /><span class="ch-name">ShaveSafe</span></th>
+              <th><img class="ch-thumb" src="../img/razor-handle-cutout.png" alt="Typisk abonnement" style="filter:grayscale(1);opacity:.6" /><span class="ch-name">Typisk DTC-skraber&shy;abonnement</span></th>
+              <th><img class="ch-thumb" src="../img/razor-closeup.jpg" alt="Supermarked" style="filter:grayscale(1);opacity:.6" /><span class="ch-name">Skum + engangs&shy;skraber</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Patenteret mekanisme mod røde knopper og indgroede hår</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
+            <tr><td>Fjerner bakterier under barberingen (ikke efter)</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
+            <tr><td>Klinisk testet (2024, 127 deltagere)</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
+            <tr><td>Penge-tilbage-garanti hvis knopperne ikke forsvinder</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
+            <tr><td>0 % parfume / parabener / farvestoffer</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
+            <tr><td>Svensk stål, 5+1 blade</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="yes"><svg viewBox="0 0 24 24" style="stroke:#9a9488"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
+            <tr><td>Udviklet og produceret i Danmark</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
+            <tr><td>Forhandles i Matas og på apoteker</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="yes"><svg viewBox="0 0 24 24" style="stroke:#9a9488"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
+            <tr><td>Opsig med ét klik</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="compare-foot">Sammenligning af produktkategorier generelt. <!-- NAMED_COMPETITORS=false. Navngivne konkurrenter kræver kildehenvisning pr. række. --></p>
+    </div>
+  </section>
+
+  <!-- ══ 13 · TRUSTED-BY GRID ══ -->
+  <section class="trusted" id="advisors">
+    <div class="trusted-head reveal">
+      <h2>Læger. Kunder. 100.000+ danskere.</h2>
+      <p>De bruger alle ShaveSafe.</p>
+    </div>
+    <div class="trusted-grid">
+      <div class="trust-card reveal" data-todo><span class="todo-shot">TODO-portræt</span><img src="../img/dermatologist-portrait.jpg" alt="Lise-Lotte Hergel" /><div class="tc-body"><div class="tc-name">Lise-Lotte Hergel</div><div class="tc-role">Praktiserende læge</div><span class="tc-pill">Videnskabelig rådgiver</span></div></div>
+      <div class="trust-card reveal reveal-d1" data-todo><span class="todo-shot">TODO-portræt</span><img src="../img/nana-founder.jpg" alt="Nana" /><div class="tc-body"><div class="tc-name">Nana</div><div class="tc-role">Grundlægger</div><span class="tc-pill">15 år med knopper</span></div></div>
+      <div class="trust-card reveal reveal-d2" data-todo><span class="todo-shot">TODO-portræt</span><img src="../img/woman-mirror-towel.jpg" alt="Kunde" /><div class="tc-body"><div class="tc-name">Camilla</div><div class="tc-role">Kunde</div><span class="tc-pill">Kunde siden 2014</span></div></div>
+      <div class="trust-card reveal reveal-d3" data-todo><span class="todo-shot">TODO-portræt</span><img src="../img/woman-towel.jpg" alt="Kunde" /><div class="tc-body"><div class="tc-name">Rasmus</div><div class="tc-role">Kunde</div><span class="tc-pill">Skægpest væk på 2 uger</span></div></div>
+    </div>
+    <p class="trusted-note">Rigtige portrætter — samtykke på fil. Ingen kendisser, ingen stockfotos.</p>
+  </section>
+
+  <!-- ══ 14 · REVIEWS WALL ══ -->
+  <section class="reviews-section">
+    <div class="reviews-header reveal">
+      <div class="section-eyebrow">Viser vores 5-stjernede anmeldelser</div>
+      <h2>Studiet sagde 94 % færre knopper. Sådan føles det.</h2>
+      <div class="reviews-rating">
+        <span class="reviews-big">4.8</span>
+        <div class="reviews-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <span class="reviews-count">· 277 anmeldelser</span>
+      </div>
+    </div>
+    <!-- Cards rendered by app.js from reviews-sync/reviews.json. No invented reviews:
+         static fallback below (press + video) shows until the real Judge.me feed is synced. -->
+    <div class="reviews-grid" id="reviewsGrid">
+      <div class="review-card press reveal">
+        <p class="review-text">“Nybarberede damebikini-snit og nybarberede armhuler er mest udsatte for bakterier — derfor giver det mening at ramme årsagen under barberingen.”</p>
+        <p class="rp-source">— Lise-Lotte Hergel, praktiserende læge</p>
+      </div>
+      <div class="review-card video reveal reveal-d1" data-todo>
+        <span class="todo-shot">TODO — video-testimonial (9:16)</span>
+        <img src="../img/nana-founder.jpg" alt="Video-anmeldelse" />
+        <span class="rv-play"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>
+        <div class="rv-overlay"><span class="rv-name">Sofie, 26</span><span class="rv-quote">“Sidste forsøg — og det der virkede.”</span></div>
+      </div>
+    </div>
+    <div class="reviews-all"><a href="https://shavesafe.dk/#reviews" target="_blank" rel="noopener">Se alle 277 anmeldelser →</a></div>
+  </section>
+
+  <!-- ══ 15 · ORIGIN ══ -->
+  <section class="story-section">
+    <div class="story-grid reveal">
+      <div class="story-img" data-todo><span class="todo-shot">TODO-SHOT #9</span><img src="../img/nana-founder.jpg" alt="Nana, grundlægger af ShaveSafe" /></div>
+      <div class="story-text">
+        <div class="section-eyebrow">Hende der startede det hele</div>
+        <p class="story-staccato"><span>15 år med knopper.</span><span>Alt afprøvet.</span><span>Så fandt hun årsagen.</span></p>
+        <p>ShaveSafe startede ikke i et laboratorium. Det startede i et badeværelse — med Nana, vores grundlægger, der var træt af at være den kvinde, der altid sagde nej til bikini.</p>
+        <p>Efter 15 år med indgroede hår, knopper og “sensitive skin”-produkter der ikke virkede, gravede hun ned i forskningen sammen med danske dermatologer og opdagede, hvad ingen af de store brands talte om: <strong>det er bakterier, ikke huden.</strong></p>
+        <p class="story-personal">I dag svarer Nana stadig personligt på beskeder fra kunder.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 16 · SCIENCE JOURNAL ══ -->
+  <section class="journal">
+    <div class="journal-head reveal">
+      <div class="section-eyebrow">Vi er nørder — ligesom dig</div>
+      <h2>Fra vores journal</h2>
+    </div>
+    <div class="journal-grid">
+      <a class="journal-card reveal" href="https://shavesafe.dk/blogs/articles/shavesafe-skraber-til-kvinder-mod-rode-knopper-pa-ben" target="_blank" rel="noopener">
+        <span class="jc-tag">Knopper</span>
+        <h3>Skraber til kvinder mod røde knopper på ben</h3>
+        <div class="jc-meta">17. sep 2026 · 5 min</div>
+      </a>
+      <a class="journal-card reveal reveal-d1" href="https://shavesafe.dk/blogs/articles/7-fejl-ved-intimbarbering-der-giver-knopper-og-svie" target="_blank" rel="noopener">
+        <span class="jc-tag">Bikinilinje</span>
+        <h3>7 fejl ved intimbarbering der giver knopper og svie</h3>
+        <div class="jc-meta">29. aug 2026 · 6 min</div>
+      </a>
+      <a class="journal-card reveal reveal-d2" href="https://shavesafe.dk/blogs/articles/shavesafe-mod-skaegpest-i-skridtet" target="_blank" rel="noopener">
+        <span class="jc-tag">Indgroede hår</span>
+        <h3>ShaveSafe mod skægpest i skridtet</h3>
+        <div class="jc-meta">29. aug 2026 · 4 min</div>
+      </a>
     </div>
   </section>
 
@@ -798,30 +582,40 @@
     <div class="faq-inner">
       <h2 class="reveal">Ofte stillede spørgsmål</h2>
       <div class="reveal" id="faqList">
-        <div class="faq-item"><button class="faq-q">Hvad er inkluderet i prøvepakken?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">En ergonomisk ShaveSafe-skraber, et barberhoved med 5 blade i svensk stål plus præcisionstrimmer, og 50 ml patenteret barbergel. Fra 79 kr i dag inkl. gratis fragt.</div></div>
-        <div class="faq-item"><button class="faq-q">Hvad er forskellen på 4- og 12-ugers pakken?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Begge starter med prøvepakken til 79 kr i dag. 4-ugers pakken sender refill hver 4. uge. 12-ugers pakken sender en større refill hver 12. uge — det giver den laveste pris pr. barbering, 90 dages garanti og et større velkomstkit. Vælg 12-ugers, hvis du vil have mindst at tænke på.</div></div>
-        <div class="faq-item"><button class="faq-q">Hvad får jeg gratis?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">På abonnementspakkerne er skraberen gratis, og fragten er altid gratis. På 12-ugers pakken følger desuden rejseetui og holder med som velkomstkit. Ved engangskøb betaler du for skraberen.</div></div>
-        <div class="faq-item"><button class="faq-q">Hvordan opsiger jeg?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Med ét klik på din konto, når som helst. Ingen binding, ingen opsigelsesgebyr, intet du skal ringe om.</div></div>
+        <div class="faq-item"><button class="faq-q">Hvad er inkluderet i prøvepakken?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">En ergonomisk ShaveSafe-skraber, et barberhoved med 5 blade i svensk stål plus præcisionstrimmer, og 50 ml patenteret barbergel. 79 kr i dag inkl. gratis fragt — du betaler for gelen, skraberen og bladet er med gratis.</div></div>
+        <div class="faq-item"><button class="faq-q">Hvad er forskellen på 4- og 12-ugers pakken?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Begge starter med prøvepakken til 79 kr og får samme refill (100 ml gel + 4 blade, 189 kr). 4-ugers pakken sender refill hver 4. uge; 12-ugers hver 12. uge — det giver den laveste pris pr. måned, 90 dages garanti og en større velkomstgave.</div></div>
+        <div class="faq-item"><button class="faq-q">Hvad får jeg gratis?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">I prøvepakken: skraberen (99 kr) og bladet. På 12-ugers pakken følger Razor Holder Silver + Travel Case med (78 kr værdi) som velkomstgave; på 4-ugers pakken Razor Holder Silver. Senere leveringer låser flere gaver op. Ved engangskøb betaler du for skraberen.</div></div>
+        <div class="faq-item"><button class="faq-q">Hvordan opsiger jeg?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Med ét klik på din konto, når som helst. Ingen binding, intet opsigelsesgebyr.</div></div>
         <div class="faq-item"><button class="faq-q">Hvad dækker knop-fri garantien?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Har du stadig knopper eller indgroede hår efter 3 ugers brug, får du pengene tilbage eller en sensitiv-variant gratis. 4-ugers pakken har 30 dages garanti, 12-ugers pakken 90 dage.</div></div>
-        <div class="faq-item"><button class="faq-q">Kan jeg købe uden abonnement?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Ja. Du kan <a href="https://shavesafe.dk/collections/provepakke?tier=engangskoeb">købe prøvepakken én gang til 204 kr</a> uden abonnement. Du har altid den lovpligtige 14-dages fortrydelsesret. Bemærk, at engangskøb ikke er omfattet af knop-fri garantien og velkomstkittet.</div></div>
+        <div class="faq-item"><button class="faq-q">Kan jeg købe uden abonnement?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Ja. Du kan <a href="https://shavesafe.dk/collections/provepakke?tier=engangskoeb">købe prøvepakken én gang til 204 kr</a> uden abonnement. Du har altid den lovpligtige 14-dages fortrydelsesret. Bemærk, at engangskøb ikke er omfattet af velkomstgaven eller knop-fri garantien.</div></div>
         <div class="faq-item"><button class="faq-q">Hvorfor får jeg knopper, når jeg barberer mig?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Knopper skyldes bakterier, der trænger ind i de mikroskopiske snit, bladet laver i huden. Det er ikke din hud, der er problemet — det er bakterier. ShaveSafe holder hud og blad rene gennem hele barberingen.</div></div>
-        <div class="faq-item"><button class="faq-q">Virker det på bikinilinjen og andre følsomme områder?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Ja. ShaveSafe er designet til følsomme områder som bikinilinje, armhuler, ben og hals. Gelen er parfumefri, farvestoffri og parabenfri.</div></div>
-        <div class="faq-item"><button class="faq-q">Hvor hurtigt ser jeg resultat?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">94 % oplever markant forbedring allerede efter 1–2 barberinger. Bemærk, at indgroede hår kan arbejde sig ud i uge 2–3, før huden bliver helt rolig.</div></div>
         <div class="faq-item"><button class="faq-q">Kan jeg købe ShaveSafe i Matas?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Ja, ShaveSafe forhandles i Matas og på apoteker i hele Danmark. Prøvepakke-tilbuddet med gratis fragt findes dog kun her online.</div></div>
       </div>
     </div>
   </section>
 
-  <!-- ══ 18 · FINAL CTA ══ -->
-  <section class="final-cta">
-    <h2 class="reveal"><em>Klar til barbering uden knopper?</em></h2>
-    <p class="final-positioning reveal">Vi er ikke det pæneste produkt på hylden. Vi er det eneste i Danmark med patent på effekten — og det eneste der giver dig pengene tilbage, hvis det ikke virker.</p>
-    <p class="final-sub reveal">Komplet prøvepakke fra 79 kr. Altid gratis fragt. Knop-fri garanti.</p>
-    <a class="cta-btn" data-cta href="https://shavesafe.dk/collections/provepakke?tier=12uger" style="background:var(--accent)">
-      Vælg min pakke
-      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </a>
-    <p class="final-reassure reveal">Ingen binding · opsig med ét klik · 14 dages fortrydelsesret</p>
+  <!-- ══ 18 · FINAL OFFER BLOCK ══ -->
+  <section class="final-offer">
+    <div class="final-offer-inner reveal">
+      <div class="fo-thumb" data-todo><span class="todo-shot">TODO-SHOT #1</span><img src="../img/product-set.jpg" alt="Prøvepakken" /></div>
+      <div class="fo-body">
+        <h2>Klar til barbering uden knopper?</h2>
+        <p class="fo-positioning">Det eneste i Danmark med patent på effekten — og det eneste der giver pengene tilbage, hvis det ikke virker.</p>
+        <label class="fo-select-wrap">
+          <span>Vælg pakke</span>
+          <select class="tier-dropdown" data-tier-select>
+            <option value="A">Hver 12. uge · bedste værdi — 79 kr i dag</option>
+            <option value="B">Hver 4. uge · mest populær — 79 kr i dag</option>
+            <option value="C">Engangskøb — 204 kr, uden abonnement</option>
+          </select>
+        </label>
+        <a class="cta-btn" data-cta href="https://shavesafe.dk/collections/provepakke?tier=12uger">
+          <span class="cta-label">Læg i kurv — 79 kr</span>
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <p class="cta-reassure"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Altid gratis fragt på abonnement · 14 dages fortrydelsesret</p>
+      </div>
+    </div>
   </section>
 
   <footer>
@@ -829,13 +623,17 @@
     <p>© 2026 ShaveSafe · Dansk patent · Alle rettigheder forbeholdes</p>
   </footer>
 
-  <!-- STICKY MOBILE BAR (tier-aware) -->
+  <!-- STICKY BOTTOM BAR (tier-aware, IM8) -->
   <div class="sticky-bar">
-    <div class="sticky-info">
-      <div class="sticky-name" id="stickyName">Hver 12. uge · bedste værdi</div>
-      <div class="sticky-price"><span id="stickyPrice">I dag 79 kr · så 189 kr/12. uge</span> <span class="sb-old" id="stickyOld"></span></div>
-    </div>
-    <a class="cta-btn" data-cta href="https://shavesafe.dk/collections/provepakke?tier=12uger">Vælg pakke</a>
+    <div class="sticky-thumb" data-todo><img src="../img/product-set.jpg" alt="Prøvepakken" /></div>
+    <label class="sticky-select">
+      <select class="tier-dropdown" data-tier-select aria-label="Vælg pakke">
+        <option value="A">Hver 12. uge · bedste værdi</option>
+        <option value="B">Hver 4. uge · mest populær</option>
+        <option value="C">Engangskøb — 204 kr</option>
+      </select>
+    </label>
+    <a class="cta-btn" data-cta href="https://shavesafe.dk/collections/provepakke?tier=12uger"><span class="cta-label">Læg i kurv — 79 kr</span></a>
   </div>
 
   <script src="app.js"></script>
