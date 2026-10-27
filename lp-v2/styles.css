@@ -7,24 +7,26 @@
    ============================================================= */
 
 :root {
-  --black: #0a0a0a;
-  --body: #4a4a4a;
-  --muted: #8a8a8a;
-  --light: #f8f7f5;
-  --cream: #f2f0eb;
-  --border: #e8e6e1;
+  /* Premium IM8 / 8-hours palette: white + warm off-white, peach "product world",
+     warm near-black ink, one restrained coral accent. No gradients, minimal shadow. */
+  --black: #1a1511;        /* warm near-black ink */
+  --body: #5c544b;
+  --muted: #9a9088;
+  --light: #faf6f1;        /* warm off-white */
+  --cream: #f4ebe1;        /* peach-tint product world */
+  --border: #ece6dd;       /* hairline */
   --white: #fff;
   --gold: #C9A84C;
-  --green: #2e7d32;
-  --accent: #E8602C;
-  --accent-hover: #d44f1e;
-  --accent-glow: rgba(232, 96, 44, 0.15);
-  --accent-tint: #fdf4f0;
-  --navy: #0C1A2B;
+  --green: #3f7d5a;        /* muted clinical green */
+  --accent: #d85c33;       /* premium coral */
+  --accent-hover: #c24e28;
+  --accent-glow: rgba(216, 92, 51, 0.12);
+  --accent-tint: #fbefe8;
+  --navy: #1c1813;         /* warm dark — dark sections, primary button, numerals */
   --clinical-green: #5A7D6B;
-  --max: 1200px;
+  --max: 1180px;
   --narrow: 720px;
-  --radius: 8px;
+  --radius: 14px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -369,22 +371,21 @@ body.debug [data-todo] { outline: 2px dashed #b91c1c; outline-offset: 2px; }
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: var(--accent);
+  background: var(--navy);
   color: var(--white);
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 600;
   padding: 18px 32px;
   border-radius: 50px;
   text-decoration: none;
-  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  transition: background 0.2s, transform 0.2s;
   border: none;
   cursor: pointer;
-  box-shadow: 0 6px 20px var(--accent-glow);
   width: 100%;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
   margin-top: 16px;
 }
-.cta-btn:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 28px var(--accent-glow); }
+.cta-btn:hover { background: #000; transform: translateY(-1px); }
 .cta-btn svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2.5; fill: none; }
 .cta-reassure {
   margin-top: 10px;
@@ -753,3 +754,102 @@ footer img { height: 16px; margin: 0 auto 12px; opacity: 0.35; }
   .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
 }
+
+/* =============================================================
+   OFFER STACK v2 — IM8 welcome-kit + future-gift roadmap,
+   shared order-1 strip, and the single cart upgrade.
+   ============================================================= */
+
+/* ── Order 1 strip (shared, above tier cards) ── */
+.order1 {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  padding: 16px 18px;
+  margin-bottom: 18px;
+}
+.order1-head { margin-bottom: 12px; }
+.order1-today {
+  display: inline-block;
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--black);
+  margin-right: 8px;
+}
+.order1-sub { font-size: 13px; color: var(--body); line-height: 1.5; }
+.gift-strip { display: grid; gap: 7px; }
+.gift-line {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 13px; color: var(--body); gap: 10px;
+  padding-top: 7px; border-top: 1px dashed var(--border);
+}
+.gift-line:first-child { border-top: none; padding-top: 0; }
+.gl-name { display: flex; align-items: center; gap: 8px; }
+.gl-name::before {
+  content: ''; width: 20px; height: 20px; border-radius: 6px;
+  background: var(--cream); flex-shrink: 0;
+}
+.gl-price { font-weight: 600; color: var(--muted); white-space: nowrap; }
+.gl-price s { color: var(--muted); font-weight: 400; margin-right: 4px; }
+.gl-price.free { color: var(--green); }
+.gl-price.pay { color: var(--black); }
+
+/* ── Welcome gift (per tier) refinements ── */
+.tier-gift-head .tg-meta { font-weight: 500; color: var(--muted); text-transform: none; letter-spacing: 0; }
+.tier-gift-item { align-items: center; gap: 10px; }
+.tg-thumb {
+  width: 34px; height: 34px; border-radius: 7px; object-fit: contain;
+  background: var(--cream); padding: 3px; flex-shrink: 0;
+}
+.tier-gift-item .gi-name { flex: 1; min-width: 0; }
+.tier-gift-ship { font-size: 11px; color: var(--muted); margin-top: 8px; font-style: italic; }
+
+/* ── Future gifts (roadmap with thumbnails) ── */
+.tier-future-body .tf-row { align-items: center; gap: 10px; }
+.tf-thumb {
+  width: 30px; height: 30px; border-radius: 6px; object-fit: contain;
+  background: var(--cream); padding: 2px; flex-shrink: 0;
+}
+.tf-when {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+  color: #fff; background: var(--clinical-green); padding: 2px 7px; border-radius: 50px; white-space: nowrap;
+}
+.tf-name { flex: 1; min-width: 0; }
+.tf-val { color: var(--muted); text-decoration: line-through; white-space: nowrap; }
+.tf-stock { font-size: 10px; color: var(--muted); font-style: italic; }
+
+/* ── Cart upgrade (not pre-selected) ── */
+.upgrade {
+  display: flex; align-items: flex-start; gap: 12px;
+  border: 1px dashed var(--border); border-radius: 12px;
+  padding: 14px 16px; margin-top: 14px; cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.upgrade:hover { border-color: #cbbfae; }
+.upgrade.checked { border-style: solid; border-color: var(--accent); background: var(--accent-tint); }
+.upgrade input { position: absolute; opacity: 0; pointer-events: none; }
+.upgrade-box {
+  width: 22px; height: 22px; border: 2px solid #cfc8bd; border-radius: 6px;
+  flex-shrink: 0; margin-top: 2px; position: relative; transition: all 0.2s;
+}
+.upgrade.checked .upgrade-box { border-color: var(--accent); background: var(--accent); }
+.upgrade.checked .upgrade-box::after {
+  content: ''; position: absolute; left: 6px; top: 2px; width: 6px; height: 11px;
+  border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg);
+}
+.upgrade-text { flex: 1; min-width: 0; }
+.upgrade-text strong { display: block; font-size: 13.5px; color: var(--black); line-height: 1.3; }
+.upgrade-sub { font-size: 11.5px; color: var(--muted); line-height: 1.45; display: block; margin-top: 3px; }
+.upgrade-price { font-size: 14px; font-weight: 700; color: var(--accent); white-space: nowrap; }
+
+/* ── One-time link note ── */
+.onetime-note { font-size: 11px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+/* ── Premium polish: "one colour world" on offer/product sections ── */
+.offer-repeat { background: var(--cream); }
+.section-eyebrow { font-weight: 700; }
+
+/* Tier price: refine unit + per-shave so A/B read as premium, not busy */
+.tier-price { font-size: 28px; }
+.tier-billed { font-weight: 500; }

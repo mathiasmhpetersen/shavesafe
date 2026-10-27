@@ -37,10 +37,11 @@
      data-tier on each card; data-url for the Shopify selling-plan URL.
      Sticky-bar fields read from the hero instance's cards. */
   var TIER_META = {
-    A: { name: '12-ugers pakke', price: '167 kr/md', old: '' },
-    B: { name: '4-ugers pakke',  price: '189 kr/md', old: '' }
+    A: { name: 'Hver 12. uge · bedste værdi', price: 'I dag 79 kr · så 189 kr/12. uge', old: '' },
+    B: { name: 'Hver 4. uge · mest populær',  price: 'I dag 79 kr · så 189 kr/4. uge', old: '' }
   };
   var selectedTier = 'A';
+  var upgradeOn = false; // "tag første refill med nu" — not pre-selected
   var stickyName = document.getElementById('stickyName');
   var stickyPrice = document.getElementById('stickyPrice');
   var stickyOld = document.getElementById('stickyOld');
@@ -51,18 +52,19 @@
     document.querySelectorAll('.tier-card').forEach(function (c) {
       c.classList.toggle('selected', c.getAttribute('data-tier') === tier);
     });
-    // CTA hrefs → selected tier's Shopify URL
-    var url = null;
+    // CTA hrefs → selected tier's Shopify URL (upgrade variant when the box is ticked)
     var chosen = document.querySelector('.tier-card[data-tier="' + tier + '"]');
-    if (chosen) { url = chosen.getAttribute('data-url'); }
-    if (url) {
-      document.querySelectorAll('[data-cta]').forEach(function (a) { a.setAttribute('href', url); });
+    if (chosen) {
+      var url = (upgradeOn && chosen.getAttribute('data-url-upgrade')) || chosen.getAttribute('data-url');
+      if (url) {
+        document.querySelectorAll('[data-cta]').forEach(function (a) { a.setAttribute('href', url); });
+      }
     }
     // sticky bar
     var meta = TIER_META[tier];
     if (meta) {
       if (stickyName) stickyName.textContent = meta.name;
-      if (stickyPrice) stickyPrice.textContent = meta.price;
+      if (stickyPrice) stickyPrice.textContent = upgradeOn ? 'I dag 268 kr · prøve + 1. refill' : meta.price;
       if (stickyOld) stickyOld.textContent = meta.old;
     }
   }
@@ -74,6 +76,17 @@
       applyTier(card.getAttribute('data-tier'));
     });
   });
+
+  // Cart upgrade toggle — sync all instances, swap CTA to the refill-now URL
+  document.querySelectorAll('.upgrade-cb').forEach(function (cb) {
+    cb.addEventListener('change', function () {
+      upgradeOn = cb.checked;
+      document.querySelectorAll('.upgrade-cb').forEach(function (o) { o.checked = upgradeOn; });
+      document.querySelectorAll('.upgrade').forEach(function (u) { u.classList.toggle('checked', upgradeOn); });
+      applyTier(selectedTier);
+    });
+  });
+
   applyTier('A');
 
   /* ── Per-shave tooltip (tap to toggle on touch, hover on desktop) ── */

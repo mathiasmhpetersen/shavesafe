@@ -74,99 +74,128 @@
 
         <!-- OFFER STACK (hero instance) -->
         <div class="offer" data-offer="hero">
+
+          <!-- ORDER 1 (shared): the prøvepakke. Nothing is added to it — stacking is on the refill. -->
+          <div class="order1">
+            <div class="order1-head">
+              <span class="order1-today">I dag: 79 kr</span>
+              <span class="order1-sub">Du betaler for gelen. Skraberen og bladet er med gratis.</span>
+            </div>
+            <div class="gift-strip">
+              <div class="gift-line"><span class="gl-name">Barbergel 50 ml</span><span class="gl-price pay">79 kr</span></div>
+              <div class="gift-line"><span class="gl-name">Skraber</span><span class="gl-price free"><s>99 kr</s> gratis</span></div>
+              <div class="gift-line"><span class="gl-name">Barberblad (5+1)</span><span class="gl-price free">gratis</span></div>
+            </div>
+          </div>
+
           <div class="offer-head">
-            <span class="oh-title">Vælg din pakke</span>
+            <span class="oh-title">Vælg hvor ofte du får refill</span>
             <span class="oh-note">Abonnement · opsig med ét klik</span>
           </div>
-          <!-- Tier cards A/B injected identically below. data-tier drives selection. -->
+
+          <!-- Tier cards A/B = refill interval. data-tier drives selection; data-url / data-url-upgrade feed the CTA. -->
           <div class="tier-cards">
 
-            <!-- TIER A -->
+            <!-- TIER A · hver 12. uge · BEDSTE VÆRDI -->
             <label class="tier-card selected" data-tier="A"
                    data-url="https://shavesafe.dk/collections/provepakke?tier=12uger"
-                   data-sticky-name="12-ugers pakke"
-                   data-sticky-price="167 kr/md" data-sticky-old="" data-todo>
+                   data-url-upgrade="https://shavesafe.dk/collections/provepakke?tier=12uger&refillnow=1" data-todo>
               <span class="tier-pill best">Bedste værdi</span>
-              <span class="todo-badge">TODO-PRICE</span>
+              <span class="todo-badge">TODO-PLAN-ID</span>
               <div class="tier-row1">
                 <span class="tier-radio" aria-hidden="true"></span>
                 <div class="tier-main">
-                  <div class="tier-name">12-ugers pakke</div>
-                  <span class="tier-save">Spar 15 % vs. månedlig</span>
-                  <div class="tier-contents">Startpakke i dag + refill (100 ml gel + 4 blade) hver 12. uge.</div>
+                  <div class="tier-name">Hver 12. uge</div>
+                  <div class="tier-contents">Refill: 100 ml gel + 4 blade</div>
                 </div>
                 <div class="tier-price-wrap">
-                  <div class="tier-price">167<span class="unit"> kr/md</span></div>
-                  <div class="tier-billed">Faktureres 499 kr hver 12. uge</div>
-                  <div class="tier-pershave tip" data-tip="Udregnet: 499 kr ÷ (12 blade × ca. 6 barberinger pr. blad) + gel-andel. Reelt tal bekræftes før live.">under 7 kr / barbering
-                    <span class="tip-pop">Udregnet: 499 kr ÷ (12 blade × ca. 6 barberinger pr. blad) + gel-andel. Reelt tal bekræftes før live.</span>
+                  <div class="tier-price">189<span class="unit"> kr</span></div>
+                  <div class="tier-billed">hver 12. uge · ca. 63 kr/md</div>
+                  <div class="tier-pershave tip">ca. 8 kr / barbering
+                    <span class="tip-pop">189 kr (100 ml gel + 4 blade) ÷ (4 blade × ca. 6 barberinger) ≈ 8 kr pr. barbering. Bekræftes før live.</span>
                   </div>
                 </div>
               </div>
-              <ul class="tier-check">
-                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Skraber + rejseetui + holder gratis</li>
-                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Altid gratis fragt</li>
-                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 90 dages knop-fri garanti</li>
-              </ul>
-              <div class="tier-gift" data-todo>
-                <span class="todo-badge">TODO-SKU</span>
-                <div class="tier-gift-head"><svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg> Gratis velkomstkit</div>
+              <div class="tier-gift">
+                <div class="tier-gift-head">Gratis velkomstgave <span class="tg-meta">· 78 kr værdi · 2 dele</span></div>
                 <div class="tier-gift-items">
-                  <div class="tier-gift-item"><span>Skraber</span><span class="g-val">99 kr</span></div>
-                  <div class="tier-gift-item"><span>Rejseetui</span><span class="g-val">79 kr</span></div>
-                  <div class="tier-gift-item"><span>Skraberholder</span><span class="g-val">49 kr</span></div>
+                  <div class="tier-gift-item"><img class="tg-thumb" src="../img/razor-handle-cutout.png" alt="Razor Holder Silver" data-todo /><span class="gi-name">Razor Holder Silver</span><span class="g-val">29 kr</span></div>
+                  <div class="tier-gift-item"><img class="tg-thumb" src="../img/gel-product-cutout.png" alt="Travel Case" data-todo /><span class="gi-name">Travel Case</span><span class="g-val">49 kr</span></div>
                 </div>
-                <div class="tier-gift-total">Værdi 227 kr · 3 dele — <span class="g-free">gratis</span></div>
+                <div class="tier-gift-ship">Sendes med din 1. refill</div>
               </div>
-              <details class="tier-future" data-todo>
-                <span class="todo-badge">TODO-GIFTS</span>
+              <details class="tier-future">
                 <summary>Fremtidige gaver</summary>
                 <div class="tier-future-body">
-                  <div class="tf-row"><span class="tf-when">Måned 3:</span><span>1 gratis gel 50 ml</span></div>
-                  <div class="tf-row"><span class="tf-when">Måned 6:</span><span>Ekstra skraberhoved-pakke</span></div>
+                  <!-- TODO-STOCK: Bikini Line Repair Cream var udsolgt 2026-10-27 → subscription-app falder tilbage til gel 50 ml. Mandeflow: byt til repair-produkt fra /collections/til-ham. -->
+                  <div class="tf-row"><img class="tf-thumb" src="../img/gel-product-50ml.png" alt="Bikini Line Repair Cream" data-todo /><span class="tf-when">Levering 3</span><span class="tf-name">Bikini Line Repair Cream 50 ml</span><span class="tf-val">229 kr</span></div>
+                  <div class="tf-stock">Så længe lager haves — ellers gel 50 ml.</div>
                 </div>
               </details>
-              <div class="tier-sub-note">Du betaler kun <strong>79 kr for prøvepakken nu</strong>. Abonnementet starter ved næste levering om 14 dage, derefter hver 12. uge. Opsig når som helst med ét klik · ingen binding.</div>
+              <ul class="tier-check">
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Altid gratis fragt</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 90 dages knop-fri garanti</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Opsig med ét klik · ingen binding</li>
+              </ul>
+              <div class="tier-sub-note">Du betaler kun <strong>79 kr for prøvepakken nu</strong>. Refill starter ved næste levering, derefter hver 12. uge.</div>
             </label>
 
-            <!-- TIER B -->
+            <!-- TIER B · hver 4. uge · MEST POPULÆR -->
             <label class="tier-card" data-tier="B"
                    data-url="https://shavesafe.dk/collections/provepakke?tier=4uger"
-                   data-sticky-name="4-ugers pakke"
-                   data-sticky-price="189 kr/md" data-sticky-old="" data-todo>
+                   data-url-upgrade="https://shavesafe.dk/collections/provepakke?tier=4uger&refillnow=1" data-todo>
               <span class="tier-pill popular">Mest populær</span>
-              <span class="todo-badge">TODO-PRICE</span>
+              <span class="todo-badge">TODO-PLAN-ID</span>
               <div class="tier-row1">
                 <span class="tier-radio" aria-hidden="true"></span>
                 <div class="tier-main">
-                  <div class="tier-name">4-ugers pakke</div>
-                  <div class="tier-contents">Startpakke i dag + refill hver 4. uge.</div>
+                  <div class="tier-name">Hver 4. uge</div>
+                  <div class="tier-contents">Refill: 100 ml gel + 4 blade</div>
                 </div>
                 <div class="tier-price-wrap">
-                  <div class="tier-price">189<span class="unit"> kr/md</span></div>
-                  <div class="tier-billed">Faktureres 189 kr hver 4. uge</div>
-                  <div class="tier-pershave tip" data-tip="Udregnet: 189 kr ÷ (4 blade × ca. 6 barberinger pr. blad) + gel-andel. Reelt tal bekræftes før live.">under 8 kr / barbering
-                    <span class="tip-pop">Udregnet: 189 kr ÷ (4 blade × ca. 6 barberinger pr. blad) + gel-andel. Reelt tal bekræftes før live.</span>
+                  <div class="tier-price">189<span class="unit"> kr</span></div>
+                  <div class="tier-billed">hver 4. uge · ca. 189 kr/md</div>
+                  <div class="tier-pershave tip">ca. 8 kr / barbering
+                    <span class="tip-pop">189 kr (100 ml gel + 4 blade) ÷ (4 blade × ca. 6 barberinger) ≈ 8 kr pr. barbering. Bekræftes før live.</span>
                   </div>
                 </div>
               </div>
+              <div class="tier-gift">
+                <div class="tier-gift-head">Gratis velkomstgave <span class="tg-meta">· 29 kr værdi</span></div>
+                <div class="tier-gift-items">
+                  <div class="tier-gift-item"><img class="tg-thumb" src="../img/razor-handle-cutout.png" alt="Razor Holder Silver" data-todo /><span class="gi-name">Razor Holder Silver</span><span class="g-val">29 kr</span></div>
+                </div>
+                <div class="tier-gift-ship">Sendes med din 1. refill</div>
+              </div>
+              <details class="tier-future">
+                <summary>Fremtidige gaver</summary>
+                <div class="tier-future-body">
+                  <!-- TODO-STOCK: Bikini Line Repair Cream udsolgt 2026-10-27 → fallback gel 50 ml. Mandeflow: /collections/til-ham. -->
+                  <div class="tf-row"><img class="tf-thumb" src="../img/gel-product-cutout.png" alt="Travel Case" data-todo /><span class="tf-when">Levering 3</span><span class="tf-name">Travel Case</span><span class="tf-val">49 kr</span></div>
+                  <div class="tf-row"><img class="tf-thumb" src="../img/gel-product-50ml.png" alt="Bikini Line Repair Cream" data-todo /><span class="tf-when">Levering 6</span><span class="tf-name">Bikini Line Repair Cream 50 ml</span><span class="tf-val">229 kr</span></div>
+                  <div class="tf-stock">Så længe lager haves — ellers gel 50 ml.</div>
+                </div>
+              </details>
               <ul class="tier-check">
-                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Skraber gratis (værdi 99 kr)</li>
                 <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Altid gratis fragt</li>
                 <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 30 dages knop-fri garanti</li>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Opsig med ét klik · ingen binding</li>
               </ul>
-              <div class="tier-gift" data-todo>
-                <span class="todo-badge">TODO-SKU</span>
-                <div class="tier-gift-head"><svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg> Gratis velkomstkit</div>
-                <div class="tier-gift-items">
-                  <div class="tier-gift-item"><span>Skraber</span><span class="g-val">99 kr</span></div>
-                </div>
-                <div class="tier-gift-total">Værdi 99 kr — <span class="g-free">gratis</span></div>
-              </div>
-              <div class="tier-sub-note">Du betaler kun <strong>79 kr for prøvepakken nu</strong>. Abonnementet starter ved næste levering om 14 dage, derefter hver 4. uge. Opsig når som helst med ét klik · ingen binding.</div>
+              <div class="tier-sub-note">Du betaler kun <strong>79 kr for prøvepakken nu</strong>. Refill starter ved næste levering, derefter hver 4. uge.</div>
             </label>
 
           </div>
+
+          <!-- Single cart upgrade — NOT pre-selected -->
+          <label class="upgrade" data-todo>
+            <input type="checkbox" class="upgrade-cb" />
+            <span class="upgrade-box" aria-hidden="true"></span>
+            <span class="upgrade-text">
+              <strong>Spring prøven over — tag første refill med nu</strong>
+              <span class="upgrade-sub">50 ml rækker ca. 3 uger. De fleste opgraderer efter første barbering. I dag: 79 + 189 = 268 kr, og velkomstgaven sendes med det samme.</span>
+            </span>
+            <span class="upgrade-price">+189 kr</span>
+          </label>
 
           <a class="cta-btn" data-cta href="https://shavesafe.dk/collections/provepakke?tier=12uger">
             Vælg min pakke
@@ -175,8 +204,9 @@
           <p class="cta-reassure"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Ingen binding · opsig med ét klik · pengene tilbage hvis knopperne ikke forsvinder</p>
 
           <div class="onetime-link">
-            <!-- TODO-PLAN-ID: replace with one-time (no selling plan) product URL -->
-            <a href="https://shavesafe.dk/collections/provepakke?tier=engangskoeb">Eller køb én gang til 204 kr — uden abonnement →</a>
+            <!-- TODO-PLAN-ID: one-time product URL (no selling plan) -->
+            <a href="https://shavesafe.dk/collections/provepakke?tier=engangskoeb">Eller køb prøvepakken uden abonnement til 204 kr →</a>
+            <p class="onetime-note">Uden velkomstgave og uden knop-fri garanti · skraberen betales · standard fragt.</p>
           </div>
         </div>
       </div>
@@ -636,60 +666,119 @@
 
       <!-- OFFER STACK (repeat instance) -->
       <div class="offer" data-offer="repeat">
+
+        <div class="order1">
+          <div class="order1-head">
+            <span class="order1-today">I dag: 79 kr</span>
+            <span class="order1-sub">Du betaler for gelen. Skraberen og bladet er med gratis.</span>
+          </div>
+          <div class="gift-strip">
+            <div class="gift-line"><span class="gl-name">Barbergel 50 ml</span><span class="gl-price pay">79 kr</span></div>
+            <div class="gift-line"><span class="gl-name">Skraber</span><span class="gl-price free"><s>99 kr</s> gratis</span></div>
+            <div class="gift-line"><span class="gl-name">Barberblad (5+1)</span><span class="gl-price free">gratis</span></div>
+          </div>
+        </div>
+
+        <div class="offer-head">
+          <span class="oh-title">Vælg hvor ofte du får refill</span>
+          <span class="oh-note">Abonnement · opsig med ét klik</span>
+        </div>
+
         <div class="tier-cards">
 
-          <!-- TIER A (repeat) -->
+          <!-- TIER A (repeat) · hver 12. uge -->
           <label class="tier-card selected" data-tier="A"
-                 data-url="https://shavesafe.dk/collections/provepakke?tier=12uger" data-todo>
+                 data-url="https://shavesafe.dk/collections/provepakke?tier=12uger"
+                 data-url-upgrade="https://shavesafe.dk/collections/provepakke?tier=12uger&refillnow=1" data-todo>
             <span class="tier-pill best">Bedste værdi</span>
-            <span class="todo-badge">TODO-PRICE</span>
+            <span class="todo-badge">TODO-PLAN-ID</span>
             <div class="tier-row1">
               <span class="tier-radio" aria-hidden="true"></span>
               <div class="tier-main">
-                <div class="tier-name">12-ugers pakke</div>
-                <span class="tier-save">Spar 15 % vs. månedlig</span>
-                <div class="tier-contents">Startpakke i dag + refill (100 ml gel + 4 blade) hver 12. uge.</div>
+                <div class="tier-name">Hver 12. uge</div>
+                <div class="tier-contents">Refill: 100 ml gel + 4 blade</div>
               </div>
               <div class="tier-price-wrap">
-                <div class="tier-price">167<span class="unit"> kr/md</span></div>
-                <div class="tier-billed">Faktureres 499 kr hver 12. uge</div>
-                <div class="tier-pershave">under 7 kr / barbering</div>
+                <div class="tier-price">189<span class="unit"> kr</span></div>
+                <div class="tier-billed">hver 12. uge · ca. 63 kr/md</div>
+                <div class="tier-pershave">ca. 8 kr / barbering</div>
               </div>
             </div>
+            <div class="tier-gift">
+              <div class="tier-gift-head">Gratis velkomstgave <span class="tg-meta">· 78 kr værdi · 2 dele</span></div>
+              <div class="tier-gift-items">
+                <div class="tier-gift-item"><img class="tg-thumb" src="../img/razor-handle-cutout.png" alt="Razor Holder Silver" data-todo /><span class="gi-name">Razor Holder Silver</span><span class="g-val">29 kr</span></div>
+                <div class="tier-gift-item"><img class="tg-thumb" src="../img/gel-product-cutout.png" alt="Travel Case" data-todo /><span class="gi-name">Travel Case</span><span class="g-val">49 kr</span></div>
+              </div>
+              <div class="tier-gift-ship">Sendes med din 1. refill</div>
+            </div>
+            <details class="tier-future">
+              <summary>Fremtidige gaver</summary>
+              <div class="tier-future-body">
+                <div class="tf-row"><img class="tf-thumb" src="../img/gel-product-50ml.png" alt="Bikini Line Repair Cream" data-todo /><span class="tf-when">Levering 3</span><span class="tf-name">Bikini Line Repair Cream 50 ml</span><span class="tf-val">229 kr</span></div>
+                <div class="tf-stock">Så længe lager haves — ellers gel 50 ml.</div>
+              </div>
+            </details>
             <ul class="tier-check">
-              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Skraber + rejseetui + holder gratis</li>
               <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Altid gratis fragt</li>
               <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 90 dages knop-fri garanti</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Opsig med ét klik · ingen binding</li>
             </ul>
-            <div class="tier-sub-note">Du betaler kun <strong>79 kr for prøvepakken nu</strong>. Derefter hver 12. uge. Opsig med ét klik · ingen binding.</div>
+            <div class="tier-sub-note">Du betaler kun <strong>79 kr for prøvepakken nu</strong>. Refill starter ved næste levering, derefter hver 12. uge.</div>
           </label>
 
-          <!-- TIER B (repeat) -->
+          <!-- TIER B (repeat) · hver 4. uge -->
           <label class="tier-card" data-tier="B"
-                 data-url="https://shavesafe.dk/collections/provepakke?tier=4uger" data-todo>
+                 data-url="https://shavesafe.dk/collections/provepakke?tier=4uger"
+                 data-url-upgrade="https://shavesafe.dk/collections/provepakke?tier=4uger&refillnow=1" data-todo>
             <span class="tier-pill popular">Mest populær</span>
-            <span class="todo-badge">TODO-PRICE</span>
+            <span class="todo-badge">TODO-PLAN-ID</span>
             <div class="tier-row1">
               <span class="tier-radio" aria-hidden="true"></span>
               <div class="tier-main">
-                <div class="tier-name">4-ugers pakke</div>
-                <div class="tier-contents">Startpakke i dag + refill hver 4. uge.</div>
+                <div class="tier-name">Hver 4. uge</div>
+                <div class="tier-contents">Refill: 100 ml gel + 4 blade</div>
               </div>
               <div class="tier-price-wrap">
-                <div class="tier-price">189<span class="unit"> kr/md</span></div>
-                <div class="tier-billed">Faktureres 189 kr hver 4. uge</div>
-                <div class="tier-pershave">under 8 kr / barbering</div>
+                <div class="tier-price">189<span class="unit"> kr</span></div>
+                <div class="tier-billed">hver 4. uge · ca. 189 kr/md</div>
+                <div class="tier-pershave">ca. 8 kr / barbering</div>
               </div>
             </div>
+            <div class="tier-gift">
+              <div class="tier-gift-head">Gratis velkomstgave <span class="tg-meta">· 29 kr værdi</span></div>
+              <div class="tier-gift-items">
+                <div class="tier-gift-item"><img class="tg-thumb" src="../img/razor-handle-cutout.png" alt="Razor Holder Silver" data-todo /><span class="gi-name">Razor Holder Silver</span><span class="g-val">29 kr</span></div>
+              </div>
+              <div class="tier-gift-ship">Sendes med din 1. refill</div>
+            </div>
+            <details class="tier-future">
+              <summary>Fremtidige gaver</summary>
+              <div class="tier-future-body">
+                <div class="tf-row"><img class="tf-thumb" src="../img/gel-product-cutout.png" alt="Travel Case" data-todo /><span class="tf-when">Levering 3</span><span class="tf-name">Travel Case</span><span class="tf-val">49 kr</span></div>
+                <div class="tf-row"><img class="tf-thumb" src="../img/gel-product-50ml.png" alt="Bikini Line Repair Cream" data-todo /><span class="tf-when">Levering 6</span><span class="tf-name">Bikini Line Repair Cream 50 ml</span><span class="tf-val">229 kr</span></div>
+                <div class="tf-stock">Så længe lager haves — ellers gel 50 ml.</div>
+              </div>
+            </details>
             <ul class="tier-check">
-              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Skraber gratis (værdi 99 kr)</li>
               <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Altid gratis fragt</li>
               <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 30 dages knop-fri garanti</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Opsig med ét klik · ingen binding</li>
             </ul>
-            <div class="tier-sub-note">Du betaler kun <strong>79 kr for prøvepakken nu</strong>. Derefter hver 4. uge. Opsig med ét klik · ingen binding.</div>
+            <div class="tier-sub-note">Du betaler kun <strong>79 kr for prøvepakken nu</strong>. Refill starter ved næste levering, derefter hver 4. uge.</div>
           </label>
 
         </div>
+
+        <label class="upgrade" data-todo>
+          <input type="checkbox" class="upgrade-cb" />
+          <span class="upgrade-box" aria-hidden="true"></span>
+          <span class="upgrade-text">
+            <strong>Spring prøven over — tag første refill med nu</strong>
+            <span class="upgrade-sub">50 ml rækker ca. 3 uger. De fleste opgraderer efter første barbering. Velkomstgaven sendes med det samme.</span>
+          </span>
+          <span class="upgrade-price">+189 kr</span>
+        </label>
 
         <a class="cta-btn" data-cta href="https://shavesafe.dk/collections/provepakke?tier=12uger">
           Vælg min pakke
@@ -697,7 +786,8 @@
         </a>
         <p class="cta-reassure"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Ingen binding · opsig med ét klik · pengene tilbage hvis knopperne ikke forsvinder</p>
         <div class="onetime-link">
-          <a href="https://shavesafe.dk/collections/provepakke?tier=engangskoeb">Eller køb én gang til 204 kr — uden abonnement →</a>
+          <a href="https://shavesafe.dk/collections/provepakke?tier=engangskoeb">Eller køb prøvepakken uden abonnement til 204 kr →</a>
+          <p class="onetime-note">Uden velkomstgave og uden knop-fri garanti · skraberen betales · standard fragt.</p>
         </div>
       </div>
     </div>
@@ -742,8 +832,8 @@
   <!-- STICKY MOBILE BAR (tier-aware) -->
   <div class="sticky-bar">
     <div class="sticky-info">
-      <div class="sticky-name" id="stickyName">12-ugers pakke</div>
-      <div class="sticky-price"><span id="stickyPrice">167 kr/md</span> <span class="sb-old" id="stickyOld"></span></div>
+      <div class="sticky-name" id="stickyName">Hver 12. uge · bedste værdi</div>
+      <div class="sticky-price"><span id="stickyPrice">I dag 79 kr · så 189 kr/12. uge</span> <span class="sb-old" id="stickyOld"></span></div>
     </div>
     <a class="cta-btn" data-cta href="https://shavesafe.dk/collections/provepakke?tier=12uger">Vælg pakke</a>
   </div>
