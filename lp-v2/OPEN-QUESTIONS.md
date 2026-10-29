@@ -1,13 +1,35 @@
 # ShaveSafe LP v2 — OPEN-QUESTIONS.md
 
-Offer stack now follows Mathias's final rules (27 Oct 2026): prøvepakke stays
-79 kr, all stacking is on the refill, tiers = refill interval, same 189 kr refill
-on both. The page renders with these numbers; remaining unknowns are flagged
-`TODO-PLAN-ID` / `TODO-SHOT` / `TODO-STOCK` (visible with `?debug=1`).
+Page is now built to **Del 0 FINAL** — an IM8-PDP + 8-hours fusion, 18 sections in
+the specified order (announcement bar → PDP hero w/ carousel + Kvinde/Mand selector +
+buy box → clinical strip → spec accordion → creator-video row → quality row → mechanism
+→ doctor "rooted in science" → før/efter → patent+garanti → comparison → trusted-by dark
+grid → reviews wall → origin → science journal → FAQ → final offer + sticky). The old
+ShaveSafe layout was dropped per instruction.
+
+Offer stack follows Mathias's final rules (27 Oct 2026): prøvepakke stays 79 kr, all
+stacking is on the refill, tiers = refill interval, same 189 kr refill on both. The page
+renders with these numbers; remaining unknowns are flagged `TODO-PLAN-ID` / `TODO-SHOT` /
+`TODO-STOCK` / `TODO-UGC` / `TODO-PATENT-NO` / `TODO-STUDY` / `TODO-INCI` (visible with `?debug=1`).
 
 ---
 
 ## 🔴 BLOCKING — need Mathias / data before go-live
+
+### 0. ⚠️ Hero image contradicts the tier gift logic
+The new hero/offer image (`img/offer-hero.jpg`) says **"Velkomstkit 406 kr — gratis ·
+helt gratis i din første pakke"** and shows **all four** gifts free up front:
+Bikini Line Repair Creme (229) + Skraber (99) + Travel Case (49) + Razor Holder (29) = **406 kr**.
+But the current tier cards (per your 27 Oct rules) give only **Razor Holder + Travel Case
+(78 kr)** as the welcome gift, with the **Bikini cream as a *future* gift at levering 3**,
+and the skraber is already free inside the 79 kr prøvepakke.
+👉 **Which is correct?** Either (a) update the tier-card gift logic to match the image
+(all 4 free in first pakke, 406 kr value), or (b) swap the image for one that matches the
+current welcome-gift split. I did **not** change the offer logic — only replaced the picture
+and removed the order-1 strip, the tier sub-notes and the cart upgrade as you asked.
+Image note: it also reframes the pack as **"12 skrabehoveder + 3 gel = 3 måneders barbering"**,
+which differs from the current refill wording "100 ml gel + 4 blade".
+
 
 ### 1. Welcome-gift SKUs + standalone prices
 Built as specified:
@@ -66,6 +88,11 @@ stays on all incl. the one-time tier.
 | Live reviews | Judge.me token to run `reviews-sync/fetch-reviews.js` (no reviews invented) | reviews-sync/ |
 | B/A photo consent | written consent on file per real pair | CLAIMS #18 |
 | Competitor-guarantee check | dated proof for "eneste med penge-tilbage-garanti" | CLAIMS #2 |
+| Creator/UGC videos | 6 vertical 9:16 clips (native, phone-shot, subtitle-burned) for the "Det siger dem der har prøvet alt" row; currently still-image placeholders | `TODO-UGC`; format ref /refs/creator-emma-ranum.mp4 |
+| Trusted-by portraits | square portraits + proof pills for Lise-Lotte Hergel, Nana + 2–3 real long-term customers; **consent on file**, no stock faces | §13 `TODO-portræt` |
+| Male offer visual + male repair SKU | Kvinde/Mand swaps the hero image and the future gift (Bikini cream → male repair from /collections/til-ham, else gel 50 ml); needs a real male offer visual and the male SKU | §3 gender toggle, `TODO-SHOT` |
+| "Siden 2011" founding year | used verbatim per brief; confirm the year is correct | PDP social line / CLAIMS #16 |
+| Science-journal read-times | 3 real articles linked (shavesafe.dk/blogs/articles, dates verified); the "X min" read-times are estimates | §16 |
 
 ---
 

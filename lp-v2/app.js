@@ -1,16 +1,16 @@
 /* =============================================================
-   ShaveSafe LP v2 — app.js
+   ShaveSafe LP v2 — app.js  (IM8 PDP + 8hours layout)
    ============================================================= */
 (function () {
   'use strict';
 
-  /* ── Debug mode (?debug=1 shows TODO-SHOT / TODO badges) ── */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   if (new URLSearchParams(location.search).get('debug') === '1') {
     document.body.classList.add('debug');
   }
 
   /* ── Reveal on scroll ── */
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!reduce && 'IntersectionObserver' in window) {
     var obs = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
@@ -22,7 +22,42 @@
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
   }
 
-  /* ── FAQ accordion ── */
+  /* ── PDP image carousel ── */
+  (function () {
+    var main = document.getElementById('carMain');
+    var thumbs = document.querySelectorAll('#carThumbs .car-thumb');
+    if (!main || !thumbs.length) return;
+    thumbs.forEach(function (t) {
+      t.addEventListener('click', function () {
+        var src = t.getAttribute('data-src');
+        if (src) main.src = src;
+        thumbs.forEach(function (o) { o.classList.remove('active'); });
+        t.classList.add('active');
+      });
+    });
+  })();
+
+  /* ── Gender selector: swaps hero imagery + future-gift logic ── */
+  (function () {
+    var opts = document.querySelectorAll('.gs-opt');
+    if (!opts.length) return;
+    var main = document.getElementById('carMain');
+    var IMG = { K: '../img/offer-hero.jpg', M: '../img/gel-razor-shower.jpg' }; // TODO-SHOT: dedicated male offer visual
+    opts.forEach(function (o) {
+      o.addEventListener('click', function () {
+        var g = o.getAttribute('data-gender');
+        opts.forEach(function (x) { x.classList.toggle('active', x === o); });
+        if (main && IMG[g]) main.src = IMG[g];
+        // swap future-gift names (Bikini Line Repair Cream ↔ male repair product)
+        document.querySelectorAll('.tf-name[data-gift-f]').forEach(function (n) {
+          var val = g === 'M' ? n.getAttribute('data-gift-m') : n.getAttribute('data-gift-f');
+          if (val) n.textContent = val;
+        });
+      });
+    });
+  })();
+
+  /* ── FAQ accordion (single-open) ── */
   document.querySelectorAll('.faq-q').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var a = btn.nextElementSibling;
@@ -33,63 +68,81 @@
     });
   });
 
-  /* ── Tier selection (synced across both offer instances) ──
-     data-tier on each card; data-url for the Shopify selling-plan URL.
-     Sticky-bar fields read from the hero instance's cards. */
+  /* ── Spec accordion block (independent toggle) ── */
+  document.querySelectorAll('.acc-q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btn.parentElement.classList.toggle('open');
+    });
+  });
+
+  /* ── Tier selection + dropdowns + cart upgrade ── */
   var TIER_META = {
-    A: { name: 'Hver 12. uge · bedste værdi', price: 'I dag 79 kr · så 189 kr/12. uge', old: '' },
-    B: { name: 'Hver 4. uge · mest populær',  price: 'I dag 79 kr · så 189 kr/4. uge', old: '' }
+    A: { name: 'Hver 12. uge · bedste værdi', cta: 'Læg i kurv — 79 kr' },
+    B: { name: 'Hver 4. uge · mest populær',  cta: 'Læg i kurv — 79 kr' },
+    C: { name: 'Engangskøb · uden abonnement', cta: 'Læg i kurv — 204 kr' }
   };
+  var oneTimeLink = document.querySelector('[data-onetime]');
+  var ONETIME_URL = oneTimeLink ? oneTimeLink.getAttribute('href') : 'https://shavesafe.dk/collections/provepakke?tier=engangskoeb';
   var selectedTier = 'A';
-  var upgradeOn = false; // "tag første refill med nu" — not pre-selected
+  var upgradeOn = false;
   var stickyName = document.getElementById('stickyName');
-  var stickyPrice = document.getElementById('stickyPrice');
-  var stickyOld = document.getElementById('stickyOld');
+
+  function ctaUrlFor(tier) {
+    if (tier === 'C') return ONETIME_URL;
+    var card = document.querySelector('.tier-card[data-tier="' + tier + '"]');
+    if (!card) return ONETIME_URL;
+    return (upgradeOn && card.getAttribute('data-url-upgrade')) || card.getAttribute('data-url');
+  }
 
   function applyTier(tier) {
     selectedTier = tier;
-    // card selected states (both instances)
     document.querySelectorAll('.tier-card').forEach(function (c) {
       c.classList.toggle('selected', c.getAttribute('data-tier') === tier);
     });
-    // CTA hrefs → selected tier's Shopify URL (upgrade variant when the box is ticked)
-    var chosen = document.querySelector('.tier-card[data-tier="' + tier + '"]');
-    if (chosen) {
-      var url = (upgradeOn && chosen.getAttribute('data-url-upgrade')) || chosen.getAttribute('data-url');
-      if (url) {
-        document.querySelectorAll('[data-cta]').forEach(function (a) { a.setAttribute('href', url); });
+    document.querySelectorAll('[data-tier-select]').forEach(function (sel) { sel.value = tier; });
+    var url = ctaUrlFor(tier);
+    document.querySelectorAll('[data-cta]').forEach(function (a) {
+      a.setAttribute('href', url);
+      var label = a.querySelector('.cta-label');
+      if (label) {
+        label.textContent = (tier !== 'C' && upgradeOn) ? 'Læg i kurv — 268 kr' : TIER_META[tier].cta;
       }
-    }
-    // sticky bar
-    var meta = TIER_META[tier];
-    if (meta) {
-      if (stickyName) stickyName.textContent = meta.name;
-      if (stickyPrice) stickyPrice.textContent = upgradeOn ? 'I dag 268 kr · prøve + 1. refill' : meta.price;
-      if (stickyOld) stickyOld.textContent = meta.old;
-    }
+    });
+    if (stickyName) stickyName.textContent = TIER_META[tier].name;
   }
 
+  // tier cards → A/B
   document.querySelectorAll('.tier-card').forEach(function (card) {
     card.addEventListener('click', function (e) {
-      // let tooltips / summary toggles work without changing tier
       if (e.target.closest('.tier-pershave') || e.target.closest('.tier-future')) return;
       applyTier(card.getAttribute('data-tier'));
     });
   });
 
-  // Cart upgrade toggle — sync all instances, swap CTA to the refill-now URL
+  // dropdowns (final block + sticky) → A/B/C
+  document.querySelectorAll('[data-tier-select]').forEach(function (sel) {
+    sel.addEventListener('change', function () { applyTier(sel.value); });
+  });
+
+  // one-time text link → select C
+  if (oneTimeLink) {
+    oneTimeLink.addEventListener('click', function () { applyTier('C'); /* navigation proceeds */ });
+  }
+
+  // cart upgrade (A/B only)
   document.querySelectorAll('.upgrade-cb').forEach(function (cb) {
     cb.addEventListener('change', function () {
       upgradeOn = cb.checked;
       document.querySelectorAll('.upgrade-cb').forEach(function (o) { o.checked = upgradeOn; });
       document.querySelectorAll('.upgrade').forEach(function (u) { u.classList.toggle('checked', upgradeOn); });
-      applyTier(selectedTier);
+      if (selectedTier === 'C') applyTier('A'); // upgrade implies a subscription tier
+      else applyTier(selectedTier);
     });
   });
 
   applyTier('A');
 
-  /* ── Per-shave tooltip (tap to toggle on touch, hover on desktop) ── */
+  /* ── Per-shave tooltip ── */
   document.querySelectorAll('.tip').forEach(function (tip) {
     tip.addEventListener('click', function (e) {
       e.preventDefault();
@@ -110,7 +163,6 @@
     var divider = slider.querySelector('.ba-divider');
     var handle = slider.querySelector('.ba-handle');
     var dragging = false;
-
     function setPos(clientX) {
       var rect = slider.getBoundingClientRect();
       var pct = ((clientX - rect.left) / rect.width) * 100;
@@ -127,7 +179,6 @@
       if (e.cancelable && e.touches) e.preventDefault();
     }
     function end() { dragging = false; }
-
     handle.addEventListener('mousedown', start);
     slider.addEventListener('mousedown', start);
     window.addEventListener('mousemove', move);
@@ -152,73 +203,49 @@
       'Bakterier trænger ind i snittene — og huden reagerer med røde knopper.',
       'ShaveSafe-gelen lægger et antibakterielt skjold, så bakterierne aldrig når ind.'
     ];
-    var frame = 0, timer = null, started = false;
-
+    var timer = null, started = false;
     function render(i) {
-      frame = i;
       btns.forEach(function (b, bi) { b.classList.toggle('active', bi === i); });
       caption.textContent = captions[i];
-      // blade position
       blade.style.transition = 'transform 0.8s ease';
       blade.style.transform = 'translateX(-50%) translateY(' + (i === 0 ? 20 : 0) + 'px)';
-      // bacteria
-      bacts.forEach(function (b, bi) {
+      bacts.forEach(function (b) {
         b.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        if (i === 1) {
-          b.style.opacity = '1';
-          b.style.transform = 'translateY(14px)';
-        } else {
-          b.style.opacity = '0';
-          b.style.transform = 'translateY(0)';
-        }
+        b.style.opacity = i === 1 ? '1' : '0';
+        b.style.transform = i === 1 ? 'translateY(14px)' : 'translateY(0)';
       });
-      // shield
       shield.style.transition = 'opacity 0.6s ease';
       shield.style.opacity = i === 2 ? '1' : '0';
     }
     function play() {
       if (reduce) { render(2); return; }
       render(0);
-      var seq = [0, 1, 2];
       var step = 0;
-      timer = setInterval(function () {
-        step = (step + 1) % seq.length;
-        render(seq[step]);
-      }, 2600);
+      timer = setInterval(function () { step = (step + 1) % 3; render(step); }, 2600);
     }
     btns.forEach(function (b, i) {
-      b.addEventListener('click', function () {
-        if (timer) { clearInterval(timer); timer = null; }
-        render(i);
-      });
+      b.addEventListener('click', function () { if (timer) { clearInterval(timer); timer = null; } render(i); });
     });
-    // autoplay once visible
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (entries, o) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting && !started) { started = true; play(); o.disconnect(); }
-        });
+        entries.forEach(function (e) { if (e.isIntersecting && !started) { started = true; play(); o.disconnect(); } });
       }, { threshold: 0.4 }).observe(root);
     } else { play(); }
   })();
 
-  /* ── Sticky bar visibility (after hero scrolls out) ── */
+  /* ── Sticky bar visibility (after PDP hero scrolls out) ── */
   var stickyBar = document.querySelector('.sticky-bar');
-  var hero = document.querySelector('.hero');
-  if (stickyBar && hero && 'IntersectionObserver' in window) {
+  var pdp = document.querySelector('.pdp');
+  if (stickyBar && pdp && 'IntersectionObserver' in window) {
     new IntersectionObserver(function (e) {
       stickyBar.classList.toggle('visible', !e[0].isIntersecting);
-    }, { threshold: 0 }).observe(hero);
+    }, { threshold: 0 }).observe(pdp);
   }
 
-  /* ── Reviews feed ──
-     Attempts to load the filtered feed produced by reviews-sync/.
-     On success, replaces the review cards (keeping the press + video cards).
-     On failure (e.g. file://), the static fallback markup in the HTML stays.
-     Hard rule: these must be real, unedited reviews with a source review ID. */
+  /* ── Reviews feed (real Judge.me only; static fallback otherwise) ── */
   (function () {
     var grid = document.getElementById('reviewsGrid');
-    if (!grid || location.protocol === 'file:') return; // skip fetch on file://
+    if (!grid || location.protocol === 'file:') return;
     fetch('reviews-sync/reviews.json', { cache: 'no-store' })
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (data) {
@@ -232,17 +259,15 @@
         grid.appendChild(frag);
         if (videoCard) grid.appendChild(videoCard);
       })
-      .catch(function () { /* keep static fallback */ });
-
+      .catch(function () {});
     function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
     function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
     var STAR = '<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
     var CHECK = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';
     function buildCard(rv) {
       var card = el('div', 'review-card' + (rv.pinned ? ' pinned' : ''));
-      var initial = (rv.name || '?').trim().charAt(0).toUpperCase();
       var top = el('div', 'review-top');
-      top.appendChild(el('div', 'review-avatar', esc(initial)));
+      top.appendChild(el('div', 'review-avatar', esc((rv.name || '?').trim().charAt(0).toUpperCase())));
       var who = el('div');
       who.appendChild(el('div', 'review-name', esc(rv.name)));
       who.appendChild(el('div', 'review-verified', CHECK + ' Verificeret køb'));

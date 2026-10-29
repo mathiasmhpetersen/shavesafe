@@ -853,3 +853,195 @@ footer img { height: 16px; margin: 0 auto 12px; opacity: 0.35; }
 /* Tier price: refine unit + per-shave so A/B read as premium, not busy */
 .tier-price { font-size: 28px; }
 .tier-billed { font-weight: 500; }
+
+/* =============================================================
+   DEL 0 FINAL — IM8 PDP + 8hours layout components
+   ============================================================= */
+
+/* ── 1 Announcement bar ── */
+.announce {
+  background: var(--navy); color: #fff; text-align: center;
+  padding: 9px 16px; font-size: 12px; font-weight: 500; letter-spacing: 0.02em;
+}
+
+/* ── 2 Trust micro-bar ── */
+.microbar { border-bottom: 1px solid var(--border); background: var(--white); padding: 9px 16px; }
+.microbar-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; }
+.microbar span { font-size: 12px; font-weight: 600; color: var(--body); display: inline-flex; align-items: center; gap: 6px; }
+.microbar svg { width: 13px; height: 13px; stroke: var(--clinical-green); stroke-width: 2.2; fill: var(--clinical-green); }
+.microbar span:nth-child(2) svg { fill: none; }
+@media (max-width: 560px) { .microbar-inner { gap: 14px; } .microbar span { font-size: 11px; } }
+
+/* ── 3 PDP hero ── */
+.pdp { max-width: var(--max); margin: 0 auto; padding: 32px 24px 56px; display: grid; grid-template-columns: 1fr; gap: 32px; }
+@media (min-width: 900px) { .pdp { grid-template-columns: 1fr 1fr; gap: 56px; padding: 44px 24px 72px; align-items: start; } }
+.pdp-media { display: flex; flex-direction: column; gap: 12px; }
+@media (min-width: 900px) { .pdp-media { position: sticky; top: 72px; } }
+.car-main { position: relative; aspect-ratio: 4/5; border-radius: 18px; overflow: hidden; background: var(--light); }
+.car-main img { width: 100%; height: 100%; object-fit: cover; }
+/* floating authority badge over the offer image (IM8 "Clinicians' Choice") */
+.car-badge {
+  position: absolute; top: 14px; left: 50%; transform: translateX(-50%); z-index: 2;
+  background: rgba(255,255,255,0.95); border: 1px solid var(--border); border-radius: 50px;
+  padding: 7px 15px; font-size: 12px; font-weight: 600; color: var(--black); white-space: nowrap;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06); display: inline-flex; align-items: center; gap: 7px;
+}
+.car-badge svg { width: 13px; height: 13px; stroke: var(--clinical-green); stroke-width: 2.4; fill: none; }
+/* "Se ingredienser" pill under thumbs (IM8 "View Nutrition Label") */
+.car-label {
+  display: block; text-align: center; margin-top: 4px; padding: 13px; border: 1px solid var(--border);
+  border-radius: 12px; background: var(--light); font-size: 13px; font-weight: 600; color: var(--black);
+  text-decoration: none;
+}
+.car-label:hover { background: var(--cream); }
+.car-thumbs { display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+.car-thumbs::-webkit-scrollbar { display: none; }
+.car-thumb { position: relative; flex: 0 0 64px; height: 64px; border: 1.5px solid var(--border); border-radius: 9px; overflow: hidden; background: var(--cream); cursor: pointer; padding: 0; }
+.car-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.car-thumb.active { border-color: var(--accent); }
+
+.pdp-buy { display: flex; flex-direction: column; }
+.pdp-rating { display: flex; align-items: center; gap: 10px; }
+.pdp-rating .stars { display: flex; gap: 2px; }
+.pdp-rating .stars svg { width: 16px; height: 16px; fill: var(--gold); }
+.pdp-rating .r-text { font-size: 13px; color: var(--body); }
+.pdp-rating .r-text strong { color: var(--black); }
+.pdp-social { font-size: 13px; color: var(--muted); margin-top: 6px; }
+.pdp-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); font-weight: 700; margin-top: 18px; }
+.pdp-h1 { font-size: clamp(28px, 4.4vw, 44px); line-height: 1.08; letter-spacing: -0.01em; margin-top: 8px; }
+.pdp-sub { font-size: 15px; line-height: 1.6; color: var(--body); margin-top: 12px; max-width: 460px; }
+.pill-checks { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.pill-checks span { font-size: 12px; font-weight: 600; color: var(--black); background: var(--white); border: 1px solid var(--border); border-radius: 50px; padding: 7px 14px; position: relative; padding-left: 28px; }
+.pill-checks span::before { content: ''; position: absolute; left: 11px; top: 50%; width: 9px; height: 5px; border-left: 2px solid var(--green); border-bottom: 2px solid var(--green); transform: translateY(-70%) rotate(-45deg); }
+
+/* Kvinde / Mand selector */
+.gender-select { display: flex; align-items: center; gap: 8px; margin-top: 22px; }
+.gs-label { font-size: 13px; font-weight: 600; color: var(--black); margin-right: 2px; }
+.gs-opt { flex: 1; font-family: inherit; font-size: 14px; font-weight: 600; color: var(--body); background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; padding: 11px; cursor: pointer; transition: all 0.18s; }
+.gs-opt.active { border-color: var(--navy); background: var(--navy); color: #fff; }
+
+.offer { margin-top: 18px; }
+
+/* ── 4 Clinical numbers strip ── */
+.clinic-strip { background: var(--light); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 48px 24px; }
+.clinic-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+.clinic-num { text-align: center; }
+.cn-big { display: block; font-family: 'Playfair Display', serif; font-size: clamp(40px, 6vw, 60px); color: var(--navy); line-height: 1; }
+.cn-lbl { display: block; font-size: 13px; color: var(--muted); margin-top: 8px; max-width: 180px; margin-left: auto; margin-right: auto; line-height: 1.4; }
+.clinic-src { grid-column: 1 / -1; text-align: center; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
+@media (max-width: 620px) { .clinic-inner { gap: 20px 12px; } .cn-lbl { font-size: 11px; } }
+
+/* ── 5 Accordion ── */
+.acc-section { padding: 72px 24px; background: var(--white); }
+@media (max-width: 768px) { .acc-section { padding: 48px 24px; } }
+.acc-inner { max-width: var(--narrow); margin: 0 auto; }
+.acc-item { border-bottom: 1px solid var(--border); }
+.acc-item:first-child { border-top: 1px solid var(--border); }
+.acc-q { width: 100%; background: none; border: none; padding: 20px 0; font-size: 17px; font-weight: 600; color: var(--black); text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: inherit; gap: 16px; }
+.acc-q svg { width: 22px; height: 22px; stroke: var(--muted); stroke-width: 1.5; fill: none; flex-shrink: 0; transition: transform 0.3s; }
+.acc-item.open .acc-q svg { transform: rotate(45deg); }
+.acc-a { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1); }
+.acc-item.open .acc-a { max-height: 1200px; padding-bottom: 24px; }
+.acc-a p { font-size: 15px; line-height: 1.65; color: var(--body); }
+.acc-a a { color: var(--accent); text-decoration: underline; }
+.acc-steps { margin: 0; padding-left: 20px; display: grid; gap: 12px; }
+.acc-steps li { font-size: 15px; line-height: 1.6; color: var(--body); }
+.acc-steps strong { color: var(--black); }
+.inout { display: grid; grid-template-columns: 1fr; gap: 20px; }
+@media (min-width: 560px) { .inout { grid-template-columns: 1fr 1fr; } }
+.inout-col h4 { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; }
+.inout-col.yes h4 { color: var(--green); }
+.inout-col.no h4 { color: var(--muted); }
+.inout-col.yes ul { list-style: none; display: grid; gap: 9px; }
+.inout-col.yes li { font-size: 14px; display: flex; align-items: center; gap: 9px; color: var(--body); }
+.inout-col.yes li svg { width: 15px; height: 15px; stroke: var(--green); stroke-width: 3; fill: none; flex-shrink: 0; }
+.no-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.no-pills span { font-size: 13px; color: var(--muted); background: var(--light); border: 1px solid var(--border); border-radius: 50px; padding: 6px 13px; text-decoration: line-through; }
+
+/* ── 6 Creator videos ── */
+.creators { padding: 80px 24px; background: var(--light); }
+@media (max-width: 768px) { .creators { padding: 52px 24px; } }
+.creators-head { text-align: center; max-width: 640px; margin: 0 auto 36px; }
+.creators-head h2 { font-size: clamp(26px, 4vw, 40px); }
+.creators-row { display: flex; gap: 14px; overflow-x: auto; scrollbar-width: none; padding: 4px 4px 12px; max-width: var(--max); margin: 0 auto; scroll-snap-type: x mandatory; }
+.creators-row::-webkit-scrollbar { display: none; }
+.creator-card { position: relative; flex: 0 0 180px; aspect-ratio: 9/16; border-radius: 12px; overflow: hidden; border: none; padding: 0; cursor: pointer; background: var(--cream); scroll-snap-align: start; }
+@media (min-width: 900px) { .creator-card { flex: 0 0 200px; } }
+.creator-card img { width: 100%; height: 100%; object-fit: cover; }
+.creator-card .cc-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 46px; height: 46px; border-radius: 50%; background: rgba(255,255,255,0.92); display: flex; align-items: center; justify-content: center; }
+.creator-card .cc-play svg { width: 18px; height: 18px; fill: var(--navy); margin-left: 3px; }
+.creator-card .cc-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 28px 12px 12px; font-size: 12px; font-weight: 600; color: #fff; text-align: left; line-height: 1.35; background: linear-gradient(to top, rgba(0,0,0,0.72), transparent); }
+
+/* ── 9 Rooted in science (doctor) ── */
+.rooted { padding: 90px 24px; background: var(--white); }
+@media (max-width: 768px) { .rooted { padding: 56px 24px; } }
+.rooted-grid { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
+@media (min-width: 860px) { .rooted-grid { grid-template-columns: 1fr 1fr; gap: 64px; } }
+.rooted-text h2 { font-size: clamp(26px, 4vw, 40px); margin-bottom: 20px; }
+.rooted-quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(17px, 2vw, 21px); line-height: 1.6; color: var(--black); margin-bottom: 20px; }
+.rooted-name { font-size: 14px; font-weight: 700; color: var(--black); }
+.rooted-role { font-size: 13px; color: var(--muted); }
+.rooted-link { display: inline-block; margin-top: 18px; font-size: 14px; font-weight: 600; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ── 11 Patent + guarantee head ── */
+.pg-head { text-align: center; max-width: 640px; margin: 0 auto 40px; }
+.pg-head h2 { font-size: clamp(28px, 4vw, 44px); }
+
+/* ── 13 Trusted-by grid (dark band) ── */
+.trusted { padding: 90px 24px; background: var(--navy); }
+@media (max-width: 768px) { .trusted { padding: 60px 24px; } }
+.trusted-head { text-align: center; max-width: 680px; margin: 0 auto 44px; }
+.trusted-head h2 { color: #fff; font-size: clamp(26px, 4vw, 42px); }
+.trusted-head p { color: rgba(255,255,255,0.7); font-size: 16px; margin-top: 8px; }
+.trusted-grid { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (min-width: 820px) { .trusted-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
+.trust-card { position: relative; border-radius: 12px; overflow: hidden; background: rgba(255,255,255,0.05); }
+.trust-card img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.trust-card .tc-body { padding: 16px; }
+.trust-card .tc-name { font-family: 'Playfair Display', serif; font-size: 18px; color: #fff; }
+.trust-card .tc-role { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+.trust-card .tc-pill { display: inline-block; margin-top: 10px; font-size: 11px; font-weight: 700; color: #fff; background: var(--accent); padding: 4px 10px; border-radius: 50px; }
+.trusted-note { text-align: center; font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 28px; }
+
+/* ── 16 Science journal (dark band) ── */
+.journal { padding: 90px 24px; background: #15110e; }
+@media (max-width: 768px) { .journal { padding: 56px 24px; } }
+.journal-head { text-align: center; max-width: 640px; margin: 0 auto 40px; }
+.journal-head .section-eyebrow { color: var(--clinical-green); }
+.journal-head h2 { color: #fff; font-size: clamp(26px, 4vw, 42px); }
+.journal-grid { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 760px) { .journal-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+.journal-card { display: block; text-decoration: none; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px; transition: background 0.2s; }
+.journal-card:hover { background: rgba(255,255,255,0.08); }
+.jc-tag { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--clinical-green); margin-bottom: 14px; }
+.journal-card h3 { color: #fff; font-size: 19px; line-height: 1.3; }
+.jc-meta { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 14px; }
+
+/* ── 18 Final offer block ── */
+.final-offer { padding: 90px 24px; background: var(--cream); }
+@media (max-width: 768px) { .final-offer { padding: 56px 24px; } }
+.final-offer-inner { max-width: 880px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; background: var(--white); border: 1px solid var(--border); border-radius: 18px; padding: 28px; }
+@media (min-width: 720px) { .final-offer-inner { grid-template-columns: 300px 1fr; gap: 40px; padding: 36px; } }
+.fo-thumb { position: relative; border-radius: 12px; overflow: hidden; background: var(--cream); aspect-ratio: 1; }
+.fo-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.fo-body h2 { font-size: clamp(24px, 3.4vw, 34px); line-height: 1.12; }
+.fo-positioning { font-family: 'Playfair Display', serif; font-style: italic; font-size: 16px; color: var(--body); margin-top: 10px; line-height: 1.5; }
+.fo-select-wrap { display: block; margin-top: 20px; }
+.fo-select-wrap > span { display: block; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 7px; }
+.tier-dropdown { width: 100%; font-family: inherit; font-size: 15px; font-weight: 600; color: var(--black); background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; padding: 13px 14px; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a8178' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-size: 18px; padding-right: 40px; }
+
+/* ── Sticky bottom bar (new anatomy: thumb · dropdown · CTA) ── */
+.sticky-thumb { flex: 0 0 40px; height: 40px; border-radius: 8px; overflow: hidden; background: var(--cream); }
+.sticky-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.sticky-select { flex: 1; min-width: 0; }
+.sticky-select .tier-dropdown { padding: 9px 30px 9px 11px; font-size: 13px; border-radius: 8px; background-position: right 8px center; background-size: 16px; }
+.cta-label { display: inline; }
+
+/* Green benefit pill on tier cards (IM8 inline SAVE pill) */
+.tier-savepill { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 0.03em; color: #2f7d4f; background: #e7f3ec; border-radius: 50px; padding: 3px 9px; margin-top: 5px; }
+
+/* IM8-style "SUBSCRIBE & SAVE" / "SELECT" labels */
+.offer-head .oh-title { color: var(--black); letter-spacing: 0.08em; }
+.gs-label { text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: var(--muted); }
+
+/* ── Serif section eyebrows that sit on dark use lighter tone (handled inline) ── */
