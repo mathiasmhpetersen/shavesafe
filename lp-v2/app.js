@@ -48,8 +48,8 @@
         var g = o.getAttribute('data-gender');
         opts.forEach(function (x) { x.classList.toggle('active', x === o); });
         if (main && IMG[g]) main.src = IMG[g];
-        // swap future-gift names (Bikini Line Repair Cream ↔ male repair product)
-        document.querySelectorAll('.tf-name[data-gift-f]').forEach(function (n) {
+        // swap gift names (Bikini Line Repair Creme ↔ male repair product) in welcome + future gifts
+        document.querySelectorAll('[data-gift-f]').forEach(function (n) {
           var val = g === 'M' ? n.getAttribute('data-gift-m') : n.getAttribute('data-gift-f');
           if (val) n.textContent = val;
         });
@@ -114,7 +114,7 @@
   // tier cards → A/B
   document.querySelectorAll('.tier-card').forEach(function (card) {
     card.addEventListener('click', function (e) {
-      if (e.target.closest('.tier-pershave') || e.target.closest('.tier-future')) return;
+      if (e.target.closest('.tier-pershave') || e.target.closest('.gift-collapse')) return;
       applyTier(card.getAttribute('data-tier'));
     });
   });

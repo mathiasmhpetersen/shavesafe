@@ -16,19 +16,20 @@ renders with these numbers; remaining unknowns are flagged `TODO-PLAN-ID` / `TOD
 
 ## 🔴 BLOCKING — need Mathias / data before go-live
 
-### 0. ⚠️ Hero image contradicts the tier gift logic
-The new hero/offer image (`img/offer-hero.jpg`) says **"Velkomstkit 406 kr — gratis ·
-helt gratis i din første pakke"** and shows **all four** gifts free up front:
-Bikini Line Repair Creme (229) + Skraber (99) + Travel Case (49) + Razor Holder (29) = **406 kr**.
-But the current tier cards (per your 27 Oct rules) give only **Razor Holder + Travel Case
-(78 kr)** as the welcome gift, with the **Bikini cream as a *future* gift at levering 3**,
-and the skraber is already free inside the 79 kr prøvepakke.
-👉 **Which is correct?** Either (a) update the tier-card gift logic to match the image
-(all 4 free in first pakke, 406 kr value), or (b) swap the image for one that matches the
-current welcome-gift split. I did **not** change the offer logic — only replaced the picture
-and removed the order-1 strip, the tier sub-notes and the cart upgrade as you asked.
-Image note: it also reframes the pack as **"12 skrabehoveder + 3 gel = 3 måneders barbering"**,
-which differs from the current refill wording "100 ml gel + 4 blade".
+### 0. Welcome gift — RESOLVED for the 12-week tier (29 Oct)
+Per your direction, the **12-ugers (tier A) gratis velkomstgave is now all 4 products =
+406 kr**, matching `img/offer-hero.jpg`: Bikini Line Repair Creme (229) + ShaveSafe Skraber (99)
++ Travel Case (49) + Razor Holder (29), "Helt gratis i din første pakke". Tier A's old
+"future gifts" row was removed (the Bikini cream is now in the welcome kit).
+
+Still to confirm:
+- **Tier B (4-ugers)** is unchanged: welcome = Razor Holder (29 kr), future gifts = Travel Case
+  (lev. 3) + Bikini cream (lev. 6). Tell me if B should change too.
+- **Skraber appears both** in the prøvepakke (free) and in the 406 kr kit — intended per the image, but confirm.
+- **Fulfilment timing:** card now says "Helt gratis i din første pakke" (ships today), not "med 1. refill".
+- **"12 skrabehoveder + 3 gel = 3 måneders barbering"** framing on the image still differs from the
+  refill wording "100 ml gel + 4 blade" — align if needed.
+- Bikini cream stock (udsolgt 2026-10-27) + male-flow swap still apply (`TODO-STOCK`).
 
 
 ### 1. Welcome-gift SKUs + standalone prices
