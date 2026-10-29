@@ -1044,4 +1044,26 @@ footer img { height: 16px; margin: 0 auto 12px; opacity: 0.35; }
 .offer-head .oh-title { color: var(--black); letter-spacing: 0.08em; }
 .gs-label { text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: var(--muted); }
 
+/* ── IM8-style collapsible gift bars (welcome kit + future gifts) ── */
+.gift-collapse { margin-top: 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--light); overflow: hidden; }
+.gift-collapse.future { background: var(--white); }
+.gift-collapse > summary { list-style: none; cursor: pointer; padding: 12px 14px; display: flex; align-items: center; gap: 10px; }
+.gift-collapse > summary::-webkit-details-marker { display: none; }
+.gift-collapse > summary::marker { content: ''; }
+.gc-head { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.gc-title { font-size: 13px; font-weight: 700; color: var(--black); }
+.gc-meta { font-size: 11px; color: var(--muted); }
+.gc-chev { width: 18px; height: 18px; stroke: var(--muted); stroke-width: 2; fill: none; transition: transform 0.25s; flex-shrink: 0; }
+.gift-collapse[open] .gc-chev { transform: rotate(180deg); }
+.gc-body { padding: 2px 14px 14px; }
+.gc-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 10px; }
+.gc-items { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.gc-item { text-align: center; display: flex; flex-direction: column; align-items: center; }
+.gc-item img { width: 100%; max-width: 54px; aspect-ratio: 1; object-fit: contain; background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 4px; }
+.gc-when { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: var(--clinical-green); margin-top: 6px; }
+.gc-val { font-size: 11px; color: var(--muted); text-decoration: line-through; margin-top: 5px; }
+.gc-name { font-size: 10px; color: var(--body); line-height: 1.25; margin-top: 2px; }
+.gc-note { font-size: 10px; color: var(--muted); font-style: italic; margin-top: 8px; }
+@media (max-width: 380px) { .gc-items { grid-template-columns: repeat(2, 1fr); } }
+
 /* ── Serif section eyebrows that sit on dark use lighter tone (handled inline) ── */
