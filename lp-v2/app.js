@@ -42,7 +42,7 @@
     var opts = document.querySelectorAll('.gs-opt');
     if (!opts.length) return;
     var main = document.getElementById('carMain');
-    var IMG = { K: '../img/product-set.jpg', M: '../img/gel-razor-shower.jpg' }; // TODO-SHOT: dedicated male offer visual
+    var IMG = { K: '../img/offer-hero.jpg', M: '../img/gel-razor-shower.jpg' }; // TODO-SHOT: dedicated male offer visual
     opts.forEach(function (o) {
       o.addEventListener('click', function () {
         var g = o.getAttribute('data-gender');

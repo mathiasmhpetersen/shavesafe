@@ -16,6 +16,21 @@ renders with these numbers; remaining unknowns are flagged `TODO-PLAN-ID` / `TOD
 
 ## 🔴 BLOCKING — need Mathias / data before go-live
 
+### 0. ⚠️ Hero image contradicts the tier gift logic
+The new hero/offer image (`img/offer-hero.jpg`) says **"Velkomstkit 406 kr — gratis ·
+helt gratis i din første pakke"** and shows **all four** gifts free up front:
+Bikini Line Repair Creme (229) + Skraber (99) + Travel Case (49) + Razor Holder (29) = **406 kr**.
+But the current tier cards (per your 27 Oct rules) give only **Razor Holder + Travel Case
+(78 kr)** as the welcome gift, with the **Bikini cream as a *future* gift at levering 3**,
+and the skraber is already free inside the 79 kr prøvepakke.
+👉 **Which is correct?** Either (a) update the tier-card gift logic to match the image
+(all 4 free in first pakke, 406 kr value), or (b) swap the image for one that matches the
+current welcome-gift split. I did **not** change the offer logic — only replaced the picture
+and removed the order-1 strip, the tier sub-notes and the cart upgrade as you asked.
+Image note: it also reframes the pack as **"12 skrabehoveder + 3 gel = 3 måneders barbering"**,
+which differs from the current refill wording "100 ml gel + 4 blade".
+
+
 ### 1. Welcome-gift SKUs + standalone prices
 Built as specified:
 - **Tier A** (hver 12. uge): Razor Holder Silver (29 kr) + Travel Case (49 kr) → "Gratis velkomstgave · 78 kr værdi · 2 dele".

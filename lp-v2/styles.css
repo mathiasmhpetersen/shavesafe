@@ -877,8 +877,23 @@ footer img { height: 16px; margin: 0 auto 12px; opacity: 0.35; }
 @media (min-width: 900px) { .pdp { grid-template-columns: 1fr 1fr; gap: 56px; padding: 44px 24px 72px; align-items: start; } }
 .pdp-media { display: flex; flex-direction: column; gap: 12px; }
 @media (min-width: 900px) { .pdp-media { position: sticky; top: 72px; } }
-.car-main { position: relative; aspect-ratio: 1; border-radius: var(--radius); overflow: hidden; background: var(--cream); }
+.car-main { position: relative; aspect-ratio: 4/5; border-radius: 18px; overflow: hidden; background: var(--light); }
 .car-main img { width: 100%; height: 100%; object-fit: cover; }
+/* floating authority badge over the offer image (IM8 "Clinicians' Choice") */
+.car-badge {
+  position: absolute; top: 14px; left: 50%; transform: translateX(-50%); z-index: 2;
+  background: rgba(255,255,255,0.95); border: 1px solid var(--border); border-radius: 50px;
+  padding: 7px 15px; font-size: 12px; font-weight: 600; color: var(--black); white-space: nowrap;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06); display: inline-flex; align-items: center; gap: 7px;
+}
+.car-badge svg { width: 13px; height: 13px; stroke: var(--clinical-green); stroke-width: 2.4; fill: none; }
+/* "Se ingredienser" pill under thumbs (IM8 "View Nutrition Label") */
+.car-label {
+  display: block; text-align: center; margin-top: 4px; padding: 13px; border: 1px solid var(--border);
+  border-radius: 12px; background: var(--light); font-size: 13px; font-weight: 600; color: var(--black);
+  text-decoration: none;
+}
+.car-label:hover { background: var(--cream); }
 .car-thumbs { display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
 .car-thumbs::-webkit-scrollbar { display: none; }
 .car-thumb { position: relative; flex: 0 0 64px; height: 64px; border: 1.5px solid var(--border); border-radius: 9px; overflow: hidden; background: var(--cream); cursor: pointer; padding: 0; }
@@ -896,7 +911,7 @@ footer img { height: 16px; margin: 0 auto 12px; opacity: 0.35; }
 .pdp-h1 { font-size: clamp(28px, 4.4vw, 44px); line-height: 1.08; letter-spacing: -0.01em; margin-top: 8px; }
 .pdp-sub { font-size: 15px; line-height: 1.6; color: var(--body); margin-top: 12px; max-width: 460px; }
 .pill-checks { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-.pill-checks span { font-size: 12px; font-weight: 600; color: var(--black); background: var(--light); border: 1px solid var(--border); border-radius: 50px; padding: 6px 13px; position: relative; padding-left: 26px; }
+.pill-checks span { font-size: 12px; font-weight: 600; color: var(--black); background: var(--white); border: 1px solid var(--border); border-radius: 50px; padding: 7px 14px; position: relative; padding-left: 28px; }
 .pill-checks span::before { content: ''; position: absolute; left: 11px; top: 50%; width: 9px; height: 5px; border-left: 2px solid var(--green); border-bottom: 2px solid var(--green); transform: translateY(-70%) rotate(-45deg); }
 
 /* Kvinde / Mand selector */
@@ -1021,5 +1036,12 @@ footer img { height: 16px; margin: 0 auto 12px; opacity: 0.35; }
 .sticky-select { flex: 1; min-width: 0; }
 .sticky-select .tier-dropdown { padding: 9px 30px 9px 11px; font-size: 13px; border-radius: 8px; background-position: right 8px center; background-size: 16px; }
 .cta-label { display: inline; }
+
+/* Green benefit pill on tier cards (IM8 inline SAVE pill) */
+.tier-savepill { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 0.03em; color: #2f7d4f; background: #e7f3ec; border-radius: 50px; padding: 3px 9px; margin-top: 5px; }
+
+/* IM8-style "SUBSCRIBE & SAVE" / "SELECT" labels */
+.offer-head .oh-title { color: var(--black); letter-spacing: 0.08em; }
+.gs-label { text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: var(--muted); }
 
 /* ── Serif section eyebrows that sit on dark use lighter tone (handled inline) ── */
