@@ -1,0 +1,69 @@
+/* =============================================================
+   ShaveSafe LP v2 — tokens.css
+   Design direction: "DERMATOLOG" — journal, not advertising.
+   One cold brand world (teal). All warmth comes from skin
+   photography, never from the UI. Supersedes the Del 7
+   lavender/gold brief. Grep this project for any hex that is
+   NOT declared here before shipping.
+   ============================================================= */
+
+:root {
+  /* ── Colour — the only hues allowed on the page ── */
+  --bg:         #FBFBF9;              /* page background — paper white, never #FFF */
+  --bg-2:       #F0F1EE;              /* alternate bands · selected tier fill · gift tiles · person-quote cards */
+  --ink:        #0F1720;             /* headlines · body · primary button fill */
+  --ink-2:      #5E6873;             /* secondary text · captions · struck prices · eyebrows */
+  --teal:       #1F6F78;             /* THE one brand colour */
+  --teal-2:     #DCEBEC;             /* teal tint — "Spar %" pill bg · highlighted comparison column */
+  --teal-deep:  #174F56;             /* text on --teal-2 · hover state of teal elements */
+  --line:       rgba(15,23,32,.10);  /* every border and divider */
+  --band:       #1F6F78;             /* full-bleed band: clinical stats + trusted-by grid (white text) */
+  --band-dark:  #0F1720;             /* full-bleed band: mechanism · science journal · final CTA */
+  --skin:       #E9D6CF;             /* photo colour-grade target only — NOT a UI colour */
+
+  /* text tuned for the teal / dark bands */
+  --on-band:       #FFFFFF;
+  --on-band-soft:  rgba(255,255,255,.72);
+  --on-band-line:  rgba(255,255,255,.26);
+  --on-dark:       #FBFBF9;
+  --on-dark-soft:  rgba(251,251,249,.68);
+  --on-dark-line:  rgba(251,251,249,.12);
+
+  /* ── Type ── */
+  --serif: "Instrument Serif", "GT Super Display", "Tiempos Headline", Georgia, serif;
+  --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --fs-h1:    clamp(40px, 6.2vw, 64px);
+  --lh-h1:    1.02;
+  --fs-h2:    clamp(32px, 4.4vw, 44px);
+  --lh-h2:    1.08;
+  --fs-h3:    clamp(20px, 2.4vw, 24px);
+  --lh-h3:    1.2;
+  --fs-price: clamp(40px, 5vw, 48px);
+  --fs-stat:  clamp(44px, 7vw, 56px);   /* clinical-stats numeral */
+  --fs-body:  clamp(16px, 1.3vw, 17px);
+  --lh-body:  1.55;
+  --fs-eyebrow: 12px;
+  --tr-eyebrow: 0.12em;
+
+  /* ── Spacing — strict 8px grid ── */
+  --s1: 8px;  --s2: 16px; --s3: 24px; --s4: 32px;
+  --s5: 48px; --s6: 64px; --s7: 96px; --s8: 128px; --s9: 160px;
+  --section:    128px;   /* desktop top/bottom */
+  --section-sm: 80px;    /* mobile top/bottom */
+
+  /* ── Structure ── */
+  --max:      1200px;
+  --measure:  62ch;
+  --buybox:   480px;
+  --r-card:   16px;   /* tier cards, media frames */
+  --r-tile:   12px;   /* gift tiles, small cards */
+  --r-pill:   999px;  /* buttons, pills */
+  --r-seal:   8px;    /* seals, portraits */
+  --r-img:    24px;   /* section images on desktop */
+
+  /* ── One shadow language ── */
+  --shadow-img:  0 24px 48px rgba(15,23,32,.12);
+  --shadow-btn:  0 8px 24px rgba(15,23,32,.20);
+  --grade-img:   saturate(.92) contrast(1.02);
+}

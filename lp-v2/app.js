@@ -10,17 +10,45 @@
     document.body.classList.add('debug');
   }
 
-  /* ── Reveal on scroll ── */
+  /* ── Fade-up on scroll (quiet, once, at 20% visibility) ── */
   if (!reduce && 'IntersectionObserver' in window) {
     var obs = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
     document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
   } else {
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
   }
+
+  /* ── Number ticker — counts up once when the stat scrolls in ── */
+  (function () {
+    var nums = document.querySelectorAll('[data-ticker]');
+    if (!nums.length) return;
+    function tick(el) {
+      var target = parseFloat(el.getAttribute('data-ticker'));
+      var suffix = el.getAttribute('data-suffix') || '';
+      if (reduce || isNaN(target)) { el.textContent = target + suffix; return; }
+      var start = null, dur = 1100;
+      function frame(ts) {
+        if (start === null) start = ts;
+        var p = Math.min((ts - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased) + suffix;
+        if (p < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+    if ('IntersectionObserver' in window) {
+      var nObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { tick(e.target); nObs.unobserve(e.target); } });
+      }, { threshold: 0.6 });
+      nums.forEach(function (n) { nObs.observe(n); });
+    } else {
+      nums.forEach(function (n) { tick(n); });
+    }
+  })();
 
   /* ── PDP image carousel ── */
   (function () {
@@ -95,9 +123,15 @@
   }
 
   function applyTier(tier) {
+    var changed = tier !== selectedTier;
     selectedTier = tier;
     document.querySelectorAll('.tier-card').forEach(function (c) {
-      c.classList.toggle('selected', c.getAttribute('data-tier') === tier);
+      var isSel = c.getAttribute('data-tier') === tier;
+      c.classList.toggle('selected', isSel);
+      if (isSel && changed && !reduce) {
+        var strip = c.querySelector('.gift-collapse');
+        if (strip) { strip.classList.remove('fade-swap'); void strip.offsetWidth; strip.classList.add('fade-swap'); }
+      }
     });
     document.querySelectorAll('[data-tier-select]').forEach(function (sel) { sel.value = tier; });
     var url = ctaUrlFor(tier);

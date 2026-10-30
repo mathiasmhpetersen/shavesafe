@@ -119,3 +119,50 @@ stays on all incl. the one-time tier.
 ### Resolved since first draft
 - ~~Tier A quarterly pricing~~ → both tiers use the same 189 kr refill; difference is interval + gifts + guarantee.
 - ~~Welcome kit = rejseetui/holder?~~ → replaced by the specified Razor Holder Silver + Travel Case (pending SKU confirmation, #1).
+
+---
+
+## Del 7 visual-polish pass — "Dermatolog" direction (30 Oct 2026)
+
+The design-system pass is done. It **replaces the Del 7 lavender/gold brief** with the
+"Dermatolog" direction you specified: one cold brand world (teal `#1F6F78`), paper-white
+cold UI, all warmth from skin photography only. Coral/peach/Playfair are fully removed.
+
+**Delivered:** `tokens.css` (single source of colour/type/spacing truth), rewritten
+`styles.css` (dermatolog system: 8px grid, 128/80 section rhythm, seals, doctor block,
+clinical-stats band, image-compare sliders, masonry reviews, blurred sticky bar),
+updated `index.html` (Instrument Serif + Inter, seals replacing trust icons, 6 italic-teal
+second-line headlines, number-ticker hooks), `app.js` (fade-up at 20%, number ticker,
+tier-switch crossfade — all gated by `prefers-reduced-motion`), and
+`design-review/{before,after}-{1440,390}.png`.
+
+**Decisions made (reversible — logged here):**
+- **Vanilla, no Arc/npx.** Arc's primitives (fade-up, number-ticker, image-compare,
+  marquee-equivalent, sticky bar) are reimplemented in vanilla JS/CSS so the static-file
+  stack and deploy stay unchanged. Behaviour matches the brief incl. reduced-motion.
+- **Marquee skipped** — Del 0 FINAL has no press-logo strip, so there is nothing to
+  marquee. Press logos exist in `/img` (berlingske, børsen, dr, iform, …) if you later
+  want a logo band; say the word and I'll add one.
+- **Fonts via Google Fonts** (`Instrument Serif` + `Inter`, `display=swap`, preconnected),
+  **not self-hosted.** Self-hosting is the only Del 7 checklist item not met and is the
+  recommended follow-up for the last few Lighthouse points — see below.
+
+**Needs your decision / follow-up:**
+1. **Self-host the two fonts** for the Lighthouse ≥90/95 target (download Instrument Serif
+   + Inter woff2, `@font-face` with `font-display: swap`, drop the Google `<link>`). I left
+   Google Fonts so the page ships now; this is a 20-min hardening task.
+2. **Run Lighthouse on the deployed URL.** I can't run the Lighthouse CLI in this
+   environment, so the ≥90 perf / ≥95 a11y numbers are not yet measured — only built toward
+   (self-hosted fonts, lazy images, no blocking JS, semantic headings, token contrast).
+3. **Teal italic on dark bands:** the italic headline line uses `--teal` on the dark
+   mechanism band (large type, passes 3:1). On the two **teal** bands (clinical stats,
+   trusted-by) I intentionally did *not* add an italic-teal line — it would be invisible on
+   teal. Flag if you want those lines in white-italic instead.
+4. **Intentional coloured borders** (the checklist's "only the selected tier card" rule):
+   the **seals** and the **patent/guarantee medallions** carry a `--teal` border by design,
+   per your three-new-components spec. Everything else uses `--line`.
+
+**Note on the screenshots:** headless Chrome enforces a 500px-minimum layout viewport, so
+`*-390.png` are rendered at 500px (the true narrow layout), not 375/390. Overflow was
+verified separately: at every width `scrollWidth === clientWidth` (no page horizontal
+scroll); the only `overflow-x` is the intentional creator-video and thumbnail carousels.
