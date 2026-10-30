@@ -77,8 +77,8 @@
 
   /* ── Tier selection + dropdowns + cart upgrade ── */
   var TIER_META = {
-    A: { name: 'Hver 12. uge · bedste værdi', cta: 'Læg i kurv — 79 kr' },
-    B: { name: 'Hver 4. uge · mest populær',  cta: 'Læg i kurv — 79 kr' },
+    A: { name: '90-dages forbrug · bedste værdi', cta: 'Læg i kurv — 79 kr' },
+    B: { name: '30-dages forbrug · mest populær',  cta: 'Læg i kurv — 79 kr' },
     C: { name: 'Engangskøb · uden abonnement', cta: 'Læg i kurv — 204 kr' }
   };
   var oneTimeLink = document.querySelector('[data-onetime]');
