@@ -25,9 +25,11 @@
   <title>ShaveSafe — Barbering uden knopper, kløe og indgroede hår</title>
   <meta name="description" content="Det eneste patenterede produkt i Danmark mod røde knopper og indgroede hår — og det eneste med penge-tilbage-garanti, hvis det ikke virker. Prøvepakke 79 kr, gratis velkomstgave." />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Self-hosted fonts: preload the two display weights (Instrument Serif roman + italic, latin) -->
+  <link rel="preload" href="fonts/instrumentserif-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/instrumentserif-400-italic-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="fonts.css" />
+  <link rel="stylesheet" href="tokens.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -43,9 +45,9 @@
   <!-- ══ 2 · TRUST MICRO-BAR ══ -->
   <div class="microbar">
     <div class="microbar-inner">
-      <span><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Knop-fri garanti</span>
-      <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Gratis fragt på abonnement</span>
-      <span><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Dansk patent</span>
+      <span class="seal">Knop-fri garanti</span>
+      <span class="seal">Gratis fragt på abonnement</span>
+      <span class="seal">Dansk patent</span>
     </div>
   </div>
 
@@ -84,7 +86,7 @@
       <h1 class="pdp-h1">Barbering uden knopper, kløe og indgroede hår</h1>
       <p class="pdp-sub">Patenteret gel der holder hud og blad rene for bakterier under barberingen — så din hud slipper for at reagere bagefter.</p>
       <div class="pill-checks">
-        <span>Patenteret</span><span>Klinisk testet</span><span>Knop-fri garanti</span>
+        <span class="seal">Patenteret</span><span class="seal">Klinisk testet</span><span class="seal">Knop-fri garanti</span>
       </div>
 
       <!-- Kvinde / Mand selector (swaps imagery + gift logic) -->
@@ -244,9 +246,9 @@
   <!-- ══ 4 · CLINICAL NUMBERS STRIP ══ -->
   <section class="clinic-strip">
     <div class="clinic-inner">
-      <div class="clinic-num reveal"><span class="cn-big">94 %</span><span class="cn-lbl">oplever færre knopper efter 1–2 barberinger</span></div>
-      <div class="clinic-num reveal reveal-d1"><span class="cn-big">92 %</span><span class="cn-lbl">ville anbefale ShaveSafe</span></div>
-      <div class="clinic-num reveal reveal-d2"><span class="cn-big">89 %</span><span class="cn-lbl">føler sig mere selvsikre</span></div>
+      <div class="clinic-num reveal"><span class="cn-big" data-ticker="94" data-suffix=" %">94 %</span><span class="cn-lbl">oplever færre knopper efter 1–2 barberinger</span></div>
+      <div class="clinic-num reveal reveal-d1"><span class="cn-big" data-ticker="92" data-suffix=" %">92 %</span><span class="cn-lbl">ville anbefale ShaveSafe</span></div>
+      <div class="clinic-num reveal reveal-d2"><span class="cn-big" data-ticker="89" data-suffix=" %">89 %</span><span class="cn-lbl">føler sig mere selvsikre</span></div>
       <p class="clinic-src reveal reveal-d3">Klinisk studie 2024 · 127 deltagere · 8 uger</p>
     </div>
   </section>
@@ -327,7 +329,7 @@
   <section class="creators">
     <div class="creators-head reveal">
       <div class="section-eyebrow">Ægte videoer</div>
-      <h2>Det siger dem der har prøvet alt</h2>
+      <h2>Det siger dem der <em class="ital">har prøvet alt</em></h2>
     </div>
     <div class="creators-row" id="creatorsRow">
       <!-- TODO-SHOT: ShaveSafe creator/UGC 9:16 (native, phone-shot, subtitle-burned). Format ref: /refs/creator-emma-ranum.mp4 -->
@@ -344,7 +346,7 @@
   <section class="quality">
     <div class="quality-head reveal">
       <div class="section-eyebrow">Ikke alle barberprodukter er ens</div>
-      <h2>Vi sætter barren højt</h2>
+      <h2>Vi sætter <em class="ital">barren højt</em></h2>
     </div>
     <div class="quality-grid">
       <div class="quality-item reveal">
@@ -374,7 +376,7 @@
   <section class="mechanism">
     <div class="mechanism-inner">
       <div class="section-eyebrow reveal">Hvorfor får du knopper?</div>
-      <h2 class="reveal">Det er ikke din hud.<br/>Det er <strong>bakterier.</strong></h2>
+      <h2 class="reveal">Det er ikke din hud.<br/>Det er <span class="ital">bakterier.</span></h2>
       <p class="mechanism-lead reveal">Vi er ikke det pæneste produkt på hylden. Vi er det eneste i Danmark med patent på effekten mod røde knopper og indgroede hår — og det eneste der giver dig <strong>pengene tilbage, hvis det ikke virker.</strong></p>
       <div class="mech-anim reveal" id="mechAnim">
         <div class="mech-stage">
@@ -404,6 +406,10 @@
         <p class="rooted-quote">“Problemet med barberingsknopper og indgroede hår skyldes bakterier på huden og hårsækkene. Ofte opstår det efter barbering, hvor bladet på skraberen ikke har været rigtig rent. Nybarberede damebikini-snit og nybarberede armhuler er mest udsatte.”</p>
         <p class="rooted-name">Lise-Lotte Hergel</p>
         <p class="rooted-role">Praktiserende læge</p>
+        <div class="seal-row" style="margin-top:var(--s3)">
+          <span class="seal">Anbefalet af læger</span>
+          <span class="seal">Klinisk testet 2024</span>
+        </div>
         <a class="rooted-link" href="#advisors">Mød vores videnskabelige rådgivere →</a>
       </div>
       <div class="rooted-media reveal reveal-d1">
@@ -420,7 +426,7 @@
   <section class="ba-section">
     <div class="ba-head reveal">
       <div class="section-eyebrow">Reelle resultater</div>
-      <h2>Før &amp; efter</h2>
+      <h2>Før &amp; <em class="ital">efter</em></h2>
       <p>Reelle billeder. Ingen filter. Nana svarer selv, hvis du vil se flere.</p>
     </div>
     <div class="ba-grid">
@@ -450,7 +456,7 @@
 
   <!-- ══ 11 · DE ENESTE DER TØR — PATENT + GARANTI ══ -->
   <section class="pg-section">
-    <div class="pg-head reveal"><h2>De eneste i Danmark der tør</h2></div>
+    <div class="pg-head reveal"><h2>De eneste i Danmark <em class="ital">der tør</em></h2></div>
     <div class="pg-grid">
       <div class="pg-card reveal" data-todo>
         <span class="todo-badge">TODO-PATENT-NO</span>
@@ -471,14 +477,19 @@
   <section class="compare">
     <div class="compare-inner">
       <h2 class="reveal">Hvorfor ShaveSafe</h2>
+      <div class="seal-row reveal" style="justify-content:center;margin-bottom:var(--s5)">
+        <span class="seal">Dansk patent</span>
+        <span class="seal">Klinisk testet 2024</span>
+        <span class="seal">Penge-tilbage-garanti</span>
+      </div>
       <div class="compare-wrap reveal">
         <table class="compare-table">
           <thead>
             <tr>
               <th></th>
               <th class="col-us"><img class="ch-thumb" src="../img/gel-product-cutout.png" alt="ShaveSafe" data-todo /><span class="ch-name">ShaveSafe</span></th>
-              <th><img class="ch-thumb" src="../img/razor-handle-cutout.png" alt="Typisk abonnement" style="filter:grayscale(1);opacity:.6" /><span class="ch-name">Typisk DTC-skraber&shy;abonnement</span></th>
-              <th><img class="ch-thumb" src="../img/razor-closeup.jpg" alt="Supermarked" style="filter:grayscale(1);opacity:.6" /><span class="ch-name">Skum + engangs&shy;skraber</span></th>
+              <th><img class="ch-thumb" src="../img/razor-handle-cutout.png" alt="Typisk abonnement" /><span class="ch-name">Typisk DTC-skraber&shy;abonnement</span></th>
+              <th><img class="ch-thumb" src="../img/razor-closeup.jpg" alt="Supermarked" /><span class="ch-name">Skum + engangs&shy;skraber</span></th>
             </tr>
           </thead>
           <tbody>
@@ -487,9 +498,9 @@
             <tr><td>Klinisk testet (2024, 127 deltagere)</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
             <tr><td>Penge-tilbage-garanti hvis knopperne ikke forsvinder</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
             <tr><td>0 % parfume / parabener / farvestoffer</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
-            <tr><td>Svensk stål, 5+1 blade</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="yes"><svg viewBox="0 0 24 24" style="stroke:#9a9488"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
+            <tr><td>Svensk stål, 5+1 blade</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="yes"><svg class="neutral" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
             <tr><td>Udviklet og produceret i Danmark</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
-            <tr><td>Forhandles i Matas og på apoteker</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="yes"><svg viewBox="0 0 24 24" style="stroke:#9a9488"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
+            <tr><td>Forhandles i Matas og på apoteker</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="yes"><svg class="neutral" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
             <tr><td>Opsig med ét klik</td><td class="col-us yes"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td><td class="no"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
           </tbody>
         </table>
@@ -517,7 +528,7 @@
   <section class="reviews-section">
     <div class="reviews-header reveal">
       <div class="section-eyebrow">Viser vores 5-stjernede anmeldelser</div>
-      <h2>Studiet sagde 94 % færre knopper. Sådan føles det.</h2>
+      <h2>Studiet sagde 94 % færre knopper. <em class="ital">Sådan føles det.</em></h2>
       <div class="reviews-rating">
         <span class="reviews-big">4.8</span>
         <div class="reviews-stars">
