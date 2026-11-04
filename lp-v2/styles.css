@@ -115,6 +115,10 @@ body.debug [data-todo] { outline: 2px dashed #b91c1c; outline-offset: 2px; }
 /* =============================================================
    2 · TRUST MICRO-BAR  (seals)
    ============================================================= */
+/* micro-bar items — icon + text (IM8 style, not boxed) */
+.mb-item { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: var(--ink); white-space: nowrap; }
+.mb-item svg { width: 16px; height: 16px; stroke: var(--teal); stroke-width: 1.8; fill: none; flex-shrink: 0; }
+@media (max-width: 680px) { .mb-item { font-size: 12px; gap: 6px; } .mb-item svg { width: 14px; height: 14px; } }
 .microbar { border-bottom: 1px solid var(--line); background: var(--bg); padding: 12px 16px; }
 .microbar-inner {
   max-width: var(--max); margin: 0 auto;
