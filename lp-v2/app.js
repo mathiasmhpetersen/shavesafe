@@ -105,9 +105,9 @@
 
   /* ── Tier selection + dropdowns + cart upgrade ── */
   var TIER_META = {
-    A: { name: '90-dages forbrug · bedste værdi', cta: 'Læg i kurv — 79 kr' },
-    B: { name: '30-dages forbrug · mest populær',  cta: 'Læg i kurv — 79 kr' },
-    C: { name: 'Engangskøb · uden abonnement', cta: 'Læg i kurv — 204 kr' }
+    A: { name: '90-dages forbrug · bedste værdi', pick: '90-dages forbrug (Spar 30 %)', sub: 'ca. 6 kr / barbering', mo: 'Læg i kurv — 142 kr/md', cta: 'Læg i kurv — 79 kr' },
+    B: { name: '30-dages forbrug · mest populær',  pick: '30-dages forbrug',             sub: 'ca. 8 kr / barbering', mo: 'Læg i kurv — 189 kr/md', cta: 'Læg i kurv — 79 kr' },
+    C: { name: 'Engangskøb · uden abonnement',     pick: 'Engangskøb',                   sub: 'uden abonnement',     mo: 'Læg i kurv — 204 kr',   cta: 'Læg i kurv — 204 kr' }
   };
   var oneTimeLink = document.querySelector('[data-onetime]');
   var ONETIME_URL = oneTimeLink ? oneTimeLink.getAttribute('href') : 'https://shavesafe.dk/collections/provepakke?tier=engangskoeb';
@@ -139,8 +139,17 @@
       a.setAttribute('href', url);
       var label = a.querySelector('.cta-label');
       if (label) {
-        label.textContent = (tier !== 'C' && upgradeOn) ? 'Læg i kurv — 268 kr' : TIER_META[tier].cta;
+        if (tier !== 'C' && upgradeOn) label.textContent = 'Læg i kurv — 268 kr';
+        else label.textContent = a.hasAttribute('data-cta-mo') ? TIER_META[tier].mo : TIER_META[tier].cta;
       }
+    });
+    // sticky picker display
+    var spkName = document.getElementById('spkName');
+    var spkSub = document.getElementById('spkSub');
+    if (spkName) spkName.textContent = TIER_META[tier].pick;
+    if (spkSub) spkSub.textContent = TIER_META[tier].sub;
+    document.querySelectorAll('.sticky-picker-menu [data-pick]').forEach(function (b) {
+      b.classList.toggle('active', b.getAttribute('data-pick') === tier);
     });
     if (stickyName) stickyName.textContent = TIER_META[tier].name;
   }
@@ -161,6 +170,30 @@
   // one-time text link → select C
   if (oneTimeLink) {
     oneTimeLink.addEventListener('click', function () { applyTier('C'); /* navigation proceeds */ });
+  }
+
+  // custom sticky picker (90 / 30 dages forbrug)
+  var picker = document.getElementById('stickyPicker');
+  if (picker) {
+    var pbtn = picker.querySelector('.sticky-picker-btn');
+    pbtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = picker.classList.toggle('open');
+      pbtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    picker.querySelectorAll('[data-pick]').forEach(function (opt) {
+      opt.addEventListener('click', function () {
+        applyTier(opt.getAttribute('data-pick'));
+        picker.classList.remove('open');
+        pbtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('#stickyPicker')) {
+        picker.classList.remove('open');
+        pbtn.setAttribute('aria-expanded', 'false');
+      }
+    });
   }
 
   // cart upgrade (A/B only)
