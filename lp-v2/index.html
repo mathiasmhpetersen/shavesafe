@@ -645,15 +645,26 @@
 
   <!-- STICKY BOTTOM BAR (tier-aware, IM8) -->
   <div class="sticky-bar">
-    <div class="sticky-thumb"><img src="../img/offer-hero.jpg" alt="Prøvepakke" /></div>
-    <label class="sticky-select">
-      <select class="tier-dropdown" data-tier-select aria-label="Vælg pakke">
-        <option value="A">90-dages forbrug · bedste værdi</option>
-        <option value="B">30-dages forbrug · mest populær</option>
-        <option value="C">Engangskøb — 204 kr</option>
-      </select>
-    </label>
-    <a class="cta-btn" data-cta href="https://shavesafe.dk/collections/provepakke?tier=12uger"><span class="cta-label">Læg i kurv — 79 kr</span></a>
+    <div class="sticky-left">
+      <div class="sticky-thumb"><img src="../img/offer-hero.jpg" alt="Prøvepakke" /></div>
+      <div class="sticky-title">ShaveSafe prøvepakke + gratis velkomstkit</div>
+    </div>
+    <div class="sticky-right">
+      <div class="sticky-picker" id="stickyPicker">
+        <button class="sticky-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+          <span class="spk-main">
+            <span class="spk-name" id="spkName">90-dages forbrug (Spar 30 %)</span>
+            <span class="spk-sub" id="spkSub">ca. 6 kr / barbering</span>
+          </span>
+          <svg class="spk-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="sticky-picker-menu" role="listbox">
+          <button type="button" data-pick="A" role="option">90-dages forbrug</button>
+          <button type="button" data-pick="B" role="option">30-dages forbrug</button>
+        </div>
+      </div>
+      <a class="cta-btn" data-cta data-cta-mo href="https://shavesafe.dk/collections/provepakke?tier=12uger"><span class="cta-label">Læg i kurv — 142 kr/md</span></a>
+    </div>
   </div>
 
   <script src="app.js"></script>
