@@ -105,9 +105,9 @@
 
   /* ── Tier selection + dropdowns + cart upgrade ── */
   var TIER_META = {
-    A: { name: '90-dages forbrug · bedste værdi', pick: '90-dages forbrug (Spar 30 %)', sub: 'ca. 6 kr / barbering', mo: 'Læg i kurv — 142 kr/md', cta: 'Læg i kurv — 79 kr' },
-    B: { name: '30-dages forbrug · mest populær',  pick: '30-dages forbrug',             sub: 'ca. 8 kr / barbering', mo: 'Læg i kurv — 189 kr/md', cta: 'Læg i kurv — 79 kr' },
-    C: { name: 'Engangskøb · uden abonnement',     pick: 'Engangskøb',                   sub: 'uden abonnement',     mo: 'Læg i kurv — 204 kr',   cta: 'Læg i kurv — 204 kr' }
+    A: { name: '90-dages forbrug · bedste værdi', pick: '90-dages forbrug (Spar 30 %)', sub: 'ca. 6 kr / barbering', mo: 'Læg i kurv — 142 kr/md', cta: 'LÆG I KURV' },
+    B: { name: '30-dages forbrug · mest populær',  pick: '30-dages forbrug',             sub: 'ca. 8 kr / barbering', mo: 'Læg i kurv — 189 kr/md', cta: 'LÆG I KURV' },
+    C: { name: 'Engangskøb · uden abonnement',     pick: 'Engangskøb',                   sub: 'uden abonnement',     mo: 'Læg i kurv — 357 kr',   cta: 'LÆG I KURV' }
   };
   var oneTimeLink = document.querySelector('[data-onetime]');
   var ONETIME_URL = oneTimeLink ? oneTimeLink.getAttribute('href') : 'https://shavesafe.dk/collections/provepakke?tier=engangskoeb';
