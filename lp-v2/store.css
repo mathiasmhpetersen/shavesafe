@@ -189,6 +189,9 @@
 }
 @media (min-width: 768px) {
   .store .stats-grid { grid-template-columns: 1fr 1fr; gap: 80px; }
+  /* image on the left, text on the right (markup stays text-first for mobile) */
+  .store .stats-grid .stats-img { order: 1; }
+  .store .stats-grid > div:not(.stats-img) { order: 2; }
 }
 /* three numbers in one row of three columns, thin divider between, stack on mobile */
 .store .stats-numbers {
@@ -244,8 +247,7 @@
 .store .stats-img {
   border-radius: var(--radius);
   overflow: hidden;
-  aspect-ratio: 3/4;
-  max-height: 440px;          /* line the image up with the text block */
+  aspect-ratio: 1;            /* match the "Vores unikke formel" image below */
   background: var(--cream);
 }
 .store .stats-img img {
