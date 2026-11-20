@@ -350,4 +350,22 @@
     }
   })();
 
+  /* ── Video intro (Lær Nana at kende) — play/pause, no autoplay ── */
+  (function () {
+    var player = document.getElementById('viPlayer');
+    if (!player) return;
+    var video = document.getElementById('viVideo');
+    var controlsAdded = false;
+    function play() {
+      if (!controlsAdded) { video.setAttribute('controls', ''); controlsAdded = true; }
+      video.play();
+    }
+    player.querySelectorAll('.vi-play, .vi-cta').forEach(function (b) {
+      b.addEventListener('click', function (e) { e.preventDefault(); play(); });
+    });
+    video.addEventListener('play', function () { player.classList.add('playing'); });
+    video.addEventListener('pause', function () { player.classList.remove('playing'); });
+    video.addEventListener('ended', function () { player.classList.remove('playing'); });
+  })();
+
 })();

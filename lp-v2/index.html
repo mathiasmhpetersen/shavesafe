@@ -43,7 +43,30 @@
 
   <!-- NAV -->
   <header class="header">
-    <img src="../img/logo-black.avif" alt="ShaveSafe" />
+    <div class="header-inner">
+      <!-- NOTE: nav links point to shavesafe.dk as placeholders — update URLs later. -->
+      <a class="nav-burger" href="https://shavesafe.dk" aria-label="Menu">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </a>
+      <a class="nav-logo" href="https://shavesafe.dk" aria-label="ShaveSafe forside">
+        <img src="../img/logo-black.avif" alt="ShaveSafe" />
+      </a>
+      <nav class="nav-links" aria-label="Hovedmenu">
+        <a href="https://shavesafe.dk/collections/all">Shop</a>
+        <a href="https://shavesafe.dk/collections/provepakke">Prøvepakke &amp; abonnement</a>
+        <a href="https://shavesafe.dk/blogs/articles">Råd &amp; vejledning</a>
+        <a href="https://shavesafe.dk">Om os</a>
+        <a href="https://shavesafe.dk">Find forhandlere</a>
+        <a href="https://shavesafe.dk">Kontakt</a>
+        <a href="https://shavesafe.dk">Tilfredshedsgaranti</a>
+        <a href="https://shavesafe.dk/account/login">Login</a>
+      </nav>
+      <div class="nav-icons">
+        <a href="https://shavesafe.dk/search" aria-label="Søg"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a>
+        <a href="https://shavesafe.dk/account" aria-label="Min konto"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 016-6h4a6 6 0 016 6v1"/></svg></a>
+        <a class="nav-cart" href="https://shavesafe.dk/cart" aria-label="Indkøbskurv"><svg viewBox="0 0 24 24"><path d="M6 7h12l1 13H5z"/><path d="M9 7a3 3 0 016 0"/></svg><span class="nav-cart-badge">3</span></a>
+      </div>
+    </div>
   </header>
 
   <!-- ══ 2 · TRUST MICRO-BAR ══ -->
@@ -463,64 +486,77 @@
       </div>
     </section>
 
-    <!-- ══ 9 · ORIGIN / NANA ══ -->
-    <section class="story-section">
-      <div class="story-grid reveal">
-        <div class="story-img">
-          <video src="../img/nana-story.mp4" poster="../img/nana-founder.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Nana fortæller historien bag ShaveSafe"></video>
-        </div>
-        <div class="story-text">
+    <!-- ══ 9 · VIDEO INTRO (Lær Nana at kende) ══ -->
+    <section class="video-intro">
+      <div class="vi-card reveal">
+        <div class="vi-text">
           <div class="section-eyebrow">Hende der startede det hele</div>
-          <h2>Nana kæmpede med det i 15 år. Så fandt hun ud af hvorfor.</h2>
-          <p>ShaveSafe startede ikke i et laboratorium. Det startede i et badeværelse — med Nana, vores grundlægger, der var træt af at være den kvinde, der altid sagde nej til bikini.</p>
-          <p>Efter 15 år med indgroede hår, knopper og “sensitive skin” produkter der ikke virkede, besluttede Nana at finde ud af hvorfor. Hun gravede ned i forskning, samarbejdede med danske dermatologer, og opdagede hvad ingen af de store brands talte om:</p>
-          <p class="founder-highlight">Det er bakterier, ikke huden.</p>
-          <p>Sammen med et team af formulatorer udviklede hun det første barberingsprodukt med en patenteret Chlorhexidine-formel — en antibakteriel teknologi, klinisk testet og fremstillet i Danmark.</p>
-          <p class="founder-personal">I dag svarer Nana stadig personligt på beskeder fra kunder.</p>
+          <h2>Lær Nana at kende</h2>
+          <p class="vi-sub">I videoen fortæller Nana, vores grundlægger, hvorfor hun skabte ShaveSafe efter 15 år med knopper og indgroede hår — og hvordan hun opdagede, at det er bakterier, ikke huden.</p>
+          <p class="vi-sign">Nana · grundlægger</p>
+        </div>
+        <div class="vi-media">
+          <div class="vi-player" id="viPlayer">
+            <video id="viVideo" src="../img/nana-story.mp4" poster="../img/nana-founder.jpg" playsinline preload="metadata"></video>
+            <button class="vi-play" type="button" aria-label="Afspil video">
+              <svg viewBox="0 0 24 24"><polygon points="7 5 20 12 7 19 7 5"/></svg>
+            </button>
+            <button class="vi-cta" type="button">Hør Nana fortælle sin historie</button>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ══ 10a · PRODUCT BOX (bundle / 90-dages forbrug) ══ -->
-    <section class="product-section">
-      <div class="product-box reveal">
-        <div class="product-savings-pill">90-dages forbrug · bedste værdi</div>
-        <div class="product-hero-img">
-          <img src="../img/offer-hero.jpg" alt="ShaveSafe bundle med gratis velkomstkit" />
-        </div>
-        <div class="section-eyebrow">Bundlen</div>
-        <h2>90-dages forbrug</h2>
-        <p class="product-sub">Tre måneders barbering — leveret hver 12. uge.</p>
-
-        <div class="product-items-visual">
-          <div class="product-visual-item">
-            <img src="../img/blade-closeup-numbered.jpg" alt="12 skrabehoveder" />
-            <div class="pv-name">12 skrabehoveder</div>
-            <div class="pv-desc">Svensk stål, 5+1 blade. Et friskt hoved til hver barbering.</div>
+    <!-- ══ 10a · BUNDLE CTA (two-column, 4YfRKc) ══ -->
+    <section class="bundle-cta">
+      <div class="bundle-inner">
+        <div class="bundle-left reveal">
+          <div class="bundle-eyebrow"><span>90-dages forbrug</span><span class="bundle-badge">Bedste værdi</span></div>
+          <h2>Tre måneders barbering.<br/><em>Uden røde knopper.</em></h2>
+          <p class="bundle-sub">12 skrabehoveder og 3 barbergel leveret hver 12. uge. I din første pakke følger et velkomstkit til 406 kr med, helt gratis.</p>
+          <div class="bundle-price">
+            <div class="bp-old">
+              <span class="bp-label">30-dages forbrug</span>
+              <span class="bp-old-amt">189 kr/md</span>
+            </div>
+            <div class="bp-new">
+              <span class="bp-label">90-dages forbrug</span>
+              <span class="bp-amt">142<span class="bp-unit"> kr/md</span></span>
+            </div>
           </div>
-          <div class="product-visual-item">
-            <img src="../img/gel-product-50ml.png" alt="3 gel" />
-            <div class="pv-name">3 × barbergel</div>
-            <div class="pv-desc">Patenteret Chlorhexidine-formel — tre måneders forbrug.</div>
-          </div>
-          <div class="product-visual-item">
-            <img src="../img/gift-bikini-repair.png" alt="Gratis velkomstkit" />
-            <div class="pv-name">Gratis velkomstkit</div>
-            <div class="pv-desc">406 kr værdi — følger med din første pakke.</div>
-          </div>
+          <div class="bundle-billed">Du betaler 425 kr hver 12. uge</div>
+          <a href="https://shavesafe.dk/collections/provepakke?tier=12uger" class="cta-btn">LÆG I KURV
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <ul class="bundle-checks">
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Altid gratis fragt</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Opsig når som helst</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 90 dages knop-fri garanti</li>
+          </ul>
         </div>
 
-        <div class="product-price-row">
-          <span class="product-price">142<span class="unit"> kr/md</span></span>
+        <div class="bundle-right reveal reveal-d1">
+          <div class="br-head"><span>Det får du i første pakke</span><span>Værdi</span></div>
+          <div class="br-group-label">Hver 12. uge</div>
+          <div class="br-row">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <div class="br-name"><strong>12 skrabehoveder</strong><span>Svensk stål, 5+1 blade</span></div>
+            <span class="br-val incl">Inkluderet</span>
+          </div>
+          <div class="br-row">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <div class="br-name"><strong>3 × barbergel</strong><span>Patenteret formel, tre måneders forbrug</span></div>
+            <span class="br-val incl">Inkluderet</span>
+          </div>
+          <div class="br-group-label">Gratis velkomstkit</div>
+          <div class="br-row gift"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span class="br-gname">Bikini Line Repair Creme</span><span class="br-val"><s>229 kr</s> GRATIS</span></div>
+          <div class="br-row gift"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span class="br-gname">ShaveSafe skraber</span><span class="br-val"><s>99 kr</s> GRATIS</span></div>
+          <div class="br-row gift"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span class="br-gname">Travel Case</span><span class="br-val"><s>49 kr</s> GRATIS</span></div>
+          <div class="br-row gift"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span class="br-gname">Razor Holder</span><span class="br-val"><s>29 kr</s> GRATIS</span></div>
+          <div class="br-total"><span>Gaver i første pakke</span><span>406 kr</span></div>
+          <div class="br-summary"><span class="brs-name">90-dages forbrug</span><span class="brs-price">142 kr/md<span class="brs-sub"> · 406 kr i gaver gratis</span></span></div>
+          <p class="br-fine">142 kr/md er den afrundede månedspris. Du betaler 425 kr hver 12. uge.</p>
         </div>
-        <div class="product-billed">du betaler 425 kr hver 12. uge</div>
-        <div class="product-savings">Gratis velkomstkit (406 kr værdi) · 90 dages knop-fri garanti</div>
-
-        <a href="https://shavesafe.dk/collections/provepakke?tier=12uger" class="cta-btn">
-          Læg i kurv
-          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <p class="product-note">12 skrabehoveder + 3 gel hver 12. uge · Altid gratis fragt · Opsig når som helst</p>
       </div>
     </section>
 
