@@ -10,20 +10,23 @@
 
 /* ── Scoped palette + tokens (never touches :root) ── */
 .store {
-  --black: #0a0a0a;
-  --body: #4a4a4a;
-  --muted: #8a8a8a;
-  --light: #f8f7f5;
-  --cream: #f2f0eb;
-  --border: #e8e6e1;
+  /* Remapped to the HERO's teal "Dermatolog" brand (tokens.css).
+     The whole page now shares the hero's colours + serif; only these
+     values change — the ported layout/CSS stays. */
+  --black: #0F1720;                     /* ink — headlines */
+  --body: #3A4452;                      /* body text */
+  --muted: #5E6873;                     /* ink-2 — captions/eyebrows */
+  --light: #FBFBF9;                     /* bg — paper white */
+  --cream: #F0F1EE;                     /* bg-2 — alternate bands */
+  --border: #E3E6EC;                    /* hairline */
   --white: #fff;
-  --gold: #C9A84C;
-  --green: #2e7d32;
-  --accent: #E8602C;
-  --accent-hover: #d44f1e;
-  --accent-glow: rgba(232, 96, 44, 0.15);
-  --navy: #0C1A2B;
-  --clinical-green: #5A7D6B;
+  --gold: #1F6F78;                      /* teal — stars */
+  --green: #1F6F78;                     /* teal — checks */
+  --accent: #1F6F78;                    /* teal — THE brand colour */
+  --accent-hover: #174F56;              /* teal-deep */
+  --accent-glow: rgba(31,111,120,0.15);
+  --navy: #0F1720;                      /* dark bands → hero ink */
+  --clinical-green: #5E6873;
   --urgency-red: #c0392b;
   --urgency-bg: #fff4f1;
   --max: 1200px;
@@ -39,7 +42,7 @@
 }
 
 .store img { max-width: 100%; height: auto; display: block; }
-.store h1, .store h2, .store h3 { font-family: 'Playfair Display', serif; color: var(--black); }
+.store h1, .store h2, .store h3 { font-family: var(--serif); color: var(--black); }
 
 /* ── SECTION SHARED ── */
 .store .section { padding: 120px 24px; }
@@ -192,7 +195,7 @@
   gap: 20px;
 }
 .store .stat-num {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--serif);
   font-size: clamp(56px, 7vw, 72px);
   font-weight: 400;
   color: var(--navy);
@@ -247,7 +250,7 @@
   margin-bottom: 32px;
 }
 .store .doctor-quote {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--serif);
   font-size: clamp(18px, 2vw, 22px);
   line-height: 1.6;
   color: var(--black);
@@ -325,7 +328,7 @@
   margin-bottom: 6px;
 }
 .store .ba-card-quote {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--serif);
   font-size: 15px;
   color: var(--black);
   line-height: 1.55;
@@ -369,7 +372,7 @@
   padding: 32px 24px;
 }
 .store .how-card-num {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--serif);
   font-size: 48px;
   font-weight: 400;
   color: var(--navy);
@@ -409,7 +412,7 @@
   gap: 8px;
 }
 .store .reviews-big {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--serif);
   font-size: 28px;
   font-weight: 700;
   color: var(--black);
@@ -557,7 +560,7 @@
   margin: 20px 0 4px;
 }
 .store .product-price {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--serif);
   font-size: 56px;
   font-weight: 700;
   color: var(--navy);
@@ -684,7 +687,7 @@
   position: relative;
 }
 .store .guarantee-badge-text {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--serif);
   font-size: 48px;
   font-weight: 700;
   color: #6b9bd2;
@@ -818,7 +821,7 @@
 }
 .store .final-cta h2 {
   color: var(--white);
-  font-family: 'Playfair Display', serif;
+  font-family: var(--serif);
   font-size: clamp(32px, 4vw, 52px);
   font-weight: 400;
   font-style: italic;
@@ -870,3 +873,39 @@
 .store .reviews-shot img { width: 100%; height: auto; display: block; border: 1px solid var(--border); border-radius: 14px; }
 .store .reviews-all { text-align: center; margin-top: 28px; }
 .store .reviews-all a { font-size: 14px; font-weight: 600; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ── Press logos "Set i danske medier" (below hero) ── */
+.store .press-bar { padding: 40px 24px; border-bottom: 1px solid var(--border); background: var(--light); }
+.store .press-label { text-align: center; font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); margin-bottom: 26px; font-weight: 600; }
+.store .press-logos { display: flex; justify-content: center; align-items: center; gap: 44px; flex-wrap: wrap; max-width: 1060px; margin: 0 auto; }
+.store .press-logos img { height: 26px; width: auto; object-fit: contain; opacity: .9; }
+@media (max-width: 760px) { .store .press-logos { gap: 24px 32px; } .store .press-logos img { height: 20px; } }
+
+/* Instrument Serif is weight-400 only — match the hero (avoid faux-bold serif) */
+.store h1, .store h2, .store h3,
+.store .stat-num, .store .cn-big, .store .product-price,
+.store .how-card-num, .store .guarantee-badge-text { font-weight: 400; }
+
+/* ── Comparison (Hvorfor vælge ShaveSafe — NapPillow 2-card, teal) ── */
+.store .compare2 { padding: 96px 24px; background: var(--light); }
+@media (max-width: 760px) { .store .compare2 { padding: 60px 20px; } }
+.store .compare2-inner { max-width: 1120px; margin: 0 auto; }
+.store .compare2 .section-eyebrow { color: var(--accent); }
+.store .compare2 h2 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.1; margin: 10px 0 14px; }
+.store .compare2-sub { font-size: 17px; line-height: 1.55; color: var(--muted); max-width: 620px; margin-bottom: 44px; }
+.store .compare2-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 760px) { .store .compare2-cards { grid-template-columns: 1fr; } }
+.store .compare2-card { border-radius: 20px; padding: 32px 30px; }
+.store .compare2-card.old { background: var(--white); border: 1px solid var(--border); }
+.store .compare2-card.new { background: var(--navy); color: #fff; }
+.store .compare2-card h3 { font-family: var(--sans); font-size: 22px; font-weight: 700; margin-bottom: 22px; }
+.store .compare2-card.new h3 { color: #fff; }
+.store .compare2-card ul { list-style: none; display: grid; gap: 16px; margin: 0; padding: 0; }
+.store .compare2-card li { display: flex; align-items: center; gap: 14px; font-size: 16px; line-height: 1.4; }
+.store .compare2-card.old li { color: var(--muted); }
+.store .compare2-card.new li { color: rgba(255,255,255,.92); }
+.store .c2-x, .store .c2-check { width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; }
+.store .c2-x { background: #ECEEF2; }
+.store .c2-x svg { width: 12px; height: 12px; stroke: #9AA3AD; stroke-width: 2.5; fill: none; }
+.store .c2-check { background: var(--accent); }
+.store .c2-check svg { width: 14px; height: 14px; stroke: #fff; stroke-width: 3; fill: none; }
