@@ -827,3 +827,7 @@ footer img { height: 16px; margin: 0 auto 12px; opacity: .4; }
   .cta-btn:hover { transform: none; }
   .cta-btn:hover svg { transform: none; }
 }
+
+/* Trust row under the hero CTA (90 dages pengene-tilbage · Gratis fragt · Opsig når som helst) */
+.cta-trust { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 26px; margin-top: 16px; }
+.cta-trust span { font-size: 13px; font-weight: 600; color: var(--ink); white-space: nowrap; }
