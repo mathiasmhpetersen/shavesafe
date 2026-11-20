@@ -106,11 +106,40 @@ body.debug [data-todo] { outline: 2px dashed #b91c1c; outline-offset: 2px; }
 
 /* ── NAV ── */
 .header {
-  padding: 16px 24px; display: flex; justify-content: center;
-  border-bottom: 1px solid var(--line); background: var(--bg);
+  padding: 0 24px; border-bottom: 1px solid var(--line); background: var(--bg);
   position: sticky; top: 0; z-index: 50;
 }
-.header img { height: 18px; }
+.header-inner {
+  max-width: var(--max); margin: 0 auto; min-height: 66px;
+  display: flex; align-items: center; gap: 28px;
+}
+.nav-logo { flex-shrink: 0; display: inline-flex; }
+.nav-logo img { height: 24px; display: block; }
+.nav-links { display: flex; align-items: center; gap: 24px; flex: 1; }
+.nav-links a {
+  font-family: var(--sans); font-size: 15px; font-weight: 500; color: var(--ink);
+  text-decoration: none; white-space: nowrap; transition: color .15s;
+}
+.nav-links a:hover { color: var(--teal); }
+.nav-icons { display: flex; align-items: center; gap: 18px; margin-left: auto; }
+.nav-icons a { color: var(--ink); display: inline-flex; transition: color .15s; }
+.nav-icons a:hover { color: var(--teal); }
+.nav-icons svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 1.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.nav-cart { position: relative; }
+.nav-cart-badge {
+  position: absolute; top: -6px; right: -8px; background: var(--teal); color: #fff;
+  font-family: var(--sans); font-size: 10px; font-weight: 700; line-height: 1;
+  min-width: 16px; height: 16px; padding: 0 4px; border-radius: 50px;
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-burger { display: none; color: var(--ink); }
+.nav-burger svg { width: 24px; height: 24px; stroke: currentColor; stroke-width: 1.8; fill: none; stroke-linecap: round; }
+@media (max-width: 1080px) {
+  .nav-links { display: none; }
+  .nav-burger { display: inline-flex; }
+  .nav-logo { margin: 0 auto; }           /* centre logo between burger and icons */
+  .header-inner { gap: 12px; min-height: 58px; }
+}
 
 /* =============================================================
    2 · TRUST MICRO-BAR  (seals)
