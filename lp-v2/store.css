@@ -863,3 +863,9 @@
 @media (prefers-reduced-motion: reduce) {
   .store .reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* ── Reviews: temporary screenshot of the live review widget ── */
+.store .reviews-shot { max-width: 1060px; margin: 0 auto; padding: 0 8px; }
+.store .reviews-shot img { width: 100%; height: auto; display: block; border: 1px solid var(--border); border-radius: 14px; }
+.store .reviews-all { text-align: center; margin-top: 28px; }
+.store .reviews-all a { font-size: 14px; font-weight: 600; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
