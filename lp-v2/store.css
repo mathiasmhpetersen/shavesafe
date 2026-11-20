@@ -614,7 +614,8 @@
   border-radius: var(--radius);
   overflow: hidden;
 }
-.store .story-img img {
+.store .story-img img,
+.store .story-img video {
   width: 100%;
   display: block;
   aspect-ratio: 4/5;
